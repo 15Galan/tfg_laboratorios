@@ -4,7 +4,11 @@
 # Variables
 carpetas=$(ls -d */ | grep -v '^logs/$' | sed 's#/##')  # Carpetas del repositorio
 log=logs/$(date +"%Y-%m-%d %H-%M").log                  # Archivos de registro
-mkdir -p logs                                           # Crear la carpeta de registros
+duplicada=false						# Centinela para imágenes duplicadas
+
+
+# Crear la carpeta de registros
+mkdir -p logs			# Si ya existe una carpeta 'logs' no hace nada
 
 
 # Construcción de las imágenes
@@ -18,27 +22,39 @@ for carpeta in $carpetas; do
     # Eliminar la versión anterior de la imagen
     if [ ! -z "$(docker images -q $carpeta)" ]; then
         echo "    Duplicada."
-        echo "    Eliminando..."
+        duplicada=true
         docker rmi $carpeta >> $log 2>&1
     fi
 
 
     # Construir la imagen actual
-    echo "    Construyendo..."
+    if [ ! $duplicada = true ]; then
+        echo "    Construyendo..."
+    else
+        echo "    Actualizando..."
+    fi
+
     docker build -t $carpeta $carpeta/ >> $log 2>&1
 
 
     # Almacenar la imagen en una lista si se creó correctamente
     if [ ! -z "$(docker images -q $carpeta)" ]; then
-        echo "    Creada."
+        if [ ! $duplicada = true ]; then
+            echo "    Creada."
+        else
+            echo "    Actualizada."
+        fi
+
         images="$images $carpeta"
     fi
 
     echo "\n" >> $log
+
+    duplicada=false
 done
 
 
-# Mostrar todas las imágenes que fueron creadas
+# Mostrar todas las nuevas imágenes generadas
 echo "\nResumen:"
 
 for image in $images; do
