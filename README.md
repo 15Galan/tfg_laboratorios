@@ -36,14 +36,11 @@ Las imágenes resultantes tienen **el mismo nombre** que sus carpetas contenedor
 
 
 ## Requisitos previos
-- Docker debe estar instalado en el sistema.
-- El sistema debe tener instaladas las imágenes base necesarias.
+- Docker y Docker Compose deben estar instalados en el sistema.
+- Docker debe gestionar adecuadamente las credenciales del usuario de Docker Hub.
 
-> **Note**  
-> Está pendiente automatizar la instalación de las imágenes base necesarias (estas son aquellas que aparecen en la sección `FROM` de los *Dockerfiles*). Mientras tanto, deben obtenerse con el comando:
-> ```shell
-> docker pull <imagen:versión>
-> ```
+> **Warning**  
+> Si existen fallos en las credenciales, los Dockerfile y los YAML no descargarán las imágenes base o en otras palabras, no harán `docker pull <imagen:versión>` de forma automática (aunque sí podrá hacerse de forma manual por el usuario).
 
 
 ## Instalación
@@ -67,15 +64,13 @@ Imagen: alpine-1-test
 
 Imagen: alpine-2-test
     Duplicada.
-    Eliminando...
-    Construyendo...
-    Creada.
+    Actualizando...
+    Actualizada.
 
 Imagen: alpine-3-test
     Duplicada.
-    Eliminando...
-    Construyendo...
-    Creada.
+    Actualizando...
+    Actualizada.
 
 Resumen:
 * alpine-1-test
