@@ -111,3 +111,8 @@ Este comando detectará si la máquina virtual definida en el *Vagrantfile* (Kal
 ---
 
 **Una vez hecho todo eso, el entorno de Kali Linux estará listo para usarse**.
+
+Las credenciales por defecto de esta máquina son:
+
+- Usuario: `vagrant`.
+- Contraseña: `vagrant`.
