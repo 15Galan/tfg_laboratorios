@@ -1,16 +1,15 @@
-# <% Concepto >
+# < Concepto >
 
 Información sobre el concepto.
 
 
 
-# <% Laboratorio >
+# Laboratorio
 
 Información sobre el laboratorio y sus requisitos/características.
 
 
 
-# <% Referencias >
+# Referencias
 
 Enlaces útiles de los que se obtuvieron información.
- 
