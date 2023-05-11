@@ -16,16 +16,15 @@ RUN chmod 700 /root/.ssh
 RUN chmod 600 /root/.ssh/authorized_keys
 
 # Descargar el ransomware
-WORKDIR /home/root
+WORKDIR /root
 RUN git clone https://github.com/15Galan/42malaga_bootcamp-ciberseguridad.git
 
 # Preparar el entorno
-RUN mkdir stockholm
-RUN cp -r 42malaga_bootcamp-ciberseguridad/stockholm .
+RUN cp -r 42malaga_bootcamp-ciberseguridad/stockholm/stockholm.py .
 RUN pip install argparse cryptography pathlib
 RUN rm -rf 42malaga_bootcamp-ciberseguridad
-RUN mkdir /home/root/infection
-WORKDIR /home/root/infection
+RUN mkdir /root/infection
+WORKDIR /root/infection
 
 # Crear archivos de prueba
 RUN touch texto.txt
