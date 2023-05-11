@@ -27,7 +27,12 @@ RUN mkdir /root/infection
 WORKDIR /root/infection
 
 # Crear archivos de prueba
-RUN touch texto.txt
+RUN echo "Hola mundo" > nota.txt
+RUN echo "**Hola** [mundo](es.wikipedia.org/wiki/Mundo)" > readme.md
+RUN echo "SELECT * FROM users;" > backup.sql
+RUN wget https://github.com/ssfar/42-Subjects.pdf/blob/master/libft.en.pdf -O libft.pdf
+RUN wget https://raw.githubusercontent.com/15Galan/Libft/master/libft.h -O libft.h
+RUN wget https://raw.githubusercontent.com/15Galan/Libft/master/ft_split.c -O ft_split.c
 RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/aarch64/alpine-standard-3.17.3-aarch64.iso -O alpine-standard.iso
 
 # Volver al entorno
