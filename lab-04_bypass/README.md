@@ -6,7 +6,7 @@ Existen diferentes tipos, que varían según el tipo de seguridad que se esté i
 
 - **Bypass de autenticación**. Un ejemplo común de bypass de autenticación es el uso de contraseñas débiles o robadas para acceder a una cuenta protegida por contraseña.
 - **Bypass de firewalls**. Los firewalls son dispositivos que se utilizan para bloquear el tráfico no autorizado hacia una red, por lo que el bypass de firewall puede permitir a un atacante acceder a una red protegida.
-- **Bypass de IDS (sistemas de detección de intrusiones)**. Los sistemas de detección de intrusiones se utilizan para detectar y alertar sobre intentos de acceso no autorizado a un sistema, por lo que el bypass de estos sistemas puede permitir a un atacante acceder a un sistema sin ser detectado.
+- **Bypass de IDS (sistemas de detección de intrusiones)**. Los IDS se utilizan para detectar y alertar sobre intentos de acceso no autorizado a un sistema, por lo que el bypass de IDS puede permitir a un atacante acceder a un sistema sin ser detectado.
 
 Se debe tener en cuenta que el bypass es una técnica utilizada tanto por atacantes malintencionados como por profesionales de la seguridad para evaluar la efectividad de los sistemas de seguridad; por tanto, es importante entender cómo funcionan estas técnicas y cómo prevenirlas para proteger eficazmente los sistemas y dispositivos de posibles ataques.
 
