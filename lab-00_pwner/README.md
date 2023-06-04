@@ -46,7 +46,7 @@ Existe una amplia variedad de hypervisores, pero los más comunes son los siguie
 
 ## ¿Qué es Kali Linux?
 
-Kali Linux es una distribución de Linux basada en Debian que está orientada a la seguridad informática y al pentesting. Esta distribución cuenta con una gran cantidad de herramientas de seguridad, por lo que es muy útil y la más usada en el campo de la ciberseguridad, por lo que encontrarás mucha información y ayuda en caso de que la necesites.
+Kali Linux es una distribución de Linux basada en Debian que está orientada a la seguridad informática y al pentesting. Esta distribución cuenta con una gran cantidad de herramientas de seguridad, por lo que es muy útil y la más usada en el campo de la ciberseguridad, de modo que encontrarás mucha información y ayuda en caso de que la necesites.
 
 > **Importante**  
 > Kali Linux es un conjunto de herramientas compatibles con Linux, esto quiere decir que las herramientas pueden usarse en cualquier distribución de Linux, pero Kali Linux ya cuenta con todas las herramientas preinstaladas y configuradas desde el comienzo.
