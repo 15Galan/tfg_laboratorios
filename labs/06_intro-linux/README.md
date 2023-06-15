@@ -202,8 +202,7 @@ También, algunas distribuciones añaden directorios adicionales dentro de los d
 
 Contiene las librerías compartidas y ficheros de datos utilizados por programas y aplicaciones del sistema.
 
-Estas librerías se conocen como **_shared libraries_** o **librerías dinámicas** y 
-son binarios que contienen funciones y rutinas de código reutilizables que pueden ser utilizadas por múltiples programas a la vez. Almacenar estas bibliotecas en un lugar común permite ahorrar espacio en disco y facilita la gestión y actualización de las bibliotecas del sistema. Se cargan en memoria cuando se ejecuta un programa que las requiere y, a diferencia de las librerías estáticas, estas librerías no se vinculan al programa en tiempo de compilación, sino que se cargan en tiempo de ejecución.
+Estas librerías se conocen como **_shared libraries_** o **librerías dinámicas** y son binarios que contienen funciones y rutinas de código reutilizables que pueden ser utilizadas por múltiples programas a la vez. Almacenar estas bibliotecas en un lugar común permite ahorrar espacio en disco y facilita la gestión y actualización de las bibliotecas del sistema. Se cargan en memoria cuando se ejecuta un programa que las requiere y, a diferencia de las librerías estáticas, estas librerías no se vinculan al programa en tiempo de compilación, sino que se cargan en tiempo de ejecución.
 
 ```text
 $ ls /lib
