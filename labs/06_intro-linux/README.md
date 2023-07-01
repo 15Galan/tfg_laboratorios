@@ -797,6 +797,7 @@ Esta segmentación garantiza que los usuarios solo tengan acceso a los recursos 
 Asignación de permisos a través de comandos.
 
 ![Permisos](https://linuxcommand.org/images/file_permissions.png)
+
 ```
 rwx rwx rwx = 111 111 111
 rw- rw- rw- = 110 110 110
