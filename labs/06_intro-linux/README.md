@@ -620,7 +620,7 @@ Esta sección abarcará algunos comandos básicos que se utilizan con frecuencia
 |   su    |     [usuario]      | Cambia de usuario.                                      |
 |  exit   |                    | Cierra la terminal.                                     |
 
-### Usuarios y grupos
+### Usuarios, grupos y permisos
 
 | Comando  |           Argumentos            | Descripción                                        |
 |:--------:|:-------------------------------:|:-------------------------------------------------- |
@@ -830,4 +830,4 @@ Información sobre el laboratorio y sus requisitos/características.
 
 # Referencias
 
-Enlaces útiles de los que se obtuvieron información.
+- [linuxcomand.org](https://linuxcommand.org)
