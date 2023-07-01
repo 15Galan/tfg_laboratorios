@@ -550,6 +550,278 @@ Algunos ejemplos de directorios comunes en este directorio son:
 - **`/var/tmp`**: ficheros temporales que no se eliminan automáticamente cuando el sistema se reinicia.
 - **`/var/www`**: ficheros de sitios y aplicaciones web que se ejecutan en el sistema (si se utiliza como servidor web).
 
+
+# La terminal
+
+La terminal es una interfaz de línea de comandos que permite a los usuarios interactuar con el sistema operativo mediante la introducción de comandos de texto.
+
+Se trata de una herramienta muy potente que permite a los usuarios realizar tareas complejas de forma rápida y eficiente, aunque también es cierto que su uso puede resultar intimidante para los usuarios menos experimentados.
+
+> **¿Por qué utilizar la terminal?**  
+> Aunque la mayoría de las tareas se pueden realizar utilizando una interfaz gráfica o GUI (*Graphical User Interface*), la terminal ofrece una serie de ventajas que la convierten en una herramienta muy útil para los usuarios más experimentados.
+> 
+> No obstante, cabe destacar que en Linux no todo tiene una GUI disponible y por tanto, solo es posible usar la terminal.
+
+Aquí se muestra un ejemplo de la cabecera de una terminal en Kali Linux:
+
+```text
+[srgalan@kali:~/Documents]$ 
+```
+
+La cabecera separa las distintas ejecuciones de los comandos y se compone de los siguientes elementos (en base al ejemplo mostrado):
+
+- **`srgalan`**: nombre del usuario ejecutando la terminal.
+- **`kali`**: nombre del equipo.
+- **`~/Documents`**: directorio actual (en este caso, los documentos del usuario).
+- **`$`**: símbolo del *prompt*, también llamado faceta, que indica que la terminal está esperando comandos.
+    - Si es `$`, significa que se ejecuta por un usuario.
+    - Si es `#`, significa que se ejecuta por el superusuario o `root`.
+
+
+## La shell
+
+La shell es un programa que actúa como capa de abstracción entre el terminal y el sistema operativo, lo que permite a los usuarios interactuar con el sistema operativo mediante la introducción de comandos de texto.
+
+Existen diferentes tipos de shell, aunque la más común es la shell Bash (*Bourne Again SHell*), que es la shell por defecto en la mayoría de las distribuciones de Linux.
+
+No hay que confundirlo con un terminal:
+
+- El terminal es un programa que proporciona una interfaz de usuario para acceder a la shell.
+- La shell se encarga de interpretar los comandos introducidos por el usuario y ejecutarlos.
+
+
+## Comandos
+
+Los comandos son programas que se ejecutan en la terminal para realizar tareas específicas, como administrar el sistema, gestionar archivos y directorios, etc.
+
+Esta sección abarcará algunos comandos básicos que se utilizan con frecuencia en la terminal, pero también incluirá algunos comandos más utilizados en el ámbito de la seguridad informática.
+
+
+### Básicos
+
+| Comando |     Argumentos     | Descripción                                             |
+|:-------:|:------------------:|:------------------------------------------------------- |
+|   cd    |    [directorio]    | Cambia el directorio actual.                            |
+|   ls    |       [ruta]       | Lista los archivos y directorios del directorio actual. |
+|   pwd   |                    | Muestra la ruta absoluta del directorio actual.         |
+|  mkdir  |    [directorio]    | Crea un directorio.                                     |
+|  rmdir  |    [directorio]    | Elimina un directorio.                                  |
+|  touch  |     [archivo]      | Crea un archivo vacío.                                  |
+|   rm    |     [archivo]      | Elimina un archivo.                                     |
+|   cp    | [origen] [destino] | Copia un archivo o directorio.                          |
+|   mv    | [origen] [destino] | Mueve un archivo o directorio.                          |
+|   cat   |     [archivo]      | Muestra el contenido de un archivo.                     |
+|  less   |     [archivo]      | Muestra el contenido de un archivo de forma paginada.   |
+|  head   |     [archivo]      | Muestra las primeras líneas de un archivo.              |
+|  tail   |     [archivo]      | Muestra las últimas líneas de un archivo.               |
+|  grep   | [patrón] [archivo] | Busca un patrón en un archivo.                          |
+|  find   | [ruta] [criterios] | Busca archivos y directorios.                           |
+|  sudo   |     [comando]      | Ejecuta un comando con privilegios de superusuario.     |
+|   su    |     [usuario]      | Cambia de usuario.                                      |
+|  exit   |                    | Cierra la terminal.                                     |
+
+### Usuarios y grupos
+
+| Comando  |           Argumentos            | Descripción                                        |
+|:--------:|:-------------------------------:|:-------------------------------------------------- |
+|  whoami  |                                 | Muestra el nombre de usuario actual.               |
+|    id    |                                 | Muestra la identificación de usuario y los grupos. |
+|  groups  |                                 | Muestra los grupos del usuario actual.             |
+|  passwd  |                                 | Cambia la contraseña del usuario actual.           |
+| adduser  |            [usuario]            | Crea un nuevo usuario.                             |
+| deluser  |            [usuario]            | Elimina un usuario.                                |
+| addgroup |             [grupo]             | Crea un nuevo grupo.                               |
+| delgroup |             [grupo]             | Elimina un grupo.                                  |
+| usermod  |      [opciones] [usuario]       | Modifica un usuario.                               |
+| groupmod |       [opciones] [grupo]        | Modifica un grupo.                                 |
+| userdel  |      [opciones] [usuario]       | Elimina un usuario.                                |
+| groupdel |       [opciones] [grupo]        | Elimina un grupo.                                  |
+| useradd  |      [opciones] [usuario]       | Crea un nuevo usuario.                             |
+| userdel  |      [opciones] [usuario]       | Elimina un usuario.                                |
+| usermod  |      [opciones] [usuario]       | Modifica un usuario.                               |
+| groupadd |       [opciones] [grupo]        | Crea un nuevo grupo.                               |
+| groupdel |       [opciones] [grupo]        | Elimina un grupo.                                  |
+| groupmod |       [opciones] [grupo]        | Modifica un grupo.                                 |
+|  chmod   | [permisos] [archivo/directorio] | Cambia los permisos de un archivo o directorio.    |
+|  chown   | [usuario] [archivo/directorio]  | Cambia el propietario de un archivo o directorio.  |
+|  chgrp   |  [grupo] [archivo/directorio]   | Cambia el grupo de un archivo o directorio.        |
+
+### Red
+
+|  Comando   |         Argumentos         | Descripción                                |
+|:----------:|:--------------------------:|:------------------------------------------ |
+|  ifconfig  |                            | Muestra la configuración de red.           |
+|     ip     |                            | Muestra la configuración de red.           |
+|    ping    |           [host]           | Envía paquetes ICMP a un host.             |
+| traceroute |           [host]           | Muestra la ruta de los paquetes a un host. |
+|  netstat   |                            | Muestra las conexiones de red.             |
+|     ss     |                            | Muestra las conexiones de red.             |
+|    nmap    |  [opciones] [host/rango]   | Escanea puertos y servicios.               |
+|     nc     | [opciones] [host] [puerto] | Abre una conexión TCP o UDP.               |
+|  tcpdump   |         [opciones]         | Captura paquetes de red.                   |
+| wireshark  |         [opciones]         | Captura paquetes de red.                   |
+|    ssh     |      [usuario]@[host]      | Abre una conexión SSH.                     |
+|    scp     | [archivo] [usuario]@[host] | Copia archivos a través de SSH.            |
+|    sftp    |      [usuario]@[host]      | Transfiere archivos a través de SSH.       |
+
+### Sistema
+
+| Comando |          Argumentos           | Descripción                                       |
+|:-------:|:-----------------------------:|:------------------------------------------------- |
+|  uname  |                               | Muestra información del sistema.                  |
+| uptime  |                               | Muestra el tiempo de actividad del sistema.       |
+|   who   |                               | Muestra los usuarios conectados.                  |
+|    w    |                               | Muestra los usuarios conectados.                  |
+|  last   |                               | Muestra los últimos usuarios conectados.          |
+|   ps    |                               | Muestra los procesos en ejecución.                |
+|   top   |                               | Muestra los procesos en ejecución.                |
+|  kill   |       [opciones] [PID]        | Envía una señal a un proceso.                     |
+| killall |      [opciones] [nombre]      | Envía una señal a un proceso.                     |
+|  pkill  |      [opciones] [patrón]      | Envía una señal a un proceso.                     |
+|  pgrep  |      [opciones] [patrón]      | Muestra los procesos que coinciden con un patrón. |
+| pstree  |                               | Muestra los procesos en forma de árbol.           |
+|  free   |                               | Muestra el uso de memoria.                        |
+|   df    |                               | Muestra el uso de disco.                          |
+|   du    |                               | Muestra el uso de disco.                          |
+|  mount  |   [opciones] [dispositivo]    | Monta un sistema de archivos.                     |
+| umount  | [opciones] [punto_de_montaje] | Desmonta un sistema de archivos.                  |
+|  fdisk  |   [opciones] [dispositivo]    | Gestiona particiones.                             |
+|  mkfs   |   [opciones] [dispositivo]    | Crea un sistema de archivos.                      |
+|  fsck   |   [opciones] [dispositivo]    | Verifica y repara un sistema de archivos.         |
+
+### Archivos
+
+| Comando |      Argumentos       | Descripción                                     |
+|:-------:|:---------------------:|:----------------------------------------------- |
+|   dd    |      [opciones]       | Copia y convierte archivos.                     |
+|  file   |       [archivo]       | Muestra el tipo de archivo.                     |
+| strings |       [archivo]       | Muestra las cadenas de texto de un archivo.     |
+| hexdump |       [archivo]       | Muestra el contenido hexadecimal de un archivo. |
+|   xxd   |       [archivo]       | Muestra el contenido hexadecimal de un archivo. |
+|  diff   | [archivo1] [archivo2] | Muestra las diferencias entre dos archivos.     |
+|  patch  |       [archivo]       | Aplica un parche a un archivo.                  |
+
+### Procesos
+
+| Comando |     Argumentos      | Descripción                                       |
+|:-------:|:-------------------:|:------------------------------------------------- |
+|   ps    |                     | Muestra los procesos en ejecución.                |
+|   top   |                     | Muestra los procesos en ejecución.                |
+|  kill   |  [opciones] [PID]   | Envía una señal a un proceso.                     |
+| killall | [opciones] [nombre] | Envía una señal a un proceso.                     |
+|  pkill  | [opciones] [patrón] | Envía una señal a un proceso.                     |
+|  pgrep  | [opciones] [patrón] | Muestra los procesos que coinciden con un patrón. |
+| pstree  |                     | Muestra los procesos en forma de árbol.           |
+
+### Memoria
+
+| Comando | Argumentos | Descripción                              |
+|:-------:|:----------:|:---------------------------------------- |
+|  free   |            | Muestra el uso de memoria.               |
+| vmstat  |            | Muestra el uso de memoria.               |
+|  pmap   |   [PID]    | Muestra el uso de memoria de un proceso. |
+|   top   |            | Muestra el uso de memoria.               |
+
+
+# Permisos del sistema, usuarios y grupos
+
+En un sistema operativo basado en Unix, como Linux, los permisos desempeñan un papel crucial para garantizar la seguridad y la gestión eficiente de los recursos del sistema.
+
+Los permisos se pueden otorgar a usuarios individuales o a grupos de usuarios, por eso es importante comprender cómo funcionan los usuarios y los grupos en Linux, para además complementar el conocimiento de los permisos.
+
+## Usuarios
+
+Los usuarios son cuentas individuales que representan a personas o servicios que interactúan con el sistema; cada usuario tiene un nombre de usuario único y una identificación de usuario (UID) asociada.
+
+Los usuarios se crean para permitir a las personas acceder al sistema y utilizar los recursos disponibles; cada usuario tiene su propio entorno y configuración personalizada, así como su directorio de inicio y su shell predeterminada.
+
+```text
+$ id
+
+uid=1000(ubuntu) gid=1000(ubuntu) groups=1000(ubuntu),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lxd),999(docker)
+```
+
+## Grupos
+
+Los grupos son una forma de organizar y administrar usuarios en categorías lógicas; cada usuario puede pertenecer a uno o más grupos; se utilizan para simplificar la asignación de permisos y el manejo de recursos compartidos.
+
+```text
+$ groups
+
+ubuntu adm cdrom sudo dip plugdev lxd docker
+```
+
+```text
+$ cat /etc/group
+
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:
+disk:x:6:
+```
+
+## Permisos del sistema
+
+Los permisos del sistema definen los niveles de acceso y control que se otorgan a usuarios y grupos sobre archivos y directorios; en un sistema basado en Unix, los permisos se dividen en tres categorías principales:
+
+- Lectura (**r**), que permite ver el contenido de un archivo o listar los archivos en un directorio.
+- Escritura (**w**), que permite modificar o eliminar un archivo existente, y en un directorio, permite crear, eliminar o renombrar archivos.
+- Ejecución (**x**) permite ejecutar un archivo o acceder a un directorio. En el caso de los directorios, también es necesario tener permiso de ejecución para acceder a su contenido.
+
+Estos permisos se asignan tanto a usuarios individuales como a grupos; además, los permisos se establecen para tres categorías de usuarios:
+
+- El propietario del archivo.
+- El grupo propietario.
+- Otros usuarios.
+
+Estos permisos se representan mediante una combinación de letras y símbolos, como rwx, y se asignan al propietario, grupo y otros usuarios.
+
+```text
+$ ls -l /home
+
+total 24
+drwxr-xr-x 2 bart  bart  4096 Jul  1 14:32 bart
+drwxr-xr-x 2 homer homer 4096 Jul  1 14:32 homer
+drwxr-xr-x 2 lisa  lisa  4096 Jul  1 14:32 lisa
+drwxr-xr-x 2 marge marge 4096 Jul  1 14:32 marge
+drwxr-xr-x 1 user  user  4096 Jul  1 14:32 user
+```
+
+La correcta gestión de usuarios, grupos y permisos del sistema es esencial para mantener la seguridad y la integridad de un sistema informático; a través de la asignación adecuada de permisos, puedes controlar qué usuarios y grupos pueden acceder, modificar o ejecutar archivos y directorios específicos.
+
+Esta segmentación garantiza que los usuarios solo tengan acceso a los recursos necesarios para realizar sus tareas y protege los datos confidenciales de accesos no autorizados.
+
+Asignación de permisos a través de comandos.
+
+![Permisos](https://linuxcommand.org/images/file_permissions.png)
+```
+rwx rwx rwx = 111 111 111
+rw- rw- rw- = 110 110 110
+rwx --- --- = 111 000 000
+
+(...)
+
+rwx = 111, que es 7 en binario.
+rw- = 110, que es 6 en binario.
+r-x = 101, que es 5 en binario.
+r-- = 100, que es 4 en binario.
+
+(...)
+```
+
+> **Ejemplos**  
+> - `chmod 777 file` -> Todos los permisos al dueño, grupo y usuarios (`rwx rwx rwx`).
+> - `chmod 005 file` -> Lectura y ejecución a los usuarios (`--- --- r-x`).
+> - `chmod 201 file` -> Escritura al dueño y ejecución a los usuarios (`-w- --- --x`).
+
+> **Nota**  
+> Cabe destacar que, lógicamente, los ficheros con permisos `777` son una muy mala práctica de seguridad, ya que cualquier usuario podría modificarlos o ejecutarlos.
+> 
+> Se recomienda encarecidamente seguir una **política de permisos mínimos** a la hora de gestionar los permisos de los ficheros en un sistema.
+
 # Laboratorio
 
 Información sobre el laboratorio y sus requisitos/características.
