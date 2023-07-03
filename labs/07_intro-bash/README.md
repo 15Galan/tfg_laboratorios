@@ -319,8 +319,22 @@ Por otra parte, también hay que hablar de los *flags* o los operadores que se u
 - `-ge` o `>=`: el primer elemento es mayor o igual que el segundo.
 - `-lt` o `<`: el primer elemento es menor que el segundo.
 - `-le` o `<=`: el primer elemento es menor o igual que el segundo.
+- `-a` o `&&`: dos condiciones son verdaderas (*AND*).
+- `-o` o `||`: al menos una de dos condiciones es verdadera (*OR*).
 - `-z`: el elemento es una cadena vacía.
 - `-n`: el elemento es una cadena no vacía.
+
+> **Nota**  
+> Existen muchas más opciones además de las mostradas; por ejemplo:
+> - `-f`: el elemento es un fichero.
+> - `-d`: el elemento es un directorio.
+> - `-r`: el elemento tiene permisos de lectura.
+> - `-w`: el elemento tiene permisos de escritura.
+> - `-x`: el elemento tiene permisos de ejecución.
+> - `-s`: el elemento tiene un tamaño mayor que cero.
+> - `-e`: el elemento existe.
+> - `-h`: el elemento es un enlace simbólico.
+> - (...)
 
 
 #### CASE
@@ -602,7 +616,7 @@ array2='95 96 97 98 99'
 # Presentación de los arrays
 echo "array1        : ${array1[@]}"         # Todos los elementos del array1
 echo "array2        : ${array2[@]}"         # Todos los elementos del array2
-echo ""
+echo
 
 # Operaciones básicas
 echo "array1[3]     : ${array1[3]}"         # El elemento 3 del array1
@@ -610,29 +624,29 @@ echo "#array1[@]    : ${#array1[@]}"        # Longitud del array1
 echo "#array1[3]    : ${#array1[3]}"        # Longitud del elemento 3 del array1
 echo "array1[@]:2   : ${array1[@]:2}"       # Elementos del array1 a partir del elemento 2
 echo "array1[@]:2:3 : ${array1[@]:2:3}"     # 3 elementos del array1 a partir del elemento 2
-echo ""
+echo
 
 # Operaciones avanzadas
 echo "array1[@]/dos/nueve : ${array1[@]/dos/nueve}"     # Todos los elementos del array1, reemplazando 'dos' por 'nueve'
 echo "array1[@]/nueve/uno : ${array1[@]/nueve/uno}"     # Todos los elementos del array1, reemplazando 'nueve' por 'uno'
 echo "array1[@]#dos       : ${array1[@]#dos}"           # Todos los elementos del array1, eliminando 'dos' por la izquierda
 echo "array1[@]%dos       : ${array1[@]%dos}"           # Todos los elementos del array1, eliminando 'dos' por la derecha
-echo ""
+echo
 
 # Modificaciones de arrays
 array1=(0 ${array1[@]})
 echo 'array1=(0 ${array1[@]}) :' ${array1[@]}   # Añade un elemento al inicio del array1
 array1=(${array1[@]} 6)
 echo 'array1=(${array1[@]} 6) :' ${array1[@]}   # Añade un elemento al final del array1
-echo ""
+echo
 array3=(${array1[@]} ${array2[@]})              # Concatena los arrays array1 y array2
 echo 'array3=(${array1[@]} ${array2[@]}) :' ${array3[@]}
-echo ""
+echo
 unset array1[3]                                 # Elimina el elemento 3 del array1
 echo "unset array1[3] : ${array1[@]}"
 unset array1                                    # Elimina el array1
 echo "unset array1    : ${array1[@]}"
-echo ""
+echo
 ```
 
 ### Expresiones regulares (*regex*)
@@ -702,17 +716,46 @@ Ejemplos:
 echo "Hola mundo" > fichero.txt
 ```
 
-1. Muestra *"Hola mundo"* por la salida estándar.
+```text
+$ cat fichero.txt
+
+Hola mundo
+```
+
+1. Coloca *"Hola mundo"* en la salida estándar.
 2. Redirige la salida estándar al *fichero.txt*.
 3. Ahora el *fichero.txt* contiene *"Hola mundo"*.
 
 ```bash
-cat < fichero.txt
+wc -l < fichero.txt
 ```
 
-1. Redirige la entrada estándar desde el *fichero.txt*.
-2. Muestra el contenido del *fichero.txt* por la salida estándar.
-3. La terminal muestra *"Hola mundo"*.
+```text
+1
+```
+
+1. Coloca el contenido de *fichero.txt* en la entrada estándar.
+2. Cuenta el número de líneas de la entrada estándar.
+3. Muestra el resultado por la salida estándar.
+
+Por otra parte, también existen los operadores `>>` y `<<`, cuya función es similar a los anteriores, pero en lugar de sobreescribir la entrada/salida, añaden el contenido al final.
+
+Ejemplos:
+
+```bash
+echo "Adiós mundo" >> fichero.txt
+```
+
+```text
+$ cat fichero.txt
+
+Hola mundo
+Adiós mundo
+```
+
+1. Coloca *"Hola mundo"* en la salida estándar.
+2. Redirige la salida estándar al *fichero.txt*.
+3. Añade *"Adiós mundo"* al final del *fichero.txt*.
 
 
 ### Tuberías
@@ -740,7 +783,7 @@ ls -l | grep "*.sh"
 
 Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con diferentes permisos.
 
-El objetivo es que puedas practicar con Bash, teniendo todo un entorno Linux a tu disposición con el que experimentar.
+El objetivo es que puedas practicar con Bash, teniendo todo un entorno Linux a tu disposición con el que experimentar; puedes programar y probar tus propios scripts, replicar algunos de los ejemplos anteriores o ejecutar algunos scripts del laboratorio.
 
 Este entorno contiene los siguientes usuarios:
 
@@ -757,4 +800,6 @@ La contraseña de cada usuario es el nombre del usuario.
 
 # Referencias
 
-Enlaces útiles de los que se obtuvieron información.
+- [Manual de Bash de GNU](https://www.gnu.org/software/bash/manual/bash.html)
+- [Tester de expresiones regulares](https://regex101.com)
+
