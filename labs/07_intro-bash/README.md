@@ -74,6 +74,32 @@ echo "Hola mundo"   # Comentario al final de una línea
 # vacías.
 ```
 
+### Comillas
+
+Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin emabrgo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:
+
+- `'`: indica que el texto es una cadena de caracteres, y no se debe interpretar nada.
+- `"`: indica que el texto es una cadena de caracteres, pero se deben interpretar las variables.
+- <code>\`</code> o `$()`: indica que el texto es un comando, y se debe ejecutar.
+
+```bash
+#!/bin/bash
+
+echo "Hola $USER, tu directorio de trabajo es: $HOME"   # Comillas dobles
+echo 'Hola $USER, tu directorio de trabajo es: $HOME'   # Comillas simples
+echo "Hola $USER, tu directorio de trabajo es: `pwd`"   # Comillas invertidas (ejecución)
+echo "Hola $USER, tu directorio de trabajo es: $(pwd)"  # Ejecución de un comando
+```
+
+El resultado de ejecutar el script anterior sería:
+
+```text
+Hola srgalan, tu directorio de trabajo es: /home/srgalan
+Hola $USER, tu directorio de trabajo es: $HOME
+Hola srgalan, tu directorio de trabajo es: /home/srgalan
+Hola srgalan, tu directorio de trabajo es: /home/srgalan
+```
+
 
 ### Variables
 
@@ -122,7 +148,7 @@ Hola Homer
 Adiós Galán
 ```
 
-Este ejemplo muestra 2 variables que se llaman `nombre`, pero una definida localmente dentro de una función y otra definida globalmente al estar fuera de todas las funciones. Sabiendo que un script se ejecuta de forma secuencial (es decir, desde el inicio del fichero hasta el final), está ocurriendo lo siguiente:
+Este ejemplo muestra 2 variables que se llaman `nombre`, pero una definida localmente dentro de una función y otra definida globalmente al estar fuera de todas las funciones; en el ejemplo anterior está ocurriendo lo siguiente:
 
 1. Se define la función `saludar()` con la variable `nombre` (local, porque está dentro de `saludar()`).
 2. Se define la variable `nombre` (global, porque está fuera de las funciones).
@@ -206,33 +232,15 @@ Salida del comando anterior : 0
 Parámetros recibidos        : uno dos tres 15
 ```
 
-### Comillas
 
-Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin emabrgo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:
+### Operadores
 
-- `'`: indica que el texto es una cadena de caracteres, y no se debe interpretar nada.
-- `"`: indica que el texto es una cadena de caracteres, pero se deben interpretar las variables.
-- <code>\`</code> o `$()`: indica que el texto es un comando, y se debe ejecutar.
+Los operadores son elementos del lenguaje que se utilizan para realizar operaciones sobre variables y valores.
 
-```bash
-#!/bin/bash
+Estas operaciones pueden ser aritméticas, lógicas, de comparación, etc.
 
-echo "Hola $USER, tu directorio de trabajo es: $HOME"   # Comillas dobles
-echo 'Hola $USER, tu directorio de trabajo es: $HOME'   # Comillas simples
-echo "Hola $USER, tu directorio de trabajo es: `pwd`"   # Comillas invertidas (ejecución)
-echo "Hola $USER, tu directorio de trabajo es: $(pwd)"  # Ejecución de un comando
-```
 
-El resultado de ejecutar el script anterior sería:
-
-```text
-Hola srgalan, tu directorio de trabajo es: /home/srgalan
-Hola $USER, tu directorio de trabajo es: $HOME
-Hola srgalan, tu directorio de trabajo es: /home/srgalan
-Hola srgalan, tu directorio de trabajo es: /home/srgalan
-```
-
-### Operadores aritméticos
+#### Aritméticos
 
 Bash permite realizar operaciones aritméticas con los siguientes operadores:
 
@@ -240,11 +248,12 @@ Bash permite realizar operaciones aritméticas con los siguientes operadores:
 - `-`: resta.
 - `*`: multiplicación.
 - `/`: división.
+- `%`: módulo (resto de la división).
 
 No existen operadores más complejos como potencias, raíces... como ocurre en otros lenguajes; para realizar operaciones más complejas, se puede utilizar el comando `bc` (calculadora de Bash).
 
 
-### Operadores lógicos
+#### Lógicos
 
 Los operadores lógicos son aquellos que se utilizan para evaluar expresiones o condiciones, y devuelven un valor de salida que indica si la expresión es verdadera o falsa.
 
@@ -254,12 +263,12 @@ Una condición se considera verdadera cuando su valor de salida es `0` o `true`;
 > Algunos lenguajes de programación manejan estos valores al revés.
 
 
-#### Estructuras condicionales o de control
+### Estructuras condicionales o de control
 
 Estas estructuras se utilizan para controlar el flujo de ejecución de un script, ejecutando bloques de código determinados en función de una o varias condiciones.
 
 
-##### IF, ELSE y ELIF
+#### IF, ELSE y ELIF
 
 El condicional `if` se utiliza para evaluar una expresión o condición y ejecutar un bloque de código cuando esta es verdadera.
 
@@ -314,7 +323,7 @@ Por otra parte, también hay que hablar de los *flags* o los operadores que se u
 - `-n`: el elemento es una cadena no vacía.
 
 
-##### CASE
+#### CASE
 
 El condicional `case` se utiliza para realizar múltiples comparaciones en una variable y ejecutar acciones en función del resultado; resulta útil cuando se desea comprobar una variable contra varios patrones diferentes.
 
@@ -365,32 +374,367 @@ Las condiciones pueden describirse usando las siguientes sintaxis:
 > Es decir, cuando una variable coincide con un patrón, ejecuta ese bloque de código y si no hay un `;;`, pasará a comprobar el siguiente patrón, y así sucesivamente hasta que encuentre un `;;` o llegue al final del `case` (se encuentre con `esac`).
 
 
-#### Bucles
+### Bucles
 
 Estas estructuras se utilizan para repetir un bloque de código un número de veces determinado o mientras se cumpla una condición.
 
-##### FOR
+#### FOR
 
 Este bucle se utiliza para ejecutar un bloque de código un número de veces.
 
 ```bash
 #!/bin/bash
 
-# FOR simple, una sola condición
+# FOR que itera una lista de números
 for i in {1..5}; do
     echo "El valor de i es $i."     # Se ejecuta 5 veces
 done
 
-# FOR con múltiples condiciones
-for i in {1..5}; do
-    echo "El valor de i es $i."     # Se ejecuta 5 veces
-    if [ $i -eq 3 ]; then
-        break                       # Se ejecuta 3 veces
+# FOR que itera sobre una variable
+for ((i=0;i<=15;i++)); do
+    echo "El valor de i es $i."     # Se ejecuta 15 veces
+
+    if [ $i -eq 5]; then
+        echo "Progreso al 33 %."    # Se ejecuta 1 vez
+    elif [ $i -eq 10]; then
+        echo "Progreso al 66 %."    # Se ejecuta 1 vez
+    elif [ $i -eq 15]; then
+        echo "Progreso al 100 %."   # Se ejecuta 1 vez
     fi
 done
 ```
 
----
+El bucle `for` tiene 2 formas de iterar:
+
+**`for elemento in conjunto`**: itera sobre un conjunto de elementos, donde:
+
+- `conjunto`: cualquier objeto que contenga varios valores.
+- `elemento`: variable que toma cada elemento del `conjunto` por cada iteración.
+
+> **Nota**  
+> Esto se le conoce como *for-each* en otros lenguajes de programación.
+
+**`for ((inicio;condición;operación))`**: itera mientras se cumpla una condición, donde:
+
+- `inicio`: define la variable contador del bucle, así como su valor inicial.
+- `condición`: condición que produce una iteración del bucle mientras se cumpla.
+- `operación`: modificación de la variable contador al final de cada iteración.
+
+
+#### WHILE y UNTIL
+
+Estos bucles se utilizan para ejecutar un bloque de código mientras se cumpla una condición; ambos casos son opuestos:
+
+- `while`: ejecuta el bloque de código mientras se cumpla la condición.
+- `until`: ejecuta el bloque de código hasta que se cumpla la condición.
+
+> **Nota**  
+> Observa como `until` equivale a *ejecuta el bloque de código mientras no se cumpla la condición*; lo que se correspondería con un `while` con la condición negada.
+
+```bash
+#!/bin/bash
+
+# WHILE que itera mientras se cumple una condición
+i=0
+
+while [ $i -lt 5 ]; do
+    echo "El valor de i es $i."     # Se ejecuta 5 veces
+
+    i=$((i+1))
+done
+
+# UNTIL que itera hasta que se cumple una condición
+i=0
+
+until [ $i -eq 5 ]; do
+    echo "El valor de i es $i."     # Se ejecuta 5 veces
+
+    i=$((i+1))
+done
+```
+
+Al contrario de lo que sucede con el bucle `for`, tanto `while` como `until` solo comprueban una condición, por lo que es necesario:
+
+- Definir una variable contador antes de entrar en el bucle.
+- Actualizar la variable contador al final del bucle.
+
+> **Nota**  
+> Si esto no se realiza correctamente, pueden suceder fallos graves como bucles infinitos.
+
+
+#### Saltos
+
+Existen 2 palabras reservadas especiales para alterar el funcionamiento de un bucle:
+
+- `break`: finaliza la ejecución del bucle.
+- `continue`: finaliza la iteración actual y pasa a la siguiente.
+
+```bash
+#!/bin/bash
+
+letras='a b c d e f g h i j k l m n o p q r s t u v w x y z'
+
+# FOR que itera una lista de números
+for i in $letras; do
+    echo "El valor de i es $i."     # Se ejecuta 5 veces (por la condición inferior)
+
+    if [ $i -eq 'e' ]; then
+        break                       # Finaliza el bucle cuando la letra es 'e'
+    fi
+done
+
+# FOR que itera una lista de números
+for i in $letras; do
+    if [ $i -eq 'l' ]; then
+        continue                    # Salta la iteración cuando la letra es 'l'
+    fi
+
+    echo "El valor de i es $i."     # Se ejecuta 25 veces (por la condición superior)
+done
+```
+
+> **Nota**  
+> Observa como `break` y `continue` solo afectan al bucle en el que se encuentran, por lo que si se utilizan dentro de un bucle anidado, solo afectarán a ese bucle.
+
+
+### Funciones
+
+Las funciones son bloques de código que se pueden ejecutar desde cualquier parte del script.
+
+Resultan muy útiles para reutilizar código, ya que se puede ejecutar el mismo bloque de código desde diferentes partes del script; también es una buena forma de estructurar el código, ya que se pueden definir funciones para realizar tareas concretas y por otro lado, modularizar el código lo hace más legible y cómodo de mantener.
+
+Las funciones pueden recibir parámetros, que se pueden utilizar dentro de la función como si fueran variables; y del mismo modo, una función puede devolver un valor, que se puede utilizar fuera de la función.
+
+- Los parámetros se reciben usando las variables especiales vistas anteriormente (`$1`, `$2`, etc.), ya que las funciones se usan con la misma sintaxis que los comandos.
+- Los valores se devuelven con el comando `echo`, que se puede capturar con la sintaxis `$(funcion)` fuera de la función.
+
+> **Nota**  
+> Una función puede recibir una cantidad infinita de parámetros y, al contrario que en otros lenguajes de programación, no se especifican en la definición de la función.
+
+```bash
+#!/bin/bash
+
+# Muestra la hora del sistema
+function mostrar_hora {
+    date +%H:%M:%S
+}
+
+# Muestra la fecha del sistema
+function mostrar_fecha {
+    date +%d/%m/%Y
+}
+
+# Muestra la hora y la fecha del sistema
+function mostrar_hora_fecha {
+    echo "Hoy es $(mostrar_fecha) y son las $(mostrar_hora)."
+}
+
+# Recibe una lista de números y devuelve el mayor
+function mayor {
+    local mayor=0
+
+    for i in $@; do
+        if [ $i -gt $mayor ]; then
+            mayor=$i
+        fi
+    done
+
+    echo $mayor
+}
+
+numeros='1 3 2 8 9 4 3 5 6 7 1 9 2 6 9'
+echo "Mensaje de bienvenida: $(mostrar_hora_fecha)."
+echo "Sean $numeros los números a evaluar, el mayor es $(mayor $numeros).
+```
+
+La salida de este script sería:
+
+```text
+Mensaje de bienvenida: Hoy es 20/10/2019 y son las 20:10:00.
+Sean 1 3 2 8 9 4 3 5 6 7 1 9 2 6 9 los números a evaluar, el mayor es 9.
+```
+
+> **Nota**  
+> Bash permite definir las funciones en cualquier lugar del script, pero es una buena práctica definirlas al inicio para que sea más fácil encontrarlas y gestionarlas; no es demasiado agradable leer scripts desordenados.
+
+
+### Arrays
+
+Los arrays son variables especiales que permiten almacenar varios valores en una misma variable.
+
+Los arrays se pueden definir de 2 formas:
+
+- `array=(valor1 valor2 valor3)`: se definen los valores del array entre paréntesis y separados por espacios.
+- `array=([0]=valor1 [1]=valor2 [2]=valor3)`: se definen los valores del array entre paréntesis y separados por espacios, pero se puede especificar el índice de cada valor.
+
+> **Nota**  
+> Al igual que en muchos lenguajes de programación, los índices de los arrays empiezan en 0.
+
+Estas son las distintas operaciones disponibles para el manejo de arrays:
+
+|              Operación               | Descripción                                                                        |
+|:------------------------------------:| ---------------------------------------------------------------------------------- |
+|            `${array[@]}`             | Devuelve todos los valores del array, separado por espacios.                       |
+|            `${array[i]}`             | Devuelve el valor del array en la posición **i**.                                  |
+|            `${#array[@]}`            | Devuelve la longitud del array (número de elementos).                              |
+|            `${#array[i]}`            | Devuelve la longitud del elemento **i** del array.                                 |
+|           `${array[@]:i}`            | Devuelve todos los elementos del array, a partir de la posición **i**.             |
+|          `${array[@]:i:n}`           | Devuelve los **n** siguientes elementos del array, a partir de la posición **i**.  |
+|   `${array[@]/patrón/sustitución}`   | Devuelve todos los elementos del array, reemplazando el patrón por la sustitución. |
+|         `${array[@]#patrón}`         | Devuelve todos los elementos del array, eliminando el patrón por la izquierda.     |
+|         `${array[@]%patrón}`         | Devuelve todos los elementos del array, eliminando el patrón por la derecha.       |
+|    `array=(elemento ${array[@]})`    | Añade un elemento al inicio del array.                                             |
+|    `array=(${array[@]} elemento)`    | Añade un elemento al final del array.                                              |
+|           `unset array[i]`           | Elimina el elemento **i** del array.                                               |
+|            `unset array`             | Elimina el array.                                                                  |
+| `array3=(${array1[@]} ${array2[@]})` | Concatena los arrays **array1** y **array2** en el array **array3**.               |
+
+> **Nota**  
+> Las operaciones con `patrón` y `sustitución` hacen referencias a **expresiones regulares**.
+
+```bash
+#!/bin/bash
+
+# Definición de arrays
+array1=("uno" "dos" "tres" "cuatro" "cinco" "seis" "siete" "ocho" "nueve" "diez")
+array2='95 96 97 98 99'
+
+# Presentación de los arrays
+echo "array1        : ${array1[@]}"         # Todos los elementos del array1
+echo "array2        : ${array2[@]}"         # Todos los elementos del array2
+echo ""
+
+# Operaciones básicas
+echo "array1[3]     : ${array1[3]}"         # El elemento 3 del array1
+echo "#array1[@]    : ${#array1[@]}"        # Longitud del array1
+echo "#array1[3]    : ${#array1[3]}"        # Longitud del elemento 3 del array1
+echo "array1[@]:2   : ${array1[@]:2}"       # Elementos del array1 a partir del elemento 2
+echo "array1[@]:2:3 : ${array1[@]:2:3}"     # 3 elementos del array1 a partir del elemento 2
+echo ""
+
+# Operaciones avanzadas
+echo "array1[@]/dos/nueve : ${array1[@]/dos/nueve}"     # Todos los elementos del array1, reemplazando 'dos' por 'nueve'
+echo "array1[@]/nueve/uno : ${array1[@]/nueve/uno}"     # Todos los elementos del array1, reemplazando 'nueve' por 'uno'
+echo "array1[@]#dos       : ${array1[@]#dos}"           # Todos los elementos del array1, eliminando 'dos' por la izquierda
+echo "array1[@]%dos       : ${array1[@]%dos}"           # Todos los elementos del array1, eliminando 'dos' por la derecha
+echo ""
+
+# Modificaciones de arrays
+array1=(0 ${array1[@]})
+echo 'array1=(0 ${array1[@]}) :' ${array1[@]}   # Añade un elemento al inicio del array1
+array1=(${array1[@]} 6)
+echo 'array1=(${array1[@]} 6) :' ${array1[@]}   # Añade un elemento al final del array1
+echo ""
+array3=(${array1[@]} ${array2[@]})              # Concatena los arrays array1 y array2
+echo 'array3=(${array1[@]} ${array2[@]}) :' ${array3[@]}
+echo ""
+unset array1[3]                                 # Elimina el elemento 3 del array1
+echo "unset array1[3] : ${array1[@]}"
+unset array1                                    # Elimina el array1
+echo "unset array1    : ${array1[@]}"
+echo ""
+```
+
+### Expresiones regulares (*regex*)
+
+Las expresiones regulares son patrones que se utilizan para buscar y/o reemplazar cadenas de texto.
+
+Estas pueden definirse como `/regex/` o bien, solo `regex`, y estas son las distintas operaciones disponibles para el manejo de expresiones regulares:
+
+| Operación | Descripción                                             |
+|:---------:| ------------------------------------------------------- |
+|    `^`    | Inicio de línea.                                        |
+|    `$`    | Fin de línea.                                           |
+|    `.`    | Cualquier carácter.                                     |
+|    `*`    | Cero o más repeticiones del carácter anterior.          |
+|    `+`    | Una o más repeticiones del carácter anterior.           |
+|    `?`    | Cero o una repetición del carácter anterior.            |
+|   `[]`    | Cualquier carácter entre los corchetes.                 |
+|   `[^]`   | Cualquier carácter que no esté entre los corchetes.     |
+|   `()`    | Agrupación de caracteres.                               |
+|    `\`    | Caracter de escape.                                     |
+|   `\|`    | Operador lógico OR.                                     |
+|  `\{n\}`  | Exactamente **n** repeticiones del carácter anterior.   |
+| `\{n,\}`  | Al menos **n** repeticiones del carácter anterior.      |
+| `\{n,m\}` | Entre **n** y **m** repeticiones del carácter anterior. |
+
+> **Nota**  
+> Las expresiones regulares se utilizan en muchos comandos, algunos ejemplos de los más conocidos pueden ser: `grep`, `egrep`, `awk`, `sed`...
+
+Algunos ejemplos de expresiones regulares usando la sintaxis anterior:
+
+|       Expresión regular        | Descripción                                                                         | Ejemplo de cadena detectada       |
+|:------------------------------:| ----------------------------------------------------------------------------------- | --------------------------------- |
+|              `^a`              | Empieza por la letra **a**.                                                         | "a", "ajo", "altura"              |
+|              `a$`              | Acaba por la letra **a**.                                                           | "a", "pila", "altura"             |
+|             `^a$`              | Empieza y acaba por la misma letra **a**.                                           | "a"                               |
+|             `^a*$`             | Empieza por la letra **a** y termina por cualquier cantidad de **a**.               | "a", "aa", "aaa", "aaaa", "aaaaa" |
+|         `^[a-z][0-9]$`         | Empieza por una letra minúscula y acaba por un número.                              | "a1", "z9"                        |
+|       `^[a-zA-Z][0-9]$`        | Empieza por una letra y acaba por un número.                                        | "A2", "z9"                        |
+|        `^[a-zA-Z0-9]$`         | Empieza y acaba por una letra o un número.                                          | "A", "2", "z"                     |
+|        `^[a-zA-Z0-9]*$`        | Empieza y acaba por una letra o un número, con cualquier cantidad de caracteres.    | "abc123", "XYZ789", "123"         |
+|          `^(a`\|`b)$`          | Empieza y acaba por la letra **a** o la letra **b**.                                | "a", "b"                          |
+| `^(hola`\|`buenas)\ [a-zA-Z]*` | Empieza por "hola" o "buenas" seguido de un espacio y cualquier cantidad de letras. | "hola mundo", "buenas tardes"     |
+|          `^0[0-9]+$`           | Empieza por un cero y acaba por un número.                                          | "012345", "09876"                 |
+|         `^0[0-9]{2}$`          | Empieza por un cero y acaba por dos números.                                        | "012", "078"                      |
+|         `^0[0-9]{2,}$`         | Empieza por un cero y acaba por dos o más números.                                  | "0123", "0987654321"              |
+
+
+## Entrada/Salida estándar
+
+La entrada/salida estándar es la forma en la que los programas interactúan con el entorno.
+
+- La entrada estándar es la forma en la que los programas reciben información.
+- La salida estándar es la forma en la que los programas muestran información.
+
+La entrada/salida estándar puede ser redirigida a ficheros o a otros programas.
+
+### Redirección de la entrada/salida estándar
+
+La redirección de la entrada/salida estándar se realiza mediante los operadores `>` y `<`.
+
+- `>` redirige la salida estándar a un fichero.
+- `<` redirige la entrada estándar desde un fichero.
+
+Ejemplos:
+
+```bash
+echo "Hola mundo" > fichero.txt
+```
+
+1. Muestra *"Hola mundo"* por la salida estándar.
+2. Redirige la salida estándar al *fichero.txt*.
+3. Ahora el *fichero.txt* contiene *"Hola mundo"*.
+
+```bash
+cat < fichero.txt
+```
+
+1. Redirige la entrada estándar desde el *fichero.txt*.
+2. Muestra el contenido del *fichero.txt* por la salida estándar.
+3. La terminal muestra *"Hola mundo"*.
+
+
+### Tuberías
+
+La redirección de la salida estándar de un programa a la entrada estándar de otro programa se realiza mediante el operador `|`, también llamado *pipe* (o *tubería* en español).
+
+Este operador es muy útil para encadenar programas y realizar tareas complejas.
+
+Ejemplo:
+
+```bash
+ls -l | grep "*.sh"
+```
+
+1. Ejecuta el comando `ls -l` y muestra el resultado por la salida estándar.
+2. Redirige la salida estándar a la entrada estándar del comando `grep "*.sh"`.
+3. El comando `grep "*.sh"` filtra las líneas que contienen la cadena de texto `*.sh` (todos los ficheros `.sh`).
+4. Se muestran las líneas obtenidas en la terminal.
+
+> **Nota**  
+> El comando `grep` es muy útil para filtrar líneas que contienen una cadena de texto.
+
 
 # Laboratorio
 
