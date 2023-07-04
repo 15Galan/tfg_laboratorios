@@ -11,14 +11,14 @@ Además, Linux es conocido por su estabilidad y seguridad, lo que lo convierte e
 También es ampliamente utilizado en el ámbito de la programación y el desarrollo de software, ya que proporciona herramientas poderosas y un entorno de desarrollo robusto. Su enfoque en el código abierto ha fomentado una comunidad activa y colaborativa de desarrolladores, lo que ha llevado a una amplia gama de aplicaciones y herramientas disponibles para Linux.
 
 
-## Jerarquía de ficheros y directorios
+# Jerarquía de ficheros y directorios (FHS)
 
 Los ficheros en los sistemas UNIX están organizados en una jerarquía de directorios, cuyo objetivo es facilitar la gestión y el acceso a los mismos. Esta estructura de directorios se conoce como **[FHS (*Filesystem Hierarchy Standard*)](https://refspecs.linuxfoundation.org/fhs.shtml)** y es la que se utiliza en la mayoría de los sistemas UNIX, incluyendo Linux.
 
 Esta jerarquía de directorios proporciona una estructura lógica y coherente para los ficheros y directorios, lo que permite tanto a los usuarios como a las aplicaciones encontrar y acceder a los ficheros de manera más eficiente. Además, la jerarquía de directorios también permite una gestión más sencilla de los permisos de acceso y la seguridad del sistema.
 
 
-### `/`
+## `/`
 
 La raíz de esta jerarquía mencionada es el directorio `/` (barra), y a partir de este directorio se encuentran todos los demás directorios y ficheros del sistema.
 
@@ -35,7 +35,7 @@ dev    home   media  opt    root   sbin   sys    usr
 - Solo el usuario `root` puede escribir en este directorio.
 - El directorio personal del usuario `root` del sistema se encuentra en `/root`.
 
-### `/bin`
+## `/bin`
 
 Contiene ficheros binarios (ejecutables) esenciales, que implementan los comandos y utilidades básicas del sistema.
 
