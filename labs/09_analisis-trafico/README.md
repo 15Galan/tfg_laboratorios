@@ -310,8 +310,12 @@ Algunas características de ntop son:
 
 # Laboratorio
 
-Información sobre el laboratorio y sus requisitos/características.
+> **Nota**  
+> Este laboratorio puede usarse directamente en el navegador colocando la dirección y el puerto del mismo en la barra de direcciones.
 
+Este laboraotrio contiene un entorno con capturas de tráfico realizadas con Wireshark en la carpeta `/config/capturas`, y donde podrás usar Wireshark de forma interactiva para analizar dicho tráfico.
+
+Podrás obtener alguna información como las credenciales del usuario que usó FileZilla, los campos de los paquetes de comunicaciones TCP, así como una visión del funcionamiento del protocolo ARP, entre otros.
 
 
 # Referencias
