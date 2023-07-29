@@ -1,0 +1,394 @@
+<h1 id="introducci-n-a-las-redes">Introducción a las Redes</h1>
+<p>Conocer los conceptos básicos de redes es fundamental para comprender el funcionamiento de Internet y de las redes en general, lo que al mismo tiempo se traslada a la ciberseguridad, ya que la mayoría de los ataques se realizan a través de Internet y no solo eso, algunas acciones como el análisis de vulnerabilidades o la recopilación de información se realizan a través de Internet.</p>
+<p>Por otro lado, este conocimiento no solo sirve para acciones ofensivas de Red Team, sino que también es fundamental para acciones defensivas de Blue Team, ya que es necesario conocer cómo funcionan las redes para poder protegerlas y mejorarla contra ataques y vulnerabilidades.</p>
+<blockquote>
+<p><strong>Importante</strong><br>La terminología de las redes contienen mucha información tan importante como &quot;larga&quot;, por lo que existen muchas siglas y abreviaturas para todos aquellos términos y conceptos.</p>
+<p>Esto puede resultar  página mostrará muchas de ellas, pero también su nombre completo, puesto que en la mayoría de casos, suele ser más fácil de entender y por tanto, de recordar.</p>
+</blockquote>
+<h2 id="protocolos">Protocolos</h2>
+<p>Los protocolos de red son conjuntos de reglas y normas que definen la comunicación y el intercambio de datos entre dispositivos en una red. Estos protocolos son esenciales para permitir que los diferentes dispositivos de una red se comuniquen de manera efectiva y sin problemas.</p>
+<p>Existen numerosos protocolos de red utilizados en todo el mundo, pero hay algunos que son especialmente fundamentales y comunes.</p>
+<h3 id="ip">IP</h3>
+<blockquote>
+<p><em><strong>I</strong>nternet <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>Este es el protocolo principal utilizado en Internet para el enrutamiento y la entrega de datos entre dispositivos.</p>
+<p>Cada dispositivo conectado a Internet tiene una dirección IP única que se utiliza para identificarlo y enrutar los datos correctamente; actualmente existen 2 versiones:</p>
+<h4 id="ipv4">IPv4</h4>
+<ul>
+<li>Dirección numérica de <strong>32 bits</strong>.</li>
+<li>Formato <strong>decimal</strong> con <code>.</code> (por ejemplo, <em>192.168.0.1</em>).</li>
+<li>Cada sección -<strong>octeto</strong>- de la dirección consta de <strong>8 bits</strong>, oscilando entre 0 y 255.</li>
+<li>Aproximadamente <strong>4.300.000</strong> direcciones únicas.</li>
+</ul>
+<blockquote>
+<p><strong>La cantidad de direcciones IPv4 disponibles se ha limitado</strong><br>Esto ha llevado al desarrollo de las direcciones IPv6, ya que el elevado crecimiento de Internet está consumiendo las direcciones IPv4 existentes.</p>
+</blockquote>
+<h4 id="ipv6">IPv6</h4>
+<ul>
+<li>Dirección numérica de <strong>128 bits</strong></li>
+<li>Formato <strong>hexadecimal</strong> con <code>:</code> (por ejemplo, <em>2001:0db8:85a3:0000:0000:8a2e:0370:7334</em>).</li>
+<li>Cada <strong>grupo</strong> de la dirección consta de <strong>4 dígitos hexadecimales</strong>, oscilando entre 0 y 65535.</li>
+<li>Aproximadamente <strong>3.4 · 10^(38)</strong> direcciones únicas.</li>
+</ul>
+<blockquote>
+<p><strong>Simplificación de la dirección</strong>  </p>
+<ul>
+<li>Los <code>0</code> a la izquierda de un grupo pueden omitirse.</li>
+<li>Los grupos de <code>0</code> consecutivos pueden representarse como <code>::</code>.</li>
+</ul>
+</blockquote>
+<p>IPv6 ofrece una solución a la escasez de direcciones al tiempo que introduce mejoras en:</p>
+<ul>
+<li>Seguridad.</li>
+<li>Autoconfiguración.</li>
+<li>Otras características.</li>
+</ul>
+<h4 id="ipv4-vs-ipv6">IPv4 vs IPv6</h4>
+<p>Cabe destacar las direcciones IPv4 e IPv6 no son directamente compatibles, por lo que existen diversos mecanismos y tecnologías de transición que permiten la comunicación entre ambos protocolos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Características</th>
+<th style="text-align:center">Dirección IPv4</th>
+<th style="text-align:center">Dirección IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Longitud de dirección</td>
+<td style="text-align:center">32 bits</td>
+<td style="text-align:center">128 bits</td>
+</tr>
+<tr>
+<td style="text-align:center">Formato</td>
+<td style="text-align:center">Decimal separado por <code>.</code></td>
+<td style="text-align:center">Hexadecimal separado por <code>:</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Rango de valores</td>
+<td style="text-align:center"><code>0.0.0.0</code><br><code>255.255.255.255</code></td>
+<td style="text-align:center"><code>0000:0000:0000:0000:0000:0000:0000:0000</code><br><code>ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Cantidad (aprox.)<br>de direcciones únicas</td>
+<td style="text-align:center">4.3 · 10^8</td>
+<td style="text-align:center">3.4 · 10^(38)</td>
+</tr>
+<tr>
+<td style="text-align:center">Ejemplos</td>
+<td style="text-align:center"><em>192.168.0.1</em><br><em>172.17.0.2</em><br><em>127.0.0.1</em></td>
+<td style="text-align:center"><em>2001:0db8:85a3:0000:0000:8a2e:0370:7334</em><br><em>::1</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tcp">TCP</h3>
+<blockquote>
+<p><em><strong>T</strong>ransmission <strong>C</strong>ontrol <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>El objetivo principal del TCP es asegurar que los datos sean entregados de manera confiable, en orden y sin errores a través de una red. Para lograr esto, TCP segmenta los datos en unidades más pequeñas llamadas &quot;paquetes&quot; antes de enviarlos y se encarga de que estos paquetes sean entregados correctamente al destino.</p>
+<h4 id="caracter-sticas">Características</h4>
+<ol>
+<li><p><strong>Conexión orientada</strong><br>Se establece una conexión virtual entre el remitente y el receptor antes de iniciar la transferencia de datos; esto se logra a través de un proceso llamado &quot;apretón de manos de tres vías&quot; (<em>three-way handshake</em>). Durante este proceso, el remitente y el receptor intercambian una serie de mensajes para establecer parámetros de conexión y sincronizar las secuencias de datos.</p>
+</li>
+<li><p><strong>Confiable</strong><br>Se garantiza la entrega confiable de los datos; esto se logra utilizando un mecanismo de confirmación de recepción (<em>acknowledgment</em>) donde el receptor envía un mensaje de confirmación al remitente para informar que los datos han sido recibidos correctamente. Si el remitente no recibe la confirmación dentro de un tiempo determinado, retransmite los datos.</p>
+</li>
+<li><p><strong>Control de flujo</strong><br>Se implementa un control de flujo para evitar que el receptor se vea abrumado por una cantidad excesiva de datos. El receptor puede informar al remitente sobre su capacidad de recibir datos mediante el uso de ventanas de recepción, y el remitente ajusta la velocidad de envío de datos en consecuencia.</p>
+</li>
+<li><p><strong>Control de congestión</strong><br>Se realiza un control de congestión para evitar la saturación de la red. Si esta se congestiona y los paquetes se pierden o hay un alto retardo, se reduce la velocidad de transmisión para evitarlo.</p>
+</li>
+<li><p><strong>Ordenamiento de datos</strong><br>Se garantiza que los paquetes se entreguen en el orden correcto en el destino; cada paquete TCP contiene un número de secuencia que permite al receptor reconstruir los datos en el orden original.</p>
+</li>
+</ol>
+<p><img src="https://www.cablefree.net/support/radio/software/images/f/fc/Image2001.gif" alt="Imagen"></p>
+<p>El protocolo TCP ha sido ampliamente adoptado y se utiliza en numerosas aplicaciones y servicios que requieren una entrega confiable de datos, como navegación web, transferencia de archivos, correo electrónico y aplicaciones de mensajería. Su confiabilidad y su capacidad para recuperarse de la pérdida o la corrupción de datos lo convierten en una opción preferida para muchas aplicaciones que priorizan la integridad de los datos transmitidos.</p>
+<h3 id="udp">UDP</h3>
+<blockquote>
+<p><em><strong>U</strong>ser <strong>D</strong>atagram <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>A diferencia de TCP, UDP no proporciona una comunicación confiable y orientada a la conexión; en su lugar, UDP ofrece una transmisión de datos más rápida y eficiente, pero menos confiable.</p>
+<h4 id="caracter-sticas">Características</h4>
+<ol>
+<li><p><strong>Comunicación no confiable</strong>
+No se establece una conexión antes de enviar los datos, lo que significa que no hay confirmaciones de recepción ni retransmisiones automáticas en caso de pérdida de paquetes. Esto hace que si un paquete se pierde durante la transmisión, no se retransmite automáticamente, y la aplicación receptora no es consciente de la pérdida de paquetes.</p>
+</li>
+<li><p><strong>Transmisión de datos más rápida</strong><br>Debido a su naturaleza no confiable, UDP tiene una sobrecarga más baja que TCP, lo que lo convierte en una opción más rápida para ciertas aplicaciones. Además, como se dijo anteriormente, no se requiere un apretón de manos de tres vías (<em>three-way handshake</em>) para establecer una conexión antes de enviar los datos, lo que reduce aún más la latencia.</p>
+</li>
+<li><p><strong>Segmentación de datos</strong><br>Al igual que TCP, UDP también segmenta los datos en paquetes más pequeños para su transmisión a través de la red. Sin embargo, los paquetes UDP no tienen números de secuencia para mantener el orden de los datos: son independientes entre sí y pueden llegar en cualquier orden a su destino.</p>
+</li>
+</ol>
+<p><img src="https://www.freecodecamp.org/news/content/images/2021/07/udp-and-tcp-comparison.jpg" alt="Imagen"></p>
+<p>UDP es ampliamente utilizado por aplicaciones que requieren una entrega rápida de datos, como transmisiones de video en vivo, videojuegos en línea y llamadas VoIP (<em>Voice IP</em>). También se utiliza para servicios de transmisión de datos en tiempo real, como DNS (<em>Domain Name System</em>), DHCP (<em>Dynamic Host Configuration Protocol</em>) y TFTP (<em>Trivial File Transfer Protocol</em>).</p>
+<blockquote>
+<p><strong>Nota</strong><br>Cabe destacar que, debido a su naturaleza no confiable, si la integridad de los datos es crítica, se deben implementar mecanismos de verificación y manejo de errores en el nivel de la aplicación que utiliza UDP.</p>
+</blockquote>
+<h3 id="icmp">ICMP</h3>
+<blockquote>
+<p><em><strong>I</strong>nternet <strong>C</strong>ontrol <strong>M</strong>essage <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>Se utiliza principalmente para informar y diagnosticar problemas en la comunicación de red. Aunque no está diseñado para transportar datos de usuario, desempeña un papel importante en la gestión y el control de la red.</p>
+<h4 id="caracter-sticas">Características</h4>
+<ol>
+<li><p><strong>Mensajes de control</strong><br>Se utiliza para enviar mensajes de control y errores entre dispositivos en una red IP. Estos mensajes pueden proporcionar información sobre problemas de conectividad, errores de enrutamiento, tiempos de espera, redirecciones, etc.</p>
+</li>
+<li><p><strong>Pruebas y diagnóstico de red</strong><br>ICMP es ampliamente utilizado para realizar pruebas y diagnósticos de red. Por ejemplo, el comando &quot;ping&quot; se basa en ICMP para enviar solicitudes de eco a un destino específico y recibir respuestas. Esto permite verificar la conectividad y la latencia de red entre dos dispositivos.</p>
+</li>
+<li><p><strong>Fragmentación de paquetes</strong><br>Incluye mensajes relacionados con la fragmentación de paquetes IP. Si un paquete IP es demasiado grande para ser transmitido en una red en particular, se divide en fragmentos más pequeños. ICMP puede enviar mensajes para gestionar adecuadamente la fragmentación y reensamblaje de paquetes en la red cuando sea necesario.</p>
+</li>
+</ol>
+<p>Cabe destacar que, aunque ICMP es un protocolo valioso para el diagnóstico y la gestión de red, <strong>también puede ser utilizado en ataques de denegación de servicio (DoS) o para recopilar información sensible de la red</strong>; por lo tanto, es esencial implementar medidas de seguridad adecuadas para proteger las redes de posibles abusos de ICMP.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Este es el protocolo que se usa cuando se ejecuta el comando <code>ping</code> para comprobar la conectividad con un host remoto.</p>
+</blockquote>
+<h3 id="arp">ARP</h3>
+<blockquote>
+<p><em><strong>A</strong>ddress <strong>R</strong>esolution <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>Protocolo de red utilizado para mapear direcciones IP a direcciones MAC en una red local. Su función principal es encontrar la dirección MAC asociada a una dirección IP específica dentro de una red Ethernet.</p>
+<p>Cuando un dispositivo necesita enviar datos a otro dispositivo en la misma red local, primero debe determinar la dirección MAC del destino para poder enviar los datos correctamente, aquí es donde entra en juego el protocolo ARP.</p>
+<p><img src="https://static.wixstatic.com/media/6a4a49_a2483e8dd4004c12b1105b855054cddd~mv2.png/v1/fill/w_1000,h_736,al_c,q_90,usm_0.66_1.00_0.01/6a4a49_a2483e8dd4004c12b1105b855054cddd~mv2.png" alt="Imagen"></p>
+<ol>
+<li>El dispositivo emisor envía una solicitud ARP (ARP request) a la red, preguntando quién tiene una determinada dirección IP. Esta solicitud se transmite a todas las máquinas en la red local (broadcast).</li>
+<li>El dispositivo con la dirección IP solicitada responde con un mensaje ARP (ARP reply), proporcionando su dirección MAC.</li>
+<li>Luego, el dispositivo emisor guarda esta información en su tabla ARP, que mantiene un registro de las asociaciones entre direcciones IP y direcciones MAC de los dispositivos en la red local.</li>
+<li>Usando esa información, el dispositivo emisor puede enviar los datos al dispositivo destino utilizando la dirección MAC correspondiente.</li>
+</ol>
+<p>La tabla ARP es importante porque permite evitar tener que enviar solicitudes ARP cada vez que se necesita enviar un paquete de datos a una dirección IP específica en la red local. La tabla ARP se almacena en la memoria caché del dispositivo y se actualiza periódicamente para garantizar que las asociaciones de direcciones IP y MAC estén actualizadas.</p>
+<p><img src="https://www.networkacademy.io/sites/default/files/inline-images/garp.gif" alt="Imagen"></p>
+<p>Cabe destacar que el protocolo ARP se utiliza dentro de una red local para resolver las direcciones de destino en la misma red, mientras que para comunicarse con dispositivos en otras redes, se requiere el uso de enrutadores y otros protocolos, como IP.</p>
+<p>Aunque ARP es esencial para el funcionamiento de las redes locales, <strong>también puede ser aprovechado por atacantes en técnicas de ataques de suplantación de ARP (ARP spoofing) para interceptar y manipular el tráfico de red</strong>; por lo tanto, es importante implementar medidas de seguridad adecuadas, como la autenticación de dispositivos y la detección de ataques ARP, para proteger la integridad y la confidencialidad de la red.</p>
+<h3 id="dhcp">DHCP</h3>
+<blockquote>
+<p><em><strong>D</strong>ynamic <strong>H</strong>ost <strong>C</strong>onfiguration <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>Su objetivo principal es simplificar y automatizar el proceso de asignación de direcciones IP, eliminando la necesidad de una configuración manual en cada dispositivo.</p>
+<p>DHCP funciona mediante un proceso de intercambio de mensajes entre un servidor DHCP y los dispositivos cliente de la red, por lo que se requiere al menos un servidor DHCP en la red para asignar direcciones IP a los dispositivos cliente.</p>
+<h4 id="mensajes">Mensajes</h4>
+<ol>
+<li><p><strong>Descubrimiento</strong> (DHCP Discover)<br>Cuando un dispositivo se conecta a una red y está configurado para obtener una dirección IP automáticamente, envía un mensaje de descubrimiento DHCP broadcast a través de la red local. Este mensaje solicita la asignación de una dirección IP al servidor DHCP.</p>
+</li>
+<li><p><strong>Oferta</strong> (DHCP Offer)<br>Cuando un servidor DHCP recibe la solicitud de descubrimiento, responde enviando un mensaje de oferta DHCP broadcast. En este mensaje, el servidor propone una dirección IP disponible junto con otros parámetros de configuración, como la máscara de subred, la puerta de enlace predeterminada y los servidores DNS.</p>
+</li>
+<li><p><strong>Solicitud</strong> (DHCP Request)<br>Una vez que el dispositivo cliente recibe las ofertas de diferentes servidores DHCP, selecciona una y envía un mensaje de solicitud DHCP. Este mensaje confirma la aceptación de la oferta del servidor DHCP seleccionado.</p>
+</li>
+<li><p><strong>Aceptación</strong> (DHCP Acknowledgment)<br>El servidor DHCP recibe la solicitud y responde con un mensaje de aceptación DHCP. Este mensaje contiene la dirección IP asignada al dispositivo cliente y otros parámetros de configuración solicitados. El dispositivo cliente ahora utiliza la dirección IP y los demás parámetros para configurar su conexión de red.</p>
+</li>
+</ol>
+<p>DHCP también puede renovar y extender la duración de una dirección IP asignada previamente. Esto se hace mediante un proceso de renovación de concesiones, en el que el dispositivo cliente solicita al servidor DHCP una extensión de tiempo antes de que la dirección IP actual expire.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Además de asignar direcciones IP, DHCP también puede proporcionar otros parámetros de configuración, como servidores DNS, servidores WINS (para la resolución de nombres de Windows) y configuraciones específicas de red, como las opciones de enrutamiento.</p>
+</blockquote>
+<p>El uso de DHCP simplifica la administración de redes al permitir la asignación automática y centralizada de direcciones IP. Esto es especialmente útil en redes grandes donde la configuración manual de cada dispositivo sería una tarea tediosa y propensa a errores. Además, el DHCP facilita el movimiento de dispositivos dentro de la red, ya que pueden obtener una nueva dirección IP automáticamente al conectarse a un nuevo segmento de red.</p>
+<p>Sin embargo, es importante tener en cuenta la seguridad al implementar DHCP. <strong>Los servidores DHCP deben estar protegidos adecuadamente para evitar la asignación de direcciones IP a dispositivos no autorizados y prevenir ataques de suplantación de identidad</strong>.</p>
+<h3 id="http-y-https">HTTP y HTTPS</h3>
+<blockquote>
+<p><em><strong>H</strong>yper<strong>t</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol (<strong>S</strong>ecure)</em></p>
+</blockquote>
+<p>Estos son 2 protocolos de aplicación utilizados para la transferencia de información en la World Wide Web (WWW), que permiten que los navegadores web se comuniquen con los servidores web y soliciten recursos, como páginas web, imágenes, videos, etc.</p>
+<p><strong>HTTP</strong> se utiliza para la comunicación entre el navegador web del cliente y el servidor web. Se basa en el modelo de solicitud y respuesta, donde el cliente envía una solicitud al servidor y este responde con los datos solicitados. Las solicitudes HTTP incluyen métodos como GET, POST, PUT, DELETE, entre otros, que determinan el tipo de operación que se realizará en el servidor.</p>
+<p><strong>HTTPS</strong> es una extensión segura del protocolo HTTP que utiliza cifrado para garantizar la seguridad y privacidad de la comunicación entre el cliente y el servidor. HTTPS utiliza el protocolo SSL/TLS (<em>Secure Sockets Layer/Transport Layer Security</em>) para establecer una conexión segura. El cifrado en HTTPS protege los datos durante la transmisión, evitando que sean interceptados o modificados por atacantes.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">HTTP</th>
+<th style="text-align:center">HTTPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Seguridad</td>
+<td style="text-align:center">Envía los datos en texto plano</td>
+<td style="text-align:center">Utiliza certificado SSL/TLS para establecer una conexión segura y cifrar los datos transmitidos</td>
+</tr>
+<tr>
+<td style="text-align:center">Riesgo</td>
+<td style="text-align:center">Riesgo para la confidencialidad y la integridad de los datos</td>
+<td style="text-align:center">Mayor seguridad y protección de la confidencialidad y la integridad de los datos</td>
+</tr>
+<tr>
+<td style="text-align:center">Cifrado de datos</td>
+<td style="text-align:center">No se cifra la información</td>
+<td style="text-align:center">Cifra los datos durante la transmisión</td>
+</tr>
+<tr>
+<td style="text-align:center">Acceso a los datos</td>
+<td style="text-align:center">Cualquier persona que intercepte la comunicación puede leer y comprender el contenido transmitido</td>
+<td style="text-align:center">Solo el servidor y el cliente pueden acceder a los datos en un formato legible</td>
+</tr>
+<tr>
+<td style="text-align:center">Puerto utilizado</td>
+<td style="text-align:center">Puerto 80 (predeterminado)</td>
+<td style="text-align:center">Puerto 443</td>
+</tr>
+<tr>
+<td style="text-align:center">Uso en aplicaciones web</td>
+<td style="text-align:center">Adecuado para datos no confidenciales</td>
+<td style="text-align:center">Esencial para proteger la privacidad y la integridad de los datos transmitidos en aplicaciones web que manejan información sensible</td>
+</tr>
+<tr>
+<td style="text-align:center">URL indicadora</td>
+<td style="text-align:center">Comienza con <code>http://</code></td>
+<td style="text-align:center">Comienza con <code>https://</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ssh">SSH</h3>
+<blockquote>
+<p><em><strong>S</strong>ecure <strong>Sh</strong>ell</em>.</p>
+</blockquote>
+<p>Proporciona una forma segura de acceder y controlar de manera remota servidores, computadoras y otros dispositivos de red.</p>
+<p>A diferencia de otros protocolos de acceso remoto, como Telnet, que transmiten datos en texto plano, SSH utiliza técnicas de cifrado para proteger la confidencialidad e integridad de la información transmitida. Esto significa que la comunicación a través de SSH está encriptada, lo que dificulta a los atacantes interceptar y leer los datos transmitidos.</p>
+<p>Además de proporcionar un canal seguro de comunicación, SSH también ofrece autenticación sólida utilizando un sistema de autenticación basado en claves públicas y privadas para verificar la identidad del usuario que intenta establecer la conexión. Esto significa que los usuarios pueden autenticarse sin necesidad de transmitir contraseñas en texto plano a través de la red, lo que aumenta la seguridad y protege contra ataques de suplantación de identidad.</p>
+<p>SSH se utiliza ampliamente en entornos de administración de sistemas y redes, así como en aplicaciones que requieren una conexión segura, ya que permite a los administradores de sistemas tanto gestionar y configurar servidores de forma remota, como ejecutar comandos y realizar tareas administrativas sin necesidad de estar físicamente presentes en el servidor.</p>
+<h3 id="ftp-y-sftp">FTP y SFTP</h3>
+<blockquote>
+<p><em>(<strong>S</strong>ecure) <strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol</em>.</p>
+</blockquote>
+<p>Son protocolos utilizados para la transferencia de archivos en redes de computadoras y, aunque ambos protocolos tienen una finalidad similar, existen diferencias importantes en cuanto a seguridad y funcionamiento.</p>
+<p><strong>FTP</strong> es uno de los protocolos más antiguos y ampliamente utilizados para transferir archivos en redes. Funciona sobre el protocolo TCP y utiliza 2 canales separados para la comunicación: uno para el intercambio de comandos y otro para la transferencia de datos. FTP es un protocolo no seguro, lo que significa que los datos transferidos a través de FTP no están encriptados y pueden ser interceptados o modificados por terceros.</p>
+<p><strong>SFTP</strong> es una extensión segura de SSH y proporciona una capa adicional de seguridad para la transferencia de archivos. Utiliza una única conexión segura para enviar comandos y transferir datos mediante el cifrado de extremo a extremo. SFTP emplea claves criptográficas y autenticación basada en contraseñas o claves públicas para garantizar la seguridad de la conexión.</p>
+<h4 id="principales-diferencias">Principales diferencias</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">FTP</th>
+<th style="text-align:center">SFTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Seguridad</td>
+<td style="text-align:center">No proporciona cifrado de datos, lo que significa que la información transferida está expuesta y puede ser leída por terceros</td>
+<td style="text-align:center">Utiliza cifrado para proteger los datos durante la transferencia, brindando una capa adicional de seguridad</td>
+</tr>
+<tr>
+<td style="text-align:center">Autenticación</td>
+<td style="text-align:center">Utiliza un nombre de usuario y una contraseña para autenticar a los usuarios. Sin embargo, esta información se transmite en texto plano, lo que representa un riesgo de seguridad</td>
+<td style="text-align:center">Ofrece métodos de autenticación más seguros, como el uso de claves públicas y privadas</td>
+</tr>
+<tr>
+<td style="text-align:center">Puertos</td>
+<td style="text-align:center">Utiliza los puertos 20 y 21 para establecer la conexión y transferir datos, lo que puede causar problemas en entornos de red con restricciones de firewall</td>
+<td style="text-align:center">Utiliza el puerto 22, que es el mismo puerto utilizado por SSH, lo que facilita su configuración y evita problemas de bloqueo por parte de firewalls</td>
+</tr>
+<tr>
+<td style="text-align:center">Funcionalidad</td>
+<td style="text-align:center">Ofrece un conjunto más amplio de funciones y comandos para realizar operaciones en archivos y directorios, como la capacidad de listar directorios y cambiar permisos</td>
+<td style="text-align:center">Aunque menos extenso en términos de comandos, todavía proporciona funcionalidad básica para transferir archivos de manera segura</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tipos-de-redes">Tipos de redes</h2>
+<ul>
+<li><p><strong>PAN</strong> (<em><strong>P</strong>ersonal <strong>A</strong>rea <strong>N</strong>etwork</em>)<br>Red de dispositivos que se limita a un área de trabajo o a un área personal, como un escritorio, una habitación o un solo edificio; aunque las redes PAN pueden ser cableadas, la mayoría de ellas son inalámbricas y se comunican a través de tecnologías como Bluetooth y Wi-Fi.</p>
+</li>
+<li><p><strong>LAN</strong> (<em><strong>L</strong>ocal <strong>A</strong>rea <strong>N</strong>etwork</em>)<br>Red de dispositivos que se limita a un área local, como una casa, escuela, oficina o edificio. Las redes LAN pueden ser pequeñas o grandes, pero la velocidad de transferencia de datos es alta y el costo de instalación es bajo.</p>
+</li>
+<li><p><strong>WLAN</strong> (<em><strong>W</strong>ireless <strong>L</strong>ocal <strong>A</strong>rea <strong>N</strong>etwork</em>)<br>Red de dispositivos que se limita a un área local y utiliza tecnologías inalámbricas para comunicarse. Las redes WLAN son similares a las redes LAN, pero no utilizan cables para conectar dispositivos, lo que las hace más flexibles y fáciles de implementar.</p>
+</li>
+<li><p><strong>MAN</strong> (<em><strong>M</strong>etropolitan <strong>A</strong>rea <strong>N</strong>etwork</em>)<br>Red de dispositivos que se extiende sobre un área geográfica metropolitana, como una ciudad. Las redes MAN conectan múltiples redes LAN y WLAN y pueden ser públicas o privadas, ya que suelen ser utilizadas por empresas, organizaciones y gobiernos para interconectar redes locales y compartir recursos.</p>
+</li>
+<li><p><strong>WAN</strong> (<em><strong>W</strong>ide <strong>A</strong>rea <strong>N</strong>etwork</em>)
+Red de dispositivos que se extiende sobre un área geográfica amplia, como un país, un continente o incluso todo el mundo. Las redes WAN pueden ser públicas o privadas y son utilizadas por empresas, gobiernos, organizaciones y personas para interconectar redes locales y compartir recursos.</p>
+</li>
+</ul>
+<h2 id="tipos-de-topolog-as">Tipos de topologías</h2>
+<p>Las topologías de red definen la estructura de una red y determinan cómo se comunican los dispositivos entre sí.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/NetworkTopologies.svg/1024px-NetworkTopologies.svg.png" alt="Topologías"></p>
+<p>Conocer los diferentes tipos de topologías de red y sus características es importante para comprender cómo funcionan las redes y cómo se comunican los dispositivos, lo que puede ayudar a identificar y solucionar problemas de red.</p>
+<ul>
+<li><p><strong>Bus</strong><br>Todos los dispositivos están conectados a un único cable que se denomina bus o <em>backbone</em>. Los datos se transmiten a través del cable de un extremo a otro. Todos los dispositivos reciben los datos, pero solo el dispositivo al que se envían los datos los procesa.</p>
+</li>
+<li><p><strong>Estrella</strong><br>Todos los dispositivos están conectados a un único dispositivo central, como un concentrador o un conmutador. Los datos se transmiten a través del dispositivo central, que reenvía los datos a los dispositivos conectados. Los datos se transmiten de un dispositivo a otro a través del dispositivo central.</p>
+</li>
+<li><p><strong>Anillo</strong><br>Todos los dispositivos están conectados en un bucle continuo. Los datos se transmiten en un solo sentido, de un dispositivo a otro, hasta que llegan al dispositivo de destino. Cada dispositivo recibe los datos y los reenvía al siguiente dispositivo en el bucle.</p>
+</li>
+<li><p><strong>Malla / Completa</strong>
+Todos los dispositivos están conectados entre sí. Los datos se transmiten de un dispositivo a otro hasta que llegan al dispositivo de destino. Cada dispositivo recibe los datos y los reenvía al siguiente dispositivo en la ruta más corta posible hasta que llegan al dispositivo de destino.</p>
+</li>
+<li><p><strong>Árbol</strong><br>Todos los dispositivos están conectados en una jerarquía de nodos. Los datos se transmiten desde un nodo a otro hasta que llegan al nodo de destino. Cada nodo recibe los datos y los reenvía al siguiente nodo en la ruta más corta posible hasta que llegan al nodo de destino.</p>
+</li>
+<li><p><strong>Híbrida</strong><br>Todos los dispositivos están conectados en una combinación de topologías.</p>
+</li>
+</ul>
+<h2 id="dispositivos-de-red">Dispositivos de red</h2>
+<p>Estos dispositivos se utilizan para conectar y comunicar otros dispositivos de red.</p>
+<p>Normalmente, todas las redes están compuestas de al menos uno de estos dispositivos, ya que son los que permiten conectar un dispositivos con Internet.</p>
+<ul>
+<li><p><strong>Router</strong> (enrutador)<br>Dispositivo que conecta múltiples redes y transmite datos entre ellas. Los routers son dispositivos de capa de red y pueden filtrar datos, lo que significa que solo los datos que se envían a una red específica se transmiten a esa red.</p>
+</li>
+<li><p><strong>Repeater</strong> (repetidor)<br>Dispositivo que amplifica o regenera una señal de red. Los repetidores se utilizan para extender la distancia de una red y pueden ser analógicos o digitales.</p>
+</li>
+<li><p><strong>Hub</strong> (concentrador)<br>Dispositivo que conecta múltiples dispositivos de red y transmite datos entre ellos. Los concentradores son dispositivos de capa física y no pueden filtrar datos, lo que significa que todos los datos que reciben se transmiten a todos los dispositivos conectados.</p>
+</li>
+<li><p><strong>Switch</strong> (conmutador)<br>Dispositivo que conecta múltiples dispositivos de red y transmite datos entre ellos. Los conmutadores son dispositivos de capa de enlace de datos y pueden filtrar datos, lo que significa que solo los datos que se envían a un dispositivo específico se transmiten a ese dispositivo.</p>
+</li>
+<li><p><strong>Gateway</strong> (puerta de enlace)<br>Dispositivo que conecta múltiples redes y transmite datos entre ellas. Los gateways son dispositivos de capa de aplicación y pueden filtrar datos, lo que significa que solo los datos que se envían a una aplicación específica se transmiten a esa aplicación.</p>
+</li>
+</ul>
+<h2 id="seguridad">Seguridad</h2>
+<p>La seguridad de la red es el proceso de proteger una red contra ataques no autorizados, intrusos y abusos. La seguridad de la red se logra mediante el uso de hardware y software, así como mediante la implementación de políticas y procedimientos de seguridad.</p>
+<ul>
+<li><p><strong>Firewall</strong><br>Dispositivo que se utiliza para proteger una red de ataques no autorizados, intrusos y abusos; los firewalls se pueden implementar como hardware o software y se pueden configurar para bloquear o permitir el tráfico de red entrante y saliente.</p>
+</li>
+<li><p><strong>VPN</strong> (<em><strong>V</strong>irtual <strong>P</strong>rivate <strong>N</strong>etwork</em>)<br>Red privada que se extiende sobre una red pública, como Internet; las VPN se utilizan para proteger las comunicaciones de red mediante el cifrado de los datos que se transmiten a través de la red pública, creando un túnel seguro para la transmisión de datos.</p>
+</li>
+<li><p><strong>Túnel</strong><br>Conexión segura entre dos dispositivos de red que se utiliza para proteger las comunicaciones de red mediante el cifrado de los datos que se transmiten a través de la conexión.</p>
+</li>
+<li><p><strong>Proxy</strong><br>Servidor que se utiliza para proteger una red de ataques no autorizados, intrusos y abusos; los proxies impiden que un cliente y un servidor estén conectados directamente, lo que protege las identidades de ambos dispositivos respecto al otro.</p>
+</li>
+<li><p><strong>IDS</strong> (<em><strong>I</strong>ntrusion <strong>D</strong>etection <strong>S</strong>ystem</em>)<br>Dispositivo que se utiliza para detectar ataques no autorizados, intrusos y abusos en una red; los IDS no pueden bloquear el tráfico de red, pero pueden generar alertas cuando se detecta un ataque. Normalmente, un atacante tratará de realizar un ataque usando técnicas que no se detecten fácilmente por el IDS.</p>
+</li>
+<li><p><strong>IPS</strong> (<em><strong>I</strong>ntrusion <strong>P</strong>revention <strong>S</strong>ystem</em>)<br>Dispositivo que se utiliza para detectar y bloquear ataques no autorizados, intrusos y abusos en una red; al contrario que un IDS, los IPS sí pueden bloquear el tráfico de red cuando se detecta un ataque.</p>
+</li>
+<li><p><strong>AAA</strong> (<em><strong>A</strong>uthentication, <strong>A</strong>uthorization, <strong>A</strong>ccounting</em>)<br>Framework de seguridad que se utiliza para controlar el acceso a los recursos de la red. El AAA se puede implementar como hardware o software y se puede configurar para permitir o denegar el acceso a los usuarios y dispositivos de red.</p>
+<ul>
+<li><strong>Autenticación</strong>: verificar la identidad de un usuario o dispositivo.</li>
+<li><strong>Autorización</strong>: verificar que un usuario o dispositivo tiene permiso para acceder a los recursos de la red.</li>
+<li><strong>Contabilidad</strong>: registrar el uso de los recursos de la red por parte de un usuario o dispositivo.</li>
+</ul>
+</li>
+<li><p><strong>BYOD</strong> (<em><strong>B</strong>ring <strong>Y</strong>our <strong>O</strong>wn <strong>D</strong>evice</em>)<br>Política que permite a los usuarios utilizar sus propios dispositivos personales para acceder a los recursos de la red. Los dispositivos personales pueden incluir ordenadores portátiles, tabletas y móviles.</p>
+</li>
+<li><p><strong>NAC</strong> (<em><strong>N</strong>etwork <strong>A</strong>ccess <strong>C</strong>ontrol</em>)<br>Proceso de controlar el acceso de los usuarios y dispositivos a una red. El NAC se puede implementar como hardware o software y se puede configurar para permitir o denegar el acceso a los usuarios y dispositivos de red.</p>
+</li>
+<li><p><strong>802.1x</strong><br>Estándar de autenticación de red que se utiliza para controlar el acceso a los recursos de la red. El 802.1x se puede implementar como hardware o software y se puede configurar para permitir o denegar el acceso a los usuarios y dispositivos de red.</p>
+</li>
+</ul>
+<h3 id="ataques">Ataques</h3>
+<p>Como se mencionó anteriormente, las redes son el principal medio de los ciberataques, por lo que es importante conocer algunos de los ataques más comunes.</p>
+<p>Los ataques se pueden clasificar en 2 tipos:</p>
+<h4 id="pasivos">Pasivos</h4>
+<p>Son ataques que no afectan al funcionamiento de la red, pero que pueden comprometer la seguridad de la misma. Algunos ejemplos son:</p>
+<ul>
+<li><p><strong>Sniffing</strong><br>Consiste en capturar datos de red, normalmente mediante la captura de paquetes; los atacantes pueden capturar datos e información de todo tipo, incluyendo nombres de usuario, contraseñas, datos de tarjetas de crédito, etc. Si bien los datos normalmente están cifrados, los atacantes pueden utilizar técnicas para descifrarlos.</p>
+</li>
+<li><p><strong>Spoofing</strong><br>Consiste en suplantar la identidad de un dispositivo o usuario en la red; los atacantes pueden suplantar la identidad de un dispositivo o usuario para acceder a una red o realizar otros ataques más avanzados.</p>
+</li>
+<li><p><strong>Replay</strong><br>Consiste en capturar datos de inicio de sesión (<em>sniffing</em>) y reenviarlos posteriormente para acceder a una red; los atacantes pueden acceder a una red creando una nueva sesión ya que disponen de los datos de inicio de sesión de un usuario legítimo.</p>
+</li>
+<li><p><strong>Backdoor</strong><br>Consiste en crear una forma de acceder a un dispositivo previamente comprometido sin necesidad de autenticarse; los atacantes pueden utilizar una puerta trasera para volver a acceder a un dispositivo sin volver a comprometerlo, lo que les permite tener un acceso permanente al dispositivo.</p>
+</li>
+</ul>
+<h4 id="activos">Activos</h4>
+<p>Son ataques que sí afectan al funcionamiento de la red, que pueden provocar pérdidas de datos o daños sobre los dispositivos o sus servicios. Algunos ejemplos son:</p>
+<ul>
+<li><p><strong>DoS</strong> (<em><strong>D</strong>enial <strong>o</strong>f <strong>S</strong>ervice</em>)<br>Consiste en saturar un dispositivo o servicio para que no pueda atender las peticiones de los usuarios legítimos; los atacantes pueden utilizar distintas técnicas para ello, como el envío de paquetes de red, el envío de peticiones a un servicio, etc.</p>
+</li>
+<li><p><strong>DDoS</strong> (<em><strong>D</strong>istributed <strong>D</strong>enial <strong>o</strong>f <strong>S</strong>ervice</em>)<br>Se trata de un ataque <em>DoS</em> realizado de forma simultánea desde distintos dispositivos, lo que lo hace mucho más difícil de detectar, bloquear y mitigar; los atacantes habrían tenido que realizar otras acciones previamente para comprometer los dispositivos que utilizarán para realizar este ataque.</p>
+</li>
+<li><p><strong>MITM</strong> (<em><strong>M</strong>an-<strong>I</strong>n-<strong>T</strong>he-<strong>M</strong>iddle</em>)<br>Consiste en interceptar y manipular las comunicaciones entre dos dispositivos para obtener información de las mismas; se considera un ataque activo ya que los atacantes pueden tener la intención de modificar los datos que se transmiten entre los dispositivos, ya que en caso contrario se estaría realizando <em>sniffing</em>.</p>
+</li>
+<li><p><strong>ARP poisoning</strong><br>Consiste en modificar la tabla ARP de un dispositivo para redirigir el tráfico de red a otro dispositivo; los atacantes pueden provocar un fuljo de tráfico distinto al legítimo con el que capturar los datos que se transmiten entre los dispositivos legítimos.</p>
+</li>
+<li><p><strong>DNS poisoning</strong><br>Consiste en modificar la resolución de nombres de dominio para redirigir a los usuarios a sitios web maliciosos; los atacantes pueden provocar otro flujo de tráfico de red para engañar a los usuarios con el fin de que accedan a sitios web maliciosos y así poder capturar sus datos o tratar de que instalen malware, lo que podría comprometer sus dispositivos de red.</p>
+</li>
+</ul>
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/computer-network-tutorials/">GeeksforGeeks - Computer Network Tutorials</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Computer_network">Wikipedia - Computer Network</a></li>
+</ul>
+
