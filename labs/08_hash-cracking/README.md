@@ -74,7 +74,50 @@ cupp.py -i
 
 Esta herramienta generará una serie de preguntas al atacante sobre la víctima, información que debería haberse obtenido previamente mediante OSINT, y a partir de esa información generará una lista de posibles contraseñas.
 
-### Cracking de hasshes
+### Cracking de hashes
+
+#### hashid
+
+Herramienta que permite identificar el algoritmo de un hash, de forma aproximada.
+
+```shell
+hashid <hash>
+```
+
+Como se mencionó anteriormente, un hash no se puede revertir, por lo que la única forma de saber el origen de un hash es precisamente, encontrando el origen y comprobando que coincide con el hash; pero antes de todo eso, resulta trivial conocer qué tipo de hash se está tratando. 
+
+Por ejemplo, para el hash MD5 de `srgalan` se obtiene el siguiente resultado:
+
+```text
+Analyzing '1d616f28163414582ba7e2eb400485b9'
+[+] MD2 
+[+] MD5 
+[+] MD4 
+[+] Double MD5 
+[+] LM 
+[+] RIPEMD-128 
+[+] Haval-128 
+[+] Tiger-128 
+[+] Skein-256(128) 
+[+] Skein-512(128) 
+[+] Lotus Notes/Domino 5 
+[+] Skype 
+[+] Snefru-128 
+[+] NTLM 
+[+] Domain Cached Credentials 
+[+] Domain Cached Credentials 2 
+[+] DNSSEC(NSEC3) 
+[+] RAdmin v2.x 
+```
+
+Observa que se muestran muchas posibilidades, lo que coincide con la naturaleza básica de los hashes definidas al inicio, lo que hace prácticamente imposible identificar el algoritmo exacto; sin embargo, puede aproximarse en función de las características del resultado.
+
+Un ejemplo en este caso es la longitud del hash, observa que no aparencen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.
+
+> **Nota**  
+> Este programa adquiere aún más importancia cuando eres consciente, no solo de la inmensa cantidad de algoritmos hash posible, sino de la cantidad de combinaciones que puedes encontrarte.
+>
+> **Nada ni nadie te impide aplicar un algoritmo hash, al resultado de otro algoritmo hash, ni hacer tantas combinaciones como quieras**.
 
 #### hashcat
 
@@ -103,3 +146,61 @@ john --format=<algoritmo> <hash> <diccionario>
 - Utiliza métodos como fuerza bruta, ataques de diccionario y ataques de fuerza bruta acelerados por tablas (incremental).
 - Puede usar reglas personalizadas para mejorar la eficacia de los ataques de diccionario.
 - Además de las contraseñas almacenadas en formato hash, también puede trabajar con formatos de archivo adicionales, como SAM (Windows) y htpasswd (Apache).
+
+# Laboratorio
+
+Este entorno contiene distintas bases de datos MariaDB locales con usuarios y contraseñas que han sido almacenadas usando distintos algoritmos de hashes, y también contiene todos los programas descritos en la sección.
+
+Puedes tratar de obtener las contraseñas de los usuarios utilizando las herramientas mencionadas anteriormente.
+
+## Comandos de ayuda para SQL
+
+El manejo de bases de datos no es el objetivo de este laboratorio, por lo que no se pretende en ningún momento que el usuario tenga que conocer el lenguaje SQL para poder experimentar con el entorno; por tanto, se muestran algunos comandos útiles a continuación, con una breve descripción de su funcionamiento.
+
+Iniciar una terminal en el servidor de bases de datos de MariaDB:
+
+```shell
+mariadb
+```
+
+- Lo necesitarás para poder ver las bases de datos disponibles y poder ejecutar los siguientes comandos SQL para navegar por las bases de datos.
+
+Cerrar la sesión en el servidor de bases de datos:
+
+```shell
+exit
+```
+
+Mostrar las bases de datos disponibles en el servidor:
+
+```sql
+SHOW DATABASES;
+```
+
+> **Nota**  
+> Las bases de datos por defecto son `information_schema`, `mysql`, `performance_schema`, que contienen información sobre el propio servidor.
+
+Seleccionar una base de datos para trabajar:
+
+```sql
+USE {base de datos};
+```
+
+- Si no se está dentro de una base de datos, no se podrá ejecutar comandos SQL para consultar sus datos.
+
+> **Nota**  
+> El prompt del servidor cambiará para indicar la base de datos seleccionada; algo parecido a lo que ocurre con el prompt de una terminal, que aporta información sobre el directorio actual.
+
+Mostrar las tablas que componen la base de datos seleccionada.
+
+```sql
+SHOW TABLES;
+```
+
+Mostrar el contenido de todos los campos de una tabla.
+
+```sql
+SELECT * FROM {tabla};
+```
+
+- El campo `*` significa *todos los campos*.
