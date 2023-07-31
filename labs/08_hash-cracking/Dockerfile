@@ -19,6 +19,7 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/
 # Ficheros
 RUN mkdir /root/resources
 COPY resources /root/resources
+RUN mv /root/resources/rockyou-top15k.txt /root/rockyou-top15k.txt
 
 # Servicio y operaciones de la imagen
 CMD service mariadb start \
