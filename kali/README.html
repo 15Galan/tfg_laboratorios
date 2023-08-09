@@ -1,0 +1,129 @@
+<h1 id="introducci-n">Introducción</h1>
+
+<p>Para complementar las funcionalidades de la plataforma, esta es una pequeña introducción a la creación e instalación
+    de una máquina virtual de Kali Linux.</p>
+<p>Pero primero, será necesario aclarar algunos conceptos.</p>
+
+
+<h2 id="-qu-es-una-m-quina-virtual-">¿Qué es una máquina virtual?</h2>
+
+<p>Una máquina virtual es <strong>un sistema operativo que se ejecuta dentro de otro sistema operativo, de forma
+        aislada</strong>; es decir, todo lo que ocurre dentro de la máquina virtual no afecta a tu ordenador. Teniendo
+    en cuenta ese factor aislante, las máquinas virtuales son muy útiles para multitud de propósitos en el campo de la
+    informática en general.</p>
+<p>Algunos ejemplos son los siguientes:</p>
+<ul>
+    <li><strong>Desarrollo y pruebas</strong>: permiten crear un entorno de desarrollo y pruebas aislado del sistema
+        operativo anfitrión, con configuraciones específicas necesarias para desarrolar y probar una aplicación; esto
+        permite a los desarrolladores trabajar en diferentes sistemas operativos y configuraciones sin tener que
+        adquirir múltiples equipos físicos.</li>
+    <li><strong>Aislamiento de malware</strong>: también se utilizan como medida de seguridad para aislar el malware en
+        entornos seguros; esto permite a los investigadores de seguridad analizar el malware sin poner en riesgo el
+        sistema operativo anfitrión.</li>
+    <li><strong>Experimentación</strong>: realizar experimentos de mucho riesgo podrían afectar el sistema operativo
+        anfitrión, pero el uso de copias de seguridad y clonación de máquinas virtuales permiten a los usuarios
+        experimentar con diferentes configuraciones en un espacio seguro.</li>
+    <li><strong>Virtualización de servidores</strong>: permitir una asignación más eficiente de los recursos de un
+        servidor, lo que permite a las empresas reducir los costes de hardware y aumentar la escalabilidad de sus
+        servicios.</li>
+</ul>
+<p>Las máquinas virtuales son útiles, pero será encesario un software que permita tratar con ellas.</p>
+
+<h2 id="-qu-es-un-hypervisor-">¿Qué es un hypervisor?</h2>
+
+<p>Un hypervisor es un <strong>software que permite crear, eliminar y gestionar máquinas virtuales</strong>
+    (configuración de sus componentes virtuales, configuración de red...).</p>
+<p>Este software se encarga de <strong>emular los componentes físicos de un ordenador</strong> (CPU, RAM, disco duro,
+    tarjeta de red...) para que el sistema operativo que se ejecuta dentro de la máquina virtual pueda interactuar con
+    ellos como si se tratase de un ordenador físico.</p>
+<p>Existe una amplia variedad de hypervisores, pero los más comunes son los siguientes:</p>
+<ul>
+    <li><a href="https://www.virtualbox.org">VirtualBox</a>: hypervisor de código abierto desarrollado por Oracle que
+        destaca por ser el más popular y el más sencillo de usar, pero también el más limitado.</li>
+    <li><a href="https://www.vmware.com">VMware</a>: hypervisor de código privado desarrollado por VMware que destaca
+        por ser el más completo y el más potente, pero también el más complejo de usar.</li>
+    <li><a href="https://www.microsoft.com">Hyper-V</a>: hypervisor de código privado desarrollado por Microsoft que
+        destaca por ser el más integrado con Windows, pero también el más limitado.</li>
+</ul>
+<blockquote>
+    <p><strong>Recomendación</strong><br>Los usuarios principiantes en la virtualización se sentirán más cómodos con
+        <strong>VirtualBox</strong>, ya que es el más sencillo de usar y el más popular, por lo que existe más
+        información y ayuda en Internet en caso de ser necesaria.<br>VirtualBox es con el que se trabajará en esta
+        documentación.
+    </p>
+</blockquote>
+
+<h2 id="-qu-es-kali-linux-">¿Qué es Kali Linux?</h2>
+
+<p>Kali Linux es una distribución de Linux basada en Debian que está orientada a la seguridad informática y al
+    pentesting. Esta distribución cuenta con una gran cantidad de herramientas de seguridad, por lo que es muy útil y la
+    más usada en el campo de la ciberseguridad, de modo que encontrarás mucha información y ayuda en caso de que la
+    necesites.</p>
+<blockquote>
+    <p><strong>Importante</strong><br>Kali Linux es un conjunto de herramientas compatibles con Linux, esto quiere decir
+        que las herramientas pueden usarse en cualquier distribución de Linux, pero Kali Linux ya cuenta con todas las
+        herramientas preinstaladas y configuradas desde el comienzo.</p>
+</blockquote>
+
+
+<h1 id="instalaci-n">Instalación</h1>
+
+<p>¡Perfecto! Una vez mencionado qué es una máquina virtual, un hypervisor y Kali Linux, ya se puede comenzar con la
+    instalación de una máquina virtual con la que poder llevar a cabo técnicas de pentesting en los laboratorios de la
+    plataforma.</p>
+<h2 id="conseguir-virtualbox">Conseguir VirtualBox</h2>
+<p>Para instalar VirtualBox en Linux, se puede usar el siguiente comando:</p>
+<pre><code class="lang-shell">sudo apt <span class="hljs-keyword">install</span> virtualbox
+    </code></pre>
+<blockquote>
+    <p>Si se usa Windows o macOS, se puede descargar el instalador correspondiente desde la <a
+            href="https://www.virtualbox.org/wiki/Downloads">página oficial</a>.</p>
+</blockquote>
+
+<h2 id="conseguir-kali-linux">Conseguir Kali Linux</h2>
+
+<p>Las máquinas virtuales de un sistema operativo pueden crearse a través de los archivos <code>.ISO</code> de dicho
+    sistema operativo, que son archivos que contienen una imagen del sistema, lo que permite instalarlo en los
+    ordenadores convencionales -y también, en máquinas virtuales-.</p>
+<p>Sin embargo, también pueden descargarse máquinas virtuales ya creadas y configuradas, esto suele ser más rápido y en
+    esta ocasión, es muy conveniente; para ello, se usará <strong>Vagrant</strong> y <strong>Vagrant Cloud</strong>.</p>
+
+<h3 id="vagrant-y-vagrant-cloud">Vagrant y Vagrant Cloud</h3>
+
+<ul>
+    <li>Vagrant es un <strong>gestor de máquinas virtuales que se caracteriza por hacerlo de forma declarativa</strong>;
+        es decir, a través de un <em>archivo de configuración que describe cómo debe ser una máquina virtual</em>,
+        llamado <em>Vagrantfile</em>.</li>
+    <li>Estas máquinas pueden obtenerse en Vagrant Cloud, un <strong>portal de máquinas virtuales</strong> con el que
+        subir y descargar máquinas ya configuradas, y de forma gratuita.</li>
+</ul>
+<p>Para instalar Vagrant en Linux, se puede usar el siguiente comando:</p>
+<pre><code class="lang-shell">sudo apt <span class="hljs-keyword">install</span> vagrant
+    </code></pre>
+<blockquote>
+    <p>Si se usa Windows o macOS, se puede descargar el instalador correspondiente desde la <a
+            href="https://www.vagrantup.com/downloads">página oficial</a>.</p>
+</blockquote>
+<p>Una vez instalado, se creará una carpeta para la máquina virtual de Kali Linux donde se almacenará el
+    <em>Vagrantfile</em> que se generará automáticamente al descargar la máquina.
+</p>
+<pre><code class="lang-shell"><span class="hljs-built_in">mkdir</span> ~/Vagrant/Kali
+    </code></pre>
+<p>Para la máquina virtual de Kali Linux, se usará esta: <a
+        href="https://app.vagrantup.com/elrey741/boxes/kali-linux_amd64">elrey741/kali-linux_amd64</a>; puede
+    descargarse manualmente o ejecutando el siguiente comando:</p>
+<pre><code class="lang-shell"><span class="hljs-attribute">vagrant</span> init elrey741/kali-linux_amd64
+    </code></pre>
+<h2 id="crear-y-ejecutar-la-m-quina-virtual">Crear y ejecutar la máquina virtual</h2>
+<p>Una vez descargada la máquina virtual, se puede crear y ejecutar con el siguiente comando:</p>
+<pre><code class="lang-shell"><span class="hljs-attribute">vagrant up</span>
+    </code></pre>
+<p>Este comando detectará si la máquina virtual definida en el <em>Vagrantfile</em> (Kali Linux) existe en VirtualBox y
+    la ejecutará. Si no existe, la descargará previamente.</p>
+<hr>
+<p><strong>Una vez hecho todo eso, el entorno de Kali Linux estará listo para usarse</strong>.</p>
+<p>Las credenciales por defecto de esta máquina son:</p>
+<ul>
+    <li>Usuario: <code>vagrant</code>.</li>
+    <li>Contraseña: <code>vagrant</code>.</li>
+</ul>
