@@ -1,0 +1,141 @@
+<h1 id="introducci-n">Introducción</h1>
+<h2 id="qu-es-un-hash">Qué es un hash</h2>
+<p>Un hash es una función matemática que convierte una cadena de caracteres en otra cadena de caracteres de longitud fija. Esta función es unidireccional, es decir, <strong>no se puede obtener la cadena original a partir de la cadena resultante</strong>; precisamente esta característica es la clave del uso de los hashes en ciberseguridad.</p>
+<p>Generalmente, los hashes se utilizan para verificar la inegridad de un fichero y para almacenar contraseñas:</p>
+<ul>
+<li><strong>Verificación de integridad</strong>: se calcula el hash de un fichero y se compara con el hash original. Si son iguales, el fichero no ha sido modificado; si son diferentes, el fichero ha sido modificado, porque debería tener el mismo hash que el original.</li>
+<li><strong>Almacenamiento de contraseñas</strong>: en lugar de almacenar las contraseñas en texto plano, se almacena el hash de la contraseña. Cuando un usuario se autentica, se calcula el hash de la contraseña introducida y se compara con el hash almacenado. Si son iguales, entonces es en efecto, la misma contraseña.</li>
+</ul>
+<p>Los hashes se basan en funciones criptográficas, que son funciones matemáticas que cumplen con las siguientes características:</p>
+<ul>
+<li><strong>Unidireccionalidad</strong>: no se puede obtener la cadena original a partir de la cadena resultante.</li>
+<li><strong>Determinismo</strong>: si se aplica la función a una cadena, siempre se obtendrá el mismo resultado.</li>
+<li><strong>Resistencia a la preimagen</strong>: es muy difícil encontrar una cadena que al aplicarle la función criptográfica, se obtenga un resultado concreto.</li>
+<li><strong>Resistencia a la colisión</strong>: es muy difícil encontrar dos cadenas que al aplicarles la función criptográfica, se obtenga el mismo resultado.</li>
+</ul>
+<h3 id="algoritmos-m-s-comunes">Algoritmos más comunes</h3>
+<p>Un hash viene determinado por el algoritmo que se utiliza para calcularlo.</p>
+<ul>
+<li><strong>MD5</strong>: algoritmo de 128 bits que genera un hash de 32 caracteres hexadecimales.<br>Este algoritmo <strong>ya no es seguro</strong> y no debería utilizarse.</li>
+<li><strong>SHA-1</strong>: algoritmo de 160 bits que genera un hash de 40 caracteres hexadecimales.<br>Este algoritmo <strong>y ano es seguro</strong> y no debería utilizarse.</li>
+<li><strong>SHA-256</strong>: algoritmo de 256 bits que genera un hash de 64 caracteres hexadecimales.</li>
+</ul>
+<p>Ejemplo de la cadena <code>srgalan</code> representada en los algoritmos anteriores:</p>
+<pre><code class="lang-text">MD5    : 1<span class="hljs-type">d616f28163414582ba7e2eb400485b9</span>
+SHA1   : 5<span class="hljs-type">b809ca358389dec586f8d88c544c0fc028dc7f4</span>
+SHA256 : <span class="hljs-type">e772e0266541435a1b52df6bb498cb62e6749c95e59b580d71c9fb16b4125af9</span>
+</code></pre>
+<h2 id="qu-es-un-salt-">Qué es un <em>salt</em></h2>
+<p>Un <em>salt</em> es un valor aleatorio que se añade previamente a un elemento antes de calcular su hash; este se almacena junto al hash, y se utiliza para evitar ataques de diccionario y de fuerza bruta, ya que el resultado será diferente al que se obtendría si se calculase el hash solo del valor original.</p>
+<p>Por ejemplo, si se calcula el hash de la cadena <code>srgalan</code> con el algoritmo MD5, se obtiene el siguiente resultado:</p>
+<pre><code class="lang-text">MD5 : 1<span class="hljs-type">d616f28163414582ba7e2eb400485b9</span>
+</code></pre>
+<p>Si se añade un <em>salt</em> aleatorio, por ejemplo <code>1234</code>, y se calcula el hash de la cadena <code>srgalan1234</code>, se obtiene el siguiente resultado:</p>
+<pre><code class="lang-text">MD5 : <span class="hljs-type">cfd600b24575feae906e65f81a4fb957</span>
+</code></pre>
+<h2 id="herramientas-comunes">Herramientas comunes</h2>
+<h3 id="generaci-n-de-hashes">Generación de hashes</h3>
+<p>Calcula el hash MD5, SHA1 y SHA256 de un fichero, respectivamente.</p>
+<pre><code class="lang-shell">md5sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;</span>
+sha1sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;</span>
+sha256sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;</span>
+</code></pre>
+<h4 id="cupp">CUPP</h4>
+<p>Herramienta que permite generar diccionarios de contraseñas personalizados a partir de información sobre la víctima, como su nombre, apellidos, fecha de nacimiento, etc.</p>
+<p>Generalmente, esta herramienta se isntala desde <a href="https://github.com/Mebus/cupp">su repositorio de GitHub</a>, pero desde algunas versiones, Kali Linux ya incluye esta herramienta.</p>
+<pre><code class="lang-shell">cupp<span class="hljs-selector-class">.py</span> -i
+</code></pre>
+<p>Esta herramienta generará una serie de preguntas al atacante sobre la víctima, información que debería haberse obtenido previamente mediante OSINT, y a partir de esa información generará una lista de posibles contraseñas.</p>
+<h3 id="cracking-de-hashes">Cracking de hashes</h3>
+<h4 id="hashid">hashid</h4>
+<p>Herramienta que permite identificar el algoritmo de un hash, de forma aproximada.</p>
+<pre><code class="lang-shell">hashid <span class="hljs-tag">&lt;<span class="hljs-name">hash</span>&gt;</span>
+</code></pre>
+<p>Como se mencionó anteriormente, un hash no se puede revertir, por lo que la única forma de saber el origen de un hash es precisamente, encontrando el origen y comprobando que coincide con el hash; pero antes de todo eso, resulta trivial conocer qué tipo de hash se está tratando. </p>
+<p>Por ejemplo, para el hash MD5 de <code>srgalan</code> se obtiene el siguiente resultado:</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Analyzing</span> <span class="hljs-string">'1d616f28163414582ba7e2eb400485b9'</span>
+[+] <span class="hljs-symbol">MD2</span> 
+[+] <span class="hljs-symbol">MD5</span> 
+[+] <span class="hljs-symbol">MD4</span> 
+[+] <span class="hljs-symbol">Double</span> <span class="hljs-symbol">MD5</span> 
+[+] <span class="hljs-symbol">LM</span> 
+[+] <span class="hljs-symbol">RIPEMD</span><span class="hljs-number">-128</span> 
+[+] <span class="hljs-symbol">Haval</span><span class="hljs-number">-128</span> 
+[+] <span class="hljs-symbol">Tiger</span><span class="hljs-number">-128</span> 
+[+] <span class="hljs-symbol">Skein</span><span class="hljs-number">-256</span>(<span class="hljs-number">128</span>) 
+[+] <span class="hljs-symbol">Skein</span><span class="hljs-number">-512</span>(<span class="hljs-number">128</span>) 
+[+] <span class="hljs-symbol">Lotus</span> <span class="hljs-symbol">Notes</span>/<span class="hljs-symbol">Domino</span> <span class="hljs-number">5</span> 
+[+] <span class="hljs-symbol">Skype</span> 
+[+] <span class="hljs-symbol">Snefru</span><span class="hljs-number">-128</span> 
+[+] <span class="hljs-symbol">NTLM</span> 
+[+] <span class="hljs-symbol">Domain</span> <span class="hljs-symbol">Cached</span> <span class="hljs-symbol">Credentials</span> 
+[+] <span class="hljs-symbol">Domain</span> <span class="hljs-symbol">Cached</span> <span class="hljs-symbol">Credentials</span> <span class="hljs-number">2</span> 
+[+] <span class="hljs-symbol">DNSSEC</span>(<span class="hljs-symbol">NSEC3</span>) 
+[+] <span class="hljs-symbol">RAdmin</span> v2.x
+</code></pre>
+<p>Observa que se muestran muchas posibilidades, lo que coincide con la naturaleza básica de los hashes definidas al inicio, lo que hace prácticamente imposible identificar el algoritmo exacto; sin embargo, puede aproximarse en función de las características del resultado.</p>
+<p>Un ejemplo en este caso es la longitud del hash, observa que no aparencen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Este programa adquiere aún más importancia cuando eres consciente, no solo de la inmensa cantidad de algoritmos hash posible, sino de la cantidad de combinaciones que puedes encontrarte.</p>
+<p><strong>Nada ni nadie te impide aplicar un algoritmo hash, al resultado de otro algoritmo hash, ni hacer tantas combinaciones como quieras</strong>.</p>
+</blockquote>
+<h4 id="hashcat">hashcat</h4>
+<p>Herramienta especializada en el cracking de contraseñas utilizando ataques de fuerza bruta, ataques de diccionario y ataques de tablas arcoíris (rainbow tables). Está diseñada para aprovechar la potencia de las GPU modernas (tarjetas gráficas) para realizar operaciones de cracking muy rápidas y eficientes.</p>
+<p>Además, Hashcat también puede utilizar la CPU para ataques, pero la potencia y velocidad que proporciona una GPU son mucho mayores.</p>
+<pre><code class="lang-shell">hashcat -m <span class="hljs-tag">&lt;<span class="hljs-name">algoritmo</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">hash</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">diccionario</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Soporta una gran cantidad de algoritmos de hash: MD5, SHA1, SHA256, SHA512, etc.</li>
+<li>Admite múltiples ataques: fuerza bruta, diccionario, híbridos y de combinación de palabras.</li>
+<li>Permite la combinación de reglas personalizadas para aumentar la eficaia de los ataques de diccionario.</li>
+<li>Resulta muy eficiente al utilizar la potencia de las GPUs, lo que lo hace especialmente adecuado para operaciones de <em>cracking</em> de alto rendimiento.</li>
+</ul>
+<h4 id="john-the-ripper">John the Ripper</h4>
+<p>Herramienta de cracking de contraseñas que existe desde hace mucho tiempo y ha sido ampliamente utilizada en la comunidad de seguridad informática; a diferencia de Hashcat, John the Ripper se centra en el cracking utilizando la CPU, aunque también tiene soporte para el uso de GPU en algunos casos.</p>
+<pre><code class="lang-shell">john --format=<span class="hljs-tag">&lt;<span class="hljs-name">algoritmo</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">hash</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">diccionario</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Al igual que Hashcat, admite una amplia variedad de algoritmos de hash.</li>
+<li>Utiliza métodos como fuerza bruta, ataques de diccionario y ataques de fuerza bruta acelerados por tablas (incremental).</li>
+<li>Puede usar reglas personalizadas para mejorar la eficacia de los ataques de diccionario.</li>
+<li>Además de las contraseñas almacenadas en formato hash, también puede trabajar con formatos de archivo adicionales, como SAM (Windows) y htpasswd (Apache).</li>
+</ul>
+<h1 id="laboratorio">Laboratorio</h1>
+<p>Este entorno contiene distintas bases de datos MariaDB locales con usuarios y contraseñas que han sido almacenadas usando distintos algoritmos de hashes, y también contiene todos los programas descritos en la sección.</p>
+<p>Puedes tratar de obtener las contraseñas de los usuarios utilizando las herramientas mencionadas anteriormente.</p>
+<h2 id="comandos-de-ayuda-para-sql">Comandos de ayuda para SQL</h2>
+<p>El manejo de bases de datos no es el objetivo de este laboratorio, por lo que no se pretende en ningún momento que el usuario tenga que conocer el lenguaje SQL para poder experimentar con el entorno; por tanto, se muestran algunos comandos útiles a continuación, con una breve descripción de su funcionamiento.</p>
+<p>Iniciar una terminal en el servidor de bases de datos de MariaDB:</p>
+<pre><code class="lang-shell"><span class="hljs-attribute">mariadb</span>
+</code></pre>
+<ul>
+<li>Lo necesitarás para poder ver las bases de datos disponibles y poder ejecutar los siguientes comandos SQL para navegar por las bases de datos.</li>
+</ul>
+<p>Cerrar la sesión en el servidor de bases de datos:</p>
+<pre><code class="lang-shell"><span class="hljs-keyword">exit</span>
+</code></pre>
+<p>Mostrar las bases de datos disponibles en el servidor:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">DATABASES</span>;
+</code></pre>
+<blockquote>
+<p><strong>Nota</strong><br>Las bases de datos por defecto son <code>information_schema</code>, <code>mysql</code>, <code>performance_schema</code>, que contienen información sobre el propio servidor.</p>
+</blockquote>
+<p>Seleccionar una base de datos para trabajar:</p>
+<pre><code class="lang-sql">USE {<span class="hljs-keyword">base </span>de datos}<span class="hljs-comment">;</span>
+</code></pre>
+<ul>
+<li>Si no se está dentro de una base de datos, no se podrá ejecutar comandos SQL para consultar sus datos.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>El prompt del servidor cambiará para indicar la base de datos seleccionada; algo parecido a lo que ocurre con el prompt de una terminal, que aporta información sobre el directorio actual.</p>
+</blockquote>
+<p>Mostrar las tablas que componen la base de datos seleccionada.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">TABLES</span>;
+</code></pre>
+<p>Mostrar el contenido de todos los campos de una tabla.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> {tabla};
+</code></pre>
+<ul>
+<li>El campo <code>*</code> significa <em>todos los campos</em>.</li>
+</ul>
+
