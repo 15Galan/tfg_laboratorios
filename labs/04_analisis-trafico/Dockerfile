@@ -16,7 +16,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 # Descargar las capturas de Wireshark
 RUN mkdir /config/capturas
-COPY resources /config/capturas
+COPY resources/capturas /config/capturas
 
 # Comando del contendor
 CMD ["/usr/sbin/sshd", "-D"]
