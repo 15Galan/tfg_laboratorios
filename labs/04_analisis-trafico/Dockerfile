@@ -15,8 +15,8 @@ RUN chmod 700 /root/.ssh
 RUN chmod 600 /root/.ssh/authorized_keys
 
 # Descargar las capturas de Wireshark
-RUN git clone https://github.com/15Galan/tmp-capturas.git /config/capturas
-RUN rm -rf capturas/.git
+RUN mkdir /config/capturas
+COPY resources/capturas /config/capturas
 
 # Comando del contendor
 CMD ["/usr/sbin/sshd", "-D"]
