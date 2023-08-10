@@ -4,11 +4,11 @@
 # Variables
 carpetas=$(ls -d */ | grep -v '^logs/$' | sed 's#/##')  # Carpetas del repositorio
 log=logs/$(date +"%Y-%m-%d %H-%M").log                  # Archivos de registro
-duplicada=false						# Centinela para imágenes duplicadas
+duplicada=false                                         # Centinela para imágenes duplicadas
 
 
 # Crear la carpeta de registros
-mkdir -p logs			# Si ya existe una carpeta 'logs' no hace nada
+mkdir -p logs                                           # Si ya existe 'logs' no hace nada
 
 
 # Construcción de las imágenes
