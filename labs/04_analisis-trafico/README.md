@@ -22,6 +22,9 @@ Un paquete es un pequeño bloque de información que contiene datos de la red, c
 
 A continuación se muestran la estructura de los paquetes de los protocolos más comunes de Internet; pese a que tienen forma *cuadrada*, esto solo es una representación visual, ya que en realidad se trata de una secuencia de bits.
 
+> **Nota**  
+> Pese a llamarse *paquetes* y mostrarse como *cuadrados*, en realidad se trata de una secuencia de bits que se divide en campos de diferentes tamaños, y estos campos se muestran en forma de cuadrados para facilitar su visualización.
+
 ### TCP/IP
 
 ![Paquete TCP/IP](https://upload.wikimedia.org/wikipedia/commons/a/a9/CabeceraTCP.png)
@@ -259,6 +262,8 @@ Estas herramientas permiten capturar y analizar los paquetes de datos en tiempo 
 
 Herramienta de análisis de tráfico de red de código abierto que permite capturar y examinar paquetes de datos en tiempo real.
 
+![Captura de la interfaz de Wireshark](./resources/imagenes/ssl-1.png)
+
 Algunas características de Wireshark incluyen:
 
 - **Captura de paquetes:** Wireshark puede interceptar y analizar los paquetes de datos que fluyen a través de una red.
@@ -275,6 +280,8 @@ Algunas características de Wireshark incluyen:
 
 Herramienta de línea de comandos para el análisis de tráfico de red que proporciona capacidades de captura y análisis de paquetes similar a Wireshark.
 
+![Captura de la terminal](./resources/imagenes/tcpdump.png)
+
 Algunas características destacadas de tcpdump son:
 
 - **Captura de paquetes:** tcpdump puede capturar y mostrar paquetes en tiempo real, lo que permite examinar el tráfico de red. Sin embargo, al ser una herramienta de línea de comandos, la salida mostrada puede ser muy compleja y difícil de analizar.
@@ -286,6 +293,8 @@ Algunas características destacadas de tcpdump son:
 ## Snort
 
 Snort es un sistema de detección y prevención de intrusiones basado en reglas que se utiliza para monitorear y analizar el tráfico de red en busca de patrones o comportamientos maliciosos.
+
+![Logo Snort](https://imgs.search.brave.com/vh7pMTLY5AX4jXYOfNKtZByeTiS8NWENWFVtxDt1UEk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/c2VydmljZXBpbG90/LmNvbS9pbWFnZXMv/aW50ZWdyYXRpb24v/c25vcnQucG5n)
 
 Las principales características de Snort incluyen:
 
@@ -299,6 +308,8 @@ Las principales características de Snort incluyen:
 
 ntop es una herramienta de monitoreo de red que proporciona una visión detallada del tráfico en tiempo real.
 
+![Captura de la interfaz de ntop](https://www.firstlight.net/wp-content/uploads/2021/04/ntop-image1.png)
+
 Algunas características de ntop son:
 
 - **Monitoreo en tiempo real:** ntop muestra información actualizada sobre el tráfico de red en tiempo real, incluyendo estadísticas de uso, flujos de datos y conexiones.
@@ -311,13 +322,116 @@ Algunas características de ntop son:
 # Laboratorio
 
 > **Nota**  
-> Este laboratorio puede usarse directamente en el navegador colocando la dirección y el puerto del mismo en la barra de direcciones.
+> Este laboratorio debe usarse **directamente en el navegador** colocando la dirección y el puerto del mismo en la barra de direcciones.
 
-Este laboraotrio contiene un entorno con capturas de tráfico realizadas con Wireshark en la carpeta `/config/capturas`, y donde podrás usar Wireshark de forma interactiva para analizar dicho tráfico.
+Este entorno contiene distintas capturas de tráfico realizadas con Wireshark en la carpeta `/config/capturas`, y donde podrás usar Wireshark de forma interactiva para analizar dicho tráfico.
 
-Podrás obtener alguna información como las credenciales del usuario que usó FileZilla, los campos de los paquetes de comunicaciones TCP, así como una visión del funcionamiento del protocolo ARP, entre otros.
+En su conjunto, podrás obtener información como: credenciales FTP de un usuario, los campos de los paquetes de comunicaciones TCP, así como una visión del funcionamiento del protocolo ARP, entre otros.
+
+Por otra parte, también se mostrarán ejemplos de análisis de las capturas SSL.pcap y filezilla.pcap, para mostrar un proceso básico de análisis de tráfico y obtención de información en una comunicación cifrada y sin cifrar, respectivamente.
+
+## Traza *SSL*
+
+> **Nota**  
+> Para empezar, pulsa en la pestaña superior izquierda `File > Open` y selecciona la captura `SSL.pcap` para cargarla en Wireshark.
+
+Como podrás observar, la captura contiene más tráfico del necesario, por lo que sería interesante aplicar un filtro para visualizar únicamente los paquetes relevantes.
+
+Aquí se están buscando paquetes pertenecientes a una conversación SSL, por lo que se puede aplicar el filtro `ssl`.
+
+SSL es un protocolo de seguridad que se utiliza para cifrar las comunicaciones entre un cliente y un servidor, de forma que los datos transmitidos no puedan ser interceptados por terceros; TLS por el contrario, no es más que una versión mejorada de SSL.
+
+> **Nota**  
+> Este es el motivo por el que el filtro `ssl` también funciona para TLS.
+
+Comenzando por el principio, antes de establecerse la conexión, el cliente y el servidor deben intercambiar información sobre los protocolos y cifrados que soportan, así como otros parámetros necesarios para establecer la conexión.
+
+![ssl-1](./resources/imagenes/ssl-1.png)
+
+Este proceso previo de negociación de la conexión se conoce como *handshake*, y puede observarse cómo tiene lugar entre las tramas 7 y 22. Esto es así porque son los únicos paquetes que no están intercambiando datos (​*Application Data​*), sino información sobre la conexión.
+
+> **Nota**  
+> Observa qué información manejan los otros paquetes: *Certificate*, *Exchange*, *Encrypted Handshake Message*, etc.
+
+![ssl-2](./resources/imagenes/ssl-2.png)
+
+Abriendo la información sobre la seguridad en la capa de transporte, se puede observar que se está usando la versión 1.2 de TLS. Sin embargo, la conexión se inicializa con TLS 1.0 (trama 7), pero en la respuesta del servidor (trama 9) se indica que puede utilizarse la versión 1.2 y, finalmente, esta última versión es la que se utiliza para la comunicacicón (a partir de la trama 10).
+
+![ssl-3](./resources/imagenes/ssl-3.png)
+
+Al abrir la trama 7 (*Client Hello*), se puede observar los tipos de cifrados que soporta el cliente; estos datos se muestran en la sección *Cipher Suites* y son interesantes para determinar la seguridad de la conexión.
+
+Para saber qué suite de cifrado se establece para la conexión, basta con visitar de nuevo la respuesta del servidor (trama 9), donde es el servidor el que le responde al cliente qué suite de cifrado se va a utilizar.
+
+![ssl-4](./resources/imagenes/ssl-4.png)
+
+El servidor establece que se use la suite `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)`, por lo que la comunicación futura se cifrará usando: el algoritmo AES, en modo GCM (Galois/Counter Mode), con una clave de 128 bits.
+
+
+## Traza *filezilla*
+
+> **Nota**  
+> Para empezar, pulsa en la pestaña superior izquierda `File > Open` y selecciona la captura `filezilla.pcap` para cargarla en Wireshark.
+
+Al contrario que en la captura anterior, aquí se muestra el uso de Filezilla por parte de un cliente para conectarse a un servidor FTP.
+
+La desventaja de FTP es que no cifra las comunicaciones, por lo que es posible interceptar los datos que se transmiten entre el cliente y el servidor.
+
+![filezilla-1](./resources/imagenes/filezilla-1.png)
+
+Al abrir la captura se puede observar que hay un montón de paquetes de distintos tipos, pero bajando un poco ya se puede ver un paquete FTP (trama 42) que indica que se debe proceder con usuario y contraseña para autenticarse.
+
+Como FTP no está cifrado, podemos ver el contenido de esos paquetes; pero en lugar de abrirlos uno por uno como sucedió en el ejemplo anterior, puedes usar la opción *Follow*, que te permite abrir el flujo de datos de la comunicación a la que pertenece el paquete.
+
+Esta opción aparece haciendo click derecho sobre el paquete y seleccionando *Follow > TCP Stream*.
+
+> **Nota**  
+> Se quiere seguir el flujo TCP y no *el flujo FTP* porque:
+> - FTP se usa en la capa de aplicación; se encarga de definir cómo y qué datos se envían.
+> - TCP se usa en la capa de red; se encarga de definir cómo se envían los paquetes con dicha información.
+>
+> Si lo llevamos al terreno de los envíos a domicilio, FTP sería el encargado de seleccionar las cajas correctas, mientras que TCP sería el encargado de almacenarlas en el camión y llevarlo a su destino.
+
+![filezilla-2](./resources/imagenes/filezilla-2.png)
+
+Y al abrir el flujo TCP, así como si nada, ya se obtienen las credenciales del usuario.
+
+![filezilla-3](./resources/imagenes/filezilla-3.png)
+
+Investigando un poco más filtrando los paquetes por `ftp` o `ftp-data` (FTP cuando envía datos), se pueden observar los distintos comandos FTP enviados al servidor, como:
+
+- `LIST`, para listar los archivos del directorio actual.
+- `RETR`, para descargar un archivo.
+- `STOR`, para subir un archivo.
+
+Y repitiendo el mismo proceso con *Follow*, además, se puede ver el nombre de los propios ficheros enviados.
+
+> **Nota**  
+> También es posible navegar entre los distintos flujos usando el apartado *Stream* en la parte inferior derecha de la ventana de *Follow*.
+>
+> Esto permite una navegación más cómoda, pero si no se sabe qué se está buscando o el tamaño de la captura es muy grande, puede llegar a ser contraproducente.
+
+![filezilla-4](./resources/imagenes/filezilla-4.png)
+
+Por último, sabiendo qué ficheros ha almacenado o descargado el usuario, se puede buscar en la captura el contenido de dichos ficheros.
+
+Una opción posible sería filtrar por `ftp-data.command-frame` para obtener los paquetes en los que se usan comandos FTP, y ahí buscar los comandos `RETR` y `STOR` para obtener los paquetes que contienen los ficheros. Una vez encontrado el archivo deseado, se puede usar *Follow* para abrir el flujo TCP y ver el contenido del fichero en texto plano.
+
+> **Nota**  
+> Los archivos multimedia, como es de esperar, tendrán una representación extraña en texto plano (porque no son texto), pero se pueden identificar algunos campos a simple vista, como el tipo de archivo multimedia.
+
+![filezilla-5](./resources/imagenes/filezilla-5.png)
+
+Una trama interesante es la número 896, donde se está realizando el envío de un fichero de copias de seguridad de los usuarios de algún sistema, y donde pueden verse los nombres de los usuarios y sus contraseñas en texto plano.
+
+Las contraseñas del fichero tienen un aspecto raro, por lo que es posible que estén cifradas, pero se ha podido lelgar a esta información gracias al análisis del tráfico y ahora se podría intentar descifrarlas por otros medios.
 
 
 # Referencias
 
-Enlaces útiles de los que se obtuvieron información.
+- [WireShark](https://www.wireshark.org) - Página oficial de Wireshark
+- [javapoint](https://www.javatpoint.com/wireshark) - Tutorial de Wireshark
+- [tcpdump](https://www.tcpdump.org) - Página oficial de tcpdump
+- [Snort](https://www.snort.org) - Página oficial de Snort
+- [ntop](https://www.ntop.org)  - Página oficial de ntop
+
