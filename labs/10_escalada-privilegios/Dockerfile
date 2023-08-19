@@ -12,9 +12,6 @@ RUN apt install hashcat -y
 COPY resources/common-password /etc/pam.d/common-password
 RUN chmod 744 /etc/pam.d/common-password
 
-# Inclusión de 'rockyou'
-COPY resources/rockyou-top15k.txt rockyou-top15k.txt
-
 # Creación de usuarios
 RUN mkdir -p /run/sshd
 RUN adduser user --disabled-password
@@ -29,6 +26,9 @@ RUN touch /home/user/.ssh/authorized_keys
 RUN chown -R user:user /home/user/.ssh
 RUN chmod 700 /home/user/.ssh
 RUN chmod 600 /home/user/.ssh/authorized_keys
+
+# Inclusión de 'rockyou'
+COPY resources/rockyou-top15k.txt /home/user/rockyou-top15k.txt
 
 # Debilitar los permisos de '/etc/shadow'
 RUN chmod 644 /etc/shadow
