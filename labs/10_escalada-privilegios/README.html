@@ -1,0 +1,184 @@
+<!-- Escalada de Privilegios -->
+
+<h1 id="introducci-n">Introducción</h1>
+<p>Se conoce como escalada de privilegios al proceso de obtener privilegios de administrador en un sistema, cuando se tiene acceso a un usuario con privilegios limitados.</p>
+<p>El concepto en sí puede resultar algo abstracto, ya que no es un concepto tan puntual como &quot;fuerza bruta&quot; o &quot;cifrado&quot;, sino que es un concepto más general y que abarca muchas técnicas distintas.</p>
+<h1 id="casos-de-uso">Casos de uso</h1>
+<p>La esencia de la escalada de privilegios es la capacidad de identificar distintas &quot;rutas&quot; o posibilidades para obtener privilegios de administrador, y luego poder explotarlas.</p>
+<p>Se muestran a continuación algunas de las situaciones más comunes en las que se puede aplicar la escalada de privilegios:</p>
+<h2 id="explotaci-n-del-kernel">Explotación del Kernel</h2>
+<p>El kernel es el núcleo del sistema operativo, y es el encargado de administrar los recursos del sistema y de proveer una interfaz para que los programas puedan interactuar con el hardware.</p>
+<p>El kernel es un programa como cualquier otro, y por lo tanto, puede tener vulnerabilidades que permitan obtener privilegios de administrador.</p>
+<p>Por ejemplo, si un programa tiene un bug que permite que un usuario pueda escribir en una dirección de memoria que no le corresponde, podría sobreescribir la dirección de retorno de una función del kernel, y así lograr que el kernel ejecute código arbitrario.</p>
+<h2 id="permisos-de-ficheros">Permisos de ficheros</h2>
+<p>Los permisos se organizan en función del dueño del fichero, del grupo al que pertenece el mismo y de los demás usuarios, y se dividen en tres categorías: lectura, escritura y ejecución.</p>
+<p>Si estos permisos estuvieran mal configurados para un fichero, sobre todo si es ejecutable, un usuario con permisos de escritura podría modificarlo para que ejecutara código arbitrario o incluso, si este tiene permisos de escritura, podría modificarlo para que se ejecute con privilegios de administrador.</p>
+<h2 id="servicios">Servicios</h2>
+<p>Los servicios también siguen una política de permisos, y si estos están mal configurados, un usuario podría modificarlos para que se lleguen a ejecutar con privilegios de administrador.</p>
+<p>Por ejemplo, si un servicio tiene un fichero de configuración que permite que un usuario pueda modificar el comando que se ejecuta, podría modificarlo para que se ejecute con privilegios de administrador.</p>
+<h2 id="suid">SUID</h2>
+<p>El bit SUID es un bit que se puede aplicar a un fichero, y que permite que cuando un usuario lo ejecute, se ejecute con los permisos del dueño del fichero, en lugar de los del usuario que lo ejecuta.</p>
+<p>Esto tiene sentido para ficheros que necesitan permisos de administrador para ejecutarse, pero que no se quiere que cualquier usuario pueda ejecutarlos con privilegios de administrador; y por otro lado, también resulta un punto de inflexión para la escalada de privilegios, ya que si un usuario puede acceder a un fichero con el bit SUID activado, podría ejecutarlo directamente como un administrador.</p>
+<h1 id="laboratorio">Laboratorio</h1>
+<p>Este entorno contiene una vulnerabilidad de permisos débiles en un archivo muy importante: <code>/etc/shadow</code>.</p>
+<ul>
+<li>Credenciales: <code>user:user</code>.</li>
+<li>Recursos: <code>/home/user/rockyou-top15k.txt</code></li>
+</ul>
+<p>Antiguamente, las contraseñas se almacenaban en el fichero <code>/etc/passwd</code>, pero actualmente se almacenan en el fichero <code>/etc/shadow</code>, un fichero que solo puede ser leído por el usuario <code>root</code>.</p>
+<p>Por supuesto, las contraseñas están almacenadas siguiendo un algoritmo de hash, por lo que no se pueden obtener directamente, pero si se puede obtener el hash de la contraseña, y luego intentar romperlo con un ataque de fuerza bruta.</p>
+<p>Sabiendo esta información sobre el sistema, se puede intentar obtener el hash de la contraseña del usuario <code>root</code>, y luego intentar romperlo con un ataque de fuerza bruta.</p>
+<p>Para ello, observa los permisos que existen en el contenido de <code>/etc</code>:</p>
+<pre><code class="lang-bash">(...)
+
+-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 552 </span>Jan<span class="hljs-number"> 30 </span><span class="hljs-number"> 2021 </span>pam.conf
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 17 </span>17:34 pam.d
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 1317 </span>Aug<span class="hljs-number"> 17 </span>17:34 passwd
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 1314 </span>Aug<span class="hljs-number"> 17 </span>17:34 passwd-
+-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 769 </span>Apr<span class="hljs-number"> 10 </span><span class="hljs-number"> 2021 </span>profile
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Apr <span class="hljs-number"> 2 </span>11:55 profile.d
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 python3
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 python3.9
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 rc0.d
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Dec<span class="hljs-number"> 14 </span><span class="hljs-number"> 2020 </span>rc1.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 rc2.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 rc3.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 rc4.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 rc5.d
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 rc6.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 rcS.d
+-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 613 </span>Aug<span class="hljs-number"> 18 </span>10:56 resolv.conf
+lrwxrwxrwx<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 13 </span>Feb<span class="hljs-number"> 17 </span><span class="hljs-number"> 2021 </span>rmt -&gt; /usr/sbin/rmt
+drwxr-xr-x<span class="hljs-number"> 3 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 runit
+drwxr-xr-x<span class="hljs-number"> 4 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 security
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 selinux
+-rw-r--r--<span class="hljs-number"> 1 </span>root shadow  <span class="hljs-number"> 763 </span>Aug<span class="hljs-number"> 17 </span>17:58 shadow
+-rw-r-----<span class="hljs-number"> 1 </span>root shadow  <span class="hljs-number"> 697 </span>Aug<span class="hljs-number"> 17 </span>17:34 shadow-
+-rw-r--r--<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 73 </span>Aug<span class="hljs-number"> 14 </span>00:00 shells
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 skel
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 17 </span>17:58 ssh
+drwxr-xr-x<span class="hljs-number"> 4 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:45 ssl
+-rw-r--r--<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 18 </span>Aug<span class="hljs-number"> 17 </span>17:34 subgid
+-rw-r--r--<span class="hljs-number"> 1 </span>root root      <span class="hljs-number"> 0 </span>Aug<span class="hljs-number"> 14 </span>00:00 subgid-
+-rw-r--r--<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 18 </span>Aug<span class="hljs-number"> 17 </span>17:34 subuid
+-rw-r--r--<span class="hljs-number"> 1 </span>root root      <span class="hljs-number"> 0 </span>Aug<span class="hljs-number"> 14 </span>00:00 subuid-
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 3975 </span>Jan<span class="hljs-number"> 14 </span><span class="hljs-number"> 2023 </span>sudo.conf
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 6169 </span>Jan<span class="hljs-number"> 14 </span><span class="hljs-number"> 2023 </span>sudo_logsrvd.conf
+-r--r-----<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 669 </span>Jan<span class="hljs-number"> 14 </span><span class="hljs-number"> 2023 </span>sudoers
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 sudoers.d
+drwxr-xr-x<span class="hljs-number"> 3 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 sv
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 2355 </span>Apr <span class="hljs-number"> 6 </span><span class="hljs-number"> 2021 </span>sysctl.conf
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 sysctl.d
+drwxr-xr-x<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 systemd
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 terminfo
+-rw-r--r--<span class="hljs-number"> 1 </span>root root      <span class="hljs-number"> 8 </span>Aug<span class="hljs-number"> 14 </span>00:00 timezone
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Jun<span class="hljs-number"> 18 </span>14:55 tmpfiles.d
+-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 1260 </span>Jun<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>ucf.conf
+drwxr-xr-x<span class="hljs-number"> 3 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 ufw
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 14 </span>00:00 update-motd.d
+drwxr-xr-x<span class="hljs-number"> 2 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 vim
+-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 642 </span>Dec<span class="hljs-number"> 24 </span><span class="hljs-number"> 2020 </span>xattr.conf
+drwxr-xr-x<span class="hljs-number"> 3 </span>root root   <span class="hljs-number"> 4096 </span>Aug<span class="hljs-number"> 16 </span>15:44 xdg
+</code></pre>
+<p>La mayoría de los ficheros y directorios pueden ser leídos por los usuarios y algunos de ellos hasta pueden ser ejecutados, pero no se puede escribir en ninguno de ellos; y esto tiene sentido, ya que un usuario normal no debería poder escribir y modificar la configuración del sistema, mientras que algunos componentes sí que deberían poder ejecutarse para poder usar los programas.</p>
+<p>Observando de nuevo la lista anterior, se puede ver que el fichero <code>/etc/shadow</code> tiene permisos de lectura para todos los usuarios, una vulnerabilidad grave teniendo en cuenta la descripción anterior; como se quiere elevar privilegios, se puede intentar obtener la contraseña del usuario <code>root</code> para poder iniciar sesión como él.</p>
+<p>Revisando el contenido del fichero, se puede obtener una línea similar a esta:</p>
+<pre><code class="lang-text">root:$1$V3k7V9sY$8LnDZKFDxSJ8jqUE6Wtzc/:<span class="hljs-number">19586</span>:<span class="hljs-number">0</span>:<span class="hljs-number">99999</span>:<span class="hljs-number">7</span>:::
+</code></pre>
+<p>El contenido de <code>/etc/shadow</code> es muy similar al de <code>/etc/passwd</code>; sin embargo, este último tiene oculta la contraseña colocando una <code>x</code> en su lugar, por eso <code>/etc/passwd</code> se puede leer por todos los usuarios, mientras que <code>/etc/shadow</code> no.</p>
+<p>El contenido de <code>/etc/shadow</code> tiene el siguiente formato:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Campo</th>
+<th style="text-align:left">Descripción</th>
+<th style="text-align:center">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Usuario</strong></td>
+<td style="text-align:left">Nombre de usuario</td>
+<td style="text-align:center"><code>root</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Contraseña</strong></td>
+<td style="text-align:left">Contraseña (hash) del usuario</td>
+<td style="text-align:center"><code>$1$V3k7V9sY$8LnDZKFDxSJ8jqUE6Wtzc/</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Último cambio</strong></td>
+<td style="text-align:left">Días transcurridos desde el último cambio de contraseña</td>
+<td style="text-align:center"><code>19586</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Mínimo</strong></td>
+<td style="text-align:left">Mínimo de días antes de cambiar la contraseña</td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Máximo</strong></td>
+<td style="text-align:left">Máximo de días antes de cambiar la contraseña (caducidad, en días)</td>
+<td style="text-align:center"><code>99999</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Advertencia</strong></td>
+<td style="text-align:left">Número de días antes de que caduque la contraseña para advertir al usuario</td>
+<td style="text-align:center"><code>7</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Inactividad</strong></td>
+<td style="text-align:left">Número de días después de que caduque la contraseña antes de que la cuenta se bloquee</td>
+<td style="text-align:center">Ninguno</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Expiración</strong></td>
+<td style="text-align:left">Fecha de expiración de la cuenta (en días desde el 1 de enero de 1970)</td>
+<td style="text-align:center">NInguno</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Reservado</strong></td>
+<td style="text-align:left">Campo reservado para un uso futuro; no se usa actualmente</td>
+<td style="text-align:center">Ninguno</td>
+</tr>
+</tbody>
+</table>
+<p>Sabiendo eso, se ha obtenido el hash de la contraseña del usuario <code>root</code>, por lo que se puede usar una herramienta como <em>hashcat</em> para intentar crackearla.</p>
+<p>No obstante, primero será encesario obtener el tipo de hash que se está usando, ya que <em>hashcat</em> necesita saberlo para poder crackearlo, y aunque hay varios métodos, como usar <em>hashid</em> o <em>john</em>, se puede usar la página web <a href="https://hashes.com/en/tools/hash_identifier">Hashes.com</a> para identificar el tipo de hash.</p>
+<pre><code class="lang-shell"><span class="hljs-attribute">hashid</span> <span class="hljs-string">'<span class="hljs-variable">$1</span><span class="hljs-variable">$V3k7V9sY</span><span class="hljs-variable">$8</span>LnDZKFDxSJ8jqUE6Wtzc/'</span>
+</code></pre>
+<pre><code class="lang-text"><span class="hljs-symbol">Analyzing</span> <span class="hljs-string">'$1$V3k7V9sY$8LnDZKFDxSJ8jqUE6Wtzc/'</span>
+[+] <span class="hljs-symbol">MD5</span> <span class="hljs-symbol">Crypt</span> [<span class="hljs-symbol">Hashcat</span> <span class="hljs-symbol">Mode</span>: <span class="hljs-number">500</span>]
+[+] <span class="hljs-symbol">Cisco</span>-<span class="hljs-symbol">IOS</span>(<span class="hljs-symbol">MD5</span>) [<span class="hljs-symbol">Hashcat</span> <span class="hljs-symbol">Mode</span>: <span class="hljs-number">500</span>]
+[+] <span class="hljs-symbol">FreeBSD</span> <span class="hljs-symbol">MD5</span> [<span class="hljs-symbol">Hashcat</span> <span class="hljs-symbol">Mode</span>: <span class="hljs-number">500</span>]
+</code></pre>
+<blockquote>
+<p><strong>Nota</strong><br>Se deben usar comillas simples (<code>&#39;</code>) para evitar que la shell interprete el símbolo <code>$</code> como una variable.</p>
+</blockquote>
+<p>La salida del comando <em>hashid</em> es muy útil, no solo porque nos identifica varios posibles algoritmos de hashes, sino porque además muestra el código que debe usarse en <em>hashcat</em> para crackear hashes de dicho algoritmo (en este caso <em>500</em>). Esto también puede consultarse en la <a href="https://hashcat.net/wiki/doku.php?id=example_hashes">wiki de hashcat</a> y buscar los primeros caracteres del hash en los ejemplos, para identificar el algoritmo.</p>
+<p><img src="./resources/hashcat-examples.png" alt="Hashcat wiki"></p>
+<blockquote>
+<p><strong>Nota</strong><br>Aquí, el único ejemplo de algoritmo que contiene <strong><code>$1$</code> al inicio</strong> es <em>MD5 Crypt</em>, que además coincide con el resultado de <em>hashid</em>.</p>
+</blockquote>
+<p>Ahora que se sabe el algoritmo de hash que se está usando, se puede usar <em>hashcat</em> para crackearlo.</p>
+<pre><code class="lang-shell">hashcat -m 500 <span class="hljs-_">-a</span> 0 {<span class="hljs-built_in">hash</span>} {dicionario}
+</code></pre>
+<ul>
+<li><code>-m 500</code>: especifica el algoritmo de hash a usar, en este caso <em>MD5 Crypt</em> (<em>500</em>).</li>
+<li><code>-a 0</code>: especifica el tipo de ataque a usar, en este caso <em>fuerza bruta</em> (<em>0</em>).</li>
+<li><code>&lt;hash&gt;</code>: especifica el hash a crackear.</li>
+<li><code>&lt;diccionario&gt;</code>: especifica el diccionario a usar para el ataque.</li>
+</ul>
+<p>Tras unos segundos, <em>hashcat</em> obtendrá y mostrará la contraseña encontrada en un formato como el siguiente:</p>
+<pre><code class="lang-text"><span class="hljs-variable">$1</span><span class="hljs-variable">$V3k7V9sY</span><span class="hljs-variable">$8LnDZKFDxSJ8jqUE6Wtzc</span>/<span class="hljs-symbol">:&lt;contrase</span>ña&gt;
+</code></pre>
+<blockquote>
+<p><strong>Nota</strong><br>Cabe destacar que este entorno ha sido modificado para que la contraseña se cifre con un algoritmo poco recomendable, ya que Debian 11 introdujo un nuevo algoritmo de hash para las contraseñas, llamado <code>yescrypt</code> (que sustituye al anterior <code>sha512crypt</code>), mientras que en este entorno se usa <code>md5</code>.</p>
+<p>Esta configuración puede verse en el fichero <code>/etc/pam.d/common-password</code>.</p>
+</blockquote>
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://conpilar.es/explicacion-del-archivo-etc-shadow-en-linux">Archivo &#39;/etc/shadow&#39;</a></li>
+<li><a href="https://hashcat.net/wiki/doku.php?id=example_hashes">Hashcat</a></li>
+</ul>
+
