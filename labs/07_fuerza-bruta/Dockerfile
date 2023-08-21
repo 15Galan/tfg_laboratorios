@@ -19,7 +19,7 @@ RUN chmod 700 /home/user/.ssh
 RUN chmod 600 /home/user/.ssh/authorized_keys
 
 # Archivos necesarios
-RUN wget https://gist.githubusercontent.com/roycewilliams/4003707694aeb44c654bf27a19249932/raw/7afc95e02df629515960a3e45109e6f88db3a99e/rockyou-top15k.txt -O /home/user/rockyou.txt
+COPY resources/rockyou-top15k.txt /home/user/rockyou-top15k.txt
 
 #Servicio necesario
 CMD ["/usr/sbin/sshd", "-D"]
