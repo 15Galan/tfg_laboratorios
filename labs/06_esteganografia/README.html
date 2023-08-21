@@ -1,0 +1,98 @@
+<!-- Esteganografía -->
+<h1 id="introducci-n">Introducción</h1>
+<p>La esteganografía es <strong>el arte de ocultar información</strong> dentro de otra información.</p>
+<p>Esto puede parecer similar a la criptografía, pero no lo es: la <strong>criptografía</strong> se encarga de ocultar el <strong>significado</strong> de un mensaje, mientras que la <strong>esteganografía</strong> se encarga de ocultar la <strong>existencia</strong> de un mensaje.</p>
+<p>Esto puede resultar útil en ciertas situaciones, como por ejemplo, cuando se quiere enviar un mensaje de forma secreta, pero no se quiere que nadie sepa que se está enviando un mensaje.</p>
+<p>Las técnicas de esteganografía se pueden clasificar en 2 grandes grupos:</p>
+<ul>
+<li><strong>Digital</strong>: se basa en el uso de herramientas informáticas para ocultar información dentro de ficheros digitales. Por ejemplo, ocultar un mensaje dentro de una imagen.</li>
+<li><strong>Analógica</strong>: se basa en el uso de técnicas manuales para ocultar información dentro de objetos físicos. Por ejemplo, ocultar un mensaje dentro de un libro.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>Aquí se tratará la esteganografía digital, porque la información proporcionada se dirige al pentesting; sin embargo, también es importante conocer la esteganografía natural, ya que las auditorías de seguridad no solo tienen lugar en entornos digitales (redes, ordenadores, dispositivos...), sino que también pueden tener lugar en entornos físicos (oficinas, edificios, etc.).</p>
+</blockquote>
+<h2 id="multimedia-en-internet">Multimedia en Internet</h2>
+<p>Cabe destacar que precisamente por la cantidad de información disponible en los metadatos de una imagen, vídeo o incluso audio, la mayoría de empresas y servicios que requieren publicar contenido en Internet (ya sea mediante redes sociales o sus páginas webs), suelen <strong>eliminar los metadatos</strong> de los ficheros multimedia que se suben a sus plataformas.</p>
+<ul>
+<li><strong>Privacidad</strong>: los metadatos pueden contener información sensible sobre el autor de la imagen; por ejemplo, la ubicación donde se tomó una foto.</li>
+<li><strong>Seguridad</strong>: los metadatos pueden contener información sensible sobre el dispositivo con el que se tomó la foto; por ejemplo, el dispositivo que realizó una foto.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>Por tanto, es recomendable -y una práctica habitual- eliminar los metadatos de los ficheros multimedia que se suben a Internet, ya que podrían ser una fuente de información para un atacante en su fase de reconocimiento.</p>
+</blockquote>
+<h1 id="herramientas">Herramientas</h1>
+<p>Existen diversas herramientas para leer y escribir sobre los metadatos de los ficheros, así como para ocultar información dentro de ficheros de imagen, audio y vídeo.</p>
+<p>Los metadatos son información adicional que se almacena dentro de los ficheros, como por ejemplo, la fecha de creación, el autor, etc; estos metadatos no forman parte del contenido que ofrece el fichero (texto, imagen...), pero forman parte de la estructura del fichero en sí mismo.</p>
+<blockquote>
+<p><strong>Nota</strong><br>También suele ser habitual que la información oculta esté cifada, añadiendo una capa más de protección en caso de que alguien encuentre dicha información.</p>
+<p>Una práctica sencilla y común, es codificar información como texto usando <code>base64</code>, por lo que es recomendable saber cómo usar ese comando.</p>
+</blockquote>
+<h2 id="-base64-"><code>base64</code></h2>
+<p>Este comando permite codificar y decodificar objetos (texto, ficheros...) en formato <code>base64</code>; este formato es un estándar para codificar información binaria en texto ASCII de forma que se pueda transmitir por canales que solo admitan texto.</p>
+<p>Para codificar / decodificar un texto en formato <code>base64</code>:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">echo</span> {texto} | base64
+<span class="hljs-built_in">echo</span> {texto} | base64 <span class="hljs-_">-d</span>
+</code></pre>
+<ul>
+<li><code>-d</code>: se usará el comando para decodificar el texto.</li>
+</ul>
+<p>Para codificar / decodificar un fichero en formato <code>base64</code>:</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">base64</span> {fichero}
+<span class="hljs-keyword">base64</span> -<span class="hljs-keyword">d</span> {fichero}
+</code></pre>
+<ul>
+<li><code>-d</code>: se usará el comando para decodificar el fichero.</li>
+</ul>
+<h2 id="-exiftool-"><code>exiftool</code></h2>
+<p>Esta herramienta permite a los usuarios leer y escribir sobre los metadatos EXIF, IPTC y XMP de los ficheros.</p>
+<p>Los metadata EXIF son metadatos que se utilizan para almacenar información sobre imágenes, como la fecha de creación, el autor, el dispositivo con el que se tomó la foto, etc; IPTC es un estándar para el intercambio de información sobre imágenes, y XMP es un formato de metadatos basado en XML.</p>
+<p>Esto quiere decir que si se oculta información dentro de los metadatos de una imagen, esta información se puede leer si el dispositivo que se utiliza para leer la imagen es compatible con los metadatos EXIF, IPTC y XMP.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Esta herramienta es commúnmente utilizada debido a su facilidad de uso y a que es compatible con una gran cantidad de formatos de ficheros.</p>
+</blockquote>
+<p>Para leer los metadatos de un fichero:</p>
+<pre><code class="lang-bash"><span class="hljs-class">exiftool </span>{fichero}
+</code></pre>
+<p>Para escribir los metadatos de un fichero:</p>
+<pre><code class="lang-bash"><span class="xml">exiftool -</span><span class="hljs-template-variable">{metadato}</span><span class="xml">="</span><span class="hljs-template-variable">{valor}</span><span class="xml">" </span><span class="hljs-template-variable">{fichero}</span><span class="xml"></span>
+</code></pre>
+<p>Ejemplo:</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">exiftool -Author</span>=<span class="hljs-string">"John Doe"</span> imagen.jpg
+</code></pre>
+<ul>
+<li>Escribir el metadato <code>Author</code> con el valor <code>John Doe</code> en el fichero <code>imagen.jpg</code>.</li>
+</ul>
+<h2 id="-steghide-"><code>steghide</code></h2>
+<p>Esta herramienta permite a los usuarios ocultar información dentro de ficheros de imagen, audio y vídeo.</p>
+<p>Se puede ocultar información dentro de una imagen con el siguiente comando:</p>
+<pre><code class="lang-bash">steghide embed -<span class="hljs-class">cf </span>{imagen} -<span class="hljs-class">ef </span>{archivo} -<span class="hljs-class">p </span>{contraseña}
+</code></pre>
+<ul>
+<li><code>imagen</code> es la imagen en la que se va a ocultar la información.</li>
+<li><code>archivo</code> es el archivo que se va a ocultar dentro de la imagen.</li>
+<li><code>contraseña</code> es la contraseña que se va a utilizar para cifrar el archivo.</li>
+</ul>
+<p>Por ejemplo, para ocultar el archivo <code>mensaje.txt</code> dentro de la imagen <code>imagen.jpg</code> con la contraseña <code>1234</code>, ejecutamos el siguiente comando:</p>
+<pre><code class="lang-bash">steghide embed -cf imagen<span class="hljs-selector-class">.jpg</span> -ef mensaje<span class="hljs-selector-class">.txt</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">1234</span>
+</code></pre>
+<h3 id="extraer-informaci-n">Extraer información</h3>
+<p>Para extraer la información oculta dentro de una imagen, ejecutamos el siguiente comando:</p>
+<pre><code class="lang-bash">steghide extract -<span class="hljs-class">sf </span>{imagen} -<span class="hljs-class">p </span>{contraseña}
+</code></pre>
+<ul>
+<li><code>&lt;imagen&gt;</code> es la imagen de la que se va a extraer la información.</li>
+<li><code>&lt;contraseña&gt;</code> es la contraseña que se va a utilizar para descifrar el archivo.</li>
+</ul>
+<p>Por ejemplo, para extraer la información oculta dentro de la imagen <code>imagen.jpg</code> con la contraseña <code>1234</code>, ejecutamos el siguiente comando:</p>
+<pre><code class="lang-bash">steghide extract -sf imagen<span class="hljs-selector-class">.jpg</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">1234</span>
+</code></pre>
+<h1 id="laboratorio">Laboratorio</h1>
+<p>Este entorno contiene una serie de imágenes con información oculta, donde puedes usar las herramientas anteriormente mencionadas tanto para experimentar por tu cuenta como para utilizar los recursos propuestos.</p>
+<ul>
+<li>Credenciales: <code>user:user</code></li>
+</ul>
+<p>El entorno simula que toda la información de los recursos está relacionada, por lo que es posible que para obtener la información oculta de un recurso, primero tengas que obtener la información oculta de otro recurso.</p>
+<blockquote>
+<p><strong>Nota</strong><br>La información conduce a la contraseña del usuario <code>root</code>.</p>
+</blockquote>
+
