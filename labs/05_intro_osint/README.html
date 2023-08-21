@@ -1,0 +1,158 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="introducci-n-al-osint">Introducción al OSINT</h1>
+<p>OSINT (<em><strong>O</strong>pen <strong>S</strong>ource <strong>Int</strong>elligence</em>) es una disciplina que se encarga de recolectar información de fuentes abiertas; es decir, información que se encuentra disponible para el público en general. Esta información puede ser utilizada para realizar análisis de seguridad, inteligencia de negocios, análisis de riesgos, etc.</p>
+<p>Esta disciplina se ha utilizado desde hace mucho tiempo, pero con el auge de las redes sociales y la facilidad de acceso a la información, se ha vuelto mucho más popular.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Existen diferentes inteligencias además de OSINT, como las siguientes:</p>
+<ul>
+<li><strong>HUMINT</strong> (<em><strong>Hum</strong>an <strong>Int</strong>elligence</em>): información obtenida por medio de personas (agentes, informadores...).</li>
+<li><strong>SIGINT</strong> (<em><strong>Sig</strong>nals <strong>Int</strong>elligence</em>): información obtenida por medio de señales (telefonía, radiorefuencia...).</li>
+<li><strong>IMINT</strong> (<em><strong>Im</strong>agery <strong>Int</strong>elligence</em>): información obtenida por medio de imágenes (satélites, videovigilancia, drones...).</li>
+<li><strong>MASINT</strong> (<em><strong>Mas</strong>sive <strong>Int</strong>elligence</em>): información obtenida por medio de sensores (sonares, radares...).</li>
+</ul>
+</blockquote>
+<h2 id="herramientas-tiles">Herramientas útiles</h2>
+<h3 id="google-dorks">Google Dorks</h3>
+<p>El buscador de Google es una herramienta muy útil para realizar búsquedas de información, pero también es posible utilizarlo para realizar búsquedas más específicas; para ello, se pueden utilizar los llamados <em>Google Dorks</em>, que son cadenas de búsqueda que permiten filtrar los resultados de búsqueda.</p>
+<p>Estos son algunos de los operadores más utilizados:</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;&quot;</code></td>
+<td>Valor literal</td>
+</tr>
+<tr>
+<td><code>site:</code></td>
+<td>Filtro para el dominio</td>
+</tr>
+<tr>
+<td><code>filetype:</code></td>
+<td>Filtro para el tipo de un archivo (su extensión)</td>
+</tr>
+<tr>
+<td><code>ext:</code></td>
+<td>Filtro para el tipo de un archivo (su extensión)</td>
+</tr>
+<tr>
+<td><code>inurl:</code></td>
+<td>Busca una palabra en una URL del sitio</td>
+</tr>
+<tr>
+<td><code>intext:</code></td>
+<td>Busca una palabra en los resultados de una página del sitio</td>
+</tr>
+<tr>
+<td><code>intitle:</code></td>
+<td>Busca una palabra en el título de una página del sitio</td>
+</tr>
+<tr>
+<td><code>allinurl:</code></td>
+<td>Busca todas las palabras en una URL del sitio</td>
+</tr>
+<tr>
+<td><code>allintext:</code></td>
+<td>Busca todas las palabras en los resultados de una página del sitio</td>
+</tr>
+<tr>
+<td><code>allintitle:</code></td>
+<td>Busca todas las palabras en el título de una página del sitio</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Simbolo de exclusión, excluye de los resultados lo que vaya a continuación</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Símbolo de comodín, representa <em>cualquier palabra</em></td>
+</tr>
+<tr>
+<td><code>cache:</code></td>
+<td>Mostrará la versión en caché de la web en cuestión</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td>Operador lógico, también se puede representar por <code>\</code></td>
+</tr>
+<tr>
+<td><code>AND</code></td>
+<td>Operador lógico, normalmente se deja el espacio en blanco</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos">Ejemplos</h4>
+<p>&quot;Documentos PDF del gobierno considerados como confidenciales.&quot;</p>
+<pre><code class="lang-text"><span class="hljs-selector-tag">site</span><span class="hljs-selector-pseudo">:gov</span> <span class="hljs-selector-tag">filetype</span><span class="hljs-selector-pseudo">:pdf</span> <span class="hljs-selector-tag">allintitle</span><span class="hljs-selector-pseudo">:restricted</span>
+</code></pre>
+<ul>
+<li><code>site:gov</code>: filtro para el dominio; dominio del gobierno.</li>
+<li><code>filetype:pdf</code>: filtro para el tipo de archivo; documentos PDF.</li>
+<li><code>allintitle:restricted</code>: filtro para el título de la página; contiene la palabra <em>restricted</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Ejemplo</strong><br>El primer resultado de <a href="https://www.google.com/search?q=site%3Agov+filetype%3Apdf+allintitle%3Arestricted&amp;sxsrf=AB5stBhWGj9DrI6nj9KhkI6a85jcMG2sdQ%3A1689199828948&amp;source=hp&amp;ei=1CSvZN2uN4yRkdUPmqu_oAM&amp;iflsig=AD69kcEAAAAAZK8y5DM5XOXwcnI3pqbPxP6RxDy8Elup&amp;ved=0ahUKEwjd6Ibel4qAAxWMSKQEHZrVDzQQ4dUDCAs&amp;uact=5&amp;oq=site%3Agov+filetype%3Apdf+allintitle%3Arestricted&amp;gs_lcp=Cgdnd3Mtd2l6EAM6BwgjEOoCECdQiAJYiAJg8gRoAXAAeACAAVaIAVaSAQExmAEAoAECoAEBsAEK&amp;sclient=gws-wiz">la aplicación de este <em>dork</em></a> ya es un documento confidencial.</p>
+</blockquote>
+<p>&quot;Brecha de alguna página que contenga un usuario y contraseña determinados.&quot;</p>
+<pre><code class="lang-text">filetype:txt site:example.com password|<span class="hljs-type">passwords</span>|<span class="hljs-type">contrase</span>ña|<span class="hljs-type">contrase</span>ñ<span class="hljs-built_in">as</span>|<span class="hljs-type">login</span>
+</code></pre>
+<ul>
+<li><code>filetype:txt</code>: filtro para el tipo de archivo; texto plano.</li>
+<li><code>site:example.com</code>: filtro para el dominio; el sitio <a href="https://example.com">example.com</a>.</li>
+<li><code>password| ... |login</code>: filtro para el contenido; contiene las palabras <em>password(s)</em>, <em>contraseña(s)</em> o <em>login</em>.</li>
+</ul>
+<p>&quot;Documentos que contengan la palabra <em>confidencial</em>.&quot;</p>
+<pre><code class="lang-text"><span class="hljs-selector-tag">inurl</span><span class="hljs-selector-pseudo">:webkeyword</span> <span class="hljs-selector-tag">filetype</span><span class="hljs-selector-pseudo">:doc</span> <span class="hljs-selector-tag">confidencial</span>
+</code></pre>
+<ul>
+<li><code>inurl:webkeyword</code>: filtro para la URL; contiene la palabra <em>webkeyword</em>.</li>
+<li><code>filetype:doc</code>: filtro para el tipo de archivo; Microsoft Word.</li>
+<li><code>confidencial</code>: filtro para el contenido; contiene la palabra <em>confidencial</em>.</li>
+</ul>
+<p>&quot;Feeds de cámaras de seguridad.&quot;</p>
+<pre><code class="lang-text"><span class="hljs-symbol">inurl:</span><span class="hljs-string">"ViewerFrame?Mode="</span>
+</code></pre>
+<ul>
+<li><code>inurl:&quot;ViewerFrame?Mode=&quot;</code>: filtro para la URL; contiene la cadena <em>ViewerFrame?Mode=</em> (ya que es una cadena que muchas cámaras sueñen utilizar).</li>
+</ul>
+<p>Por último, cabe destacar que, al igual que en otros campos de la ciberseguridad, ser ingenioso marcará la diferencia para sacarle más provecho a esta herramienta.</p>
+<p><img src="https://i0.wp.com/i.postimg.cc/xjRk8mcy/Diana-Dorks.jpg?w=696&amp;ssl=1" alt="Diana"></p>
+<h3 id="shodan-io">Shodan.io</h3>
+<p><a href="https://www.shodan.io">Shodan.io</a> es un motor de búsqueda que, al contrario de los motores de búsqueda habituales, no indexa páginas web, sino que rastrea y almacena información sobre dispositivos como servidores, cámaras IP, enrutadores, sistemas de control industrial, dispositivos médicos y una amplia variedad de otros dispositivos que se encuentran conectados a Internet.</p>
+<p>Su objetivo principal es proporcionar a los investigadores de seguridad, profesionales de la red y curiosos, acceso a información detallada sobre estos dispositivos: Shodan.io almacena metadatos e información técnica sobre los dispositivos, como puertos abiertos, servicios en ejecución, versiones de software, configuraciones predeterminadas... y en algunos casos, incluso datos sensibles (que podrían ser accesibles públicamente).</p>
+<p>Esta plataforma permite a los usuarios buscar dispositivos y servicios específicos utilizando una variedad de filtros y operadores avanzados, dando un gran control sobre la información a sus usuarios.</p>
+<p>Además, cuenta con una API pública que permite a los usuarios construir sus propias funcionalidades sobre la base de la información que proporciona Shodan.io.</p>
+<blockquote>
+<p><strong>Ejemplo</strong><br><a href="https://www.shodan.io/host/191.252.201.137">Esta búsqueda</a> muestra un caso real de una cámara de seguridad que se encuentra en Brasil, donde es posible visualizar la información del dispositivo, de la IP, los puertos abiertos y CVEs.</p>
+</blockquote>
+<h3 id="virustotal">VirusTotal</h3>
+<p><a href="https://www.virustotal.com/gui/home/upload">VirusTotal</a> es una plataforma de análisis de malware y servicio de inteligencia de amenazas basado en la web, que proporciona a los usuarios la capacidad de enviar archivos y direcciones URL sospechosos para su escaneo y análisis.</p>
+<p>Cuando se envía un archivo o URL, se somete a un escaneo utilizando una amplia variedad de motores antivirus y herramientas de análisis de malware; estos motores son proporcionados por diferentes empresas de seguridad, lo que permite obtener una visión general de cómo se detecta el archivo o la URL en diferentes productos antivirus y herramientas de seguridad.</p>
+<p>VirusTotal recopila y comparte información relevante sobre los archivos y URL analizados de manera anónima, lo que incluye metadatos, características del archivo, resultados de escaneos antivirus, entre otros; esto hace que se convierta en una gran fuente de información para realizar OSINT y contrastar datos.</p>
+<p>Además, también proporciona una API, por lo que es posible generar análisis de forma más cómoda.</p>
+<h3 id="whois">WHOIS</h3>
+<p><a href="https://who.is">WHOIS</a> es un protocolo de consulta y respuesta que se utiliza para consultar una base de datos que permite determinar el propietario de un nombre de dominio o una dirección IP en Internet.</p>
+<h1 id="laboratorio">Laboratorio</h1>
+<p>Este entorno presenta un proyecto de Python con el que extraer información de una IP de varias fuentes de información, entre las que se encuentran Shodan, VirusTotal y WHOIS.</p>
+<p>El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una IP o una lista de IPs (en un archivo de texto) y obtener información de cada una de ellas usando las fuentes mencionadas, entre otras.</p>
+<blockquote>
+<p><strong>Nota</strong><br>La información de Shodan.io y VirusTotal se obtiene a través de sus APIs públicas, por lo que es necesario tener una cuenta en cada una de ellas y obtener una clave de API para poder usarlas.</p>
+<p>No usar una clave no afectará al programa más allá de no usar esas 2 fuentes de información.</p>
+</blockquote>
+<p>Credenciales: <code>root:root</code>.</p>
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://derechodelared.com/google-dorking-que-es">Google Dorking, ¿qué es?</a></li>
+<li><a href="https://www.youtube.com/watch?v=VYf5f2MTMSw">Tutorial de Google Hacking en Español</a></li>
+<li><a href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shodan_(website">Shodan (website)</a>)</li>
+<li><a href="https://whois.whoisxmlapi.com">WhoisXMLAPI</a></li>
+<li><a href="https://github.com/sherlock-project/sherlock">sherlock-project/sherlock</a></li>
+</ul>
+</body></html>

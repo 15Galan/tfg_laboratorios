@@ -1,0 +1,197 @@
+<!-- Criptografía -->
+<h2 id="introducci-n">Introducción</h2>
+<p>La <strong>criptografía</strong> es <em>el arte de codificar mensajes</em> de forma que solo las partes autorizadas puedan comprender su contenido, utilizando técnicas y algoritmos que garantizan la confidencialidad, integridad y autenticidad de los datos.</p>
+<blockquote>
+<p>Este es un <strong>campo esencial</strong> en la seguridad de la información y las comunicaciones.</p>
+</blockquote>
+<p>La importancia de la criptografía radica en su capacidad para <em>proteger la información tanto en reposo como en tránsito</em>; lo que incluye la protección de datos almacenados en dispositivos y sistemas de información, así como la seguridad de las comunicaciones que se transmiten a través de redes.</p>
+<blockquote>
+<p><strong>Nota</strong><br>La criptografía <strong>garantiza</strong> que incluso si un atacante intercepta los datos, no podrá leer ni modificar el contenido sin la clave adecuada.</p>
+</blockquote>
+<h2 id="conceptos-b-sicos">Conceptos básicos</h2>
+<h3 id="cifrado">Cifrado</h3>
+<blockquote>
+<p>El cifrado es uno de los aspectos fundamentales de la criptografía.</p>
+</blockquote>
+<p>Se trata del <strong>proceso de transformar un mensaje legible en una forma ininteligible</strong> utilizando un algoritmo y una clave; esta es un componente crucial, ya que determina cómo se realiza la transformación y, lo que es igualmente importante, cómo se revierte este proceso (descifrado).</p>
+<blockquote>
+<p><strong>Nota</strong><br>Algunos cifrados, como los cifrados basados en <em>sustitución simple</em>, no utilizan claves en el sentido tradicional de una clave secreta para el cifrado y el descifrado.</p>
+<p>Sin embargo, <em>estos tipos de cifrados tienden a ser menos seguros</em> y más fáciles de romper en comparación con los cifrados modernos que utilizan claves criptográficas robustas.</p>
+</blockquote>
+<h4 id="tipos-de-cifrado">Tipos de cifrado</h4>
+<p>Los algoritmos de cifrado se pueden clasificar en 2 categorías principales: <strong>cifrado simétrico</strong> y <strong>cifrado asimétrico</strong>.</p>
+<p>No obstante, también existen otras características que se pueden utilizar para clasificar los algoritmos de cifrado, como el tamaño de la clave, el tipo de operaciones que se realizan o el número de claves utilizadas.</p>
+<h5 id="cifrado-sim-trico">Cifrado simétrico</h5>
+<blockquote>
+<p>También se le conoce como <em>cifrado de clave privada</em>.</p>
+</blockquote>
+<p>Se trata de un cifrado que <strong>utiliza la misma clave tanto para cifrar como para descifrar el mensaje</strong>. Este enfoque eficiente es útil para la transmisión segura de datos entre partes que ya comparten una clave secreta.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Este tipo de cifrado es más rápido que el <em>cifrado asimétrico</em>, pero requiere que las partes compartan previamente una clave secreta.</p>
+</blockquote>
+<p>Se muestran a continuación algunos ejemplos de cifrados simétricos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Algoritmo</th>
+<th style="text-align:center">Siglas</th>
+<th style="text-align:center">Longitud de clave (bits)</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AES</td>
+<td style="text-align:center"><em><strong>A</strong>dvanced <strong>E</strong>ncryption <strong>S</strong>tandard</em></td>
+<td style="text-align:center">128, 192, 256</td>
+<td style="text-align:left">Ampliamente utilizado en la actualidad.</td>
+</tr>
+<tr>
+<td style="text-align:center">DES</td>
+<td style="text-align:center"><em><strong>D</strong>ata <strong>E</strong>ncryption <strong>S</strong>tandard</em></td>
+<td style="text-align:center">56</td>
+<td style="text-align:left">Todavía se utiliza en algunas aplicaciones, pero es considerado antiguo.</td>
+</tr>
+<tr>
+<td style="text-align:center">3DES</td>
+<td style="text-align:center"><em>Triple DES</em></td>
+<td style="text-align:center">168</td>
+<td style="text-align:left">Una versión más segura del algoritmo DES, aplicando DES tres veces para cada bloque de datos.</td>
+</tr>
+<tr>
+<td style="text-align:center">RC4</td>
+<td style="text-align:center"><em><strong>R</strong>ivest <strong>C</strong>ipher <strong>4</strong></em></td>
+<td style="text-align:center">40, 56, 64, 80, 128</td>
+<td style="text-align:left">Todavía se utiliza en algunas aplicaciones, pero es considerado antiguo.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong><br>El cifrado AES tiene varios modos de operación, como <em>ECB</em>, <em>CBC</em>, <em>CFB</em>, <em>OFB</em> y <em>CTR</em>.</p>
+<p>Estos modos definen cómo se cifran los datos y cómo se manejan los errores de transmisión, por lo que es importante elegir el modo adecuado para cada caso de uso y además, tenerlos en cuenta a la hora de descifrar los datos.</p>
+</blockquote>
+<h5 id="cifrado-asim-trico">Cifrado asimétrico</h5>
+<blockquote>
+<p>También se le conoce como <em>cifrado de clave pública</em>.</p>
+</blockquote>
+<p>Se trata de un cifrado que <strong>emplea un par de claves relacionadas: una clave pública para cifrar y una clave privada para descifrar</strong>. Este enfoque permite una comunicación segura incluso en escenarios donde las partes no comparten previamente una clave secreta.</p>
+<ul>
+<li>La clave pública se comparte ampliamente: cualquier persona puede cifrar un mensaje para el destinatario.</li>
+<li>La clave privada se mantiene en secreto: solo el destinatario puede descifrar el mensaje.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>Este tipo de cifrado es más lento que el <em>cifrado simétrico</em>, pero no requiere que las partes compartan previamente una clave secreta.</p>
+</blockquote>
+<p>Se muestran a continuación algunos ejemplos de cifrados asimétricos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Algoritmo</th>
+<th style="text-align:center">Siglas</th>
+<th style="text-align:center">Longitud de clave (bits)</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">RSA</td>
+<td style="text-align:center"><em><strong>R</strong>ivest-<strong>S</strong>hamir-<strong>A</strong>dleman</em></td>
+<td style="text-align:center">1024, 2048, 4096</td>
+<td style="text-align:left">Ampliamente utilizado en la actualidad.</td>
+</tr>
+<tr>
+<td style="text-align:center">DSA</td>
+<td style="text-align:center"><em><strong>D</strong>igital <strong>S</strong>ignature <strong>A</strong>lgorithm</em></td>
+<td style="text-align:center">1024, 2048, 3072</td>
+<td style="text-align:left">Todavía se utiliza en algunas aplicaciones, pero es considerado antiguo.</td>
+</tr>
+<tr>
+<td style="text-align:center">ECC</td>
+<td style="text-align:center"><em><strong>E</strong>lliptic <strong>C</strong>urve <strong>C</strong>ryptography</em></td>
+<td style="text-align:center">160, 224, 256, 384</td>
+<td style="text-align:left">Ampliamente utilizado en la actualidad.</td>
+</tr>
+<tr>
+<td style="text-align:center">ElGamal</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">1024, 2048, 3072</td>
+<td style="text-align:left">Todavía se utiliza en algunas aplicaciones, pero es considerado antiguo.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="cifrado-h-brido">Cifrado híbrido</h5>
+<p>Este enfoque combina las fortalezas del cifrado simétrico y el cifrado asimétrico.</p>
+<p>Aquí el mensaje se cifra con una clave simétrica aleatoria y la clave simétrica se cifra con la clave pública del destinatario; de esta forma, el destinatario puede descifrar la clave simétrica con su clave privada y luego descifrar el mensaje con la clave simétrica.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Este enfoque también se puede utilizar para cifrar mensajes entre varias partes. En este caso, la clave simétrica se cifra con la clave pública de cada destinatario.</p>
+</blockquote>
+<h3 id="firma-digital">Firma digital</h3>
+<blockquote>
+<p>Componente fundamental de la criptografía de clave pública.</p>
+</blockquote>
+<p>Se trata de una técnica que utiliza claves asimétricas para garantizar la integridad de un mensaje y verificar la identidad del emisor. La firma digital se crea aplicando una función criptográfica al mensaje y la clave privada del remitente.</p>
+<p>Los destinatarios pueden verificar la firma utilizando la clave pública del remitente, asegurando que el mensaje no haya sido alterado y provenga de la fuente esperada. Las firmas digitales son esenciales para asegurar la autenticidad de las comunicaciones en entornos digitales.</p>
+<blockquote>
+<p><strong>Nota</strong><br>Las firmas digitales no proporcionan confidencialidad, ya que el mensaje se puede leer sin descifrarlo.</p>
+</blockquote>
+<h2 id="herramientas">Herramientas</h2>
+<h3 id="openssl">OpenSSL</h3>
+<p>Librería de código abierto que implementa los protocolos <strong>SSL</strong> y <strong>TLS</strong>, así como una herramienta de línea de comandos para trabajar con estos protocolos.</p>
+<p>OpenSSL es ampliamente utilizado en una variedad de aplicaciones y servicios que requieren comunicaciones seguras a través de redes, como sitios web, servidores de correo electrónico, etc.</p>
+<p>No obstante, aunque está orientado a la seguridad de las comunicaciones, OpenSSL también se puede utilizar para cifrar y descifrar archivos de forma local.</p>
+<p><strong>Generación de claves</strong></p>
+<pre><code class="lang-bash">openssl genrsa -out clave_pri<span class="hljs-selector-class">.pem</span> <span class="hljs-number">2048</span>
+openssl rsa -<span class="hljs-keyword">in</span> clave_pri<span class="hljs-selector-class">.pem</span> -pubout -out clave_pub.pem
+</code></pre>
+<ul>
+<li><code>genrsa</code>: genera un par de claves RSA.</li>
+<li><code>rsa</code>: convierte un par de claves RSA en diferentes formatos (PEM, DER, etc.).</li>
+<li><code>-in</code>: especifica el archivo de entrada.</li>
+<li><code>-pubout</code>: especifica que la clave pública se exportará en lugar de la clave privada.</li>
+<li><code>-out</code>: especifica el archivo de salida.</li>
+</ul>
+<p><strong>Cifrado y descifrado de archivos</strong></p>
+<pre><code class="lang-bash">openssl rsautl -encrypt -inkey clave_pub<span class="hljs-selector-class">.pem</span> -pubin -<span class="hljs-keyword">in</span> mensaje<span class="hljs-selector-class">.txt</span> -out cifrado<span class="hljs-selector-class">.txt</span>
+openssl rsautl -decrypt -inkey clave_pri<span class="hljs-selector-class">.pem</span> -<span class="hljs-keyword">in</span> cifrado<span class="hljs-selector-class">.txt</span> -out descifrado.txt
+</code></pre>
+<ul>
+<li><code>rsautl</code>: realiza operaciones RSA en archivos.</li>
+<li><code>-encrypt</code>: especifica que se realizará un cifrado.</li>
+<li><code>-inkey</code>: especifica el archivo de clave pública.</li>
+<li><code>-pubin</code>: especifica que la clave pública se importará en lugar de la clave privada.</li>
+<li><code>-in</code>: especifica el archivo de entrada.</li>
+<li><code>-out</code>: especifica el archivo de salida.</li>
+</ul>
+<h3 id="gpg">GPG</h3>
+<p>Implementación de código abierto del estándar <strong>OpenPGP</strong>, que define formatos de mensajes cifrados y firmados digitalmente.</p>
+<p><strong>Generación de claves</strong></p>
+<pre><code class="lang-bash">gpg --full-<span class="hljs-keyword">generate</span>-key
+</code></pre>
+<ul>
+<li><code>--full-generate-key</code>: genera un par de claves RSA.</li>
+</ul>
+<p><strong>Cifrado y descifrado de archivos</strong></p>
+<pre><code class="lang-bash">gpg --encrypt --recipient <span class="hljs-string">"Nombre y Apellidos"</span> mensaje<span class="hljs-selector-class">.txt</span>
+gpg --decrypt mensaje<span class="hljs-selector-class">.txt</span><span class="hljs-selector-class">.gpg</span>
+</code></pre>
+<ul>
+<li><code>--encrypt</code>: realizar un cifrado usando el algoritmo de cifrado predeterminado.</li>
+<li><code>--recipient</code>: nombre del destinatario del mensaje.</li>
+<li><code>--decrypt</code>: descifrar un mensaje cifrado.</li>
+</ul>
+<p><strong>Firma digital</strong></p>
+<pre><code class="lang-bash">gpg --sign mensaje<span class="hljs-selector-class">.txt</span>
+gpg --verify mensaje<span class="hljs-selector-class">.txt</span><span class="hljs-selector-class">.gpg</span>
+</code></pre>
+<ul>
+<li><code>--sign</code>: firmar un objeto.</li>
+<li><code>--verify</code>: verificar la firma de un objeto.</li>
+</ul>
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Cryptography">Cryptography</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Public-key cryptography</a></li>
+<li><a href="https://www.openssl.org/">OpenSSL</a></li>
+<li><a href="https://gnupg.org/">GPG</a></li>
+</ul>
+
