@@ -7,7 +7,7 @@ Por otro lado, este conocimiento no solo sirve para acciones ofensivas de Red Te
 > **Importante**  
 > La terminología de las redes contienen mucha información tan importante como "larga", por lo que existen muchas siglas y abreviaturas para todos aquellos términos y conceptos.
 >
-> Esto puede resultar  página mostrará muchas de ellas, pero también su nombre completo, puesto que en la mayoría de casos, suele ser más fácil de entender y por tanto, de recordar.
+> Esto puede resultar confuso al principio, pero es importante conocerlos y familiarizarse con ellos, ya que son la base de las redes y de la ciberseguridad.
 
 ## Protocolos
 

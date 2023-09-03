@@ -8,7 +8,7 @@ Esta disciplina se ha utilizado desde hace mucho tiempo, pero con el auge de las
 > Existen diferentes inteligencias además de OSINT, como las siguientes:
 >
 > - **HUMINT** (_**Hum**an **Int**elligence_): información obtenida por medio de personas (agentes, informadores...).
-> - **SIGINT** (_**Sig**nals **Int**elligence_): información obtenida por medio de señales (telefonía, radiorefuencia...).
+> - **SIGINT** (_**Sig**nals **Int**elligence_): información obtenida por medio de señales (telefonía, radiofrecuencia...).
 > - **IMINT** (_**Im**agery **Int**elligence_): información obtenida por medio de imágenes (satélites, videovigilancia, drones...).
 > - **MASINT** (_**Mas**sive **Int**elligence_): información obtenida por medio de sensores (sonares, radares...).
 
@@ -114,6 +114,9 @@ Además, también proporciona una API, por lo que es posible generar análisis d
 
 # Laboratorio
 
+> **Credenciales**  
+> - `root:root`.
+
 Este entorno presenta un proyecto de Python con el que extraer información de una IP de varias fuentes de información, entre las que se encuentran Shodan, VirusTotal y WHOIS.
 
 El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una IP o una lista de IPs (en un archivo de texto) y obtener información de cada una de ellas usando las fuentes mencionadas, entre otras.
@@ -122,8 +125,6 @@ El proyecto consiste en una interfaz de línea de comandos que permite al usuari
 > La información de Shodan.io y VirusTotal se obtiene a través de sus APIs públicas, por lo que es necesario tener una cuenta en cada una de ellas y obtener una clave de API para poder usarlas.
 >
 > No usar una clave no afectará al programa más allá de no usar esas 2 fuentes de información.
-
-Credenciales: `root:root`.
 
 
 # Referencias

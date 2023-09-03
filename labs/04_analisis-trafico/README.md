@@ -244,7 +244,7 @@ Sin embargo, en términos generales, el análisis de tráfico se puede realizar 
 
 Este tipo de análisis se lleva a cabo cuando se quiere analizar un paquete o conversación en concreto, ya que es más rápido y sencillo que el análisis automático; sin embargo, requiere de una mayor precisión e investigación previa para saber qué paquetes analizar.
 
-El proceso de análisis de un paquete consisistirá en extraer todos los datos de los campos del mismo y así componer una información más detallada, esto se puede lograr con las herramientas mencionadas en la siguiente sección.
+El proceso de análisis de un paquete consistirá en extraer todos los datos de los campos del mismo y así componer una información más detallada, esto se puede lograr con las herramientas mencionadas en la siguiente sección.
 
 ### Análisis automático
 

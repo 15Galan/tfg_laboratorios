@@ -825,20 +825,17 @@ r-- = 100, que es 4 en binario.
 
 # Laboratorio
 
+> **Credenciales**  
+> - `root`:`root`, superusuario.
+> - `user`:`user`, usuario normal.
+> - `homer`:`homer`, usuario normal y miembro del grupo `simpsons`.
+> - `marge`:`marge`, usuario normal y miembro del grupo `simpsons`.
+> - `bart`:`bart`, usuario normal y miembro del grupo `simpsons`.
+> - `lisa`:`lisa`, usuario normal y miembro del grupo `simpsons`.
+
 Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con diferentes permisos.
 
 El objetivo es que puedas practicar con los comandos de gestión de usuarios, grupos y permisos, así como con los comandos de búsqueda de ficheros, de red, de gestión de memoria y de procesos.
-
-Estos son los siguientes usuarios:
-
-- `root`, superusuario.
-- `user`, usuario normal.
-- `homer`, usuario normal y miembro del grupo `simpsons`.
-- `marge`, usuario normal y miembro del grupo `simpsons`.
-- `bart`, usuario normal y miembro del grupo `simpsons`.
-- `lisa`, usuario normal y miembro del grupo `simpsons`.
-
-La contraseña de cada usuario es el nombre del usuario.
 
 
 # Referencias

@@ -4,7 +4,7 @@
 
 Un hash es una función matemática que convierte una cadena de caracteres en otra cadena de caracteres de longitud fija. Esta función es unidireccional, es decir, **no se puede obtener la cadena original a partir de la cadena resultante**; precisamente esta característica es la clave del uso de los hashes en ciberseguridad.
 
-Generalmente, los hashes se utilizan para verificar la inegridad de un fichero y para almacenar contraseñas:
+Generalmente, los hashes se utilizan para verificar la integridad de un fichero y para almacenar contraseñas:
 
 - **Verificación de integridad**: se calcula el hash de un fichero y se compara con el hash original. Si son iguales, el fichero no ha sido modificado; si son diferentes, el fichero ha sido modificado, porque debería tener el mismo hash que el original.
 - **Almacenamiento de contraseñas**: en lugar de almacenar las contraseñas en texto plano, se almacena el hash de la contraseña. Cuando un usuario se autentica, se calcula el hash de la contraseña introducida y se compara con el hash almacenado. Si son iguales, entonces es en efecto, la misma contraseña.
@@ -23,7 +23,7 @@ Un hash viene determinado por el algoritmo que se utiliza para calcularlo.
 - **MD5**: algoritmo de 128 bits que genera un hash de 32 caracteres hexadecimales.  
 Este algoritmo **ya no es seguro** y no debería utilizarse.
 - **SHA-1**: algoritmo de 160 bits que genera un hash de 40 caracteres hexadecimales.  
-Este algoritmo **y ano es seguro** y no debería utilizarse.
+Este algoritmo **ya no es seguro** y no debería utilizarse.
 - **SHA-256**: algoritmo de 256 bits que genera un hash de 64 caracteres hexadecimales.
 
 Ejemplo de la cadena `srgalan` representada en los algoritmos anteriores:
@@ -112,7 +112,7 @@ Analyzing '1d616f28163414582ba7e2eb400485b9'
 
 Observa que se muestran muchas posibilidades, lo que coincide con la naturaleza básica de los hashes definidas al inicio, lo que hace prácticamente imposible identificar el algoritmo exacto; sin embargo, puede aproximarse en función de las características del resultado.
 
-Un ejemplo en este caso es la longitud del hash, observa que no aparencen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.
+Un ejemplo en este caso es la longitud del hash, observa que no aparecen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.
 
 > **Nota**  
 > Este programa adquiere aún más importancia cuando eres consciente, no solo de la inmensa cantidad de algoritmos hash posible, sino de la cantidad de combinaciones que puedes encontrarte.
@@ -131,7 +131,7 @@ hashcat -m <algoritmo> <hash> <diccionario>
 
 - Soporta una gran cantidad de algoritmos de hash: MD5, SHA1, SHA256, SHA512, etc.
 - Admite múltiples ataques: fuerza bruta, diccionario, híbridos y de combinación de palabras.
-- Permite la combinación de reglas personalizadas para aumentar la eficaia de los ataques de diccionario.
+- Permite la combinación de reglas personalizadas para aumentar la eficacia de los ataques de diccionario.
 - Resulta muy eficiente al utilizar la potencia de las GPUs, lo que lo hace especialmente adecuado para operaciones de *cracking* de alto rendimiento.
 
 #### John the Ripper
@@ -147,7 +147,11 @@ john --format=<algoritmo> <hash> <diccionario>
 - Puede usar reglas personalizadas para mejorar la eficacia de los ataques de diccionario.
 - Además de las contraseñas almacenadas en formato hash, también puede trabajar con formatos de archivo adicionales, como SAM (Windows) y htpasswd (Apache).
 
+
 # Laboratorio
+
+> **Credenciales**  
+> - `root:root`.
 
 Este entorno contiene distintas bases de datos MariaDB locales con usuarios y contraseñas que han sido almacenadas usando distintos algoritmos de hashes, y también contiene todos los programas descritos en la sección.
 

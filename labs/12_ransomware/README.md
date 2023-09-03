@@ -35,8 +35,10 @@ El ataque tuvo lugar en mayo de 2017 y se aprovechó de una vulnerabilidad en el
 WannaCry se propagaba automáticamente a través de redes y cifraba los archivos de las víctimas, exigiendo un rescate en Bitcoin para su desbloqueo. Este ataque afectó a cientos de miles de sistemas en todo el mundo, incluyendo hospitales, empresas y organismos gubernamentales.
 
 
-
 # Laboratorio
+
+> **Credenciales**  
+> - `user:user`.
 
 Este laboratorio contiene una muestra de ransomware muy simple, pero igualmente peligrosa si no se trata con cuidado. EL ransomware se llama `stockholm.py` y ha sido desarrollado en Python.
 
@@ -52,8 +54,7 @@ No obstante, como solo es un ejemplo, el script también puede devolver los arch
 > **Nota**  
 > Por eso es importante que la clave de cifrado jamás sea cifrada por el propio ransomware; si esto sucediera sería imposible recuperar los archivos.
 
-El objetivo de este laboratorio es que observes el funcionamiento de un ransomware y expermientes con él para que puedas entender mejor cómo funcionan y cómo se pueden evitar.
-
+El objetivo de este laboratorio es que observes el funcionamiento de un ransomware y experimentes con él para que puedas entender mejor cómo funcionan y cómo se pueden evitar.
 
 
 # Referencias
@@ -61,4 +62,4 @@ El objetivo de este laboratorio es que observes el funcionamiento de un ransomwa
 - [WannaCry](https://es.wikipedia.org/wiki/WannaCry)
 - [Petya](https://es.wikipedia.org/wiki/Petya_(malware))
 - [NotPetya](https://es.wikipedia.org/wiki/NotPetya)
-- [Script stockholm.py](https://github.com/15Galan/42malaga_bootcamp-ciberseguridad/tree/master/stockholm)
+- [Script stockholm.py](https://github.com/15Galan/42malaga_bootcamp-ciberseguridad/tree/master/stockholm) - Repositorio

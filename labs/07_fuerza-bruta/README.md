@@ -31,22 +31,21 @@ El archivo `rockyou.txt` es un archivo de texto que contiene una lista de contra
 > Un ejemplo de fichero alternativo es `kaonashi.txt`, que formó parte de una charla de investigación realizada por Pablo Caro Martín y Jaime Sánchez para la RootedCON de 2019.
 
 
-
 # Laboratorio
+
+> **Credenciales**  
+> - `user:user`.
 
 Este laboratorio contiene las siguientes características:
 
-- Usuario con privilegios de administrador.
-- Usuario sin privilegios, normal.
+- Usuario `root` con privilegios de administrador.
+- Usuario `user` sin privilegios, normal.
 - Servicio de SSH.
 - La aplicación `nmap`.
 - La aplicación `hydra`.
-- Una versión del reducida de `rockyou.txt` (top 15.000 entradas).
-
-**Puedes conectarte usando las credenciales del usuario normal: `user:user`.**
+- Una versión reducida de `rockyou.txt` (top 15.000 entradas).
 
 Una vez dentro, podrás usar `hydra` para obtener las credenciales del administrador, aunque primero sería necesario conocer su usuario; también puedes ejecutar el programa para obtener tu propia contraseña (la del usuario `user`).
-
 
 
 # Referencias
