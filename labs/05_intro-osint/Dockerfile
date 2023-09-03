@@ -16,8 +16,7 @@ RUN chmod 700 /root/.ssh
 RUN chmod 600 /root/.ssh/authorized_keys
 
 # Descargar el proyecto
-WORKDIR /root
-RUN git clone https://github.com/15Galan/h4_osint.git
+COPY resources/ip-osint /root/h4_osint
 WORKDIR /root/h4_osint
 RUN chmod +x main.py
 RUN pip install datetime requests shodan
