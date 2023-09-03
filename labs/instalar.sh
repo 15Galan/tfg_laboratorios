@@ -19,9 +19,15 @@ for carpeta in $carpetas; do
     echo "Imagen: $carpeta"
 
 
+    # Comprobar que la carpeta tiene un Dockerfile
+    if [ ! -f $carpeta/Dockerfile ]; then
+        echo "    No tiene Dockerfile.\n"
+        continue
+    fi
+
+
     # Eliminar la versión anterior de la imagen
     if [ ! -z "$(docker images -q $carpeta)" ]; then
-        echo "    Duplicada."
         duplicada=true
         docker rmi $carpeta >> $log 2>&1
     fi
@@ -40,9 +46,9 @@ for carpeta in $carpetas; do
     # Almacenar la imagen en una lista si se creó correctamente
     if [ ! -z "$(docker images -q $carpeta)" ]; then
         if [ ! $duplicada = true ]; then
-            echo "    Creada."
+            echo "    Creada.\n"
         else
-            echo "    Actualizada."
+            echo "    Actualizada.\n"
         fi
 
         images="$images $carpeta"
@@ -55,7 +61,7 @@ done
 
 
 # Mostrar todas las nuevas imágenes generadas
-echo "\nResumen:"
+echo "Resumen:"
 
 for image in $images; do
     echo "* $image"
