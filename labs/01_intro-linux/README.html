@@ -1,62 +1,31 @@
 <h1 id="introducci-n-a-linux">Introducción a Linux</h1>
-<p>Linux es un sistema operativo de código abierto y gratuito que ha revolucionado el mundo de la informática desde su
-    creación en 1991 por Linus Torvalds.</p>
-<p>La principal característica de Linux es su filosofía de código abierto, lo que significa que su código fuente está
-    disponible para que cualquier persona lo estudie, modifique y distribuya libremente.</p>
-<p>Una de las principales diferencias entre Linux y otros sistemas operativos es su diversidad de distribuciones, ya que
-    existen numerosas distribuciones de Linux, como: <a href="https://www.debian.org">Debian</a>, <a
-        href="https://getfedora.org">Fedora</a>, <a href="https://archlinux.org">Arch Linux</a>, <a
-        href="https://ubuntu.com">Ubuntu</a>, <a href="https://www.centos.org">CentOS</a> ... entre otras, cada una con
-    sus propias características y enfoques. Esto permite a los usuarios elegir la distribución que mejor se adapte a sus
-    necesidades y preferencias. <strong>Respecto a la ciberseguridad, en especial, se pueden destacar las distribuciones
-        <a href="https://www.kali.org">Kali Linux</a> y <a href="https://parrotsec.org">ParrotOS</a></strong>.</p>
-<p>Además, Linux es conocido por su estabilidad y seguridad, lo que lo convierte en una opción popular para servidores y
-    entornos de trabajo críticos, ya que ha desempeñado un papel fundamental en el desarrollo de la informática: muchos
-    servidores web, supercomputadoras, dispositivos móviles y sistemas embebidos utilizan Linux como base.</p>
-<p>También es ampliamente utilizado en el ámbito de la programación y el desarrollo de software, ya que proporciona
-    herramientas poderosas y un entorno de desarrollo robusto. Su enfoque en el código abierto ha fomentado una
-    comunidad activa y colaborativa de desarrolladores, lo que ha llevado a una amplia gama de aplicaciones y
-    herramientas disponibles para Linux.</p>
-<h1 id="jerarqu-a-de-ficheros-y-directorios">Jerarquía de ficheros y directorios</h2>
-    <p>Los ficheros en los sistemas UNIX están organizados en una jerarquía de directorios, cuyo objetivo es facilitar
-        la
-        gestión y el acceso a los mismos. Esta estructura de directorios se conoce como <strong><a
-                href="https://refspecs.linuxfoundation.org/fhs.shtml">FHS (<em>Filesystem Hierarchy
-                    Standard</em>)</a></strong> y es la que se utiliza en la mayoría de los sistemas UNIX, incluyendo
-        Linux.
-    </p>
-    <p>Esta jerarquía de directorios proporciona una estructura lógica y coherente para los ficheros y directorios, lo
-        que
-        permite tanto a los usuarios como a las aplicaciones encontrar y acceder a los ficheros de manera más eficiente.
-        Además, la jerarquía de directorios también permite una gestión más sencilla de los permisos de acceso y la
-        seguridad del sistema.</p>
-    <h2 id="-"><code>/</code></h3>
-        <p>La raíz de esta jerarquía mencionada es el directorio <code>/</code> (barra), y a partir de este directorio
-            se
-            encuentran todos los demás directorios y ficheros del sistema.</p>
-        <p>Se conoce como el <strong>directorio raíz</strong> y es el único directorio que no tiene un directorio padre.
-        </p>
-        <pre><code class="lang-text">$ ls /
+<p>Linux es un sistema operativo de código abierto y gratuito que ha revolucionado el mundo de la informática desde su creación en 1991 por Linus Torvalds.</p>
+<p>La principal característica de Linux es su filosofía de código abierto, lo que significa que su código fuente está disponible para que cualquier persona lo estudie, modifique y distribuya libremente.</p>
+<p>Una de las principales diferencias entre Linux y otros sistemas operativos es su diversidad de distribuciones, ya que existen numerosas distribuciones de Linux, como: <a href="https://www.debian.org">Debian</a>, <a href="https://getfedora.org">Fedora</a>, <a href="https://archlinux.org">Arch Linux</a>, <a href="https://ubuntu.com">Ubuntu</a>, <a href="https://www.centos.org">CentOS</a> ... entre otras, cada una con sus propias características y enfoques. Esto permite a los usuarios elegir la distribución que mejor se adapte a sus necesidades y preferencias. <strong>Respecto a la ciberseguridad, en especial, se pueden destacar las distribuciones <a href="https://www.kali.org">Kali Linux</a> y <a href="https://parrotsec.org">ParrotOS</a></strong>.</p>
+<p>Además, Linux es conocido por su estabilidad y seguridad, lo que lo convierte en una opción popular para servidores y entornos de trabajo críticos, ya que ha desempeñado un papel fundamental en el desarrollo de la informática: muchos servidores web, supercomputadoras, dispositivos móviles y sistemas embebidos utilizan Linux como base.</p>
+<p>También es ampliamente utilizado en el ámbito de la programación y el desarrollo de software, ya que proporciona herramientas poderosas y un entorno de desarrollo robusto. Su enfoque en el código abierto ha fomentado una comunidad activa y colaborativa de desarrolladores, lo que ha llevado a una amplia gama de aplicaciones y herramientas disponibles para Linux.</p>
+<h1 id="jerarqu-a-de-ficheros-y-directorios-fhs-">Jerarquía de ficheros y directorios (FHS)</h1>
+<p>Los ficheros en los sistemas UNIX están organizados en una jerarquía de directorios, cuyo objetivo es facilitar la gestión y el acceso a los mismos. Esta estructura de directorios se conoce como <strong><a href="https://refspecs.linuxfoundation.org/fhs.shtml">FHS (<em>Filesystem Hierarchy Standard</em>)</a></strong> y es la que se utiliza en la mayoría de los sistemas UNIX, incluyendo Linux.</p>
+<p>Esta jerarquía de directorios proporciona una estructura lógica y coherente para los ficheros y directorios, lo que permite tanto a los usuarios como a las aplicaciones encontrar y acceder a los ficheros de manera más eficiente. Además, la jerarquía de directorios también permite una gestión más sencilla de los permisos de acceso y la seguridad del sistema.</p>
+<h2 id="-"><code>/</code></h2>
+<p>La raíz de esta jerarquía mencionada es el directorio <code>/</code> (barra), y a partir de este directorio se encuentran todos los demás directorios y ficheros del sistema.</p>
+<p>Se conoce como el <strong>directorio raíz</strong> y es el único directorio que no tiene un directorio padre.</p>
+<pre><code class="lang-text">$ ls /
 
 bin    etc    <span class="hljs-class"><span class="hljs-keyword">lib</span>    <span class="hljs-title">mnt</span>    <span class="hljs-title">proc</span>   <span class="hljs-title">run</span>    <span class="hljs-title">srv</span>    <span class="hljs-title">tmp</span>    <span class="hljs-title">var</span></span>
 dev    home   media  opt    root   sbin   sys    usr
 </code></pre>
-        <ul>
-            <li>Todas las rutas de un fichero o directorio comienzan con <code>/</code>.</li>
-            <li>Solo el usuario <code>root</code> puede escribir en este directorio.</li>
-            <li>El directorio personal del usuario <code>root</code> del sistema se encuentra en <code>/root</code>.
-            </li>
-        </ul>
-        <h2 id="-bin-"><code>/bin</code></h3>
-            <p>Contiene ficheros binarios (ejecutables) esenciales, que implementan los comandos y utilidades básicas
-                del sistema.
-            </p>
-            <blockquote>
-                <p><strong>Ejemplos</strong><br>El código ejecutable del comando <code>ls</code> se encuentra en
-                    <code>/bin/ls</code>.
-                </p>
-            </blockquote>
-            <pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /bin
+<ul>
+<li>Todas las rutas de un fichero o directorio comienzan con <code>/</code>.</li>
+<li>Solo el usuario <code>root</code> puede escribir en este directorio.</li>
+<li>El directorio personal del usuario <code>root</code> del sistema se encuentra en <code>/root</code>.</li>
+</ul>
+<h2 id="-bin-"><code>/bin</code></h2>
+<p>Contiene ficheros binarios (ejecutables) esenciales, que implementan los comandos y utilidades básicas del sistema.</p>
+<blockquote>
+<p><strong>Ejemplos</strong><br>El código ejecutable del comando <code>ls</code> se encuentra en <code>/bin/ls</code>.</p>
+</blockquote>
+<pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /bin
 
 <span class="hljs-keyword">arch</span>           echo           kill           nice           <span class="hljs-keyword">sh</span>
 ash            <span class="hljs-keyword">ed</span>             link           nisdomainname  <span class="hljs-keyword">sleep</span>
@@ -77,25 +46,15 @@ dnsdomainname  iostat         mpstat         sed
 domainname     ipcalc         mv             setpriv
 dumpkmap       kbd_mode       netstat        setserial
 </code></pre>
-            <ul>
-                <li>El directorio <code>/bin</code> se encuentra en la ruta de búsqueda global del sistema
-                    (<code>$PATH</code>), lo
-                    que significa que los comandos ubicados en ese directorio pueden ser ejecutados desde cualquier
-                    ubicación del
-                    sistema sin necesidad de especificar su ruta.</li>
-                <li>Los comandos ubicados en <code>/bin</code> son de uso general y están disponibles para todos los
-                    usuarios del
-                    sistema.</li>
-                <li>El contenido de <code>/bin</code> es estático, ya que sus ficheros son esencialmente ejecutables
-                    compilados que
-                    no requieren librerías externas para su funcionamiento.</li>
-                <li>El directorio <code>/bin</code> se monta como <em>solo lectura</em> al inicio, para evitar cambios
-                    accidentales
-                    o maliciosos en los ficheros binarios esenciales del sistema.</li>
-            </ul>
-            <h2 id="-boot-"><code>/boot</code></h2>
-            <p>Contiene los ficheros necesarios para el arranque del sistema.</p>
-            <pre><code class="lang-text">$ ls /boot
+<ul>
+<li>El directorio <code>/bin</code> se encuentra en la ruta de búsqueda global del sistema (<code>$PATH</code>), lo que significa que los comandos ubicados en ese directorio pueden ser ejecutados desde cualquier ubicación del sistema sin necesidad de especificar su ruta.</li>
+<li>Los comandos ubicados en <code>/bin</code> son de uso general y están disponibles para todos los usuarios del sistema.</li>
+<li>El contenido de <code>/bin</code> es estático, ya que sus ficheros son esencialmente ejecutables compilados que no requieren librerías externas para su funcionamiento.</li>
+<li>El directorio <code>/bin</code> se monta como <em>solo lectura</em> al inicio, para evitar cambios accidentales o maliciosos en los ficheros binarios esenciales del sistema.</li>
+</ul>
+<h2 id="-boot-"><code>/boot</code></h2>
+<p>Contiene los ficheros necesarios para el arranque del sistema.</p>
+<pre><code class="lang-text">$ ls /boot
 
 config<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-72</span>-generic      initrd.img<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-73</span>-generic  System.map<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-73</span>-generic
 config<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-73</span>-generic      initrd.img.old                vmlinuz
@@ -104,98 +63,41 @@ grub                          memtest86+.elf                vmlinuz<span class="
 initrd.img                    memtest86+_multiboot.bin      vmlinuz.old
 initrd.img<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-72</span>-generic  System.map<span class="hljs-number">-5.15</span><span class="hljs-number">.0</span><span class="hljs-number">-72</span>-generic
 </code></pre>
-            <p>Se muestran a continuación algunos de los ficheros más importantes de <code>/boot</code>:</p>
-            <ul>
-                <li><strong><code>efi</code> o <code>grub</code></strong>: gestores de arranque EFI (<em>Extensible
-                        Firmware
-                        Interface</em>) o GRUB (<em>Grand Unified Bootloader</em>) que usan muchos sistemas Linux.<br>Se
-                    encargan de
-                    cargar el kernel del sistema operativo y de transferir el control al mismo; además, permiten
-                    seleccionar el
-                    sistema operativo que se desea arrancar en caso de que existan varios instalados en el sistema.</li>
-                <li><strong><code>initrd.img</code> o <code>initramfs</code></strong>: imagen de arranque
-                    inicial.<br>Contiene una
-                    imagen temporal de un sistema de ficheros mínimo que se utiliza para montar el sistema de ficheros
-                    raíz y cargar
-                    los módulos del kernel necesarios para arrancar el sistema de ficheros real.</li>
-                <li><strong><code>System.map</code></strong>: mapa de símbolos del kernel.
-                    Contiene la tabla de símbolos del kernel, que son los nombres de las funciones y variables globales
-                    que se
-                    utilizan en el kernel y sus módulos.<br>Este archivo es útil para diagnóstico y depuración del
-                    kernel.</li>
-                <li><strong><code>vmlinuz</code></strong>: kernel del sistema operativo.<br>Se encarga de administrar
-                    los recursos
-                    del hardware y de proporcionar servicios básicos tanto al sistema como a los programas.</li>
-            </ul>
-            <h2 id="-dev-"><code>/dev</code></h2>
-            <p>Contiene ficheros especiales que representan dispositivos de hardware y que permiten acceder a los
-                mismos; más
-                concretamente, estos ficheros son interfaces de software utilizadas para acceder a hardware o recursos
-                del sistema.
-            </p>
-            <p>Estos ficheros no solo representan dispositivos físicos, también pueden representar dispositivos
-                virtuales o
-                pseudo-dispositivos.</p>
-            <blockquote>
-                <p><strong>¿Qué es un pseudo-dispositivo?</strong><br>Un dispositivo que no existe físicamente, sino que
-                    es creado
-                    por el sistema operativo para proporcionar una interfaz de software que permita acceder a un recurso
-                    del
-                    sistema.</p>
-                <p>Algunos ejemplos son los ficheros <code>null</code>, <code>zero</code> y <code>random</code>.</p>
-            </blockquote>
-            <p>Los ficheros especiales de <code>/dev</code> se crean automáticamente al arrancar el sistema, y se
-                eliminan al
-                apagarlo.</p>
-            <pre><code class="lang-text">$ ls /dev
+<p>Se muestran a continuación algunos de los ficheros más importantes de <code>/boot</code>:</p>
+<ul>
+<li><strong><code>efi</code> o <code>grub</code></strong>: gestores de arranque EFI (<em>Extensible Firmware Interface</em>) o GRUB (<em>Grand Unified Bootloader</em>) que usan muchos sistemas Linux.<br>Se encargan de cargar el kernel del sistema operativo y de transferir el control al mismo; además, permiten seleccionar el sistema operativo que se desea arrancar en caso de que existan varios instalados en el sistema.</li>
+<li><strong><code>initrd.img</code> o <code>initramfs</code></strong>: imagen de arranque inicial.<br>Contiene una imagen temporal de un sistema de ficheros mínimo que se utiliza para montar el sistema de ficheros raíz y cargar los módulos del kernel necesarios para arrancar el sistema de ficheros real.</li>
+<li><strong><code>System.map</code></strong>: mapa de símbolos del kernel.
+Contiene la tabla de símbolos del kernel, que son los nombres de las funciones y variables globales que se utilizan en el kernel y sus módulos.<br>Este archivo es útil para diagnóstico y depuración del kernel.</li>
+<li><strong><code>vmlinuz</code></strong>: kernel del sistema operativo.<br>Se encarga de administrar los recursos del hardware y de proporcionar servicios básicos tanto al sistema como a los programas.</li>
+</ul>
+<h2 id="-dev-"><code>/dev</code></h2>
+<p>Contiene ficheros especiales que representan dispositivos de hardware y que permiten acceder a los mismos; más concretamente, estos ficheros son interfaces de software utilizadas para acceder a hardware o recursos del sistema.</p>
+<p>Estos ficheros no solo representan dispositivos físicos, también pueden representar dispositivos virtuales o pseudo-dispositivos.</p>
+<blockquote>
+<p><strong>¿Qué es un pseudo-dispositivo?</strong><br>Un dispositivo que no existe físicamente, sino que es creado por el sistema operativo para proporcionar una interfaz de software que permita acceder a un recurso del sistema.</p>
+<p>Algunos ejemplos son los ficheros <code>null</code>, <code>zero</code> y <code>random</code>.</p>
+</blockquote>
+<p>Los ficheros especiales de <code>/dev</code> se crean automáticamente al arrancar el sistema, y se eliminan al apagarlo.</p>
+<pre><code class="lang-text">$ ls /dev
 
 core     full     <span class="hljs-literal">null</span>     pts      shm      <span class="hljs-keyword">stdin</span>    tty      <span class="hljs-literal">zero</span>
 fd       mqueue   ptmx     <span class="hljs-built_in">random</span>   <span class="hljs-keyword">stderr</span>   <span class="hljs-keyword">stdout</span>   urandom
 </code></pre>
-            <p>Aunque los nombres pueden variar según la distribución, algunos de los ficheros especiales más comunes
-                son:</p>
-            <ul>
-                <li><strong><code>null</code></strong>: dispositivo nulo.<br>Cuando se escribe en él, los datos escritos
-                    se
-                    descartan.</li>
-                <li><strong><code>zero</code></strong>: dispositivo de ceros.<br>Cuando se lee, se obtiene una secuencia
-                    de bytes
-                    nulos.</li>
-                <li><strong><code>random</code> y <code>urandom</code></strong>: dispositivo de números
-                    aleatorios.<br>Cuando se
-                    lee, se obtiene una secuencia de bytes aleatorios.</li>
-                <li><strong><code>tty</code></strong>: terminal actual del usuario.<br>Cuando se escribe en él o se lee,
-                    se
-                    interactúa con la entrada y salida estándar de la terminal actual. Pueden existir varios ficheros
-                    <code>tty</code> numerados (uno por terminal).
-                </li>
-                <li><strong><code>fd</code></strong>: descriptor de archivo.<br>Cuando se lee, se obtiene una lista de
-                    los
-                    descriptores de archivo abiertos por el proceso actual. Un descriptor de archivo es un número entero
-                    que
-                    identifica un archivo abierto por un proceso.</li>
-                <li><strong><code>stdin</code></strong>: entrada estándar de UNIX.<br>Cuando se lee, se obtiene la
-                    entrada estándar
-                    del usuario. Por defecto, la entrada estándar es el teclado, por lo que al leer de
-                    <code>stdin</code> se
-                    obtienen los caracteres introducidos por el usuario.</li>
-                <li><strong><code>stdout</code></strong>: salida estándar de UNIX.<br>Cuando se escribe en él, se envía
-                    la salida
-                    estándar al usuario. Por defecto, la salida estándar es la pantalla o una terminal, por lo que al
-                    escribir en
-                    <code>stdout</code> se muestran los caracteres en la pantalla.
-                </li>
-            </ul>
-            <p>Además de los dispositivos mostrados, existen numerosos ficheros en <code>/dev</code> para interactuar
-                con
-                dispositivos de hardware como: impresoras, tarjetas de sonido, cámaras, unidades de CD/DVD, puertos
-                serie, puertos
-                USB, etc.</p>
-            <h2 id="-etc-"><code>/etc</code></h2>
-            <p>Contiene ficheros de configuración que controlan el funcionamiento de diversos aspectos del sistema y de
-                los
-                programas instalados en él.</p>
-            <pre><code class="lang-text">$ ls /etc
+<p>Aunque los nombres pueden variar según la distribución, algunos de los ficheros especiales más comunes son:</p>
+<ul>
+<li><strong><code>null</code></strong>: dispositivo nulo.<br>Cuando se escribe en él, los datos escritos se descartan.</li>
+<li><strong><code>zero</code></strong>: dispositivo de ceros.<br>Cuando se lee, se obtiene una secuencia de bytes nulos.</li>
+<li><strong><code>random</code> y <code>urandom</code></strong>: dispositivo de números aleatorios.<br>Cuando se lee, se obtiene una secuencia de bytes aleatorios.</li>
+<li><strong><code>tty</code></strong>: terminal actual del usuario.<br>Cuando se escribe en él o se lee, se interactúa con la entrada y salida estándar de la terminal actual. Pueden existir varios ficheros <code>tty</code> numerados (uno por terminal).</li>
+<li><strong><code>fd</code></strong>: descriptor de archivo.<br>Cuando se lee, se obtiene una lista de los descriptores de archivo abiertos por el proceso actual. Un descriptor de archivo es un número entero que identifica un archivo abierto por un proceso.</li>
+<li><strong><code>stdin</code></strong>: entrada estándar de UNIX.<br>Cuando se lee, se obtiene la entrada estándar del usuario. Por defecto, la entrada estándar es el teclado, por lo que al leer de <code>stdin</code> se obtienen los caracteres introducidos por el usuario.</li>
+<li><strong><code>stdout</code></strong>: salida estándar de UNIX.<br>Cuando se escribe en él, se envía la salida estándar al usuario. Por defecto, la salida estándar es la pantalla o una terminal, por lo que al escribir en <code>stdout</code> se muestran los caracteres en la pantalla.</li>
+</ul>
+<p>Además de los dispositivos mostrados, existen numerosos ficheros en <code>/dev</code> para interactuar con dispositivos de hardware como: impresoras, tarjetas de sonido, cámaras, unidades de CD/DVD, puertos serie, puertos USB, etc.</p>
+<h2 id="-etc-"><code>/etc</code></h2>
+<p>Contiene ficheros de configuración que controlan el funcionamiento de diversos aspectos del sistema y de los programas instalados en él.</p>
+<pre><code class="lang-text">$ ls /etc
 
 alpine-release        init<span class="hljs-selector-class">.d</span>                network               shadow
 apk                   inittab               opt                   shadow-
@@ -210,52 +112,18 @@ group-                motd                  resolv<span class="hljs-selector-cla
 hostname              mtab                  securetty             wgetrc
 hosts                 nanorc                services
 </code></pre>
-            <p>Algunas cosas a tener en cuenta:</p>
-            <ul>
-                <li><strong>Permisos y seguridad</strong>: los archivos ubicados en <code>/etc</code> suelen tener
-                    permisos
-                    restringidos para garantizar la seguridad del sistema; normalmente, solo el usuario
-                    <code>root</code> tiene
-                    permisos de lectura y escritura sobre estos ficheros, mientras que el resto de usuarios solo pueden
-                    leerlos.
-                </li>
-                <li><strong>Estructura y organización</strong>: aunque la estructura exacta de <code>/etc</code> pueda
-                    variar según
-                    la distribución, suele estar organizada en subdirectorios que contienen ficheros de configuración
-                    relacionados
-                    entre sí. Algunos ejemplos podrían ser: <code>/etc/init.d</code> para scripts de inicio,
-                    <code>/etc/network</code> para configuración de red, <code>/etc/passwd</code> para información de
-                    usuarios,
-                    <code>/etc/ssh</code> para configuración de SSH, etc.
-                </li>
-                <li><strong>Personalización del sistema</strong>: el directorio <code>/etc</code> proporciona a los
-                    administradores
-                    la posibilidad de personalizar y ajustar su comportamiento según sus necesidades: al editar los
-                    ficheros de
-                    configuración relevantes, es posible modificar la forma en que se ejecutan los servicios, las
-                    políticas de
-                    seguridad, las rutas de acceso de ficheros, las opciones de red y muchas otras configuraciones.</li>
-            </ul>
-            <p>Por último, pero no menos importante, <strong>modificar ficheros de <code>/etc</code> puede causar
-                    problemas en el
-                    funcionamiento del sistema</strong>, por lo que es recomendable hacer copias de seguridad de los
-                ficheros antes
-                de modificarlos.</p>
-            <h2 id="-home-"><code>/home</code></h2>
-            <p>Contiene los directorios personales de los usuarios del sistema.</p>
-            <p>Cada vez que un usuario es registrado en el sistema se crea un directorio en <code>/home</code> con el
-                nombre del
-                usuario; por ejemplo, la carpeta del usuario <code>srgalan</code> estará en <code>/home/srgalan</code>.
-                Este
-                directorio está diseñado para ser utilizado por el propietario de la cuenta y generalmente tiene
-                permisos de
-                lectura, escritura y ejecución restringidos solo para ese usuario en particular.</p>
-            <p>Estos directorios de los usuarios se conocen como <strong>directorios <em>home</em></strong> (aunque no
-                sean
-                literalmente <code>/home</code>) y pueden referenciarse con el alias <code>~</code> (tilde) o
-                <code>$HOME</code>
-                (variable de entorno).</p>
-            <pre><code class="lang-text">srgalan<span class="hljs-variable">@alpine</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>ls /home
+<p>Algunas cosas a tener en cuenta:</p>
+<ul>
+<li><strong>Permisos y seguridad</strong>: los archivos ubicados en <code>/etc</code> suelen tener permisos restringidos para garantizar la seguridad del sistema; normalmente, solo el usuario <code>root</code> tiene permisos de lectura y escritura sobre estos ficheros, mientras que el resto de usuarios solo pueden leerlos.</li>
+<li><strong>Estructura y organización</strong>: aunque la estructura exacta de <code>/etc</code> pueda variar según la distribución, suele estar organizada en subdirectorios que contienen ficheros de configuración relacionados entre sí. Algunos ejemplos podrían ser: <code>/etc/init.d</code> para scripts de inicio, <code>/etc/network</code> para configuración de red, <code>/etc/passwd</code> para información de usuarios, <code>/etc/ssh</code> para configuración de SSH, etc.</li>
+<li><strong>Personalización del sistema</strong>: el directorio <code>/etc</code> proporciona a los administradores la posibilidad de personalizar y ajustar su comportamiento según sus necesidades: al editar los ficheros de configuración relevantes, es posible modificar la forma en que se ejecutan los servicios, las políticas de seguridad, las rutas de acceso de ficheros, las opciones de red y muchas otras configuraciones.</li>
+</ul>
+<p>Por último, pero no menos importante, <strong>modificar ficheros de <code>/etc</code> puede causar problemas en el funcionamiento del sistema</strong>, por lo que es recomendable hacer copias de seguridad de los ficheros antes de modificarlos.</p>
+<h2 id="-home-"><code>/home</code></h2>
+<p>Contiene los directorios personales de los usuarios del sistema.</p>
+<p>Cada vez que un usuario es registrado en el sistema se crea un directorio en <code>/home</code> con el nombre del usuario; por ejemplo, la carpeta del usuario <code>srgalan</code> estará en <code>/home/srgalan</code>. Este directorio está diseñado para ser utilizado por el propietario de la cuenta y generalmente tiene permisos de lectura, escritura y ejecución restringidos solo para ese usuario en particular.</p>
+<p>Estos directorios de los usuarios se conocen como <strong>directorios <em>home</em></strong> (aunque no sean literalmente <code>/home</code>) y pueden referenciarse con el alias <code>~</code> (tilde) o <code>$HOME</code> (variable de entorno).</p>
+<pre><code class="lang-text">srgalan<span class="hljs-variable">@alpine</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>ls /home
 srgalan
 sradmin
 
@@ -271,136 +139,63 @@ sradmin<span class="hljs-variable">@alpine</span><span class="hljs-symbol">:~</s
 root<span class="hljs-variable">@alpine</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># echo ~</span>
 /root
 </code></pre>
-            <blockquote>
-                <p><strong>Recordatorio</strong><br>Cabe destacar que, como se mencionó anteriormente, el usuario
-                    <code>root</code>
-                    tiene su directorio personal en <code>/root</code> en lugar de <code>/home/root</code>.</p>
-            </blockquote>
-            <p>Además de los directorios personales de los usuarios, es posible encontrar otros directorios dentro de
-                <code>/home</code> que se utilicen para diferentes propósitos; por ejemplo: <code>/home/shared</code> o
-                <code>/home/public</code>, que se utiliza para compartir archivos y recursos entre varios usuarios.
-            </p>
-            <p>También, algunas distribuciones añaden directorios adicionales dentro de los directorios personales de
-                los usuarios;
-                por ejemplo, es común encontrar un directorio <code>/home/usuario/bin</code> que actúa como el
-                directorio
-                <code>/bin</code> descrito anteriormente (binarios y comandos básicos del sistema), pero solo para el
-                usuario en
-                cuestión.
-            </p>
-            <h2 id="-lib-"><code>/lib</code></h2>
-            <p>Contiene las librerías compartidas y ficheros de datos utilizados por programas y aplicaciones del
-                sistema.</p>
-            <p>Estas librerías se conocen como <strong><em>shared libraries</em></strong> o <strong>librerías
-                    dinámicas</strong> y
-                son binarios que contienen funciones y rutinas de código reutilizables que pueden ser utilizadas por
-                múltiples
-                programas a la vez. Almacenar estas bibliotecas en un lugar común permite ahorrar espacio en disco y
-                facilita la
-                gestión y actualización de las bibliotecas del sistema. Se cargan en memoria cuando se ejecuta un
-                programa que las
-                requiere y, a diferencia de las librerías estáticas, estas librerías no se vinculan al programa en
-                tiempo de
-                compilación, sino que se cargan en tiempo de ejecución.</p>
-            <pre><code class="lang-text">$ ls /lib
+<blockquote>
+<p><strong>Recordatorio</strong><br>Cabe destacar que, como se mencionó anteriormente, el usuario <code>root</code> tiene su directorio personal en <code>/root</code> en lugar de <code>/home/root</code>.</p>
+</blockquote>
+<p>Además de los directorios personales de los usuarios, es posible encontrar otros directorios dentro de <code>/home</code> que se utilicen para diferentes propósitos; por ejemplo: <code>/home/shared</code> o <code>/home/public</code>, que se utiliza para compartir archivos y recursos entre varios usuarios.</p>
+<p>También, algunas distribuciones añaden directorios adicionales dentro de los directorios personales de los usuarios; por ejemplo, es común encontrar un directorio <code>/home/usuario/bin</code> que actúa como el directorio <code>/bin</code> descrito anteriormente (binarios y comandos básicos del sistema), pero solo para el usuario en cuestión.</p>
+<h2 id="-lib-"><code>/lib</code></h2>
+<p>Contiene las librerías compartidas y ficheros de datos utilizados por programas y aplicaciones del sistema.</p>
+<p>Estas librerías se conocen como <strong><em>shared libraries</em></strong> o <strong>librerías dinámicas</strong> y son binarios que contienen funciones y rutinas de código reutilizables que pueden ser utilizadas por múltiples programas a la vez. Almacenar estas bibliotecas en un lugar común permite ahorrar espacio en disco y facilita la gestión y actualización de las bibliotecas del sistema. Se cargan en memoria cuando se ejecuta un programa que las requiere y, a diferencia de las librerías estáticas, estas librerías no se vinculan al programa en tiempo de compilación, sino que se cargan en tiempo de ejecución.</p>
+<pre><code class="lang-text">$ ls /lib
 
 apk                    libcrypto<span class="hljs-selector-class">.so</span>.<span class="hljs-number">1.1</span>       mdev
 firmware               libssl<span class="hljs-selector-class">.so</span>.<span class="hljs-number">1.1</span>          modules-load<span class="hljs-selector-class">.d</span>
 ld-musl-x86_64<span class="hljs-selector-class">.so</span>.<span class="hljs-number">1</span>    libz<span class="hljs-selector-class">.so</span>.<span class="hljs-number">1</span>              sysctl<span class="hljs-selector-class">.d</span>
 libc<span class="hljs-selector-class">.musl-x86_64</span><span class="hljs-selector-class">.so</span>.<span class="hljs-number">1</span>  libz<span class="hljs-selector-class">.so</span>.<span class="hljs-number">1.2</span>.<span class="hljs-number">12</span>
 </code></pre>
-            <p>Algunos ejemplos de librerías comunes son:</p>
-            <ul>
-                <li><strong>Librerías <code>.so</code></strong>: librerías compartidas de UNIX; por ejemplo,
-                    <code>libc.so</code> y
-                    <code>libm.so</code>, librerías estándar y matemática de C, respectivamente.
-                </li>
-                <li><strong>Directorios <code>.d</code></strong>: directorios que contienen ficheros de configuración
-                    para programas
-                    y servicios; por ejemplo, <code>modules-load.d</code> contiene ficheros de configuración para cargar
-                    módulos del
-                    kernel.</li>
-                <li><strong>Enlaces simbólicos</strong>: también es común encontrar enlaces simbólicos que apuntan a
-                    versiones
-                    específicas de las librerías compartidas, permitiendo mantener la compatibilidad con versiones
-                    distintas.</li>
-            </ul>
-            <blockquote>
-                <p><strong>Nota</strong><br>Algunos sistemas operativos utilizan además un directorio
-                    <code>/lib64</code> para
-                    almacenar librerías de 64 bits, mientras que <code>/lib</code> se utiliza para librerías de 32 bits.
-                </p>
-            </blockquote>
-            <h2 id="-media-"><code>/media</code></h2>
-            <p>Contiene directorios que actúan como puntos de montaje para dispositivos extraíbles como CD-ROM, DVD,
-                unidades USB,
-                etc, lo que proporciona un acceso rápido y sencillo al contenido de estos dispositivos.</p>
-            <p>Generalmente, el directorio <code>/media</code> está vacío, pero cuando se conecta un dispositivo
-                extraíble, se crea
-                un directorio con el nombre del dispositivo dentro de <code>/media</code> y se monta el dispositivo en
-                ese
-                directorio. Además, en algunas distribuciones, también es posible encontrar un directorio intermedio con
-                el nombre
-                del usuario que montó el dispositivo (por ejemplo, <code>/media/srgalan/usb</code> en vez de
-                <code>/media/usb</code>).
-            </p>
-            <pre><code class="lang-text"><span class="hljs-variable">$ </span>ls /media
+<p>Algunos ejemplos de librerías comunes son:</p>
+<ul>
+<li><strong>Librerías <code>.so</code></strong>: librerías compartidas de UNIX; por ejemplo, <code>libc.so</code> y <code>libm.so</code>, librerías estándar y matemática de C, respectivamente.</li>
+<li><strong>Directorios <code>.d</code></strong>: directorios que contienen ficheros de configuración para programas y servicios; por ejemplo, <code>modules-load.d</code> contiene ficheros de configuración para cargar módulos del kernel.</li>
+<li><strong>Enlaces simbólicos</strong>: también es común encontrar enlaces simbólicos que apuntan a versiones específicas de las librerías compartidas, permitiendo mantener la compatibilidad con versiones distintas.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>Algunos sistemas operativos utilizan además un directorio <code>/lib64</code> para almacenar librerías de 64 bits, mientras que <code>/lib</code> se utiliza para librerías de 32 bits.</p>
+</blockquote>
+<h2 id="-media-"><code>/media</code></h2>
+<p>Contiene directorios que actúan como puntos de montaje para dispositivos extraíbles como CD-ROM, DVD, unidades USB, etc, lo que proporciona un acceso rápido y sencillo al contenido de estos dispositivos.</p>
+<p>Generalmente, el directorio <code>/media</code> está vacío, pero cuando se conecta un dispositivo extraíble, se crea un directorio con el nombre del dispositivo dentro de <code>/media</code> y se monta el dispositivo en ese directorio. Además, en algunas distribuciones, también es posible encontrar un directorio intermedio con el nombre del usuario que montó el dispositivo (por ejemplo, <code>/media/srgalan/usb</code> en vez de <code>/media/usb</code>).</p>
+<pre><code class="lang-text"><span class="hljs-variable">$ </span>ls /media
 
 cdrom   floppy  usb
 </code></pre>
-            <blockquote>
-                <p><strong>Nota</strong><br>No debe confundirse con <code>/mnt</code> o <code>/mnt/media</code>, ni con
-                    <code>/dev</code>: el directorio <code>/media</code> se utiliza específicamente para montar
-                    dispositivos
-                    extraíbles y acceder a su contenido, mientras que:
-                </p>
-                <ul>
-                    <li><code>/mnt</code> se utiliza para montar sistemas de archivos temporales o permanentes.</li>
-                    <li><code>/mnt/media</code> se utiliza para montar sistemas de archivos de red.</li>
-                    <li><code>/dev</code> contiene ficheros especiales que representan dispositivos de hardware.</li>
-                </ul>
-            </blockquote>
-            <h2 id="-mnt-"><code>/mnt</code></h2>
-            <p>Contiene directorios que actúan como puntos de montaje para sistemas de archivos temporales o
-                permanentes.</p>
-            <p>Se debe tener en cuenta que el directorio <code>/mnt</code> generalmente se utiliza para montajes
-                temporales y puede
-                variar según la distribución y la configuración del sistema. Algunos sistemas pueden utilizar
-                directorios
-                adicionales, como <code>/mnt/cdrom</code>, <code>/mnt/usb</code>, etc, para montajes específicos.</p>
-            <h2 id="-opt-"><code>/opt</code></h2>
-            <p>Contiene directorios con paquetes de software de terceros y aplicaciones que no forman parte del sistema
-                operativo.
-            </p>
-            <p>Su propósito principal es proporcionar un lugar centralizado para instalar software de terceros en el
-                sistema
-                operativo, lo que ayuda a mantener organizadas las aplicaciones y paquetes que no están incluidos en la
-                distribución
-                base del sistema.</p>
-            <p>Los paquetes de software suelen tener su propio directorio individual dentro de <code>/opt</code>.</p>
-            <pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /<span class="hljs-keyword">opt</span>
+<blockquote>
+<p><strong>Nota</strong><br>No debe confundirse con <code>/mnt</code> o <code>/mnt/media</code>, ni con <code>/dev</code>: el directorio <code>/media</code> se utiliza específicamente para montar dispositivos extraíbles y acceder a su contenido, mientras que:</p>
+<ul>
+<li><code>/mnt</code> se utiliza para montar sistemas de archivos temporales o permanentes.</li>
+<li><code>/mnt/media</code> se utiliza para montar sistemas de archivos de red.</li>
+<li><code>/dev</code> contiene ficheros especiales que representan dispositivos de hardware.</li>
+</ul>
+</blockquote>
+<h2 id="-mnt-"><code>/mnt</code></h2>
+<p>Contiene directorios que actúan como puntos de montaje para sistemas de archivos temporales o permanentes.</p>
+<p>Se debe tener en cuenta que el directorio <code>/mnt</code> generalmente se utiliza para montajes temporales y puede variar según la distribución y la configuración del sistema. Algunos sistemas pueden utilizar directorios adicionales, como <code>/mnt/cdrom</code>, <code>/mnt/usb</code>, etc, para montajes específicos.</p>
+<h2 id="-opt-"><code>/opt</code></h2>
+<p>Contiene directorios con paquetes de software de terceros y aplicaciones que no forman parte del sistema operativo.</p>
+<p>Su propósito principal es proporcionar un lugar centralizado para instalar software de terceros en el sistema operativo, lo que ayuda a mantener organizadas las aplicaciones y paquetes que no están incluidos en la distribución base del sistema.</p>
+<p>Los paquetes de software suelen tener su propio directorio individual dentro de <code>/opt</code>.</p>
+<pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /<span class="hljs-keyword">opt</span>
 
 brave.<span class="hljs-keyword">com</span>  containerd
 </code></pre>
-            <p>Además, también es común dichos paquetes incluyan su propia estructura de directorios
-                (<code>/opt/app/bin</code> para
-                los ejecutables, <code>/opt/app/lib</code> para las bibliotecas, <code>/opt/app/share</code> para los
-                archivos
-                compartidos, ...); estos directorios secundarios suelen seguir una estructura estándar similar a la
-                utilizada en
-                otros lugares del sistema.</p>
-            <blockquote>
-                <p><strong>Importante</strong><br>El directorio <code>/opt</code> no es un estándar estricto definido
-                    por el sistema
-                    operativo en sí. Sin embargo, se ha convertido en una convención ampliamente aceptada en muchas
-                    distribuciones
-                    de UNIX y Linux.</p>
-            </blockquote>
-            <h2 id="-proc-"><code>/proc</code></h2>
-            <p>Contiene directorios y ficheros virtuales generados dinámicamente, que proporcionan información sobre el
-                sistema y
-                los procesos en ejecución.</p>
-            <pre><code class="lang-text">$ ls /<span class="hljs-keyword">proc</span>
+<p>Además, también es común dichos paquetes incluyan su propia estructura de directorios (<code>/opt/app/bin</code> para los ejecutables, <code>/opt/app/lib</code> para las bibliotecas, <code>/opt/app/share</code> para los archivos compartidos, ...); estos directorios secundarios suelen seguir una estructura estándar similar a la utilizada en otros lugares del sistema.</p>
+<blockquote>
+<p><strong>Importante</strong><br>El directorio <code>/opt</code> no es un estándar estricto definido por el sistema operativo en sí. Sin embargo, se ha convertido en una convención ampliamente aceptada en muchas distribuciones de UNIX y Linux.</p>
+</blockquote>
+<h2 id="-proc-"><code>/proc</code></h2>
+<p>Contiene directorios y ficheros virtuales generados dinámicamente, que proporcionan información sobre el sistema y los procesos en ejecución.</p>
+<pre><code class="lang-text">$ ls /<span class="hljs-keyword">proc</span>
 
 1<span class="hljs-title">                  driver</span> <span class="hljs-title">            kpageflags</span> <span class="hljs-title">        softirqs</span>
 101<span class="hljs-title">                dynamic_debug</span> <span class="hljs-title">     loadavg</span> <span class="hljs-title">           stat</span>
@@ -420,13 +215,13 @@ devices<span class="hljs-title">            kmsg</span> <span class="hljs-title"
 diskstats<span class="hljs-title">          kpagecgroup</span> <span class="hljs-title">       self</span> <span class="hljs-title">              zoneinfo</span>
 dma<span class="hljs-title">                kpagecount</span> <span class="hljs-title">        slabinfo</span>
 </code></pre>
-            <p>Respecto al sistema, se proporciona información sobre el hardware y el kernel:</p>
-            <ul>
-                <li><strong><code>/proc/cpuinfo</code></strong>: información sobre la CPU.</li>
-                <li><strong><code>/proc/meminfo</code></strong>: información sobre la memoria.</li>
-                <li><strong><code>/proc/version</code></strong>: información sobre la versión del kernel.</li>
-            </ul>
-            <pre><code class="lang-text">$ cat /<span class="hljs-keyword">proc</span>/meminfo<span class="hljs-title">
+<p>Respecto al sistema, se proporciona información sobre el hardware y el kernel:</p>
+<ul>
+<li><strong><code>/proc/cpuinfo</code></strong>: información sobre la CPU.</li>
+<li><strong><code>/proc/meminfo</code></strong>: información sobre la memoria.</li>
+<li><strong><code>/proc/version</code></strong>: información sobre la versión del kernel.</li>
+</ul>
+<pre><code class="lang-text">$ cat /<span class="hljs-keyword">proc</span>/meminfo<span class="hljs-title">
 
 MemTotal:</span>        7990292<span class="hljs-title"> kB</span>
 MemFree:          202884<span class="hljs-title"> kB</span>
@@ -448,18 +243,14 @@ DirectMap4k:      811884<span class="hljs-title"> kB</span>
 DirectMap2M:     7428096<span class="hljs-title"> kB</span>
 DirectMap1G:           0<span class="hljs-title"> kB</span>
 </code></pre>
-            <p>Respecto a los procesos, se proporciona información detallada sobre los procesos en ejecución; cada
-                proceso tiene un
-                directorio correspondiente a su identificador numérico (PID) dentro de <code>/proc</code>:</p>
-            <ul>
-                <li><strong><code>/proc/&lt;PID&gt;/cmdline</code></strong>: línea de comandos utilizada para ejecutar
-                    el proceso.
-                </li>
-                <li><strong><code>/proc/&lt;PID&gt;/cwd</code></strong>: directorio de trabajo actual del proceso.</li>
-                <li><strong><code>/proc/&lt;PID&gt;/environ</code></strong>: variables de entorno del proceso.</li>
-                <li><strong><code>/proc/&lt;PID&gt;/status</code></strong>: estado del proceso.</li>
-            </ul>
-            <pre><code class="lang-text">$ ls /<span class="hljs-keyword">proc</span>/77/<span class="hljs-title">
+<p>Respecto a los procesos, se proporciona información detallada sobre los procesos en ejecución; cada proceso tiene un directorio correspondiente a su identificador numérico (PID) dentro de <code>/proc</code>:</p>
+<ul>
+<li><strong><code>/proc/&lt;PID&gt;/cmdline</code></strong>: línea de comandos utilizada para ejecutar el proceso.</li>
+<li><strong><code>/proc/&lt;PID&gt;/cwd</code></strong>: directorio de trabajo actual del proceso.</li>
+<li><strong><code>/proc/&lt;PID&gt;/environ</code></strong>: variables de entorno del proceso.</li>
+<li><strong><code>/proc/&lt;PID&gt;/status</code></strong>: estado del proceso.</li>
+</ul>
+<pre><code class="lang-text">$ ls /<span class="hljs-keyword">proc</span>/77/<span class="hljs-title">
 
 arch_status</span> <span class="hljs-title">        fd</span> <span class="hljs-title">                 numa_maps</span> <span class="hljs-title">          smaps_rollup</span>
 attr<span class="hljs-title">                fdinfo</span> <span class="hljs-title">             oom_adj</span> <span class="hljs-title">            stack</span>
@@ -476,22 +267,13 @@ cwd<span class="hljs-title">                 mountstats</span> <span class="hljs
 environ<span class="hljs-title">             net</span> <span class="hljs-title">                setgroups</span>
 exe<span class="hljs-title">                 ns</span> <span class="hljs-title">                 smaps</span>
 </code></pre>
-            <h2 id="-root-"><code>/root</code></h2>
-            <p>El directorio personal del usuario <code>root</code>.</p>
-            <p>Actúa como cualquier otro directorio personal de <code>/home</code>, pero solo es accesible por el
-                usuario
-                <code>root</code> y este se encuentra en la raíz del sistema (<code>/</code>).
-            </p>
-            <h2 id="-run-"><code>/run</code></h2>
-            <p>Directorio temporal que contiene ficheros y directorios que son necesarios durante el tiempo de ejecución
-                del
-                sistema.</p>
-            <p>Suele emplearse para almacenar ficheros generados por programas y servicios en ejecución, así como para
-                crear otros
-                recursos temporales. Este directorio es especialmente útil para contener aquellos ficheros que no deben
-                ser
-                persistentes entre reinicios del sistema.</p>
-            <pre><code class="lang-text">$ ls /run
+<h2 id="-root-"><code>/root</code></h2>
+<p>El directorio personal del usuario <code>root</code>.</p>
+<p>Actúa como cualquier otro directorio personal de <code>/home</code>, pero solo es accesible por el usuario <code>root</code> y este se encuentra en la raíz del sistema (<code>/</code>).</p>
+<h2 id="-run-"><code>/run</code></h2>
+<p>Directorio temporal que contiene ficheros y directorios que son necesarios durante el tiempo de ejecución del sistema.</p>
+<p>Suele emplearse para almacenar ficheros generados por programas y servicios en ejecución, así como para crear otros recursos temporales. Este directorio es especialmente útil para contener aquellos ficheros que no deben ser persistentes entre reinicios del sistema.</p>
+<pre><code class="lang-text">$ ls /run
 
 acpid<span class="hljs-selector-class">.pid</span>        log                      sudo
 acpid<span class="hljs-selector-class">.socket</span>     lvm                      sysconfig
@@ -518,37 +300,20 @@ initramfs        snapd<span class="hljs-selector-class">.socket</span>          
 irqbalance       speech-dispatcher        xtables<span class="hljs-selector-class">.lock</span>
 lock             spice-vdagentd
 </code></pre>
-            <p>Algunos ejemplos de ficheros que se pueden encontrar en este directorio son:</p>
-            <ul>
-                <li><strong>Sockets (<code>.sock</code>)</strong>: ficheros que permiten la comunicación entre procesos
-                    (por
-                    ejemplo, <code>docker.sock</code>).</li>
-                <li><strong>Ficheros de PID (<code>.pid</code>)</strong>: contienen el identificador de un proceso (por
-                    ejemplo,
-                    <code>docker.pid</code>).
-                </li>
-                <li><strong>Ficheros de bloqueo (<code>.lock</code>)</strong>: permiten bloquear el acceso a un recurso
-                    (por
-                    ejemplo, <code>xtables.lock</code>).</li>
-                <li><strong>Ficheros de cola</strong>: almacenan mensajes o datos temporales que serán procesados por
-                    otros
-                    componentes del sistema (por ejemplo, <code>rpc_pipefs</code>).</li>
-            </ul>
-            <h2 id="-sbin-"><code>/sbin</code></h2>
-            <p>Contiene programas ejecutables del sistema relacionados a la administración del mismo, en general:
-                inicio, apagado,
-                configuración de red, manejo de dispositivos y otras tareas de administración críticas.</p>
-            <p>Se conocen como <strong>comandos de administración del sistema</strong> y están destinados a ser
-                ejecutados por el
-                usuario <code>root</code>.</p>
-            <blockquote>
-                <p><strong>Nota</strong><br>A diferencia del directorio <code>/bin</code>, que contiene comandos
-                    utilizados por
-                    usuarios regulares, el directorio <code>/sbin</code> alberga utilidades y programas esenciales que
-                    están
-                    diseñados para la gestión y configuración del sistema</p>
-            </blockquote>
-            <pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /sbin
+<p>Algunos ejemplos de ficheros que se pueden encontrar en este directorio son:</p>
+<ul>
+<li><strong>Sockets (<code>.sock</code>)</strong>: ficheros que permiten la comunicación entre procesos (por ejemplo, <code>docker.sock</code>).</li>
+<li><strong>Ficheros de PID (<code>.pid</code>)</strong>: contienen el identificador de un proceso (por ejemplo, <code>docker.pid</code>).</li>
+<li><strong>Ficheros de bloqueo (<code>.lock</code>)</strong>: permiten bloquear el acceso a un recurso (por ejemplo, <code>xtables.lock</code>).</li>
+<li><strong>Ficheros de cola</strong>: almacenan mensajes o datos temporales que serán procesados por otros componentes del sistema (por ejemplo, <code>rpc_pipefs</code>).</li>
+</ul>
+<h2 id="-sbin-"><code>/sbin</code></h2>
+<p>Contiene programas ejecutables del sistema relacionados a la administración del mismo, en general: inicio, apagado, configuración de red, manejo de dispositivos y otras tareas de administración críticas.</p>
+<p>Se conocen como <strong>comandos de administración del sistema</strong> y están destinados a ser ejecutados por el usuario <code>root</code>.</p>
+<blockquote>
+<p><strong>Nota</strong><br>A diferencia del directorio <code>/bin</code>, que contiene comandos utilizados por usuarios regulares, el directorio <code>/sbin</code> alberga utilidades y programas esenciales que están diseñados para la gestión y configuración del sistema</p>
+</blockquote>
+<pre><code class="lang-text">$ <span class="hljs-keyword">ls</span> /sbin
 
 acpid                       ifup                        modinfo
 adjtimex                    init                        modprobe
@@ -587,55 +352,29 @@ ifdown                      mkfs.vfat                   xtables-monitor
 ifenslave                   mkmntdirs                   xtables-nft-multi
 ifstat                      mkswap
 </code></pre>
-            <p>Algunos ejemplos de comandos comunes en este directorio son:</p>
-            <ul>
-                <li><strong><code>fdisk</code></strong>: manipular tablas de particiones de los discos.</li>
-                <li><strong><code>ifconfig</code></strong>: configurar y mostrar información de las interfaces de red.
-                </li>
-                <li><strong><code>init</code></strong>: proceso padre del sistema, responsable de iniciar y detener
-                    servicios
-                    durante el arranque y apagado del sistema.</li>
-                <li><strong><code>iptables</code></strong>: herramienta de firewall para configurar reglas de filtrado
-                    de paquetes
-                    en el kernel.</li>
-                <li><strong><code>mount</code></strong>: montar sistemas de archivos en el árbol de directorios.</li>
-                <li><strong><code>reboot</code></strong>: reiniciar el sistema.</li>
-                <li><strong><code>shutdown</code></strong>: apagar el sistema de forma segura.</li>
-                <li><strong><code>udevadm</code></strong>: administrar el sistema de dispositivos dinámicos del kernel.
-                </li>
-            </ul>
-            <h2 id="-srv-"><code>/srv</code></h2>
-            <p>Contiene datos específicos de servicios que se ejecutan en el sistema.</p>
-            <p>El propósito principal del directorio <code>/srv</code> es almacenar datos que son proporcionados por los
-                servicios
-                del sistema en lugar de datos generales del sistema operativo; por ejemplo, algunos servicios de red
-                como servidores
-                web, servidores de archivos o servidores de impresión, entre otros, pueden utilizar el directorio para
-                almacenar los
-                ficheros y documentos que se sirven a través de estos servicios.</p>
-            <pre><code class="lang-text">$ ls /srv
+<p>Algunos ejemplos de comandos comunes en este directorio son:</p>
+<ul>
+<li><strong><code>fdisk</code></strong>: manipular tablas de particiones de los discos.</li>
+<li><strong><code>ifconfig</code></strong>: configurar y mostrar información de las interfaces de red.</li>
+<li><strong><code>init</code></strong>: proceso padre del sistema, responsable de iniciar y detener servicios durante el arranque y apagado del sistema.</li>
+<li><strong><code>iptables</code></strong>: herramienta de firewall para configurar reglas de filtrado de paquetes en el kernel.</li>
+<li><strong><code>mount</code></strong>: montar sistemas de archivos en el árbol de directorios.</li>
+<li><strong><code>reboot</code></strong>: reiniciar el sistema.</li>
+<li><strong><code>shutdown</code></strong>: apagar el sistema de forma segura.</li>
+<li><strong><code>udevadm</code></strong>: administrar el sistema de dispositivos dinámicos del kernel.</li>
+</ul>
+<h2 id="-srv-"><code>/srv</code></h2>
+<p>Contiene datos específicos de servicios que se ejecutan en el sistema.</p>
+<p>El propósito principal del directorio <code>/srv</code> es almacenar datos que son proporcionados por los servicios del sistema en lugar de datos generales del sistema operativo; por ejemplo, algunos servicios de red como servidores web, servidores de archivos o servidores de impresión, entre otros, pueden utilizar el directorio para almacenar los ficheros y documentos que se sirven a través de estos servicios.</p>
+<pre><code class="lang-text">$ ls /srv
 
 <span class="hljs-keyword">ftp</span>  <span class="hljs-keyword">http</span>  nfs  rsync  tftp
 </code></pre>
-            <p>Cabe destacar que este directorio se trata de una convención y, aunque no es un directorio estándar
-                definido por el
-                sistema, se ha adoptado comúnmente en varias distribuciones de UNIX. Esta decisión se basa en la idea de
-                separar los
-                datos del servicio de los datos del sistema: al utilizar <code>/srv</code>, se pretende facilitar la
-                administración
-                y el mantenimiento de los servicios, ya que los archivos relevantes para cada servicio se pueden
-                encontrar en un
-                lugar común y predecible.</p>
-            <h2 id="-tmp-"><code>/tmp</code></h2>
-            <p>Contiene ficheros temporales que son creados por diferentes programas y servicios del sistema (archivos
-                de caché,
-                registros, archivos intermedios, ...).</p>
-            <p>Los ficheros almacenados en <code>/tmp</code> no solo se eliminan automáticamente cuando el sistema se
-                reinicia, sino
-                que también pueden ser eliminados por el sistema en cualquier momento, por lo que no se recomienda
-                utilizarlo para
-                almacenar ficheros importantes.</p>
-            <pre><code class="lang-text">$ ls /tmp
+<p>Cabe destacar que este directorio se trata de una convención y, aunque no es un directorio estándar definido por el sistema, se ha adoptado comúnmente en varias distribuciones de UNIX. Esta decisión se basa en la idea de separar los datos del servicio de los datos del sistema: al utilizar <code>/srv</code>, se pretende facilitar la administración y el mantenimiento de los servicios, ya que los archivos relevantes para cada servicio se pueden encontrar en un lugar común y predecible.</p>
+<h2 id="-tmp-"><code>/tmp</code></h2>
+<p>Contiene ficheros temporales que son creados por diferentes programas y servicios del sistema (archivos de caché, registros, archivos intermedios, ...).</p>
+<p>Los ficheros almacenados en <code>/tmp</code> no solo se eliminan automáticamente cuando el sistema se reinicia, sino que también pueden ser eliminados por el sistema en cualquier momento, por lo que no se recomienda utilizarlo para almacenar ficheros importantes.</p>
+<pre><code class="lang-text">$ ls /tmp
 
 config-err-SARr6j
 snap-private-tmp
@@ -653,713 +392,634 @@ tracker-extract-files.<span class="hljs-number">125</span>
 vmware-root
 vscode-typescript1000
 </code></pre>
-            <p>Algunos aspectos importantes:</p>
-            <ul>
-                <li><strong>Acceso público</strong>: generalmente, <code>tmp</code> es accesible para todos los usuarios
-                    del
-                    sistema, por lo que cualquier usuario puede crear, modificar o eliminar ficheros en este directorio;
-                    esto
-                    también permite que múltiples programas o usuarios compartan archivos temporales, facilitando la
-                    colaboración y
-                    el intercambio de datos temporales entre ellos.</li>
-                <li><strong>Montaje en RAM</strong>: en algunos sistemas modernos, el directorio <code>/tmp</code> se
-                    monta en la
-                    memoria RAM, mejorando el rendimiento al ofrecer un acceso más rápido a los ficheros temporales;
-                    además, reduce
-                    el desgaste del disco duro.</li>
-            </ul>
-            <h2 id="-usr-"><code>/usr</code></h2>
-            <p>Contiene los programas y datos de usuarios que no son esenciales para el funcionamiento del sistema,
-                aunque su uso
-                puede variar en función de la distribución.</p>
-            <pre><code class="lang-text">$ ls /usr
+<p>Algunos aspectos importantes:</p>
+<ul>
+<li><strong>Acceso público</strong>: generalmente, <code>tmp</code> es accesible para todos los usuarios del sistema, por lo que cualquier usuario puede crear, modificar o eliminar ficheros en este directorio; esto también permite que múltiples programas o usuarios compartan archivos temporales, facilitando la colaboración y el intercambio de datos temporales entre ellos.</li>
+<li><strong>Montaje en RAM</strong>: en algunos sistemas modernos, el directorio <code>/tmp</code> se monta en la memoria RAM, mejorando el rendimiento al ofrecer un acceso más rápido a los ficheros temporales; además, reduce el desgaste del disco duro.</li>
+</ul>
+<h2 id="-usr-"><code>/usr</code></h2>
+<p>Contiene los programas y datos de usuarios que no son esenciales para el funcionamiento del sistema, aunque su uso puede variar en función de la distribución.</p>
+<pre><code class="lang-text">$ ls /usr
 
 bin                       local
 <span class="hljs-keyword">include</span>                   sbin
 <span class="hljs-class"><span class="hljs-keyword">lib</span>                       <span class="hljs-title">share</span></span>
 libexec                   x86_64-alpine-linux-musl
 </code></pre>
-            <p>La estructura común de este directorio es la siguiente:</p>
-            <ul>
-                <li><strong><code>/usr/bin</code></strong>: contiene los programas ejecutables que se pueden utilizar
-                    por todos los
-                    usuarios del sistema.</li>
-                <li><strong><code>/usr/include</code></strong>: contiene los ficheros de cabecera que se utilizan para
-                    compilar
-                    aplicaciones y librerías.</li>
-                <li><strong><code>/usr/lib</code> y <code>/usr/lib64</code></strong>: contiene las librerías compartidas
-                    y los
-                    módulos de carga dinámica. Sigue el mismo patrón que <code>/lib</code> y <code>/lib64</code>, pero
-                    para
-                    programas y datos de usuarios.</li>
-                <li><strong><code>/usr/local</code></strong>: contiene los programas y datos de usuarios que no son
-                    parte de la
-                    distribución, sino que han sido instalados localmente por el administrador del sistema.</li>
-                <li><strong><code>/usr/sbin</code></strong>: contiene los programas ejecutables que solo pueden ser
-                    utilizados por
-                    el administrador del sistema.</li>
-                <li><strong><code>/usr/share</code></strong>: contiene los datos compartidos que se utilizan por
-                    diferentes
-                    programas y servicios del sistema; por ejemplo, archivos de configuración, documentación, ficheros
-                    de
-                    localización, etc.</li>
-            </ul>
-            <blockquote>
-                <p><strong>Nota</strong><br>Sigue una estructura muy parecida a la del directorio <code>/</code>, pero
-                    en esta
-                    ocasión, se aplican a los programas y datos de usuarios que además no son esenciales para el
-                    sistema.</p>
-            </blockquote>
-            <h2 id="-var-"><code>/var</code></h2>
-            <p>Contiene datos variables del sistema, como registros, archivos de estado, colas de correo y ficheros
-                temporales.</p>
-            <pre><code class="lang-text">$ ls /var
+<p>La estructura común de este directorio es la siguiente:</p>
+<ul>
+<li><strong><code>/usr/bin</code></strong>: contiene los programas ejecutables que se pueden utilizar por todos los usuarios del sistema.</li>
+<li><strong><code>/usr/include</code></strong>: contiene los ficheros de cabecera que se utilizan para compilar aplicaciones y librerías.</li>
+<li><strong><code>/usr/lib</code> y <code>/usr/lib64</code></strong>: contiene las librerías compartidas y los módulos de carga dinámica. Sigue el mismo patrón que <code>/lib</code> y <code>/lib64</code>, pero para programas y datos de usuarios.</li>
+<li><strong><code>/usr/local</code></strong>: contiene los programas y datos de usuarios que no son parte de la distribución, sino que han sido instalados localmente por el administrador del sistema.</li>
+<li><strong><code>/usr/sbin</code></strong>: contiene los programas ejecutables que solo pueden ser utilizados por el administrador del sistema.</li>
+<li><strong><code>/usr/share</code></strong>: contiene los datos compartidos que se utilizan por diferentes programas y servicios del sistema; por ejemplo, archivos de configuración, documentación, ficheros de localización, etc.</li>
+</ul>
+<blockquote>
+<p><strong>Nota</strong><br>Sigue una estructura muy parecida a la del directorio <code>/</code>, pero en esta ocasión, se aplican a los programas y datos de usuarios que además no son esenciales para el sistema.</p>
+</blockquote>
+<h2 id="-var-"><code>/var</code></h2>
+<p>Contiene datos variables del sistema, como registros, archivos de estado, colas de correo y ficheros temporales.</p>
+<pre><code class="lang-text">$ ls /var
 
 cache  git    local  log    opt    spool  www
 empty  <span class="hljs-class"><span class="hljs-keyword">lib</span>    <span class="hljs-title">lock</span>   <span class="hljs-title">mail</span>   <span class="hljs-title">run</span>    <span class="hljs-title">tmp</span></span>
 </code></pre>
-            <p>Algunos ejemplos de directorios comunes en este directorio son:</p>
-            <ul>
-                <li><strong><code>/var/cache</code></strong>: ficheros de caché de aplicaciones y servicios del sistema.
-                </li>
-                <li><strong><code>/var/lib</code></strong>: datos persistentes de aplicaciones y servicios del sistema.
-                </li>
-                <li><strong><code>/var/log</code></strong>: los registros de los diferentes servicios del sistema.</li>
-                <li><strong><code>/var/mail</code></strong>: los buzones de correo de los usuarios.</li>
-                <li><strong><code>/var/opt</code></strong>: datos variables de aplicaciones y servicios del sistema.
-                </li>
-                <li><strong><code>/var/run</code></strong>: archivos de estado de aplicaciones y servicios del sistema.
-                </li>
-                <li><strong><code>/var/spool</code></strong>: colas de correo y de impresión.</li>
-                <li><strong><code>/var/tmp</code></strong>: ficheros temporales que no se eliminan automáticamente
-                    cuando el sistema
-                    se reinicia.</li>
-                <li><strong><code>/var/www</code></strong>: ficheros de sitios y aplicaciones web que se ejecutan en el
-                    sistema (si
-                    se utiliza como servidor web).</li>
-            </ul>
-            <h1 id="la-terminal">La terminal</h1>
-            <p>La terminal es una interfaz de línea de comandos que permite a los usuarios interactuar con el sistema
-                operativo
-                mediante la introducción de comandos de texto.</p>
-            <p>Se trata de una herramienta muy potente que permite a los usuarios realizar tareas complejas de forma
-                rápida y
-                eficiente, aunque también es cierto que su uso puede resultar intimidante para los usuarios menos
-                experimentados.
-            </p>
-            <blockquote>
-                <p><strong>¿Por qué utilizar la terminal?</strong><br>Aunque la mayoría de las tareas se pueden realizar
-                    utilizando
-                    una interfaz gráfica o GUI (<em>Graphical User Interface</em>), la terminal ofrece una serie de
-                    ventajas que la
-                    convierten en una herramienta muy útil para los usuarios más experimentados.</p>
-                <p>No obstante, cabe destacar que en Linux no todo tiene una GUI disponible y por tanto, solo es posible
-                    usar la
-                    terminal.</p>
-            </blockquote>
-            <p>Aquí se muestra un ejemplo de la cabecera de una terminal en Kali Linux:</p>
-            <pre><code class="lang-text">[srgalan<span class="hljs-variable">@kali</span><span class="hljs-symbol">:~/Documents</span>]$
+<p>Algunos ejemplos de directorios comunes en este directorio son:</p>
+<ul>
+<li><strong><code>/var/cache</code></strong>: ficheros de caché de aplicaciones y servicios del sistema.</li>
+<li><strong><code>/var/lib</code></strong>: datos persistentes de aplicaciones y servicios del sistema.</li>
+<li><strong><code>/var/log</code></strong>: los registros de los diferentes servicios del sistema.</li>
+<li><strong><code>/var/mail</code></strong>: los buzones de correo de los usuarios.</li>
+<li><strong><code>/var/opt</code></strong>: datos variables de aplicaciones y servicios del sistema.</li>
+<li><strong><code>/var/run</code></strong>: archivos de estado de aplicaciones y servicios del sistema.</li>
+<li><strong><code>/var/spool</code></strong>: colas de correo y de impresión.</li>
+<li><strong><code>/var/tmp</code></strong>: ficheros temporales que no se eliminan automáticamente cuando el sistema se reinicia.</li>
+<li><strong><code>/var/www</code></strong>: ficheros de sitios y aplicaciones web que se ejecutan en el sistema (si se utiliza como servidor web).</li>
+</ul>
+<h1 id="la-terminal">La terminal</h1>
+<p>La terminal es una interfaz de línea de comandos que permite a los usuarios interactuar con el sistema operativo mediante la introducción de comandos de texto.</p>
+<p>Se trata de una herramienta muy potente que permite a los usuarios realizar tareas complejas de forma rápida y eficiente, aunque también es cierto que su uso puede resultar intimidante para los usuarios menos experimentados.</p>
+<blockquote>
+<p><strong>¿Por qué utilizar la terminal?</strong><br>Aunque la mayoría de las tareas se pueden realizar utilizando una interfaz gráfica o GUI (<em>Graphical User Interface</em>), la terminal ofrece una serie de ventajas que la convierten en una herramienta muy útil para los usuarios más experimentados.</p>
+<p>No obstante, cabe destacar que en Linux no todo tiene una GUI disponible y por tanto, solo es posible usar la terminal.</p>
+</blockquote>
+<p>Aquí se muestra un ejemplo de la cabecera de una terminal en Kali Linux:</p>
+<pre><code class="lang-text">[srgalan<span class="hljs-variable">@kali</span><span class="hljs-symbol">:~/Documents</span>]$
 </code></pre>
-            <p>La cabecera separa las distintas ejecuciones de los comandos y se compone de los siguientes elementos (en
-                base al
-                ejemplo mostrado):</p>
-            <ul>
-                <li><strong><code>srgalan</code></strong>: nombre del usuario ejecutando la terminal.</li>
-                <li><strong><code>kali</code></strong>: nombre del equipo.</li>
-                <li><strong><code>~/Documents</code></strong>: directorio actual (en este caso, los documentos del
-                    usuario).</li>
-                <li><strong><code>$</code></strong>: símbolo del <em>prompt</em>, también llamado faceta, que indica que
-                    la terminal
-                    está esperando comandos.<ul>
-                        <li>Si es <code>$</code>, significa que se ejecuta por un usuario.</li>
-                        <li>Si es <code>#</code>, significa que se ejecuta por el superusuario o <code>root</code>.</li>
-                    </ul>
-                </li>
-            </ul>
-            <h2 id="la-shell">La shell</h2>
-            <p>La shell es un programa que actúa como capa de abstracción entre el terminal y el sistema operativo, lo
-                que permite a
-                los usuarios interactuar con el sistema operativo mediante la introducción de comandos de texto.</p>
-            <p>Existen diferentes tipos de shell, aunque la más común es la shell Bash (<em>Bourne Again SHell</em>),
-                que es la
-                shell por defecto en la mayoría de las distribuciones de Linux.</p>
-            <p>No hay que confundirlo con un terminal:</p>
-            <ul>
-                <li>El terminal es un programa que proporciona una interfaz de usuario para acceder a la shell.</li>
-                <li>La shell se encarga de interpretar los comandos introducidos por el usuario y ejecutarlos.</li>
-            </ul>
-            <h2 id="comandos">Comandos</h2>
-            <p>Los comandos son programas que se ejecutan en la terminal para realizar tareas específicas, como
-                administrar el
-                sistema, gestionar archivos y directorios, etc.</p>
-            <p>Esta sección abarcará algunos comandos básicos que se utilizan con frecuencia en la terminal, pero
-                también incluirá
-                algunos comandos más utilizados en el ámbito de la seguridad informática.</p>
-            <h3 id="b-sicos">Básicos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">cd</td>
-                        <td style="text-align:center">[directorio]</td>
-                        <td style="text-align:left">Cambia el directorio actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ls</td>
-                        <td style="text-align:center">[ruta]</td>
-                        <td style="text-align:left">Lista los archivos y directorios del directorio actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pwd</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra la ruta absoluta del directorio actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">mkdir</td>
-                        <td style="text-align:center">[directorio]</td>
-                        <td style="text-align:left">Crea un directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">rmdir</td>
-                        <td style="text-align:center">[directorio]</td>
-                        <td style="text-align:left">Elimina un directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">touch</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Crea un archivo vacío.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">rm</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Elimina un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">cp</td>
-                        <td style="text-align:center">[origen] [destino]</td>
-                        <td style="text-align:left">Copia un archivo o directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">mv</td>
-                        <td style="text-align:center">[origen] [destino]</td>
-                        <td style="text-align:left">Mueve un archivo o directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">cat</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra el contenido de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">less</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra el contenido de un archivo de forma paginada.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">head</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra las primeras líneas de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">tail</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra las últimas líneas de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">grep</td>
-                        <td style="text-align:center">[patrón] [archivo]</td>
-                        <td style="text-align:left">Busca un patrón en un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">find</td>
-                        <td style="text-align:center">[ruta] [criterios]</td>
-                        <td style="text-align:left">Busca archivos y directorios.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">sudo</td>
-                        <td style="text-align:center">[comando]</td>
-                        <td style="text-align:left">Ejecuta un comando con privilegios de superusuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">su</td>
-                        <td style="text-align:center">[usuario]</td>
-                        <td style="text-align:left">Cambia de usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">exit</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Cierra la terminal.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="usuarios-grupos-y-permisos">Usuarios, grupos y permisos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">whoami</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el nombre de usuario actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">id</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra la identificación de usuario y los grupos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groups</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los grupos del usuario actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">passwd</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Cambia la contraseña del usuario actual.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">adduser</td>
-                        <td style="text-align:center">[usuario]</td>
-                        <td style="text-align:left">Crea un nuevo usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">deluser</td>
-                        <td style="text-align:center">[usuario]</td>
-                        <td style="text-align:left">Elimina un usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">addgroup</td>
-                        <td style="text-align:center">[grupo]</td>
-                        <td style="text-align:left">Crea un nuevo grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">delgroup</td>
-                        <td style="text-align:center">[grupo]</td>
-                        <td style="text-align:left">Elimina un grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">usermod</td>
-                        <td style="text-align:center">[opciones] [usuario]</td>
-                        <td style="text-align:left">Modifica un usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groupmod</td>
-                        <td style="text-align:center">[opciones] [grupo]</td>
-                        <td style="text-align:left">Modifica un grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">userdel</td>
-                        <td style="text-align:center">[opciones] [usuario]</td>
-                        <td style="text-align:left">Elimina un usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groupdel</td>
-                        <td style="text-align:center">[opciones] [grupo]</td>
-                        <td style="text-align:left">Elimina un grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">useradd</td>
-                        <td style="text-align:center">[opciones] [usuario]</td>
-                        <td style="text-align:left">Crea un nuevo usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">userdel</td>
-                        <td style="text-align:center">[opciones] [usuario]</td>
-                        <td style="text-align:left">Elimina un usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">usermod</td>
-                        <td style="text-align:center">[opciones] [usuario]</td>
-                        <td style="text-align:left">Modifica un usuario.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groupadd</td>
-                        <td style="text-align:center">[opciones] [grupo]</td>
-                        <td style="text-align:left">Crea un nuevo grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groupdel</td>
-                        <td style="text-align:center">[opciones] [grupo]</td>
-                        <td style="text-align:left">Elimina un grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">groupmod</td>
-                        <td style="text-align:center">[opciones] [grupo]</td>
-                        <td style="text-align:left">Modifica un grupo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">chmod</td>
-                        <td style="text-align:center">[permisos] [archivo/directorio]</td>
-                        <td style="text-align:left">Cambia los permisos de un archivo o directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">chown</td>
-                        <td style="text-align:center">[usuario] [archivo/directorio]</td>
-                        <td style="text-align:left">Cambia el propietario de un archivo o directorio.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">chgrp</td>
-                        <td style="text-align:center">[grupo] [archivo/directorio]</td>
-                        <td style="text-align:left">Cambia el grupo de un archivo o directorio.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="red">Red</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">ifconfig</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra la configuración de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ip</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra la configuración de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ping</td>
-                        <td style="text-align:center">[host]</td>
-                        <td style="text-align:left">Envía paquetes ICMP a un host.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">traceroute</td>
-                        <td style="text-align:center">[host]</td>
-                        <td style="text-align:left">Muestra la ruta de los paquetes a un host.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">netstat</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra las conexiones de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ss</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra las conexiones de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">nmap</td>
-                        <td style="text-align:center">[opciones] [host/rango]</td>
-                        <td style="text-align:left">Escanea puertos y servicios.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">nc</td>
-                        <td style="text-align:center">[opciones] [host] [puerto]</td>
-                        <td style="text-align:left">Abre una conexión TCP o UDP.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">tcpdump</td>
-                        <td style="text-align:center">[opciones]</td>
-                        <td style="text-align:left">Captura paquetes de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">wireshark</td>
-                        <td style="text-align:center">[opciones]</td>
-                        <td style="text-align:left">Captura paquetes de red.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ssh</td>
-                        <td style="text-align:center">[usuario]@[host]</td>
-                        <td style="text-align:left">Abre una conexión SSH.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">scp</td>
-                        <td style="text-align:center">[archivo] [usuario]@[host]</td>
-                        <td style="text-align:left">Copia archivos a través de SSH.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">sftp</td>
-                        <td style="text-align:center">[usuario]@[host]</td>
-                        <td style="text-align:left">Transfiere archivos a través de SSH.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="sistema">Sistema</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">uname</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra información del sistema.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">uptime</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el tiempo de actividad del sistema.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">who</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los usuarios conectados.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">w</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los usuarios conectados.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">last</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los últimos usuarios conectados.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">ps</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en ejecución.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">top</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en ejecución.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">kill</td>
-                        <td style="text-align:center">[opciones] [PID]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">killall</td>
-                        <td style="text-align:center">[opciones] [nombre]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pkill</td>
-                        <td style="text-align:center">[opciones] [patrón]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pgrep</td>
-                        <td style="text-align:center">[opciones] [patrón]</td>
-                        <td style="text-align:left">Muestra los procesos que coinciden con un patrón.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pstree</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en forma de árbol.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">free</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de memoria.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">df</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de disco.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">du</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de disco.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">mount</td>
-                        <td style="text-align:center">[opciones] [dispositivo]</td>
-                        <td style="text-align:left">Monta un sistema de archivos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">umount</td>
-                        <td style="text-align:center">[opciones] [punto_de_montaje]</td>
-                        <td style="text-align:left">Desmonta un sistema de archivos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">fdisk</td>
-                        <td style="text-align:center">[opciones] [dispositivo]</td>
-                        <td style="text-align:left">Gestiona particiones.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">mkfs</td>
-                        <td style="text-align:center">[opciones] [dispositivo]</td>
-                        <td style="text-align:left">Crea un sistema de archivos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">fsck</td>
-                        <td style="text-align:center">[opciones] [dispositivo]</td>
-                        <td style="text-align:left">Verifica y repara un sistema de archivos.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="archivos">Archivos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">dd</td>
-                        <td style="text-align:center">[opciones]</td>
-                        <td style="text-align:left">Copia y convierte archivos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">file</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra el tipo de archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">strings</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra las cadenas de texto de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">hexdump</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra el contenido hexadecimal de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">xxd</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Muestra el contenido hexadecimal de un archivo.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">diff</td>
-                        <td style="text-align:center">[archivo1] [archivo2]</td>
-                        <td style="text-align:left">Muestra las diferencias entre dos archivos.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">patch</td>
-                        <td style="text-align:center">[archivo]</td>
-                        <td style="text-align:left">Aplica un parche a un archivo.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="procesos">Procesos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">ps</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en ejecución.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">top</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en ejecución.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">kill</td>
-                        <td style="text-align:center">[opciones] [PID]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">killall</td>
-                        <td style="text-align:center">[opciones] [nombre]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pkill</td>
-                        <td style="text-align:center">[opciones] [patrón]</td>
-                        <td style="text-align:left">Envía una señal a un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pgrep</td>
-                        <td style="text-align:center">[opciones] [patrón]</td>
-                        <td style="text-align:left">Muestra los procesos que coinciden con un patrón.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pstree</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra los procesos en forma de árbol.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id="memoria">Memoria</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Comando</th>
-                        <th style="text-align:center">Argumentos</th>
-                        <th style="text-align:left">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">free</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de memoria.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">vmstat</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de memoria.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">pmap</td>
-                        <td style="text-align:center">[PID]</td>
-                        <td style="text-align:left">Muestra el uso de memoria de un proceso.</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">top</td>
-                        <td style="text-align:center"></td>
-                        <td style="text-align:left">Muestra el uso de memoria.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h1 id="permisos-del-sistema-usuarios-y-grupos">Permisos del sistema, usuarios y grupos</h1>
-            <p>En un sistema operativo basado en Unix, como Linux, los permisos desempeñan un papel crucial para
-                garantizar la
-                seguridad y la gestión eficiente de los recursos del sistema.</p>
-            <p>Los permisos se pueden otorgar a usuarios individuales o a grupos de usuarios, por eso es importante
-                comprender cómo
-                funcionan los usuarios y los grupos en Linux, para además complementar el conocimiento de los permisos.
-            </p>
-            <h2 id="usuarios">Usuarios</h2>
-            <p>Los usuarios son cuentas individuales que representan a personas o servicios que interactúan con el
-                sistema; cada
-                usuario tiene un nombre de usuario único y una identificación de usuario (UID) asociada.</p>
-            <p>Los usuarios se crean para permitir a las personas acceder al sistema y utilizar los recursos
-                disponibles; cada
-                usuario tiene su propio entorno y configuración personalizada, así como su directorio de inicio y su
-                shell
-                predeterminada.</p>
-            <pre><code class="lang-text">$ id
+<p>La cabecera separa las distintas ejecuciones de los comandos y se compone de los siguientes elementos (en base al ejemplo mostrado):</p>
+<ul>
+<li><strong><code>srgalan</code></strong>: nombre del usuario ejecutando la terminal.</li>
+<li><strong><code>kali</code></strong>: nombre del equipo.</li>
+<li><strong><code>~/Documents</code></strong>: directorio actual (en este caso, los documentos del usuario).</li>
+<li><strong><code>$</code></strong>: símbolo del <em>prompt</em>, también llamado faceta, que indica que la terminal está esperando comandos.<ul>
+<li>Si es <code>$</code>, significa que se ejecuta por un usuario.</li>
+<li>Si es <code>#</code>, significa que se ejecuta por el superusuario o <code>root</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="la-shell">La shell</h2>
+<p>La shell es un programa que actúa como capa de abstracción entre el terminal y el sistema operativo, lo que permite a los usuarios interactuar con el sistema operativo mediante la introducción de comandos de texto.</p>
+<p>Existen diferentes tipos de shell, aunque la más común es la shell Bash (<em>Bourne Again SHell</em>), que es la shell por defecto en la mayoría de las distribuciones de Linux.</p>
+<p>No hay que confundirlo con un terminal:</p>
+<ul>
+<li>El terminal es un programa que proporciona una interfaz de usuario para acceder a la shell.</li>
+<li>La shell se encarga de interpretar los comandos introducidos por el usuario y ejecutarlos.</li>
+</ul>
+<h2 id="comandos">Comandos</h2>
+<p>Los comandos son programas que se ejecutan en la terminal para realizar tareas específicas, como administrar el sistema, gestionar archivos y directorios, etc.</p>
+<p>Esta sección abarcará algunos comandos básicos que se utilizan con frecuencia en la terminal, pero también incluirá algunos comandos más utilizados en el ámbito de la seguridad informática.</p>
+<h3 id="b-sicos">Básicos</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">cd</td>
+<td style="text-align:center">[directorio]</td>
+<td style="text-align:left">Cambia el directorio actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">ls</td>
+<td style="text-align:center">[ruta]</td>
+<td style="text-align:left">Lista los archivos y directorios del directorio actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">pwd</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra la ruta absoluta del directorio actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir</td>
+<td style="text-align:center">[directorio]</td>
+<td style="text-align:left">Crea un directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">rmdir</td>
+<td style="text-align:center">[directorio]</td>
+<td style="text-align:left">Elimina un directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">touch</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Crea un archivo vacío.</td>
+</tr>
+<tr>
+<td style="text-align:center">rm</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Elimina un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">cp</td>
+<td style="text-align:center">[origen] [destino]</td>
+<td style="text-align:left">Copia un archivo o directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">mv</td>
+<td style="text-align:center">[origen] [destino]</td>
+<td style="text-align:left">Mueve un archivo o directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">cat</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra el contenido de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">less</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra el contenido de un archivo de forma paginada.</td>
+</tr>
+<tr>
+<td style="text-align:center">head</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra las primeras líneas de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">tail</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra las últimas líneas de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">grep</td>
+<td style="text-align:center">[patrón] [archivo]</td>
+<td style="text-align:left">Busca un patrón en un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">find</td>
+<td style="text-align:center">[ruta] [criterios]</td>
+<td style="text-align:left">Busca archivos y directorios.</td>
+</tr>
+<tr>
+<td style="text-align:center">sudo</td>
+<td style="text-align:center">[comando]</td>
+<td style="text-align:left">Ejecuta un comando con privilegios de superusuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">su</td>
+<td style="text-align:center">[usuario]</td>
+<td style="text-align:left">Cambia de usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">exit</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Cierra la terminal.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usuarios-grupos-y-permisos">Usuarios, grupos y permisos</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">whoami</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el nombre de usuario actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra la identificación de usuario y los grupos.</td>
+</tr>
+<tr>
+<td style="text-align:center">groups</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los grupos del usuario actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">passwd</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Cambia la contraseña del usuario actual.</td>
+</tr>
+<tr>
+<td style="text-align:center">adduser</td>
+<td style="text-align:center">[usuario]</td>
+<td style="text-align:left">Crea un nuevo usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">deluser</td>
+<td style="text-align:center">[usuario]</td>
+<td style="text-align:left">Elimina un usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">addgroup</td>
+<td style="text-align:center">[grupo]</td>
+<td style="text-align:left">Crea un nuevo grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">delgroup</td>
+<td style="text-align:center">[grupo]</td>
+<td style="text-align:left">Elimina un grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">usermod</td>
+<td style="text-align:center">[opciones] [usuario]</td>
+<td style="text-align:left">Modifica un usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">groupmod</td>
+<td style="text-align:center">[opciones] [grupo]</td>
+<td style="text-align:left">Modifica un grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">userdel</td>
+<td style="text-align:center">[opciones] [usuario]</td>
+<td style="text-align:left">Elimina un usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">groupdel</td>
+<td style="text-align:center">[opciones] [grupo]</td>
+<td style="text-align:left">Elimina un grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">useradd</td>
+<td style="text-align:center">[opciones] [usuario]</td>
+<td style="text-align:left">Crea un nuevo usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">userdel</td>
+<td style="text-align:center">[opciones] [usuario]</td>
+<td style="text-align:left">Elimina un usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">usermod</td>
+<td style="text-align:center">[opciones] [usuario]</td>
+<td style="text-align:left">Modifica un usuario.</td>
+</tr>
+<tr>
+<td style="text-align:center">groupadd</td>
+<td style="text-align:center">[opciones] [grupo]</td>
+<td style="text-align:left">Crea un nuevo grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">groupdel</td>
+<td style="text-align:center">[opciones] [grupo]</td>
+<td style="text-align:left">Elimina un grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">groupmod</td>
+<td style="text-align:center">[opciones] [grupo]</td>
+<td style="text-align:left">Modifica un grupo.</td>
+</tr>
+<tr>
+<td style="text-align:center">chmod</td>
+<td style="text-align:center">[permisos] [archivo/directorio]</td>
+<td style="text-align:left">Cambia los permisos de un archivo o directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">chown</td>
+<td style="text-align:center">[usuario] [archivo/directorio]</td>
+<td style="text-align:left">Cambia el propietario de un archivo o directorio.</td>
+</tr>
+<tr>
+<td style="text-align:center">chgrp</td>
+<td style="text-align:center">[grupo] [archivo/directorio]</td>
+<td style="text-align:left">Cambia el grupo de un archivo o directorio.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="red">Red</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ifconfig</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra la configuración de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">ip</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra la configuración de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">ping</td>
+<td style="text-align:center">[host]</td>
+<td style="text-align:left">Envía paquetes ICMP a un host.</td>
+</tr>
+<tr>
+<td style="text-align:center">traceroute</td>
+<td style="text-align:center">[host]</td>
+<td style="text-align:left">Muestra la ruta de los paquetes a un host.</td>
+</tr>
+<tr>
+<td style="text-align:center">netstat</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra las conexiones de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">ss</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra las conexiones de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">nmap</td>
+<td style="text-align:center">[opciones] [host/rango]</td>
+<td style="text-align:left">Escanea puertos y servicios.</td>
+</tr>
+<tr>
+<td style="text-align:center">nc</td>
+<td style="text-align:center">[opciones] [host] [puerto]</td>
+<td style="text-align:left">Abre una conexión TCP o UDP.</td>
+</tr>
+<tr>
+<td style="text-align:center">tcpdump</td>
+<td style="text-align:center">[opciones]</td>
+<td style="text-align:left">Captura paquetes de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">wireshark</td>
+<td style="text-align:center">[opciones]</td>
+<td style="text-align:left">Captura paquetes de red.</td>
+</tr>
+<tr>
+<td style="text-align:center">ssh</td>
+<td style="text-align:center">[usuario]@[host]</td>
+<td style="text-align:left">Abre una conexión SSH.</td>
+</tr>
+<tr>
+<td style="text-align:center">scp</td>
+<td style="text-align:center">[archivo] [usuario]@[host]</td>
+<td style="text-align:left">Copia archivos a través de SSH.</td>
+</tr>
+<tr>
+<td style="text-align:center">sftp</td>
+<td style="text-align:center">[usuario]@[host]</td>
+<td style="text-align:left">Transfiere archivos a través de SSH.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sistema">Sistema</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">uname</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra información del sistema.</td>
+</tr>
+<tr>
+<td style="text-align:center">uptime</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el tiempo de actividad del sistema.</td>
+</tr>
+<tr>
+<td style="text-align:center">who</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los usuarios conectados.</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los usuarios conectados.</td>
+</tr>
+<tr>
+<td style="text-align:center">last</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los últimos usuarios conectados.</td>
+</tr>
+<tr>
+<td style="text-align:center">ps</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align:center">top</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align:center">kill</td>
+<td style="text-align:center">[opciones] [PID]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">killall</td>
+<td style="text-align:center">[opciones] [nombre]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">pkill</td>
+<td style="text-align:center">[opciones] [patrón]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">pgrep</td>
+<td style="text-align:center">[opciones] [patrón]</td>
+<td style="text-align:left">Muestra los procesos que coinciden con un patrón.</td>
+</tr>
+<tr>
+<td style="text-align:center">pstree</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en forma de árbol.</td>
+</tr>
+<tr>
+<td style="text-align:center">free</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de memoria.</td>
+</tr>
+<tr>
+<td style="text-align:center">df</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de disco.</td>
+</tr>
+<tr>
+<td style="text-align:center">du</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de disco.</td>
+</tr>
+<tr>
+<td style="text-align:center">mount</td>
+<td style="text-align:center">[opciones] [dispositivo]</td>
+<td style="text-align:left">Monta un sistema de archivos.</td>
+</tr>
+<tr>
+<td style="text-align:center">umount</td>
+<td style="text-align:center">[opciones] [punto_de_montaje]</td>
+<td style="text-align:left">Desmonta un sistema de archivos.</td>
+</tr>
+<tr>
+<td style="text-align:center">fdisk</td>
+<td style="text-align:center">[opciones] [dispositivo]</td>
+<td style="text-align:left">Gestiona particiones.</td>
+</tr>
+<tr>
+<td style="text-align:center">mkfs</td>
+<td style="text-align:center">[opciones] [dispositivo]</td>
+<td style="text-align:left">Crea un sistema de archivos.</td>
+</tr>
+<tr>
+<td style="text-align:center">fsck</td>
+<td style="text-align:center">[opciones] [dispositivo]</td>
+<td style="text-align:left">Verifica y repara un sistema de archivos.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="archivos">Archivos</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">dd</td>
+<td style="text-align:center">[opciones]</td>
+<td style="text-align:left">Copia y convierte archivos.</td>
+</tr>
+<tr>
+<td style="text-align:center">file</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra el tipo de archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">strings</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra las cadenas de texto de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">hexdump</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra el contenido hexadecimal de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">xxd</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Muestra el contenido hexadecimal de un archivo.</td>
+</tr>
+<tr>
+<td style="text-align:center">diff</td>
+<td style="text-align:center">[archivo1] [archivo2]</td>
+<td style="text-align:left">Muestra las diferencias entre dos archivos.</td>
+</tr>
+<tr>
+<td style="text-align:center">patch</td>
+<td style="text-align:center">[archivo]</td>
+<td style="text-align:left">Aplica un parche a un archivo.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="procesos">Procesos</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ps</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align:center">top</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align:center">kill</td>
+<td style="text-align:center">[opciones] [PID]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">killall</td>
+<td style="text-align:center">[opciones] [nombre]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">pkill</td>
+<td style="text-align:center">[opciones] [patrón]</td>
+<td style="text-align:left">Envía una señal a un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">pgrep</td>
+<td style="text-align:center">[opciones] [patrón]</td>
+<td style="text-align:left">Muestra los procesos que coinciden con un patrón.</td>
+</tr>
+<tr>
+<td style="text-align:center">pstree</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra los procesos en forma de árbol.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="memoria">Memoria</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Comando</th>
+<th style="text-align:center">Argumentos</th>
+<th style="text-align:left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">free</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de memoria.</td>
+</tr>
+<tr>
+<td style="text-align:center">vmstat</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de memoria.</td>
+</tr>
+<tr>
+<td style="text-align:center">pmap</td>
+<td style="text-align:center">[PID]</td>
+<td style="text-align:left">Muestra el uso de memoria de un proceso.</td>
+</tr>
+<tr>
+<td style="text-align:center">top</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">Muestra el uso de memoria.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="permisos-del-sistema-usuarios-y-grupos">Permisos del sistema, usuarios y grupos</h1>
+<p>En un sistema operativo basado en Unix, como Linux, los permisos desempeñan un papel crucial para garantizar la seguridad y la gestión eficiente de los recursos del sistema.</p>
+<p>Los permisos se pueden otorgar a usuarios individuales o a grupos de usuarios, por eso es importante comprender cómo funcionan los usuarios y los grupos en Linux, para además complementar el conocimiento de los permisos.</p>
+<h2 id="usuarios">Usuarios</h2>
+<p>Los usuarios son cuentas individuales que representan a personas o servicios que interactúan con el sistema; cada usuario tiene un nombre de usuario único y una identificación de usuario (UID) asociada.</p>
+<p>Los usuarios se crean para permitir a las personas acceder al sistema y utilizar los recursos disponibles; cada usuario tiene su propio entorno y configuración personalizada, así como su directorio de inicio y su shell predeterminada.</p>
+<pre><code class="lang-text">$ id
 
 uid=<span class="hljs-number">1000</span><span class="hljs-comment">(ubuntu)</span> gid=<span class="hljs-number">1000</span><span class="hljs-comment">(ubuntu)</span> groups=<span class="hljs-number">1000</span><span class="hljs-comment">(ubuntu)</span>,<span class="hljs-number">4</span><span class="hljs-comment">(adm)</span>,<span class="hljs-number">24</span><span class="hljs-comment">(cdrom)</span>,<span class="hljs-number">27</span><span class="hljs-comment">(sudo)</span>,<span class="hljs-number">30</span><span class="hljs-comment">(dip)</span>,<span class="hljs-number">46</span><span class="hljs-comment">(plugdev)</span>,<span class="hljs-number">116</span><span class="hljs-comment">(lxd)</span>,<span class="hljs-number">999</span><span class="hljs-comment">(docker)</span>
 </code></pre>
-            <h2 id="grupos">Grupos</h2>
-            <p>Los grupos son una forma de organizar y administrar usuarios en categorías lógicas; cada usuario puede
-                pertenecer a
-                uno o más grupos; se utilizan para simplificar la asignación de permisos y el manejo de recursos
-                compartidos.</p>
-            <pre><code class="lang-text"><span class="hljs-variable">$ </span>groups
+<h2 id="grupos">Grupos</h2>
+<p>Los grupos son una forma de organizar y administrar usuarios en categorías lógicas; cada usuario puede pertenecer a uno o más grupos; se utilizan para simplificar la asignación de permisos y el manejo de recursos compartidos.</p>
+<pre><code class="lang-text"><span class="hljs-variable">$ </span>groups
 
 ubuntu adm cdrom sudo dip plugdev lxd docker
 </code></pre>
-            <pre><code class="lang-text">$ cat <span class="hljs-regexp">/etc/</span>group
+<pre><code class="lang-text">$ cat <span class="hljs-regexp">/etc/</span>group
 <span class="hljs-symbol">
 root:</span><span class="hljs-string">x:</span><span class="hljs-number">0</span>:
 <span class="hljs-string">daemon:</span><span class="hljs-string">x:</span><span class="hljs-number">1</span>:
@@ -1369,33 +1029,21 @@ root:</span><span class="hljs-string">x:</span><span class="hljs-number">0</span
 <span class="hljs-string">tty:</span><span class="hljs-string">x:</span><span class="hljs-number">5</span>:
 <span class="hljs-string">disk:</span><span class="hljs-string">x:</span><span class="hljs-number">6</span>:
 </code></pre>
-            <h2 id="permisos-del-sistema">Permisos del sistema</h2>
-            <p>Los permisos del sistema definen los niveles de acceso y control que se otorgan a usuarios y grupos sobre
-                archivos y
-                directorios; en un sistema basado en Unix, los permisos se dividen en tres categorías principales:</p>
-            <ul>
-                <li>Lectura (<strong>r</strong>), que permite ver el contenido de un archivo o listar los archivos en un
-                    directorio.
-                </li>
-                <li>Escritura (<strong>w</strong>), que permite modificar o eliminar un archivo existente, y en un
-                    directorio,
-                    permite crear, eliminar o renombrar archivos.</li>
-                <li>Ejecución (<strong>x</strong>) permite ejecutar un archivo o acceder a un directorio. En el caso de
-                    los
-                    directorios, también es necesario tener permiso de ejecución para acceder a su contenido.</li>
-            </ul>
-            <p>Estos permisos se asignan tanto a usuarios individuales como a grupos; además, los permisos se establecen
-                para tres
-                categorías de usuarios:</p>
-            <ul>
-                <li>El propietario del archivo.</li>
-                <li>El grupo propietario.</li>
-                <li>Otros usuarios.</li>
-            </ul>
-            <p>Estos permisos se representan mediante una combinación de letras y símbolos, como rwx, y se asignan al
-                propietario,
-                grupo y otros usuarios.</p>
-            <pre><code class="lang-text">$ ls -l /home
+<h2 id="permisos-del-sistema">Permisos del sistema</h2>
+<p>Los permisos del sistema definen los niveles de acceso y control que se otorgan a usuarios y grupos sobre archivos y directorios; en un sistema basado en Unix, los permisos se dividen en tres categorías principales:</p>
+<ul>
+<li>Lectura (<strong>r</strong>), que permite ver el contenido de un archivo o listar los archivos en un directorio.</li>
+<li>Escritura (<strong>w</strong>), que permite modificar o eliminar un archivo existente, y en un directorio, permite crear, eliminar o renombrar archivos.</li>
+<li>Ejecución (<strong>x</strong>) permite ejecutar un archivo o acceder a un directorio. En el caso de los directorios, también es necesario tener permiso de ejecución para acceder a su contenido.</li>
+</ul>
+<p>Estos permisos se asignan tanto a usuarios individuales como a grupos; además, los permisos se establecen para tres categorías de usuarios:</p>
+<ul>
+<li>El propietario del archivo.</li>
+<li>El grupo propietario.</li>
+<li>Otros usuarios.</li>
+</ul>
+<p>Estos permisos se representan mediante una combinación de letras y símbolos, como rwx, y se asignan al propietario, grupo y otros usuarios.</p>
+<pre><code class="lang-text">$ ls -l /home
 
 total 24
 drwxr-xr-x<span class="hljs-number"> 2 </span>bart  bart <span class="hljs-number"> 4096 </span>Jul <span class="hljs-number"> 1 </span>14:32 bart
@@ -1404,17 +1052,11 @@ drwxr-xr-x<span class="hljs-number"> 2 </span>lisa  lisa <span class="hljs-numbe
 drwxr-xr-x<span class="hljs-number"> 2 </span>marge marge<span class="hljs-number"> 4096 </span>Jul <span class="hljs-number"> 1 </span>14:32 marge
 drwxr-xr-x<span class="hljs-number"> 1 </span>user  user <span class="hljs-number"> 4096 </span>Jul <span class="hljs-number"> 1 </span>14:32 user
 </code></pre>
-            <p>La correcta gestión de usuarios, grupos y permisos del sistema es esencial para mantener la seguridad y
-                la integridad
-                de un sistema informático; a través de la asignación adecuada de permisos, puedes controlar qué usuarios
-                y grupos
-                pueden acceder, modificar o ejecutar archivos y directorios específicos.</p>
-            <p>Esta segmentación garantiza que los usuarios solo tengan acceso a los recursos necesarios para realizar
-                sus tareas y
-                protege los datos confidenciales de accesos no autorizados.</p>
-            <p>Asignación de permisos a través de comandos.</p>
-            <p><img src="https://linuxcommand.org/images/file_permissions.png" alt="Permisos"></p>
-            <pre><code>rwx rwx rwx = <span class="hljs-number">111</span> <span class="hljs-number">111</span> <span class="hljs-number">111</span>
+<p>La correcta gestión de usuarios, grupos y permisos del sistema es esencial para mantener la seguridad y la integridad de un sistema informático; a través de la asignación adecuada de permisos, puedes controlar qué usuarios y grupos pueden acceder, modificar o ejecutar archivos y directorios específicos.</p>
+<p>Esta segmentación garantiza que los usuarios solo tengan acceso a los recursos necesarios para realizar sus tareas y protege los datos confidenciales de accesos no autorizados.</p>
+<p>Asignación de permisos a través de comandos.</p>
+<p><img src="https://linuxcommand.org/images/file_permissions.png" alt="Permisos"></p>
+<pre><code>rwx rwx rwx = <span class="hljs-number">111</span> <span class="hljs-number">111</span> <span class="hljs-number">111</span>
 rw- rw- rw- = <span class="hljs-number">110</span> <span class="hljs-number">110</span> <span class="hljs-number">110</span>
 rwx --- --- = <span class="hljs-number">111</span> <span class="hljs-number">000</span> <span class="hljs-number">000</span>
 
@@ -1426,45 +1068,33 @@ r-x = <span class="hljs-number">101</span>, que es <span class="hljs-number">5</
 r-- = <span class="hljs-number">100</span>, que es <span class="hljs-number">4</span> en binario.
 
 (...)
-</code></pre>
-            <blockquote>
-                <p><strong>Ejemplos</strong> </p>
-                <ul>
-                    <li><code>chmod 777 file</code> -&gt; Todos los permisos al dueño, grupo y usuarios
-                        (<code>rwx rwx rwx</code>).
-                    </li>
-                    <li><code>chmod 005 file</code> -&gt; Lectura y ejecución a los usuarios (<code>--- --- r-x</code>).
-                    </li>
-                    <li><code>chmod 201 file</code> -&gt; Escritura al dueño y ejecución a los usuarios
-                        (<code>-w- --- --x</code>).
-                    </li>
-                </ul>
-                <p><strong>Nota</strong><br>Cabe destacar que, lógicamente, los ficheros con permisos <code>777</code>
-                    son una muy
-                    mala práctica de seguridad, ya que cualquier usuario podría modificarlos o ejecutarlos.</p>
-                <p>Se recomienda encarecidamente seguir una <strong>política de permisos mínimos</strong> a la hora de
-                    gestionar los
-                    permisos de los ficheros en un sistema.</p>
-            </blockquote>
-            <h1 id="laboratorio">Laboratorio</h1>
-            <p>Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios
-                ficheros con
-                diferentes permisos.</p>
-            <p>El objetivo es que puedas practicar con los comandos de gestión de usuarios, grupos y permisos, así como
-                con los
-                comandos de búsqueda de ficheros, de red, de gestión de memoria y de procesos.</p>
-            <p>Estos son los siguientes usuarios:</p>
-            <ul>
-                <li><code>root</code>, superusuario.</li>
-                <li><code>user</code>, usuario normal.</li>
-                <li><code>homer</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-                <li><code>marge</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-                <li><code>bart</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-                <li><code>lisa</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-            </ul>
-            <p>La contraseña de cada usuario es el nombre del usuario.</p>
-            <h1 id="referencias">Referencias</h1>
-            <ul>
-                <li><a href="https://www.geeksforgeeks.org/linux-file-hierarchy-structure">Linux File Hierachy</a></li>
-                <li><a href="https://linuxcommand.org">linuxcomand.org</a></li>
-            </ul>
+</code></pre><blockquote>
+<p><strong>Ejemplos</strong>  </p>
+<ul>
+<li><code>chmod 777 file</code> -&gt; Todos los permisos al dueño, grupo y usuarios (<code>rwx rwx rwx</code>).</li>
+<li><code>chmod 005 file</code> -&gt; Lectura y ejecución a los usuarios (<code>--- --- r-x</code>).</li>
+<li><code>chmod 201 file</code> -&gt; Escritura al dueño y ejecución a los usuarios (<code>-w- --- --x</code>).</li>
+</ul>
+<p><strong>Nota</strong><br>Cabe destacar que, lógicamente, los ficheros con permisos <code>777</code> son una muy mala práctica de seguridad, ya que cualquier usuario podría modificarlos o ejecutarlos.</p>
+<p>Se recomienda encarecidamente seguir una <strong>política de permisos mínimos</strong> a la hora de gestionar los permisos de los ficheros en un sistema.</p>
+</blockquote>
+<h1 id="laboratorio">Laboratorio</h1>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
+<ul>
+<li><code>root</code>:<code>root</code>, superusuario.</li>
+<li><code>user</code>:<code>user</code>, usuario normal.</li>
+<li><code>homer</code>:<code>homer</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>marge</code>:<code>marge</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>bart</code>:<code>bart</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>lisa</code>:<code>lisa</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+</ul>
+</blockquote>
+<p>Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con diferentes permisos.</p>
+<p>El objetivo es que puedas practicar con los comandos de gestión de usuarios, grupos y permisos, así como con los comandos de búsqueda de ficheros, de red, de gestión de memoria y de procesos.</p>
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/linux-file-hierarchy-structure">Linux File Hierachy</a></li>
+<li><a href="https://linuxcommand.org">linuxcomand.org</a></li>
+</ul>
+

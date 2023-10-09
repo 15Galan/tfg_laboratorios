@@ -76,7 +76,7 @@ echo "Hola mundo"   # Comentario al final de una línea
 
 ### Comillas
 
-Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin emabrgo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:
+Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin embargo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:
 
 - `'`: indica que el texto es una cadena de caracteres, y no se debe interpretar nada.
 - `"`: indica que el texto es una cadena de caracteres, pero se deben interpretar las variables.
@@ -781,21 +781,17 @@ ls -l | grep "*.sh"
 
 # Laboratorio
 
+> **Credenciales**  
+> - `root`:`root`, superusuario.
+> - `user`:`user`, usuario normal.
+> - `homer`:`homer`, usuario normal y miembro del grupo `simpsons`.
+> - `marge`:`marge`, usuario normal y miembro del grupo `simpsons`.
+> - `bart`:`bart`, usuario normal y miembro del grupo `simpsons`.
+> - `lisa`:`lisa`, usuario normal y miembro del grupo `simpsons`.
+
 Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con diferentes permisos.
 
 El objetivo es que puedas practicar con Bash, teniendo todo un entorno Linux a tu disposición con el que experimentar; puedes programar y probar tus propios scripts, replicar algunos de los ejemplos anteriores o ejecutar algunos scripts del laboratorio.
-
-Este entorno contiene los siguientes usuarios:
-
-- `root`, superusuario.
-- `user`, usuario normal. 
-- `homer`, usuario normal y miembro del grupo `simpsons`.
-- `marge`, usuario normal y miembro del grupo `simpsons`.
-- `bart`, usuario normal y miembro del grupo `simpsons`.
-- `lisa`, usuario normal y miembro del grupo `simpsons`.
-
-La contraseña de cada usuario es el nombre del usuario.
-
 
 
 # Referencias

@@ -1,5 +1,4 @@
 <!-- Escalada de Privilegios -->
-
 <h1 id="introducci-n">Introducción</h1>
 <p>Se conoce como escalada de privilegios al proceso de obtener privilegios de administrador en un sistema, cuando se tiene acceso a un usuario con privilegios limitados.</p>
 <p>El concepto en sí puede resultar algo abstracto, ya que no es un concepto tan puntual como &quot;fuerza bruta&quot; o &quot;cifrado&quot;, sino que es un concepto más general y que abarca muchas técnicas distintas.</p>
@@ -20,11 +19,13 @@
 <p>El bit SUID es un bit que se puede aplicar a un fichero, y que permite que cuando un usuario lo ejecute, se ejecute con los permisos del dueño del fichero, en lugar de los del usuario que lo ejecuta.</p>
 <p>Esto tiene sentido para ficheros que necesitan permisos de administrador para ejecutarse, pero que no se quiere que cualquier usuario pueda ejecutarlos con privilegios de administrador; y por otro lado, también resulta un punto de inflexión para la escalada de privilegios, ya que si un usuario puede acceder a un fichero con el bit SUID activado, podría ejecutarlo directamente como un administrador.</p>
 <h1 id="laboratorio">Laboratorio</h1>
-<p>Este entorno contiene una vulnerabilidad de permisos débiles en un archivo muy importante: <code>/etc/shadow</code>.</p>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
 <ul>
-<li>Credenciales: <code>user:user</code>.</li>
-<li>Recursos: <code>/home/user/rockyou-top15k.txt</code></li>
+<li><code>user:user</code>.</li>
 </ul>
+</blockquote>
+<p>Este entorno contiene una vulnerabilidad de permisos débiles en un archivo muy importante: <code>/etc/shadow</code>, y una lista de contraseñas en <code>/home/user/rockyou-top15k.txt</code>.</p>
 <p>Antiguamente, las contraseñas se almacenaban en el fichero <code>/etc/passwd</code>, pero actualmente se almacenan en el fichero <code>/etc/shadow</code>, un fichero que solo puede ser leído por el usuario <code>root</code>.</p>
 <p>Por supuesto, las contraseñas están almacenadas siguiendo un algoritmo de hash, por lo que no se pueden obtener directamente, pero si se puede obtener el hash de la contraseña, y luego intentar romperlo con un ataque de fuerza bruta.</p>
 <p>Sabiendo esta información sobre el sistema, se puede intentar obtener el hash de la contraseña del usuario <code>root</code>, y luego intentar romperlo con un ataque de fuerza bruta.</p>
@@ -144,7 +145,7 @@ drwxr-xr-x<span class="hljs-number"> 3 </span>root root   <span class="hljs-numb
 </tbody>
 </table>
 <p>Sabiendo eso, se ha obtenido el hash de la contraseña del usuario <code>root</code>, por lo que se puede usar una herramienta como <em>hashcat</em> para intentar crackearla.</p>
-<p>No obstante, primero será encesario obtener el tipo de hash que se está usando, ya que <em>hashcat</em> necesita saberlo para poder crackearlo, y aunque hay varios métodos, como usar <em>hashid</em> o <em>john</em>, se puede usar la página web <a href="https://hashes.com/en/tools/hash_identifier">Hashes.com</a> para identificar el tipo de hash.</p>
+<p>No obstante, primero será necesario obtener el tipo de hash que se está usando, ya que <em>hashcat</em> necesita saberlo para poder crackearlo, y aunque hay varios métodos, como usar <em>hashid</em> o <em>john</em>, se puede usar la página web <a href="https://hashes.com/en/tools/hash_identifier">Hashes.com</a> para identificar el tipo de hash.</p>
 <pre><code class="lang-shell"><span class="hljs-attribute">hashid</span> <span class="hljs-string">'<span class="hljs-variable">$1</span><span class="hljs-variable">$V3k7V9sY</span><span class="hljs-variable">$8</span>LnDZKFDxSJ8jqUE6Wtzc/'</span>
 </code></pre>
 <pre><code class="lang-text"><span class="hljs-symbol">Analyzing</span> <span class="hljs-string">'$1$V3k7V9sY$8LnDZKFDxSJ8jqUE6Wtzc/'</span>

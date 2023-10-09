@@ -35,7 +35,7 @@ Existen diversas herramientas para leer y escribir sobre los metadatos de los fi
 Los metadatos son información adicional que se almacena dentro de los ficheros, como por ejemplo, la fecha de creación, el autor, etc; estos metadatos no forman parte del contenido que ofrece el fichero (texto, imagen...), pero forman parte de la estructura del fichero en sí mismo.
 
 > **Nota**  
-> También suele ser habitual que la información oculta esté cifada, añadiendo una capa más de protección en caso de que alguien encuentre dicha información.
+> También suele ser habitual que la información oculta esté cifrada, añadiendo una capa más de protección en caso de que alguien encuentre dicha información.
 >
 > Una práctica sencilla y común, es codificar información como texto usando `base64`, por lo que es recomendable saber cómo usar ese comando.
 
@@ -71,7 +71,7 @@ Los metadata EXIF son metadatos que se utilizan para almacenar información sobr
 Esto quiere decir que si se oculta información dentro de los metadatos de una imagen, esta información se puede leer si el dispositivo que se utiliza para leer la imagen es compatible con los metadatos EXIF, IPTC y XMP.
 
 > **Nota**  
-> Esta herramienta es commúnmente utilizada debido a su facilidad de uso y a que es compatible con una gran cantidad de formatos de ficheros.
+> Esta herramienta es comúnmente utilizada debido a su facilidad de uso y a que es compatible con una gran cantidad de formatos de ficheros.
 
 Para leer los metadatos de un fichero:
 
@@ -131,12 +131,12 @@ Por ejemplo, para extraer la información oculta dentro de la imagen `imagen.jpg
 steghide extract -sf imagen.jpg -p 1234
 ```
 
-
 # Laboratorio
 
-Este entorno contiene una serie de imágenes con información oculta, donde puedes usar las herramientas anteriormente mencionadas tanto para experimentar por tu cuenta como para utilizar los recursos propuestos.
+> **Credenciales**  
+> - `user:user`
 
-- Credenciales: `user:user`
+Este entorno contiene una serie de imágenes con información oculta, donde puedes usar las herramientas anteriormente mencionadas tanto para experimentar por tu cuenta como para utilizar los recursos propuestos.
 
 El entorno simula que toda la información de los recursos está relacionada, por lo que es posible que para obtener la información oculta de un recurso, primero tengas que obtener la información oculta de otro recurso.
 

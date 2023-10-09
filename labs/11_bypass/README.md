@@ -96,11 +96,13 @@ ssh -i id_rsa -t git@gitserver -p 3322 "git-upload-archive '--help'"
 
 Ve a la página de ayuda, luego simplemente pulsa <kbd>Shift + e</kbd> o `!id`.
 
----
 
 # Laboratorio
 
-**Este laboratorio simula un servidor de Git con la vulnerabilidad `CVE-2017-8386`.**
+> **Credenciales**  
+> - Clave SSH privada descrita más abajo.
+
+Este laboratorio simula un servidor de Git con la vulnerabilidad **CVE-2017-8386**.
 
 Para usarlo, necesitarás la siguiente clave privada de ejemplo para la conexión SSH:
 
@@ -142,7 +144,6 @@ chmod 600 <clave privada>
 
 Una vez hayas completado esos preparativos, podrás llevar a cabo la explotación mencionada anteriormente y explorar las posibilidades que te da ese bypass.
 
-
 ## Curiosidad
 
 > **¿Por qué el usuario *www-data*?**  
@@ -161,10 +162,8 @@ Una vez hayas completado esos preparativos, podrás llevar a cabo la explotació
 > git:x:33:33:git:/home/git:/bin/bash
 > ```
 
----
 
 # Referencias
 
 - [Git](https://es.wikipedia.org/wiki/Git)
-- [Git Shell Bypass by abusing “less” CVE-2017-8386](https://insinuator.net/2017/05/git-shell-bypass-by-abusing-less-cve-2017-8386)
-- [Git Shell CVE-2017-8386](https://www.leavesongs.com/PENETRATION/git-shell-cve-2017-8386.html)
+- [CVE-2017-8386](https://insinuator.net/2017/05/git-shell-bypass-by-abusing-less-cve-2017-8386) - Git Shell Bypass by abusing "less"

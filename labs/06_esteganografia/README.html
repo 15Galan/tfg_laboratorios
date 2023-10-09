@@ -24,7 +24,7 @@
 <p>Existen diversas herramientas para leer y escribir sobre los metadatos de los ficheros, así como para ocultar información dentro de ficheros de imagen, audio y vídeo.</p>
 <p>Los metadatos son información adicional que se almacena dentro de los ficheros, como por ejemplo, la fecha de creación, el autor, etc; estos metadatos no forman parte del contenido que ofrece el fichero (texto, imagen...), pero forman parte de la estructura del fichero en sí mismo.</p>
 <blockquote>
-<p><strong>Nota</strong><br>También suele ser habitual que la información oculta esté cifada, añadiendo una capa más de protección en caso de que alguien encuentre dicha información.</p>
+<p><strong>Nota</strong><br>También suele ser habitual que la información oculta esté cifrada, añadiendo una capa más de protección en caso de que alguien encuentre dicha información.</p>
 <p>Una práctica sencilla y común, es codificar información como texto usando <code>base64</code>, por lo que es recomendable saber cómo usar ese comando.</p>
 </blockquote>
 <h2 id="-base64-"><code>base64</code></h2>
@@ -48,7 +48,7 @@
 <p>Los metadata EXIF son metadatos que se utilizan para almacenar información sobre imágenes, como la fecha de creación, el autor, el dispositivo con el que se tomó la foto, etc; IPTC es un estándar para el intercambio de información sobre imágenes, y XMP es un formato de metadatos basado en XML.</p>
 <p>Esto quiere decir que si se oculta información dentro de los metadatos de una imagen, esta información se puede leer si el dispositivo que se utiliza para leer la imagen es compatible con los metadatos EXIF, IPTC y XMP.</p>
 <blockquote>
-<p><strong>Nota</strong><br>Esta herramienta es commúnmente utilizada debido a su facilidad de uso y a que es compatible con una gran cantidad de formatos de ficheros.</p>
+<p><strong>Nota</strong><br>Esta herramienta es comúnmente utilizada debido a su facilidad de uso y a que es compatible con una gran cantidad de formatos de ficheros.</p>
 </blockquote>
 <p>Para leer los metadatos de un fichero:</p>
 <pre><code class="lang-bash"><span class="hljs-class">exiftool </span>{fichero}
@@ -87,10 +87,13 @@
 <pre><code class="lang-bash">steghide extract -sf imagen<span class="hljs-selector-class">.jpg</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">1234</span>
 </code></pre>
 <h1 id="laboratorio">Laboratorio</h1>
-<p>Este entorno contiene una serie de imágenes con información oculta, donde puedes usar las herramientas anteriormente mencionadas tanto para experimentar por tu cuenta como para utilizar los recursos propuestos.</p>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
 <ul>
-<li>Credenciales: <code>user:user</code></li>
+<li><code>user:user</code></li>
 </ul>
+</blockquote>
+<p>Este entorno contiene una serie de imágenes con información oculta, donde puedes usar las herramientas anteriormente mencionadas tanto para experimentar por tu cuenta como para utilizar los recursos propuestos.</p>
 <p>El entorno simula que toda la información de los recursos está relacionada, por lo que es posible que para obtener la información oculta de un recurso, primero tengas que obtener la información oculta de otro recurso.</p>
 <blockquote>
 <p><strong>Nota</strong><br>La información conduce a la contraseña del usuario <code>root</code>.</p>

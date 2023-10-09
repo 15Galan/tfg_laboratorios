@@ -1,7 +1,7 @@
 <h1 id="introducci-n">Introducción</h1>
 <h2 id="qu-es-un-hash">Qué es un hash</h2>
 <p>Un hash es una función matemática que convierte una cadena de caracteres en otra cadena de caracteres de longitud fija. Esta función es unidireccional, es decir, <strong>no se puede obtener la cadena original a partir de la cadena resultante</strong>; precisamente esta característica es la clave del uso de los hashes en ciberseguridad.</p>
-<p>Generalmente, los hashes se utilizan para verificar la inegridad de un fichero y para almacenar contraseñas:</p>
+<p>Generalmente, los hashes se utilizan para verificar la integridad de un fichero y para almacenar contraseñas:</p>
 <ul>
 <li><strong>Verificación de integridad</strong>: se calcula el hash de un fichero y se compara con el hash original. Si son iguales, el fichero no ha sido modificado; si son diferentes, el fichero ha sido modificado, porque debería tener el mismo hash que el original.</li>
 <li><strong>Almacenamiento de contraseñas</strong>: en lugar de almacenar las contraseñas en texto plano, se almacena el hash de la contraseña. Cuando un usuario se autentica, se calcula el hash de la contraseña introducida y se compara con el hash almacenado. Si son iguales, entonces es en efecto, la misma contraseña.</li>
@@ -17,7 +17,7 @@
 <p>Un hash viene determinado por el algoritmo que se utiliza para calcularlo.</p>
 <ul>
 <li><strong>MD5</strong>: algoritmo de 128 bits que genera un hash de 32 caracteres hexadecimales.<br>Este algoritmo <strong>ya no es seguro</strong> y no debería utilizarse.</li>
-<li><strong>SHA-1</strong>: algoritmo de 160 bits que genera un hash de 40 caracteres hexadecimales.<br>Este algoritmo <strong>y ano es seguro</strong> y no debería utilizarse.</li>
+<li><strong>SHA-1</strong>: algoritmo de 160 bits que genera un hash de 40 caracteres hexadecimales.<br>Este algoritmo <strong>ya no es seguro</strong> y no debería utilizarse.</li>
 <li><strong>SHA-256</strong>: algoritmo de 256 bits que genera un hash de 64 caracteres hexadecimales.</li>
 </ul>
 <p>Ejemplo de la cadena <code>srgalan</code> representada en los algoritmos anteriores:</p>
@@ -74,7 +74,7 @@ sha256sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;<
 [+] <span class="hljs-symbol">RAdmin</span> v2.x
 </code></pre>
 <p>Observa que se muestran muchas posibilidades, lo que coincide con la naturaleza básica de los hashes definidas al inicio, lo que hace prácticamente imposible identificar el algoritmo exacto; sin embargo, puede aproximarse en función de las características del resultado.</p>
-<p>Un ejemplo en este caso es la longitud del hash, observa que no aparencen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.</p>
+<p>Un ejemplo en este caso es la longitud del hash, observa que no aparecen las opciones para SHA1 ni SHA256, ya que sus longitudes son de 40 y 64 caracteres, respectivamente, mientras que el hash introducido mide 32 caracteres.</p>
 <blockquote>
 <p><strong>Nota</strong><br>Este programa adquiere aún más importancia cuando eres consciente, no solo de la inmensa cantidad de algoritmos hash posible, sino de la cantidad de combinaciones que puedes encontrarte.</p>
 <p><strong>Nada ni nadie te impide aplicar un algoritmo hash, al resultado de otro algoritmo hash, ni hacer tantas combinaciones como quieras</strong>.</p>
@@ -87,7 +87,7 @@ sha256sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;<
 <ul>
 <li>Soporta una gran cantidad de algoritmos de hash: MD5, SHA1, SHA256, SHA512, etc.</li>
 <li>Admite múltiples ataques: fuerza bruta, diccionario, híbridos y de combinación de palabras.</li>
-<li>Permite la combinación de reglas personalizadas para aumentar la eficaia de los ataques de diccionario.</li>
+<li>Permite la combinación de reglas personalizadas para aumentar la eficacia de los ataques de diccionario.</li>
 <li>Resulta muy eficiente al utilizar la potencia de las GPUs, lo que lo hace especialmente adecuado para operaciones de <em>cracking</em> de alto rendimiento.</li>
 </ul>
 <h4 id="john-the-ripper">John the Ripper</h4>
@@ -101,6 +101,12 @@ sha256sum <span class="hljs-tag">&lt;<span class="hljs-name">fichero</span>&gt;<
 <li>Además de las contraseñas almacenadas en formato hash, también puede trabajar con formatos de archivo adicionales, como SAM (Windows) y htpasswd (Apache).</li>
 </ul>
 <h1 id="laboratorio">Laboratorio</h1>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
+<ul>
+<li><code>root:root</code>.</li>
+</ul>
+</blockquote>
 <p>Este entorno contiene distintas bases de datos MariaDB locales con usuarios y contraseñas que han sido almacenadas usando distintos algoritmos de hashes, y también contiene todos los programas descritos en la sección.</p>
 <p>Puedes tratar de obtener las contraseñas de los usuarios utilizando las herramientas mencionadas anteriormente.</p>
 <h2 id="comandos-de-ayuda-para-sql">Comandos de ayuda para SQL</h2>

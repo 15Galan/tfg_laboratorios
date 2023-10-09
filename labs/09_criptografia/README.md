@@ -176,7 +176,7 @@ gpg --verify mensaje.txt.gpg
 
 # Referencias
 
-- [Cryptography](https://en.wikipedia.org/wiki/Cryptography)
-- [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+- [Cryptography](https://es.wikipedia.org/wiki/Criptograf%C3%ADa)
+- [Criptografía asimétrica](https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica)
 - [OpenSSL](https://www.openssl.org/)
 - [GPG](https://gnupg.org/)

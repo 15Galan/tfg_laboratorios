@@ -1,59 +1,39 @@
 <h1 id="introducci-n-a-bash-scripting">Introducción a Bash Scripting</h1>
-<p>El Bash <em>scripting</em> es una de las herramientas más potentes que podemos utilizar en Linux. Nos permite
-    automatizar tareas, y ejecutar comandos de forma secuencial; por tanto, es una herramienta muy útil tanto para
-    desarrolladores, administradores de sistemas y ciberseguridad en general, ya que se encuentra en la base de muchas
-    herramientas.</p>
+<p>El Bash <em>scripting</em> es una de las herramientas más potentes que podemos utilizar en Linux. Nos permite automatizar tareas, y ejecutar comandos de forma secuencial; por tanto, es una herramienta muy útil tanto para desarrolladores, administradores de sistemas y ciberseguridad en general, ya que se encuentra en la base de muchas herramientas.</p>
 <h2 id="antes-de-empezar">Antes de empezar</h2>
 <h3 id="-qu-es-el-scripting-">¿Qué es el <em>scripting</em>?</h3>
-<p>El <em>scripting</em> es la acción de crear o construir scripts, y donde un script es un fichero de texto que
-    contiene una serie de instrucciones que se ejecutan de forma secuencial; estas instrucciones pueden ser comandos de
-    la terminal, o instrucciones de control de flujo como bucles o condicionales.</p>
+<p>El <em>scripting</em> es la acción de crear o construir scripts, y donde un script es un fichero de texto que contiene una serie de instrucciones que se ejecutan de forma secuencial; estas instrucciones pueden ser comandos de la terminal, o instrucciones de control de flujo como bucles o condicionales.</p>
 <p>Los scripts se pueden ejecutarse de 2 formas:</p>
 <ul>
-    <li><strong>Interactiva</strong>: ejecutando el script en la terminal o de forma manual.<br> Por ejemplo, ejecutando
-        el comando <code>./script.sh</code>.</li>
-    <li><strong>Automática</strong>: ejecutando el script de forma programada.<br> Por ejemplo, al arrancar el sistema o
-        al ejecutar un comando concreto.</li>
+<li><strong>Interactiva</strong>: ejecutando el script en la terminal o de forma manual.<br>  Por ejemplo, ejecutando el comando <code>./script.sh</code>.</li>
+<li><strong>Automática</strong>: ejecutando el script de forma programada.<br>  Por ejemplo, al arrancar el sistema o al ejecutar un comando concreto.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Una forma muy habitual de automatizar la ejecución de un script es mediante el uso de un
-        <em>cronjob</em> o <em>crontask</em> (tarea de Cron): un proceso que se ejecuta de forma periódica en el
-        sistema, donde se puede especificar que se ejecuten acciones definidas en scripts.</p>
+<p><strong>Nota</strong><br>Una forma muy habitual de automatizar la ejecución de un script es mediante el uso de un <em>cronjob</em> o <em>crontask</em> (tarea de Cron): un proceso que se ejecuta de forma periódica en el sistema, donde se puede especificar que se ejecuten acciones definidas en scripts.</p>
 </blockquote>
 <h3 id="-qu-es-bash-">¿Qué es Bash?</h3>
-<p>Bash es un lenguaje de scripting que se ejecuta a nivel de sistema operativo que permite automatizar tareas y
-    ejecutar comandos de forma secuencial.</p>
-<p>Se trata de un lenguaje de scriping muy potente debido a su profunda integración con el sistema operativo, lo que le
-    permite realizar una gran cantidad de operaciones sin necesidad de dependencias externas y sin consumir muchos
-    recursos; por este mismo motivo, resulta ser el lenguaje de scripting más extendido, ya que se encuentra en la base
-    de muchos sistemas Linux, y es el lenguaje de scripting por defecto en la mayoría de sus distribuciones.</p>
-<p>Cuenta con los elementos de cualquier lenguaje de programación, como variables, bucles, condicionales, funciones,
-    etc; además de una gran cantidad de comandos integrados que le permiten realizar operaciones de forma muy eficiente.
-</p>
+<p>Bash es un lenguaje de scripting que se ejecuta a nivel de sistema operativo que permite automatizar tareas y ejecutar comandos de forma secuencial.</p>
+<p>Se trata de un lenguaje de scriping muy potente debido a su profunda integración con el sistema operativo, lo que le permite realizar una gran cantidad de operaciones sin necesidad de dependencias externas y sin consumir muchos recursos; por este mismo motivo, resulta ser el lenguaje de scripting más extendido, ya que se encuentra en la base de muchos sistemas Linux, y es el lenguaje de scripting por defecto en la mayoría de sus distribuciones.</p>
+<p>Cuenta con los elementos de cualquier lenguaje de programación, como variables, bucles, condicionales, funciones, etc; además de una gran cantidad de comandos integrados que le permiten realizar operaciones de forma muy eficiente.</p>
 <h2 id="componentes-del-lenguaje-bash">Componentes del lenguaje Bash</h2>
 <h3 id="shebang">Shebang</h3>
-<p>El <em>shebang</em> es la primera línea de un script, y se utiliza para indicar al sistema operativo qué intérprete
-    debe utilizar para ejecutar el script.</p>
+<p>El <em>shebang</em> es la primera línea de un script, y se utiliza para indicar al sistema operativo qué intérprete debe utilizar para ejecutar el script.</p>
 <p>Por ejemplo, si queremos que el script se ejecute con Bash, la primera línea del script debe ser:</p>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash</span>
 </code></pre>
 <blockquote>
-    <p><strong>Nota</strong><br>El <em>shebang</em> es un comentario para Bash, por lo que no se ejecuta como parte del
-        script.</p>
+<p><strong>Nota</strong><br>El <em>shebang</em> es un comentario para Bash, por lo que no se ejecuta como parte del script.</p>
 </blockquote>
-<p>Existen varios intérpretes de Bash, como <code>bash</code>, <code>sh</code>, <code>dash</code>, <code>zsh</code>,
-    etc; por lo que es importante indicar el intérprete correcto en el <em>shebang</em>.</p>
+<p>Existen varios intérpretes de Bash, como <code>bash</code>, <code>sh</code>, <code>dash</code>, <code>zsh</code>, etc; por lo que es importante indicar el intérprete correcto en el <em>shebang</em>.</p>
 <blockquote>
-    <p><strong>Nota</strong><br>Python, al ser un lenguaje de script, también puede utilizar <em>shebangs</em> para
-        indicar el intérprete que debe utilizar para ejecutar el script.</p>
-    <p>Por ejemplo, si queremos que el script se ejecute con Python 3, la primera línea del script debe ser:</p>
-    <pre><code class="lang-python"><span class="hljs-meta">#!/usr/bin/env python3</span>
+<p><strong>Nota</strong><br>Python, al ser un lenguaje de script, también puede utilizar <em>shebangs</em> para indicar el intérprete que debe utilizar para ejecutar el script.</p>
+<p>Por ejemplo, si queremos que el script se ejecute con Python 3, la primera línea del script debe ser:</p>
+<pre><code class="lang-python"><span class="hljs-meta">#!/usr/bin/env python3</span>
 </code></pre>
 </blockquote>
 <h3 id="comentarios">Comentarios</h3>
 <p>Los comentarios son líneas que se ignoran al ejecutar el script, y se utilizan para documentar el código.</p>
-<p>En Bash, los comentarios se indican con el símbolo <code>#</code>, y se pueden utilizar tanto en una línea como en
-    varias líneas.</p>
+<p>En Bash, los comentarios se indican con el símbolo <code>#</code>, y se pueden utilizar tanto en una línea como en varias líneas.</p>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
 <span class="hljs-comment"># Esto es un comentario de una sola línea</span>
@@ -66,13 +46,11 @@
 <span class="hljs-comment"># vacías.</span>
 </code></pre>
 <h3 id="comillas">Comillas</h3>
-<p>Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin
-    emabrgo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:</p>
+<p>Las comillas se utilizan para indicar que un texto es una cadena de caracteres, y no un comando o una variable. Sin embargo, en Bash existen 3 tipos de comillas que se utilizan para diferentes propósitos:</p>
 <ul>
-    <li><code>&#39;</code>: indica que el texto es una cadena de caracteres, y no se debe interpretar nada.</li>
-    <li><code>&quot;</code>: indica que el texto es una cadena de caracteres, pero se deben interpretar las variables.
-    </li>
-    <li><code>`</code> o <code>$()</code>: indica que el texto es un comando, y se debe ejecutar.</li>
+<li><code>&#39;</code>: indica que el texto es una cadena de caracteres, y no se debe interpretar nada.</li>
+<li><code>&quot;</code>: indica que el texto es una cadena de caracteres, pero se deben interpretar las variables.</li>
+<li><code>`</code> o <code>$()</code>: indica que el texto es un comando, y se debe ejecutar.</li>
 </ul>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -88,20 +66,16 @@ Hola srgalan, <span class="hljs-keyword">tu</span> directorio de trabajo <span c
 Hola srgalan, <span class="hljs-keyword">tu</span> directorio de trabajo <span class="hljs-keyword">e</span><span class="hljs-variable">s:</span> /home/srgalan
 </code></pre>
 <h3 id="variables">Variables</h3>
-<p>Las variables son elementos que se utilizan para almacenar información, y se pueden utilizar para almacenar cualquier
-    tipo de dato.</p>
+<p>Las variables son elementos que se utilizan para almacenar información, y se pueden utilizar para almacenar cualquier tipo de dato.</p>
 <h4 id="definici-n-y-uso-de-variables">Definición y uso de variables</h4>
-<p>Las variables de Bash <strong>no tienen tipo</strong>, por lo que se pueden utilizar para almacenar cualquier dato.
-</p>
+<p>Las variables de Bash <strong>no tienen tipo</strong>, por lo que se pueden utilizar para almacenar cualquier dato.</p>
 <p>Las variables se definen usando el símbolo <code>=</code> y pueden ser de 2 tipos:</p>
 <ul>
-    <li><strong>Local</strong>: solo se pueden utilizar dentro de la función o script donde se definen.</li>
-    <li><strong>Global</strong>: se pueden utilizar en cualquier parte del script una vez definidas.</li>
+<li><strong>Local</strong>: solo se pueden utilizar dentro de la función o script donde se definen.</li>
+<li><strong>Global</strong>: se pueden utilizar en cualquier parte del script una vez definidas.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Cabe destacar que es muy importante no dejar espacios entre el nombre de la variable, el
-        símbolo <code>=</code> y el valor de la variable; Bash es un lenguaje muy sensible a su sintaxis y un simple
-        espacio puede provocar errores muy difíciles de depurar.</p>
+<p><strong>Nota</strong><br>Cabe destacar que es muy importante no dejar espacios entre el nombre de la variable, el símbolo <code>=</code> y el valor de la variable; Bash es un lenguaje muy sensible a su sintaxis y un simple espacio puede provocar errores muy difíciles de depurar.</p>
 </blockquote>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -128,31 +102,23 @@ despedir
 Hola Homer
 Adiós Galá<span class="hljs-built_in">n</span>
 </code></pre>
-<p>Este ejemplo muestra 2 variables que se llaman <code>nombre</code>, pero una definida localmente dentro de una
-    función y otra definida globalmente al estar fuera de todas las funciones; en el ejemplo anterior está ocurriendo lo
-    siguiente:</p>
+<p>Este ejemplo muestra 2 variables que se llaman <code>nombre</code>, pero una definida localmente dentro de una función y otra definida globalmente al estar fuera de todas las funciones; en el ejemplo anterior está ocurriendo lo siguiente:</p>
 <ol>
-    <li>Se define la función <code>saludar()</code> con la variable <code>nombre</code> (local, porque está dentro de
-        <code>saludar()</code>).</li>
-    <li>Se define la variable <code>nombre</code> (global, porque está fuera de las funciones).</li>
-    <li>Se ejecuta el comando <code>echo</code> para mostrar el valor de la variable <code>nombre</code> (toma el valor
-        global).</li>
-    <li>Se ejecuta <code>saludar()</code>, mostrando que <code>nombre</code> tiene un valor diferente (exclusivo para el
-        interior de esa función).</li>
-    <li>Se ejecuta <code>despedir()</code>, mostrando que <code>nombre</code> tiene el valor global (porque no se
-        definió localmente ningún valor).</li>
+<li>Se define la función <code>saludar()</code> con la variable <code>nombre</code> (local, porque está dentro de <code>saludar()</code>).</li>
+<li>Se define la variable <code>nombre</code> (global, porque está fuera de las funciones).</li>
+<li>Se ejecuta el comando <code>echo</code> para mostrar el valor de la variable <code>nombre</code> (toma el valor global).</li>
+<li>Se ejecuta <code>saludar()</code>, mostrando que <code>nombre</code> tiene un valor diferente (exclusivo para el interior de esa función).</li>
+<li>Se ejecuta <code>despedir()</code>, mostrando que <code>nombre</code> tiene el valor global (porque no se definió localmente ningún valor).</li>
 </ol>
 <h4 id="variables-de-entorno">Variables de entorno</h4>
-<p>Las variables de entorno son variables globales que se utilizan para almacenar información sobre el entorno del
-    sistema operativo, como el nombre del usuario, la ruta del directorio de trabajo, etc.</p>
-<p>Estas variables se pueden utilizar en cualquier script, y se pueden consultar con los comandos <code>env</code> o
-    <code>printenv</code>; algunas de las más comunes son:</p>
+<p>Las variables de entorno son variables globales que se utilizan para almacenar información sobre el entorno del sistema operativo, como el nombre del usuario, la ruta del directorio de trabajo, etc.</p>
+<p>Estas variables se pueden utilizar en cualquier script, y se pueden consultar con los comandos <code>env</code> o <code>printenv</code>; algunas de las más comunes son:</p>
 <ul>
-    <li><code>HOME</code>: ruta del directorio de trabajo del usuario.</li>
-    <li><code>PATH</code>: ruta de los directorios donde se encuentran los comandos.</li>
-    <li><code>PWD</code>: ruta del directorio de trabajo actual.</li>
-    <li><code>USER</code>: nombre del usuario.</li>
-    <li><code>SHELL</code>: ruta del intérprete de comandos.</li>
+<li><code>HOME</code>: ruta del directorio de trabajo del usuario.</li>
+<li><code>PATH</code>: ruta de los directorios donde se encuentran los comandos.</li>
+<li><code>PWD</code>: ruta del directorio de trabajo actual.</li>
+<li><code>USER</code>: nombre del usuario.</li>
+<li><code>SHELL</code>: ruta del intérprete de comandos.</li>
 </ul>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -164,27 +130,24 @@ Adiós Galá<span class="hljs-built_in">n</span>
 <h5 id="-export-y-unset-"><code>export</code> y <code>unset</code></h5>
 <p>El comando <code>export</code> se utiliza para definir variables de entorno.</p>
 <ul>
-    <li>Usado en la terminal, define la variable de entorno para la sesión actual.</li>
-    <li>Usado en un script, define la variable de entorno para el script actual.</li>
+<li>Usado en la terminal, define la variable de entorno para la sesión actual.</li>
+<li>Usado en un script, define la variable de entorno para el script actual.</li>
 </ul>
 <p>El comando <code>unset</code> se utiliza para eliminar variables de entorno.</p>
 <ul>
-    <li>Usado en la terminal, elimina la variable de entorno para la sesión actual.</li>
-    <li>Usado en un script, elimina la variable de entorno para el script actual.</li>
+<li>Usado en la terminal, elimina la variable de entorno para la sesión actual.</li>
+<li>Usado en un script, elimina la variable de entorno para el script actual.</li>
 </ul>
 <h4 id="variables-especiales">Variables especiales</h4>
-<p>Bash tiene una serie de variables especiales que se utilizan para almacenar información sobre el entorno de ejecución
-    del script.</p>
-<p>Estas variables se pueden utilizar en cualquier script, y se pueden consultar con el comando <code>set</code>;
-    algunas de las más comunes son:</p>
+<p>Bash tiene una serie de variables especiales que se utilizan para almacenar información sobre el entorno de ejecución del script.</p>
+<p>Estas variables se pueden utilizar en cualquier script, y se pueden consultar con el comando <code>set</code>; algunas de las más comunes son:</p>
 <ul>
-    <li><code>$0</code>: nombre del script.</li>
-    <li><code>$1</code>, <code>$2</code>, <code>$3</code>, ...: parámetros 1, 2, 3, ... del script, respectivamente.
-    </li>
-    <li><code>$#</code>: número de parámetros del script.</li>
-    <li><code>$?</code>: código de salida del último comando ejecutado.</li>
-    <li><code>$@</code>: lista con todos los parámetros del script.</li>
-    <li><code>$*</code>: lista con todos los parámetros del script, como una sola cadena.</li>
+<li><code>$0</code>: nombre del script.</li>
+<li><code>$1</code>, <code>$2</code>, <code>$3</code>, ...: parámetros 1, 2, 3, ... del script, respectivamente.</li>
+<li><code>$#</code>: número de parámetros del script.</li>
+<li><code>$?</code>: código de salida del último comando ejecutado.</li>
+<li><code>$@</code>: lista con todos los parámetros del script.</li>
+<li><code>$*</code>: lista con todos los parámetros del script, como una sola cadena.</li>
 </ul>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -215,28 +178,23 @@ Parámetros recibidos        : <span class="hljs-type">uno</span> dos tres <span
 <h4 id="aritm-ticos">Aritméticos</h4>
 <p>Bash permite realizar operaciones aritméticas con los siguientes operadores:</p>
 <ul>
-    <li><code>+</code>: suma.</li>
-    <li><code>-</code>: resta.</li>
-    <li><code>*</code>: multiplicación.</li>
-    <li><code>/</code>: división.</li>
-    <li><code>%</code>: módulo (resto de la división).</li>
+<li><code>+</code>: suma.</li>
+<li><code>-</code>: resta.</li>
+<li><code>*</code>: multiplicación.</li>
+<li><code>/</code>: división.</li>
+<li><code>%</code>: módulo (resto de la división).</li>
 </ul>
-<p>No existen operadores más complejos como potencias, raíces... como ocurre en otros lenguajes; para realizar
-    operaciones más complejas, se puede utilizar el comando <code>bc</code> (calculadora de Bash).</p>
+<p>No existen operadores más complejos como potencias, raíces... como ocurre en otros lenguajes; para realizar operaciones más complejas, se puede utilizar el comando <code>bc</code> (calculadora de Bash).</p>
 <h4 id="l-gicos">Lógicos</h4>
-<p>Los operadores lógicos son aquellos que se utilizan para evaluar expresiones o condiciones, y devuelven un valor de
-    salida que indica si la expresión es verdadera o falsa.</p>
-<p>Una condición se considera verdadera cuando su valor de salida es <code>0</code> o <code>true</code>; y se considera
-    falsa cuando su valor de salida es <code>1</code> o <code>false</code>.</p>
+<p>Los operadores lógicos son aquellos que se utilizan para evaluar expresiones o condiciones, y devuelven un valor de salida que indica si la expresión es verdadera o falsa.</p>
+<p>Una condición se considera verdadera cuando su valor de salida es <code>0</code> o <code>true</code>; y se considera falsa cuando su valor de salida es <code>1</code> o <code>false</code>.</p>
 <blockquote>
-    <p><strong>Nota</strong>:<br>Algunos lenguajes de programación manejan estos valores al revés.</p>
+<p><strong>Nota</strong>:<br>Algunos lenguajes de programación manejan estos valores al revés.</p>
 </blockquote>
 <h3 id="estructuras-condicionales-o-de-control">Estructuras condicionales o de control</h3>
-<p>Estas estructuras se utilizan para controlar el flujo de ejecución de un script, ejecutando bloques de código
-    determinados en función de una o varias condiciones.</p>
+<p>Estas estructuras se utilizan para controlar el flujo de ejecución de un script, ejecutando bloques de código determinados en función de una o varias condiciones.</p>
 <h4 id="if-else-y-elif">IF, ELSE y ELIF</h4>
-<p>El condicional <code>if</code> se utiliza para evaluar una expresión o condición y ejecutar un bloque de código
-    cuando esta es verdadera.</p>
+<p>El condicional <code>if</code> se utiliza para evaluar una expresión o condición y ejecutar un bloque de código cuando esta es verdadera.</p>
 <p>Este es un ejemplo con varias combinaciones:</p>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -262,50 +220,46 @@ Parámetros recibidos        : <span class="hljs-type">uno</span> dos tres <span
 <span class="hljs-keyword">fi</span>
 </code></pre>
 <blockquote>
-    <p><strong>Nota</strong><br>Pueden encadenarse tantos <code>elif</code> como se quiera, pero solo puede haber un
-        <code>if</code>/<code>fi</code> y un <code>else</code>.</p>
+<p><strong>Nota</strong><br>Pueden encadenarse tantos <code>elif</code> como se quiera, pero solo puede haber un <code>if</code>/<code>fi</code> y un <code>else</code>.</p>
 </blockquote>
 <p>Las condiciones pueden describirse usando las siguientes sintaxis y todas hacen lo mismo:</p>
 <ul>
-    <li><code>test condición</code>: es el comando más antiguo.</li>
-    <li><code>[ condición ]</code>: es una versión mejorada de <code>test</code>.</li>
-    <li><code>[[ condición ]]</code>: es la versión más moderna, actualmente es la más utilizada y la más recomendable.
-    </li>
+<li><code>test condición</code>: es el comando más antiguo.</li>
+<li><code>[ condición ]</code>: es una versión mejorada de <code>test</code>.</li>
+<li><code>[[ condición ]]</code>: es la versión más moderna, actualmente es la más utilizada y la más recomendable.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Observa que en todos los casos se mantienen los espacios en la sintaxis.</p>
+<p><strong>Nota</strong><br>Observa que en todos los casos se mantienen los espacios en la sintaxis.</p>
 </blockquote>
-<p>Por otra parte, también hay que hablar de los <em>flags</em> o los operadores que se utilizan para comprobar las
-    condiciones:</p>
+<p>Por otra parte, también hay que hablar de los <em>flags</em> o los operadores que se utilizan para comprobar las condiciones:</p>
 <ul>
-    <li><code>-eq</code> o <code>==</code>: dos elementos son iguales.</li>
-    <li><code>-ne</code> o <code>!=</code>: dos elementos son diferentes.</li>
-    <li><code>-gt</code> o <code>&gt;</code>: el primer elemento es mayor que el segundo.</li>
-    <li><code>-ge</code> o <code>&gt;=</code>: el primer elemento es mayor o igual que el segundo.</li>
-    <li><code>-lt</code> o <code>&lt;</code>: el primer elemento es menor que el segundo.</li>
-    <li><code>-le</code> o <code>&lt;=</code>: el primer elemento es menor o igual que el segundo.</li>
-    <li><code>-a</code> o <code>&amp;&amp;</code>: dos condiciones son verdaderas (<em>AND</em>).</li>
-    <li><code>-o</code> o <code>||</code>: al menos una de dos condiciones es verdadera (<em>OR</em>).</li>
-    <li><code>-z</code>: el elemento es una cadena vacía.</li>
-    <li><code>-n</code>: el elemento es una cadena no vacía.</li>
+<li><code>-eq</code> o <code>==</code>: dos elementos son iguales.</li>
+<li><code>-ne</code> o <code>!=</code>: dos elementos son diferentes.</li>
+<li><code>-gt</code> o <code>&gt;</code>: el primer elemento es mayor que el segundo.</li>
+<li><code>-ge</code> o <code>&gt;=</code>: el primer elemento es mayor o igual que el segundo.</li>
+<li><code>-lt</code> o <code>&lt;</code>: el primer elemento es menor que el segundo.</li>
+<li><code>-le</code> o <code>&lt;=</code>: el primer elemento es menor o igual que el segundo.</li>
+<li><code>-a</code> o <code>&amp;&amp;</code>: dos condiciones son verdaderas (<em>AND</em>).</li>
+<li><code>-o</code> o <code>||</code>: al menos una de dos condiciones es verdadera (<em>OR</em>).</li>
+<li><code>-z</code>: el elemento es una cadena vacía.</li>
+<li><code>-n</code>: el elemento es una cadena no vacía.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Existen muchas más opciones además de las mostradas; por ejemplo:</p>
-    <ul>
-        <li><code>-f</code>: el elemento es un fichero.</li>
-        <li><code>-d</code>: el elemento es un directorio.</li>
-        <li><code>-r</code>: el elemento tiene permisos de lectura.</li>
-        <li><code>-w</code>: el elemento tiene permisos de escritura.</li>
-        <li><code>-x</code>: el elemento tiene permisos de ejecución.</li>
-        <li><code>-s</code>: el elemento tiene un tamaño mayor que cero.</li>
-        <li><code>-e</code>: el elemento existe.</li>
-        <li><code>-h</code>: el elemento es un enlace simbólico.</li>
-        <li>(...)</li>
-    </ul>
+<p><strong>Nota</strong><br>Existen muchas más opciones además de las mostradas; por ejemplo:</p>
+<ul>
+<li><code>-f</code>: el elemento es un fichero.</li>
+<li><code>-d</code>: el elemento es un directorio.</li>
+<li><code>-r</code>: el elemento tiene permisos de lectura.</li>
+<li><code>-w</code>: el elemento tiene permisos de escritura.</li>
+<li><code>-x</code>: el elemento tiene permisos de ejecución.</li>
+<li><code>-s</code>: el elemento tiene un tamaño mayor que cero.</li>
+<li><code>-e</code>: el elemento existe.</li>
+<li><code>-h</code>: el elemento es un enlace simbólico.</li>
+<li>(...)</li>
+</ul>
 </blockquote>
 <h4 id="case">CASE</h4>
-<p>El condicional <code>case</code> se utiliza para realizar múltiples comparaciones en una variable y ejecutar acciones
-    en función del resultado; resulta útil cuando se desea comprobar una variable contra varios patrones diferentes.</p>
+<p>El condicional <code>case</code> se utiliza para realizar múltiples comparaciones en una variable y ejecutar acciones en función del resultado; resulta útil cuando se desea comprobar una variable contra varios patrones diferentes.</p>
 <p>Este es un ejemplo con varias combinaciones:</p>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -330,31 +284,26 @@ Parámetros recibidos        : <span class="hljs-type">uno</span> dos tres <span
 <span class="hljs-keyword">esac</span>
 </code></pre>
 <blockquote>
-    <p><strong>Nota</strong><br>Pueden encadenarse tantos <code>)</code> como se quiera, pero solo puede haber un
-        <code>case</code>/<code>esac</code>.</p>
+<p><strong>Nota</strong><br>Pueden encadenarse tantos <code>)</code> como se quiera, pero solo puede haber un <code>case</code>/<code>esac</code>.</p>
 </blockquote>
 <p>Aquí solo pueden hacerse 2 tipos de comprobaciones:</p>
 <ul>
-    <li>Una variable coincide con un patrón/valor concreto.</li>
-    <li>Una variable no coincide con ningún patrón valor.</li>
+<li>Una variable coincide con un patrón/valor concreto.</li>
+<li>Una variable no coincide con ningún patrón valor.</li>
 </ul>
 <p>Las condiciones pueden describirse usando las siguientes sintaxis:</p>
 <ul>
-    <li><code>patrón)</code>: la variable coincide con el patrón.</li>
-    <li><code>patrón1|...)</code>: la variable coincide con alguno de los patrones.</li>
-    <li><code>*)</code>: la variable no coincide con ninguno de los patrones.</li>
-    <li><code>;;</code>: la ejecución del <code>case</code> finaliza.</li>
+<li><code>patrón)</code>: la variable coincide con el patrón.</li>
+<li><code>patrón1|...)</code>: la variable coincide con alguno de los patrones.</li>
+<li><code>*)</code>: la variable no coincide con ninguno de los patrones.</li>
+<li><code>;;</code>: la ejecución del <code>case</code> finaliza.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Se puede hacer una comprobación y ejecución de varios patrones consecutivos si no se
-        utilizara <code>;;</code>.</p>
-    <p>Es decir, cuando una variable coincide con un patrón, ejecuta ese bloque de código y si no hay un
-        <code>;;</code>, pasará a comprobar el siguiente patrón, y así sucesivamente hasta que encuentre un
-        <code>;;</code> o llegue al final del <code>case</code> (se encuentre con <code>esac</code>).</p>
+<p><strong>Nota</strong><br>Se puede hacer una comprobación y ejecución de varios patrones consecutivos si no se utilizara <code>;;</code>.</p>
+<p>Es decir, cuando una variable coincide con un patrón, ejecuta ese bloque de código y si no hay un <code>;;</code>, pasará a comprobar el siguiente patrón, y así sucesivamente hasta que encuentre un <code>;;</code> o llegue al final del <code>case</code> (se encuentre con <code>esac</code>).</p>
 </blockquote>
 <h3 id="bucles">Bucles</h3>
-<p>Estas estructuras se utilizan para repetir un bloque de código un número de veces determinado o mientras se cumpla
-    una condición.</p>
+<p>Estas estructuras se utilizan para repetir un bloque de código un número de veces determinado o mientras se cumpla una condición.</p>
 <h4 id="for">FOR</h4>
 <p>Este bucle se utiliza para ejecutar un bloque de código un número de veces.</p>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
@@ -380,28 +329,26 @@ Parámetros recibidos        : <span class="hljs-type">uno</span> dos tres <span
 <p>El bucle <code>for</code> tiene 2 formas de iterar:</p>
 <p><strong><code>for elemento in conjunto</code></strong>: itera sobre un conjunto de elementos, donde:</p>
 <ul>
-    <li><code>conjunto</code>: cualquier objeto que contenga varios valores.</li>
-    <li><code>elemento</code>: variable que toma cada elemento del <code>conjunto</code> por cada iteración.</li>
+<li><code>conjunto</code>: cualquier objeto que contenga varios valores.</li>
+<li><code>elemento</code>: variable que toma cada elemento del <code>conjunto</code> por cada iteración.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Esto se le conoce como <em>for-each</em> en otros lenguajes de programación.</p>
+<p><strong>Nota</strong><br>Esto se le conoce como <em>for-each</em> en otros lenguajes de programación.</p>
 </blockquote>
 <p><strong><code>for ((inicio;condición;operación))</code></strong>: itera mientras se cumpla una condición, donde:</p>
 <ul>
-    <li><code>inicio</code>: define la variable contador del bucle, así como su valor inicial.</li>
-    <li><code>condición</code>: condición que produce una iteración del bucle mientras se cumpla.</li>
-    <li><code>operación</code>: modificación de la variable contador al final de cada iteración.</li>
+<li><code>inicio</code>: define la variable contador del bucle, así como su valor inicial.</li>
+<li><code>condición</code>: condición que produce una iteración del bucle mientras se cumpla.</li>
+<li><code>operación</code>: modificación de la variable contador al final de cada iteración.</li>
 </ul>
 <h4 id="while-y-until">WHILE y UNTIL</h4>
-<p>Estos bucles se utilizan para ejecutar un bloque de código mientras se cumpla una condición; ambos casos son
-    opuestos:</p>
+<p>Estos bucles se utilizan para ejecutar un bloque de código mientras se cumpla una condición; ambos casos son opuestos:</p>
 <ul>
-    <li><code>while</code>: ejecuta el bloque de código mientras se cumpla la condición.</li>
-    <li><code>until</code>: ejecuta el bloque de código hasta que se cumpla la condición.</li>
+<li><code>while</code>: ejecuta el bloque de código mientras se cumpla la condición.</li>
+<li><code>until</code>: ejecuta el bloque de código hasta que se cumpla la condición.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Observa como <code>until</code> equivale a <em>ejecuta el bloque de código mientras no
-            se cumpla la condición</em>; lo que se correspondería con un <code>while</code> con la condición negada.</p>
+<p><strong>Nota</strong><br>Observa como <code>until</code> equivale a <em>ejecuta el bloque de código mientras no se cumpla la condición</em>; lo que se correspondería con un <code>while</code> con la condición negada.</p>
 </blockquote>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -423,21 +370,19 @@ until [ <span class="hljs-variable">$i</span> <span class="hljs-_">-eq</span> 5 
     i=$((i+1))
 <span class="hljs-keyword">done</span>
 </code></pre>
-<p>Al contrario de lo que sucede con el bucle <code>for</code>, tanto <code>while</code> como <code>until</code> solo
-    comprueban una condición, por lo que es necesario:</p>
+<p>Al contrario de lo que sucede con el bucle <code>for</code>, tanto <code>while</code> como <code>until</code> solo comprueban una condición, por lo que es necesario:</p>
 <ul>
-    <li>Definir una variable contador antes de entrar en el bucle.</li>
-    <li>Actualizar la variable contador al final del bucle.</li>
+<li>Definir una variable contador antes de entrar en el bucle.</li>
+<li>Actualizar la variable contador al final del bucle.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Si esto no se realiza correctamente, pueden suceder fallos graves como bucles infinitos.
-    </p>
+<p><strong>Nota</strong><br>Si esto no se realiza correctamente, pueden suceder fallos graves como bucles infinitos.</p>
 </blockquote>
 <h4 id="saltos">Saltos</h4>
 <p>Existen 2 palabras reservadas especiales para alterar el funcionamiento de un bucle:</p>
 <ul>
-    <li><code>break</code>: finaliza la ejecución del bucle.</li>
-    <li><code>continue</code>: finaliza la iteración actual y pasa a la siguiente.</li>
+<li><code>break</code>: finaliza la ejecución del bucle.</li>
+<li><code>continue</code>: finaliza la iteración actual y pasa a la siguiente.</li>
 </ul>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -462,25 +407,18 @@ letras=<span class="hljs-string">'a b c d e f g h i j k l m n o p q r s t u v w 
 <span class="hljs-keyword">done</span>
 </code></pre>
 <blockquote>
-    <p><strong>Nota</strong><br>Observa como <code>break</code> y <code>continue</code> solo afectan al bucle en el que
-        se encuentran, por lo que si se utilizan dentro de un bucle anidado, solo afectarán a ese bucle.</p>
+<p><strong>Nota</strong><br>Observa como <code>break</code> y <code>continue</code> solo afectan al bucle en el que se encuentran, por lo que si se utilizan dentro de un bucle anidado, solo afectarán a ese bucle.</p>
 </blockquote>
 <h3 id="funciones">Funciones</h3>
 <p>Las funciones son bloques de código que se pueden ejecutar desde cualquier parte del script.</p>
-<p>Resultan muy útiles para reutilizar código, ya que se puede ejecutar el mismo bloque de código desde diferentes
-    partes del script; también es una buena forma de estructurar el código, ya que se pueden definir funciones para
-    realizar tareas concretas y por otro lado, modularizar el código lo hace más legible y cómodo de mantener.</p>
-<p>Las funciones pueden recibir parámetros, que se pueden utilizar dentro de la función como si fueran variables; y del
-    mismo modo, una función puede devolver un valor, que se puede utilizar fuera de la función.</p>
+<p>Resultan muy útiles para reutilizar código, ya que se puede ejecutar el mismo bloque de código desde diferentes partes del script; también es una buena forma de estructurar el código, ya que se pueden definir funciones para realizar tareas concretas y por otro lado, modularizar el código lo hace más legible y cómodo de mantener.</p>
+<p>Las funciones pueden recibir parámetros, que se pueden utilizar dentro de la función como si fueran variables; y del mismo modo, una función puede devolver un valor, que se puede utilizar fuera de la función.</p>
 <ul>
-    <li>Los parámetros se reciben usando las variables especiales vistas anteriormente (<code>$1</code>,
-        <code>$2</code>, etc.), ya que las funciones se usan con la misma sintaxis que los comandos.</li>
-    <li>Los valores se devuelven con el comando <code>echo</code>, que se puede capturar con la sintaxis
-        <code>$(funcion)</code> fuera de la función.</li>
+<li>Los parámetros se reciben usando las variables especiales vistas anteriormente (<code>$1</code>, <code>$2</code>, etc.), ya que las funciones se usan con la misma sintaxis que los comandos.</li>
+<li>Los valores se devuelven con el comando <code>echo</code>, que se puede capturar con la sintaxis <code>$(funcion)</code> fuera de la función.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Una función puede recibir una cantidad infinita de parámetros y, al contrario que en
-        otros lenguajes de programación, no se especifican en la definición de la función.</p>
+<p><strong>Nota</strong><br>Una función puede recibir una cantidad infinita de parámetros y, al contrario que en otros lenguajes de programación, no se especifican en la definición de la función.</p>
 </blockquote>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -521,95 +459,87 @@ numeros=<span class="hljs-string">'1 3 2 8 9 4 3 5 6 7 1 9 2 6 9'</span>
 Sean<span class="hljs-number"> 1 </span>3<span class="hljs-number"> 2 </span>8<span class="hljs-number"> 9 </span>4<span class="hljs-number"> 3 </span>5<span class="hljs-number"> 6 </span>7<span class="hljs-number"> 1 </span>9<span class="hljs-number"> 2 </span>6<span class="hljs-number"> 9 </span>los números a evaluar, el mayor es 9.
 </code></pre>
 <blockquote>
-    <p><strong>Nota</strong><br>Bash permite definir las funciones en cualquier lugar del script, pero es una buena
-        práctica definirlas al inicio para que sea más fácil encontrarlas y gestionarlas; no es demasiado agradable leer
-        scripts desordenados.</p>
+<p><strong>Nota</strong><br>Bash permite definir las funciones en cualquier lugar del script, pero es una buena práctica definirlas al inicio para que sea más fácil encontrarlas y gestionarlas; no es demasiado agradable leer scripts desordenados.</p>
 </blockquote>
 <h3 id="arrays">Arrays</h3>
 <p>Los arrays son variables especiales que permiten almacenar varios valores en una misma variable.</p>
 <p>Los arrays se pueden definir de 2 formas:</p>
 <ul>
-    <li><code>array=(valor1 valor2 valor3)</code>: se definen los valores del array entre paréntesis y separados por
-        espacios.</li>
-    <li><code>array=([0]=valor1 [1]=valor2 [2]=valor3)</code>: se definen los valores del array entre paréntesis y
-        separados por espacios, pero se puede especificar el índice de cada valor.</li>
+<li><code>array=(valor1 valor2 valor3)</code>: se definen los valores del array entre paréntesis y separados por espacios.</li>
+<li><code>array=([0]=valor1 [1]=valor2 [2]=valor3)</code>: se definen los valores del array entre paréntesis y separados por espacios, pero se puede especificar el índice de cada valor.</li>
 </ul>
 <blockquote>
-    <p><strong>Nota</strong><br>Al igual que en muchos lenguajes de programación, los índices de los arrays empiezan en
-        0.</p>
+<p><strong>Nota</strong><br>Al igual que en muchos lenguajes de programación, los índices de los arrays empiezan en 0.</p>
 </blockquote>
 <p>Estas son las distintas operaciones disponibles para el manejo de arrays:</p>
 <table>
-    <thead>
-        <tr>
-            <th style="text-align:center">Operación</th>
-            <th>Descripción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center"><code>${array[@]}</code></td>
-            <td>Devuelve todos los valores del array, separado por espacios.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[i]}</code></td>
-            <td>Devuelve el valor del array en la posición <strong>i</strong>.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${#array[@]}</code></td>
-            <td>Devuelve la longitud del array (número de elementos).</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${#array[i]}</code></td>
-            <td>Devuelve la longitud del elemento <strong>i</strong> del array.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[@]:i}</code></td>
-            <td>Devuelve todos los elementos del array, a partir de la posición <strong>i</strong>.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[@]:i:n}</code></td>
-            <td>Devuelve los <strong>n</strong> siguientes elementos del array, a partir de la posición
-                <strong>i</strong>.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[@]/patrón/sustitución}</code></td>
-            <td>Devuelve todos los elementos del array, reemplazando el patrón por la sustitución.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[@]#patrón}</code></td>
-            <td>Devuelve todos los elementos del array, eliminando el patrón por la izquierda.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>${array[@]%patrón}</code></td>
-            <td>Devuelve todos los elementos del array, eliminando el patrón por la derecha.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>array=(elemento ${array[@]})</code></td>
-            <td>Añade un elemento al inicio del array.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>array=(${array[@]} elemento)</code></td>
-            <td>Añade un elemento al final del array.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>unset array[i]</code></td>
-            <td>Elimina el elemento <strong>i</strong> del array.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>unset array</code></td>
-            <td>Elimina el array.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>array3=(${array1[@]} ${array2[@]})</code></td>
-            <td>Concatena los arrays <strong>array1</strong> y <strong>array2</strong> en el array
-                <strong>array3</strong>.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th style="text-align:center">Operación</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>${array[@]}</code></td>
+<td>Devuelve todos los valores del array, separado por espacios.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[i]}</code></td>
+<td>Devuelve el valor del array en la posición <strong>i</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${#array[@]}</code></td>
+<td>Devuelve la longitud del array (número de elementos).</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${#array[i]}</code></td>
+<td>Devuelve la longitud del elemento <strong>i</strong> del array.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[@]:i}</code></td>
+<td>Devuelve todos los elementos del array, a partir de la posición <strong>i</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[@]:i:n}</code></td>
+<td>Devuelve los <strong>n</strong> siguientes elementos del array, a partir de la posición <strong>i</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[@]/patrón/sustitución}</code></td>
+<td>Devuelve todos los elementos del array, reemplazando el patrón por la sustitución.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[@]#patrón}</code></td>
+<td>Devuelve todos los elementos del array, eliminando el patrón por la izquierda.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>${array[@]%patrón}</code></td>
+<td>Devuelve todos los elementos del array, eliminando el patrón por la derecha.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>array=(elemento ${array[@]})</code></td>
+<td>Añade un elemento al inicio del array.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>array=(${array[@]} elemento)</code></td>
+<td>Añade un elemento al final del array.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>unset array[i]</code></td>
+<td>Elimina el elemento <strong>i</strong> del array.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>unset array</code></td>
+<td>Elimina el array.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>array3=(${array1[@]} ${array2[@]})</code></td>
+<td>Concatena los arrays <strong>array1</strong> y <strong>array2</strong> en el array <strong>array3</strong>.</td>
+</tr>
+</tbody>
 </table>
 <blockquote>
-    <p><strong>Nota</strong><br>Las operaciones con <code>patrón</code> y <code>sustitución</code> hacen referencias a
-        <strong>expresiones regulares</strong>.</p>
+<p><strong>Nota</strong><br>Las operaciones con <code>patrón</code> y <code>sustitución</code> hacen referencias a <strong>expresiones regulares</strong>.</p>
 </blockquote>
 <pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
 </span>
@@ -654,172 +584,168 @@ array3=(<span class="hljs-variable">${array1[@]}</span> <span class="hljs-variab
 </code></pre>
 <h3 id="expresiones-regulares-regex-">Expresiones regulares (<em>regex</em>)</h3>
 <p>Las expresiones regulares son patrones que se utilizan para buscar y/o reemplazar cadenas de texto.</p>
-<p>Estas pueden definirse como <code>/regex/</code> o bien, solo <code>regex</code>, y estas son las distintas
-    operaciones disponibles para el manejo de expresiones regulares:</p>
+<p>Estas pueden definirse como <code>/regex/</code> o bien, solo <code>regex</code>, y estas son las distintas operaciones disponibles para el manejo de expresiones regulares:</p>
 <table>
-    <thead>
-        <tr>
-            <th style="text-align:center">Operación</th>
-            <th>Descripción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center"><code>^</code></td>
-            <td>Inicio de línea.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>$</code></td>
-            <td>Fin de línea.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>.</code></td>
-            <td>Cualquier carácter.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>*</code></td>
-            <td>Cero o más repeticiones del carácter anterior.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>+</code></td>
-            <td>Una o más repeticiones del carácter anterior.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>?</code></td>
-            <td>Cero o una repetición del carácter anterior.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>[]</code></td>
-            <td>Cualquier carácter entre los corchetes.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>[^]</code></td>
-            <td>Cualquier carácter que no esté entre los corchetes.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>()</code></td>
-            <td>Agrupación de caracteres.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>\</code></td>
-            <td>Caracter de escape.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center">`\</td>
-            <td>`</td>
-            <td>Operador lógico OR.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>\{n\}</code></td>
-            <td>Exactamente <strong>n</strong> repeticiones del carácter anterior.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>\{n,\}</code></td>
-            <td>Al menos <strong>n</strong> repeticiones del carácter anterior.</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>\{n,m\}</code></td>
-            <td>Entre <strong>n</strong> y <strong>m</strong> repeticiones del carácter anterior.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th style="text-align:center">Operación</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>^</code></td>
+<td>Inicio de línea.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$</code></td>
+<td>Fin de línea.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>.</code></td>
+<td>Cualquier carácter.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>*</code></td>
+<td>Cero o más repeticiones del carácter anterior.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td>Una o más repeticiones del carácter anterior.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>?</code></td>
+<td>Cero o una repetición del carácter anterior.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>[]</code></td>
+<td>Cualquier carácter entre los corchetes.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>[^]</code></td>
+<td>Cualquier carácter que no esté entre los corchetes.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>()</code></td>
+<td>Agrupación de caracteres.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\</code></td>
+<td>Caracter de escape.</td>
+</tr>
+<tr>
+<td style="text-align:center">`\</td>
+<td>`</td>
+<td>Operador lógico OR.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\{n\}</code></td>
+<td>Exactamente <strong>n</strong> repeticiones del carácter anterior.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\{n,\}</code></td>
+<td>Al menos <strong>n</strong> repeticiones del carácter anterior.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\{n,m\}</code></td>
+<td>Entre <strong>n</strong> y <strong>m</strong> repeticiones del carácter anterior.</td>
+</tr>
+</tbody>
 </table>
 <blockquote>
-    <p><strong>Nota</strong><br>Las expresiones regulares se utilizan en muchos comandos, algunos ejemplos de los más
-        conocidos pueden ser: <code>grep</code>, <code>egrep</code>, <code>awk</code>, <code>sed</code>...</p>
+<p><strong>Nota</strong><br>Las expresiones regulares se utilizan en muchos comandos, algunos ejemplos de los más conocidos pueden ser: <code>grep</code>, <code>egrep</code>, <code>awk</code>, <code>sed</code>...</p>
 </blockquote>
 <p>Algunos ejemplos de expresiones regulares usando la sintaxis anterior:</p>
 <table>
-    <thead>
-        <tr>
-            <th style="text-align:center">Expresión regular</th>
-            <th>Descripción</th>
-            <th>Ejemplo de cadena detectada</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center"><code>^a</code></td>
-            <td>Empieza por la letra <strong>a</strong>.</td>
-            <td>&quot;a&quot;, &quot;ajo&quot;, &quot;altura&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>a$</code></td>
-            <td>Acaba por la letra <strong>a</strong>.</td>
-            <td>&quot;a&quot;, &quot;pila&quot;, &quot;altura&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^a$</code></td>
-            <td>Empieza y acaba por la misma letra <strong>a</strong>.</td>
-            <td>&quot;a&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^a*$</code></td>
-            <td>Empieza por la letra <strong>a</strong> y termina por cualquier cantidad de <strong>a</strong>.</td>
-            <td>&quot;a&quot;, &quot;aa&quot;, &quot;aaa&quot;, &quot;aaaa&quot;, &quot;aaaaa&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^[a-z][0-9]$</code></td>
-            <td>Empieza por una letra minúscula y acaba por un número.</td>
-            <td>&quot;a1&quot;, &quot;z9&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^[a-zA-Z][0-9]$</code></td>
-            <td>Empieza por una letra y acaba por un número.</td>
-            <td>&quot;A2&quot;, &quot;z9&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^[a-zA-Z0-9]$</code></td>
-            <td>Empieza y acaba por una letra o un número.</td>
-            <td>&quot;A&quot;, &quot;2&quot;, &quot;z&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^[a-zA-Z0-9]*$</code></td>
-            <td>Empieza y acaba por una letra o un número, con cualquier cantidad de caracteres.</td>
-            <td>&quot;abc123&quot;, &quot;XYZ789&quot;, &quot;123&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^(a</code>\</td>
-            <td><code>b)$</code></td>
-            <td>Empieza y acaba por la letra <strong>a</strong> o la letra <strong>b</strong>.</td>
-            <td>&quot;a&quot;, &quot;b&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^(hola</code>\</td>
-            <td><code>buenas)\ [a-zA-Z]*</code></td>
-            <td>Empieza por &quot;hola&quot; o &quot;buenas&quot; seguido de un espacio y cualquier cantidad de letras.
-            </td>
-            <td>&quot;hola mundo&quot;, &quot;buenas tardes&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^0[0-9]+$</code></td>
-            <td>Empieza por un cero y acaba por un número.</td>
-            <td>&quot;012345&quot;, &quot;09876&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^0[0-9]{2}$</code></td>
-            <td>Empieza por un cero y acaba por dos números.</td>
-            <td>&quot;012&quot;, &quot;078&quot;</td>
-        </tr>
-        <tr>
-            <td style="text-align:center"><code>^0[0-9]{2,}$</code></td>
-            <td>Empieza por un cero y acaba por dos o más números.</td>
-            <td>&quot;0123&quot;, &quot;0987654321&quot;</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th style="text-align:center">Expresión regular</th>
+<th>Descripción</th>
+<th>Ejemplo de cadena detectada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>^a</code></td>
+<td>Empieza por la letra <strong>a</strong>.</td>
+<td>&quot;a&quot;, &quot;ajo&quot;, &quot;altura&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>a$</code></td>
+<td>Acaba por la letra <strong>a</strong>.</td>
+<td>&quot;a&quot;, &quot;pila&quot;, &quot;altura&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^a$</code></td>
+<td>Empieza y acaba por la misma letra <strong>a</strong>.</td>
+<td>&quot;a&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^a*$</code></td>
+<td>Empieza por la letra <strong>a</strong> y termina por cualquier cantidad de <strong>a</strong>.</td>
+<td>&quot;a&quot;, &quot;aa&quot;, &quot;aaa&quot;, &quot;aaaa&quot;, &quot;aaaaa&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^[a-z][0-9]$</code></td>
+<td>Empieza por una letra minúscula y acaba por un número.</td>
+<td>&quot;a1&quot;, &quot;z9&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^[a-zA-Z][0-9]$</code></td>
+<td>Empieza por una letra y acaba por un número.</td>
+<td>&quot;A2&quot;, &quot;z9&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^[a-zA-Z0-9]$</code></td>
+<td>Empieza y acaba por una letra o un número.</td>
+<td>&quot;A&quot;, &quot;2&quot;, &quot;z&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^[a-zA-Z0-9]*$</code></td>
+<td>Empieza y acaba por una letra o un número, con cualquier cantidad de caracteres.</td>
+<td>&quot;abc123&quot;, &quot;XYZ789&quot;, &quot;123&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^(a</code>\</td>
+<td><code>b)$</code></td>
+<td>Empieza y acaba por la letra <strong>a</strong> o la letra <strong>b</strong>.</td>
+<td>&quot;a&quot;, &quot;b&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^(hola</code>\</td>
+<td><code>buenas)\ [a-zA-Z]*</code></td>
+<td>Empieza por &quot;hola&quot; o &quot;buenas&quot; seguido de un espacio y cualquier cantidad de letras.</td>
+<td>&quot;hola mundo&quot;, &quot;buenas tardes&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^0[0-9]+$</code></td>
+<td>Empieza por un cero y acaba por un número.</td>
+<td>&quot;012345&quot;, &quot;09876&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^0[0-9]{2}$</code></td>
+<td>Empieza por un cero y acaba por dos números.</td>
+<td>&quot;012&quot;, &quot;078&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^0[0-9]{2,}$</code></td>
+<td>Empieza por un cero y acaba por dos o más números.</td>
+<td>&quot;0123&quot;, &quot;0987654321&quot;</td>
+</tr>
+</tbody>
 </table>
 <h2 id="entrada-salida-est-ndar">Entrada/Salida estándar</h2>
 <p>La entrada/salida estándar es la forma en la que los programas interactúan con el entorno.</p>
 <ul>
-    <li>La entrada estándar es la forma en la que los programas reciben información.</li>
-    <li>La salida estándar es la forma en la que los programas muestran información.</li>
+<li>La entrada estándar es la forma en la que los programas reciben información.</li>
+<li>La salida estándar es la forma en la que los programas muestran información.</li>
 </ul>
 <p>La entrada/salida estándar puede ser redirigida a ficheros o a otros programas.</p>
 <h3 id="redirecci-n-de-la-entrada-salida-est-ndar">Redirección de la entrada/salida estándar</h3>
-<p>La redirección de la entrada/salida estándar se realiza mediante los operadores <code>&gt;</code> y
-    <code>&lt;</code>.</p>
+<p>La redirección de la entrada/salida estándar se realiza mediante los operadores <code>&gt;</code> y <code>&lt;</code>.</p>
 <ul>
-    <li><code>&gt;</code> redirige la salida estándar a un fichero.</li>
-    <li><code>&lt;</code> redirige la entrada estándar desde un fichero.</li>
+<li><code>&gt;</code> redirige la salida estándar a un fichero.</li>
+<li><code>&lt;</code> redirige la entrada estándar desde un fichero.</li>
 </ul>
 <p>Ejemplos:</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">"Hola mundo"</span> &gt; fichero.txt
@@ -829,21 +755,20 @@ array3=(<span class="hljs-variable">${array1[@]}</span> <span class="hljs-variab
 Hola mundo
 </code></pre>
 <ol>
-    <li>Coloca <em>&quot;Hola mundo&quot;</em> en la salida estándar.</li>
-    <li>Redirige la salida estándar al <em>fichero.txt</em>.</li>
-    <li>Ahora el <em>fichero.txt</em> contiene <em>&quot;Hola mundo&quot;</em>.</li>
+<li>Coloca <em>&quot;Hola mundo&quot;</em> en la salida estándar.</li>
+<li>Redirige la salida estándar al <em>fichero.txt</em>.</li>
+<li>Ahora el <em>fichero.txt</em> contiene <em>&quot;Hola mundo&quot;</em>.</li>
 </ol>
 <pre><code class="lang-bash">wc <span class="hljs-_">-l</span> &lt; fichero.txt
 </code></pre>
 <pre><code class="lang-text"><span class="hljs-number">1</span>
 </code></pre>
 <ol>
-    <li>Coloca el contenido de <em>fichero.txt</em> en la entrada estándar.</li>
-    <li>Cuenta el número de líneas de la entrada estándar.</li>
-    <li>Muestra el resultado por la salida estándar.</li>
+<li>Coloca el contenido de <em>fichero.txt</em> en la entrada estándar.</li>
+<li>Cuenta el número de líneas de la entrada estándar.</li>
+<li>Muestra el resultado por la salida estándar.</li>
 </ol>
-<p>Por otra parte, también existen los operadores <code>&gt;&gt;</code> y <code>&lt;&lt;</code>, cuya función es similar
-    a los anteriores, pero en lugar de sobreescribir la entrada/salida, añaden el contenido al final.</p>
+<p>Por otra parte, también existen los operadores <code>&gt;&gt;</code> y <code>&lt;&lt;</code>, cuya función es similar a los anteriores, pero en lugar de sobreescribir la entrada/salida, añaden el contenido al final.</p>
 <p>Ejemplos:</p>
 <pre><code class="lang-bash">echo <span class="hljs-string">"Adiós mundo"</span> <span class="hljs-meta">&gt;&gt; </span>fichero.txt
 </code></pre>
@@ -853,46 +778,42 @@ Hola mundo
 Adiós mundo
 </code></pre>
 <ol>
-    <li>Coloca <em>&quot;Hola mundo&quot;</em> en la salida estándar.</li>
-    <li>Redirige la salida estándar al <em>fichero.txt</em>.</li>
-    <li>Añade <em>&quot;Adiós mundo&quot;</em> al final del <em>fichero.txt</em>.</li>
+<li>Coloca <em>&quot;Hola mundo&quot;</em> en la salida estándar.</li>
+<li>Redirige la salida estándar al <em>fichero.txt</em>.</li>
+<li>Añade <em>&quot;Adiós mundo&quot;</em> al final del <em>fichero.txt</em>.</li>
 </ol>
 <h3 id="tuber-as">Tuberías</h3>
-<p>La redirección de la salida estándar de un programa a la entrada estándar de otro programa se realiza mediante el
-    operador <code>|</code>, también llamado <em>pipe</em> (o <em>tubería</em> en español).</p>
+<p>La redirección de la salida estándar de un programa a la entrada estándar de otro programa se realiza mediante el operador <code>|</code>, también llamado <em>pipe</em> (o <em>tubería</em> en español).</p>
 <p>Este operador es muy útil para encadenar programas y realizar tareas complejas.</p>
 <p>Ejemplo:</p>
 <pre><code class="lang-bash"><span class="hljs-keyword">ls</span> -<span class="hljs-keyword">l</span> | <span class="hljs-keyword">grep</span> <span class="hljs-string">"*.sh"</span>
 </code></pre>
 <ol>
-    <li>Ejecuta el comando <code>ls -l</code> y muestra el resultado por la salida estándar.</li>
-    <li>Redirige la salida estándar a la entrada estándar del comando <code>grep &quot;*.sh&quot;</code>.</li>
-    <li>El comando <code>grep &quot;*.sh&quot;</code> filtra las líneas que contienen la cadena de texto
-        <code>*.sh</code> (todos los ficheros <code>.sh</code>).</li>
-    <li>Se muestran las líneas obtenidas en la terminal.</li>
+<li>Ejecuta el comando <code>ls -l</code> y muestra el resultado por la salida estándar.</li>
+<li>Redirige la salida estándar a la entrada estándar del comando <code>grep &quot;*.sh&quot;</code>.</li>
+<li>El comando <code>grep &quot;*.sh&quot;</code> filtra las líneas que contienen la cadena de texto <code>*.sh</code> (todos los ficheros <code>.sh</code>).</li>
+<li>Se muestran las líneas obtenidas en la terminal.</li>
 </ol>
 <blockquote>
-    <p><strong>Nota</strong><br>El comando <code>grep</code> es muy útil para filtrar líneas que contienen una cadena de
-        texto.</p>
+<p><strong>Nota</strong><br>El comando <code>grep</code> es muy útil para filtrar líneas que contienen una cadena de texto.</p>
 </blockquote>
 <h1 id="laboratorio">Laboratorio</h1>
-<p>Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con
-    diferentes permisos.</p>
-<p>El objetivo es que puedas practicar con Bash, teniendo todo un entorno Linux a tu disposición con el que
-    experimentar; puedes programar y probar tus propios scripts, replicar algunos de los ejemplos anteriores o ejecutar
-    algunos scripts del laboratorio.</p>
-<p>Este entorno contiene los siguientes usuarios:</p>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
 <ul>
-    <li><code>root</code>, superusuario.</li>
-    <li><code>user</code>, usuario normal. </li>
-    <li><code>homer</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-    <li><code>marge</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-    <li><code>bart</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
-    <li><code>lisa</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>root</code>:<code>root</code>, superusuario.</li>
+<li><code>user</code>:<code>user</code>, usuario normal.</li>
+<li><code>homer</code>:<code>homer</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>marge</code>:<code>marge</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>bart</code>:<code>bart</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
+<li><code>lisa</code>:<code>lisa</code>, usuario normal y miembro del grupo <code>simpsons</code>.</li>
 </ul>
-<p>La contraseña de cada usuario es el nombre del usuario.</p>
+</blockquote>
+<p>Este laboratorio consiste en un entorno Debian con varios usuarios y grupos creados, así como varios ficheros con diferentes permisos.</p>
+<p>El objetivo es que puedas practicar con Bash, teniendo todo un entorno Linux a tu disposición con el que experimentar; puedes programar y probar tus propios scripts, replicar algunos de los ejemplos anteriores o ejecutar algunos scripts del laboratorio.</p>
 <h1 id="referencias">Referencias</h1>
 <ul>
-    <li><a href="https://www.gnu.org/software/bash/manual/bash.html">Manual de Bash de GNU</a></li>
-    <li><a href="https://regex101.com">Tester de expresiones regulares</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">Manual de Bash de GNU</a></li>
+<li><a href="https://regex101.com">Tester de expresiones regulares</a></li>
 </ul>
+

@@ -1,154 +1,100 @@
-<p>El término "bypass" se refiere a aquellas <strong>técnicas utilizadas para evitar o superar los controles de seguridad</strong> establecidos en un sistema o dispositivo; en otras palabras, un "bypass" es una forma de evitar o pasar por alto las medidas de seguridad diseñadas para proteger un sistema o dispositivo.</p>
-
+<h1 id="bypass">Bypass</h1>
+<p>El término &quot;bypass&quot; se refiere a aquellas <strong>técnicas utilizadas para evitar o superar los controles de seguridad</strong> establecidos en un sistema o dispositivo; en otras palabras, un &quot;bypass&quot; es una forma de evitar o pasar por alto las medidas de seguridad diseñadas para proteger un sistema o dispositivo.</p>
 <p>Existen diferentes tipos, que varían según el tipo de seguridad que se esté intentando superar. Algunos ejemplos de técnicas de bypass incluyen:</p>
-
 <ul>
 <li><strong>Bypass de autenticación</strong>. Un ejemplo común de bypass de autenticación es el uso de contraseñas débiles o robadas para acceder a una cuenta protegida por contraseña.</li>
-
 <li><strong>Bypass de firewalls</strong>. Los firewalls son dispositivos que se utilizan para bloquear el tráfico no autorizado hacia una red, por lo que el bypass de firewall puede permitir a un atacante acceder a una red protegida.</li>
-
 <li><strong>Bypass de IDS (sistemas de detección de intrusiones)</strong>. Los IDS se utilizan para detectar y alertar sobre intentos de acceso no autorizado a un sistema, por lo que el bypass de IDS puede permitir a un atacante acceder a un sistema sin ser detectado.</li>
 </ul>
-
 <p>Se debe tener en cuenta que el bypass es una técnica utilizada tanto por atacantes malintencionados como por profesionales de la seguridad para evaluar la efectividad de los sistemas de seguridad; por tanto, es importante entender cómo funcionan estas técnicas y cómo prevenirlas para proteger eficazmente los sistemas y dispositivos de posibles ataques.</p>
-
-
-
-<h2>Vulnerabilidad <em>git-shell Bypass</em> (CVE-2017-8386)</h2>
-
+<h1 id="vulnerabilidad-git-shell-bypass-cve-2017-8386-">Vulnerabilidad <em>git-shell Bypass</em> (CVE-2017-8386)</h1>
 <p>Para ejemplificar un bypass de autenticación, vamos a utilizar la vulnerabilidad <code>CVE-2017-8386</code> conocida como <em>git-shell bypass</em>, donde un usuario puede ejecutar comandos de forma remota en un servidor de Git y obtener información del mismo (o peor).</p>
-
-
-
-<h3>Principio</h3>
-
+<h2 id="principio">Principio</h2>
 <p>El <strong>git-shell</strong> es una parte importante del servicio Git y soporta 3 protocolos para la entrega de elementos:</p>
-
 <ul>
 <li>HTTPS</li>
-
 <li>SSH</li>
-
 <li>GIT</li>
 </ul>
-
 <blockquote>
-  <p><strong>Importante</strong> <br />
-  El protocolo SSH se considera la forma más segura y conveniente.</p>
+<p><strong>Importante</strong><br>El protocolo SSH se considera la forma más segura y conveniente.</p>
 </blockquote>
-
 <p>Al clonar un repositorio de GitHub usando la opción <em>clonar usando SSH</em> se obtendrá una dirección de la forma:</p>
-
-<p><strong>git@github.com:usuario/repositorio.git</strong></p>
-
+<p>$$
+\texttt{git@github.com:usuario/repositorio.git}
+$$</p>
 <p>Esta URL le está diciendo a Git varias cosas:</p>
-
 <ul>
 <li>El nombre de usuario SSH es <em>git</em>.</li>
-
 <li>La dirección del servidor es <em>github.com</em>.</li>
-
 <li>El puerto al que conectarse es el 22 (por defecto para SSH, ya que no se indica).</li>
-
 <li>El repositorio está localizado en la carpeta <code>usuario/repositorio.git</code>.</li>
 </ul>
-
 <p>Sabiendo eso, <strong>Git se conecta a <em>github.com</em> a través del protocolo SSH y extrae el contenido del directorio correspondiente</strong>.</p>
-
 <blockquote>
-  <p><strong>Conclusión</strong> <br />
-  Una operación basada en SSH como <code>git clone</code> es, esencialmente, un <strong>proceso de conexión al servidor GitHub a través del protocolo SSH, seguido de una descarga del directorio especificado</strong>.</p>
-  
-  <p>Según lo anterior, <strong>¿es posible iniciar sesión en el servidor GitHub?</strong> <br />
-  Obviamente no, pero puedes intentarlo y ver el mensaje que aparece. Lo que sucede realmente es que un usuario puede conectarse y autenticarse mediante SSH, pero se cerrará la conexión inmediatamente.</p>
-  
-  <p>Por tanto, el proceso <code>git pull</code> basado en SSH es seguro para los servidores Git.</p>
+<p><strong>Conclusión</strong><br>Una operación basada en SSH como <code>git clone</code> es, esencialmente, un <strong>proceso de conexión al servidor GitHub a través del protocolo SSH, seguido de una descarga del directorio especificado</strong>.</p>
+<p>Según lo anterior, <strong>¿es posible iniciar sesión en el servidor GitHub?</strong><br>Obviamente no, pero puedes intentarlo y ver el mensaje que aparece. Lo que sucede realmente es que un usuario puede conectarse y autenticarse mediante SSH, pero se cerrará la conexión inmediatamente.</p>
+<p>Por tanto, el proceso <code>git pull</code> basado en SSH es seguro para los servidores Git.</p>
 </blockquote>
-
-
-<h4>¿Cómo deshabilitar que los usuarios de Git ejecuten el Shell del sistema?</h4>
-
+<h3 id="-c-mo-deshabilitar-que-los-usuarios-de-git-ejecuten-el-shell-del-sistema-">¿Cómo deshabilitar que los usuarios de Git ejecuten el Shell del sistema?</h3>
 <p>El proceso de permitir a los usuarios autenticarse vía SSH, pero sin darles una Shell, se puede conseguir de 2 formas:</p>
-
 <ol>
-<li><strong>Asignar una git-shell al crear un usuario</strong><p><br />
-Establecer el Shell a git-shell al crear el usuario del sistema Git en lugar de darle al usuario un shell bash o sh normal. Un git-shell es un entorno sandbox donde <em>sólo se permite ejecutar comandos contenidos dentro del sandbox</em>.</p></li>
-
-<li><strong>Sobreescribir/secuestrar comandos</strong><p><br />
-Establecer el comando delante de cada <em>ssh-key</em> en el archivo <em>authorized_keys</em>, sobreescribiendo o secuestrando el comando original. Este método no sólo se utiliza en los servidores Git, sino también en muchas distribuciones de Linux.</p></li>
+<li><p><strong>Asignar una git-shell al crear un usuario</strong><br>Establecer el Shell a git-shell al crear el usuario del sistema Git en lugar de darle al usuario un shell bash o sh normal. Un git-shell es un entorno sandbox donde <em>sólo se permite ejecutar comandos contenidos dentro del sandbox</em>.</p>
+</li>
+<li><p><strong>Sobreescribir/secuestrar comandos</strong><br>Establecer el comando delante de cada <em>ssh-key</em> en el archivo <em>authorized_keys</em>, sobreescribiendo o secuestrando el comando original. Este método no sólo se utiliza en los servidores Git, sino también en muchas distribuciones de Linux.</p>
+</li>
 </ol>
-
 <p>Así es cómo un proveedor de Git (como GitHub) implementa el proceso de comunicación anterior de forma segura.</p>
-
-
-<h4>Vulnerabilidad</h4>
-
+<h3 id="vulnerabilidad">Vulnerabilidad</h3>
 <p><strong>git-shell es un shell que puede restringir a los usuarios la ejecución de comandos.</strong></p>
-
 <p>Si creamos un nuevo directorio en el directorio <code>home</code> del usuario de Git llamado <code>git-shell-commands</code>, y luego ponemos los comandos que permitimos ejecutar a los usuarios en ese directorio, esto crea un buen sandbox; en git-shell, sólo los comandos en el directorio <code>/home/git/git-shell-commands</code> pueden ser ejecutados.</p>
-
 <p>Si el sistema no tiene un directorio <code>git-shell-commands</code>, entonces por defecto git-shell sólo permitirá ejecutar los siguientes 3 comandos -lista blanca-:</p>
-
 <ul>
 <li><code>git-receive-pack &lt;argumento&gt;</code></li>
-
 <li><code>git-upload-pack &lt;argumento&gt;</code>.</li>
-
 <li><code>git-upload-archive &lt;argumento&gt;</code>.</li>
 </ul>
-
 <p>Sin embargo, el autor de <code>CVE-2017-8386</code> descubrió que al ejecutar <code>git-upload-archive --help</code> (o <code>git-receive-pack --help</code>) el comando te llevaba a una página de manual interactiva, que a su vez invocaba al comando <code>less</code> y terminaba con un documento de ayuda que se podía paginar arriba y abajo. Esto estaría bien, pero una de las características del comando <code>less</code> es que soporta varios métodos interactivos.</p>
-
 <blockquote>
-  <p><strong>Ejemplo</strong> <br />
-  Pulsando <kbd>Shift + e</kbd> en la página de <code>less</code>, se abre la función <em>Examinar</em> que permite leer cualquier archivo, y tecleando <code>!id</code> se puede ejecutar el comando <code>id</code>.</p>
-  
-  <p>Esto puede probarse en cualquier ordenador Linux ejecutando <code>less /etc/passwd</code> para llegar a la página <code>less</code>, y escribiendo <code>!id</code> en el método de entrada en inglés para ejecutar el comando <code>id</code>.</p>
+<p><strong>Ejemplo</strong><br>Pulsando <kbd>Shift + e</kbd> en la página de <code>less</code>, se abre la función <em>Examinar</em> que permite leer cualquier archivo, y tecleando <code>!id</code> se puede ejecutar el comando <code>id</code>.</p>
+<p>Esto puede probarse en cualquier ordenador Linux ejecutando <code>less /etc/passwd</code> para llegar a la página <code>less</code>, y escribiendo <code>!id</code> en el método de entrada en inglés para ejecutar el comando <code>id</code>.</p>
 </blockquote>
-
 <p>Así, usando esta característica, podemos saltarnos el sandbox de git-shell para leer cualquier archivo, ¡o ejecutar cualquier comando!</p>
-
-
-<h5>Explotación vía SSH</h5>
-
+<h4 id="explotaci-n-v-a-ssh">Explotación vía SSH</h4>
 <p>Como intentamos antes, conectarse directamente usando <code>ssh git@gitserver</code> sólo obtiene el git-shell (o devuelve un texto recordatorio), así que usamos el exploit sandbox bypass mencionado en la sección anterior para ejecutar el comando:</p>
-
-<pre><code class="shell language-shell">ssh -i id_rsa -t git@gitserver -p 3322 "git-upload-archive '--help'"
+<pre><code class="lang-shell">ssh -<span class="hljs-selector-tag">i</span> id_rsa -t git@gitserver -<span class="hljs-selector-tag">p</span> <span class="hljs-number">3322</span> <span class="hljs-string">"git-upload-archive '--help'"</span>
 </code></pre>
-
 <p>Ve a la página de ayuda, luego simplemente pulsa <kbd>Shift + e</kbd> o <code>!id</code>.</p>
-
-
-
-
-<h1>Laboratorio</h1>
-
-<p><strong>Este laboratorio simula un servidor de Git con la vulnerabilidad <code>CVE-2017-8386</code>.</strong></p>
-
+<h1 id="laboratorio">Laboratorio</h1>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
+<ul>
+<li>Clave SSH privada descrita más abajo.</li>
+</ul>
+</blockquote>
+<p>Este laboratorio simula un servidor de Git con la vulnerabilidad <strong>CVE-2017-8386</strong>.</p>
 <p>Para usarlo, necesitarás la siguiente clave privada de ejemplo para la conexión SSH:</p>
-
-<pre><code class="text language-text">
------BEGIN RSA PRIVATE KEY-----
-MIIEogIBAAKCAQEAsf0lBQtId6OH7p9otwIPzpiR3mUqfOc2MLilmj83CsvH1L/0
+<pre><code class="lang-text">-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAsf0lBQtId6OH7p9otwIPzpiR3mUqfOc2MLilmj83CsvH1L/<span class="hljs-number">0</span>
 eXK7DwU8OoW1abqE7iEFYY3cxg897HldBXAN3nqkCk4sq/HgPho4a2hnR3WuMgbV
 LI2AxT89DoT/tYdumq9yJs49BYjMtKo7pBhdID+Y+xHXabmemARZZ7raUfn6sebT
-3Sn5WURQ+fdCCRhRzt96M45J8UuqSGgboosUOB/qF/8SzGRjL8qgHk1gy2rPSReK
+<span class="hljs-number">3</span>Sn5WURQ+fdCCRhRzt96M45J8UuqSGgboosUOB/qF/<span class="hljs-number">8</span>SzGRjL8qgHk1gy2rPSReK
 S5VGdX0FMn8gDZrOjshQp8yAG4kA3pBQ0RDPLRDPHyxWF6zt07ftNXV8S4YQErnz
 dH4yPnsAngv0ibgasQQxtTOxYAefwSBzd8+mmwIDAQABAoIBAHUAbHpxXVTQGgZB
 oetTnqJ3ZsQkCpcKwnOqnanUzlD5fkYbXREM22xXS61IweVbqBCFgm0LfUpxMIqn
 iP+PFn7ebcEcfH8XRApu4BGzEtlFwZm/Jhjgd/qxxGgsA5AIFCv5EvfxcOmXcMF+
 ejA3l9ggFmdM5ibozxktGrx2dxeVO8VQPpFRoZIXqk6G0RNrAjCYG0NSqLfSkf2n
-J8m3JYhvUxfDy1TI2btTXVPz1B28M+3YQD4JraVioYkOGIfflWjlfjctW6HAGdhU
+J8m3JYhvUxfDy1TI2btTXVPz1B28M+<span class="hljs-number">3</span>YQD4JraVioYkOGIfflWjlfjctW6HAGdhU
 Kf0DMHvcRd+tLsUOOapoY22saw2XZb+aebc07jUilW3posgRJC7M/IDHkjXNKyDP
-laOhgskCgYEA5kQDo+1WIbNU7FQ0AF6dOrj65GruRujXQzTbB6Pi64wWM9bAxcc3
-C+rR033vX7/nrBRFTWTeve1DO/1t1Ozen86OciOma7QgRERfA7v8Ck31BevJJr/t
+laOhgskCgYEA5kQDo+<span class="hljs-number">1</span>WIbNU7FQ0AF6dOrj65GruRujXQzTbB6Pi64wWM9bAxcc3
+C+rR033vX7/nrBRFTWTeve1DO/<span class="hljs-number">1</span>t1Ozen86OciOma7QgRERfA7v8Ck31BevJJr/t
 y5a0QfpQkrBP1iUrI2Ew3XJtcLSQr9JPo0O95UFZtcVlLkXX/SLjO2cCgYEAxeF4
-jzZU51r1tRrj+6uV6PtLHsfe7z+OTmQIXDrk8O4KM7bIWgfI4iJErzpfav4j4/ZT
+jzZU51r1tRrj+<span class="hljs-number">6</span>uV6PtLHsfe7z+OTmQIXDrk8O4KM7bIWgfI4iJErzpfav4j4/ZT
 NwK8w0JrgXAo8LjT00jDQqVVQz2PI2O7PNpXKk/oGHKNvzdX41Xb1rFOwPwWHLKj
 gIEHVaDsz5Gi3R7H20+szq9tskqvResyLQtMLq0CgYBdgHjJ8/HptVxiqr6C9+h4
 k+ytHA6tlJb0n13heFcIttW9LxMQPJjJqgySCK1PACoe4gxSJQedr96BWaNjttuf
 oMyO5JMLYRVJI0pBxe/Ob2Fzig8gQQdaiFOiBvb42cdReb5Om4SwJ2rxPSEThB76
-eON/WE4JVaKEa7ANBkGnOQKBgGovc+Jl5WnBBdkJdQ24Jdm//6+k0ZzRHiwywcm8
+eON/WE4JVaKEa7ANBkGnOQKBgGovc+Jl5WnBBdkJdQ24Jdm<span class="hljs-comment">//6+k0ZzRHiwywcm8</span>
 UN543kCh9SFazBGNEg515H4lolzR8hWzAlhFbCspZM7IX+MhSKaa0gYjIox7GB6v
 i9bIymNUFXxm1mLH0BCFVR16KON9eP+cPbNVh75bCGpf+h9VwgWnXdYu/Z8nduV1
 CoyBAoGAZfnpQCwL77cITg+J1N09nE3KQV+H8qfy4yTHxb/TOCCeCf676w3aQT80
@@ -156,42 +102,26 @@ IrlLa+fQL54shqlqAonSV85PCN2XdnpaOcHR8TcK0Uln8jqhlUaA13fW93Yzy5Cw
 Om6aW16UqUrFL5TVgFHQvc4WSphPZyboClavgNshfTfS4i00iqE=
 -----END RSA PRIVATE KEY-----
 </code></pre>
-
 <p>Guárdala en un fichero y asegúrate de que tiene los permisos adecuados o la conexión fallará debido a que <em>la clave privada es demasiado abierta</em>:</p>
-
-<pre><code class="shell language-shell">chmod 600 &lt;clave privada&gt;
+<pre><code class="lang-shell">chmod 600 <span class="hljs-tag">&lt;<span class="hljs-name">clave</span> <span class="hljs-attr">privada</span>&gt;</span>
 </code></pre>
-
 <p>Una vez hayas completado esos preparativos, podrás llevar a cabo la explotación mencionada anteriormente y explorar las posibilidades que te da ese bypass.</p>
-
-
-<h2>Curiosidad</h2>
-
+<h2 id="curiosidad">Curiosidad</h2>
 <blockquote>
-  <p><strong>¿Por qué el usuario <em>www-data</em>?</strong> <br />
-  Tanto el usuario <em>git</em> como el usuario <em>www-data</em> se identifican con el número <strong>33</strong>. <br />
-  Eso quiere decir que, en realidad, <strong>los usuarios <em>git</em> y <em>www-data</em> son el mismo usuario</strong>.</p>
-  
-  <p>Esto puede observarse en el fichero <code>/etc/passwd</code>:</p>
-
-<pre><code class="text language-text">root:x:0:0:root:/root:/bin/bash
-daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+<p><strong>¿Por qué el usuario <em>www-data</em>?</strong><br>Tanto el usuario <em>git</em> como el usuario <em>www-data</em> se identifican con el número <strong>33</strong>.<br>Eso quiere decir que, en realidad, <strong>los usuarios <em>git</em> y <em>www-data</em> son el mismo usuario</strong>.</p>
+<p>Esto puede observarse en el fichero <code>/etc/passwd</code>:</p>
+<pre><code class="lang-text"><span class="hljs-symbol">root:</span><span class="hljs-symbol">x:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:root</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/bin/bash</span>
+<span class="hljs-symbol">daemon:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span><span class="hljs-symbol">:daemon</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
 (…)
-www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+www-<span class="hljs-symbol">data:</span><span class="hljs-symbol">x:</span><span class="hljs-number">33</span><span class="hljs-symbol">:</span><span class="hljs-number">33</span><span class="hljs-symbol">:www-data</span><span class="hljs-symbol">:/var/www</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
 (…)
-sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
-git:x:33:33:git:/home/git:/bin/bash
+<span class="hljs-symbol">sshd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">101</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/run/sshd</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
+<span class="hljs-symbol">git:</span><span class="hljs-symbol">x:</span><span class="hljs-number">33</span><span class="hljs-symbol">:</span><span class="hljs-number">33</span><span class="hljs-symbol">:git</span><span class="hljs-symbol">:/home/git</span><span class="hljs-symbol">:/bin/bash</span>
 </code></pre>
 </blockquote>
-
-
-
-<h1>Referencias</h1>
-
+<h1 id="referencias">Referencias</h1>
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Git">Git</a></li>
-
-<li><a href="https://insinuator.net/2017/05/git-shell-bypass-by-abusing-less-cve-2017-8386">Git Shell Bypass by abusing “less” CVE-2017-8386</a></li>
-
-<li><a href="https://www.leavesongs.com/PENETRATION/git-shell-cve-2017-8386.html">Git Shell CVE-2017-8386</a></li>
+<li><a href="https://insinuator.net/2017/05/git-shell-bypass-by-abusing-less-cve-2017-8386">CVE-2017-8386</a> - Git Shell Bypass by abusing &quot;less&quot;</li>
 </ul>
+

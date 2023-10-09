@@ -1,14 +1,11 @@
-<html><head><style>body {
-   color: black;
-}
-</style></head><body><h1 id="introducci-n-al-osint">Introducción al OSINT</h1>
+<h1 id="introducci-n-al-osint">Introducción al OSINT</h1>
 <p>OSINT (<em><strong>O</strong>pen <strong>S</strong>ource <strong>Int</strong>elligence</em>) es una disciplina que se encarga de recolectar información de fuentes abiertas; es decir, información que se encuentra disponible para el público en general. Esta información puede ser utilizada para realizar análisis de seguridad, inteligencia de negocios, análisis de riesgos, etc.</p>
 <p>Esta disciplina se ha utilizado desde hace mucho tiempo, pero con el auge de las redes sociales y la facilidad de acceso a la información, se ha vuelto mucho más popular.</p>
 <blockquote>
 <p><strong>Nota</strong><br>Existen diferentes inteligencias además de OSINT, como las siguientes:</p>
 <ul>
 <li><strong>HUMINT</strong> (<em><strong>Hum</strong>an <strong>Int</strong>elligence</em>): información obtenida por medio de personas (agentes, informadores...).</li>
-<li><strong>SIGINT</strong> (<em><strong>Sig</strong>nals <strong>Int</strong>elligence</em>): información obtenida por medio de señales (telefonía, radiorefuencia...).</li>
+<li><strong>SIGINT</strong> (<em><strong>Sig</strong>nals <strong>Int</strong>elligence</em>): información obtenida por medio de señales (telefonía, radiofrecuencia...).</li>
 <li><strong>IMINT</strong> (<em><strong>Im</strong>agery <strong>Int</strong>elligence</em>): información obtenida por medio de imágenes (satélites, videovigilancia, drones...).</li>
 <li><strong>MASINT</strong> (<em><strong>Mas</strong>sive <strong>Int</strong>elligence</em>): información obtenida por medio de sensores (sonares, radares...).</li>
 </ul>
@@ -139,13 +136,18 @@
 <h3 id="whois">WHOIS</h3>
 <p><a href="https://who.is">WHOIS</a> es un protocolo de consulta y respuesta que se utiliza para consultar una base de datos que permite determinar el propietario de un nombre de dominio o una dirección IP en Internet.</p>
 <h1 id="laboratorio">Laboratorio</h1>
+<blockquote>
+<p><strong>Credenciales</strong>  </p>
+<ul>
+<li><code>root:root</code>.</li>
+</ul>
+</blockquote>
 <p>Este entorno presenta un proyecto de Python con el que extraer información de una IP de varias fuentes de información, entre las que se encuentran Shodan, VirusTotal y WHOIS.</p>
 <p>El proyecto consiste en una interfaz de línea de comandos que permite al usuario introducir una IP o una lista de IPs (en un archivo de texto) y obtener información de cada una de ellas usando las fuentes mencionadas, entre otras.</p>
 <blockquote>
 <p><strong>Nota</strong><br>La información de Shodan.io y VirusTotal se obtiene a través de sus APIs públicas, por lo que es necesario tener una cuenta en cada una de ellas y obtener una clave de API para poder usarlas.</p>
 <p>No usar una clave no afectará al programa más allá de no usar esas 2 fuentes de información.</p>
 </blockquote>
-<p>Credenciales: <code>root:root</code>.</p>
 <h1 id="referencias">Referencias</h1>
 <ul>
 <li><a href="https://derechodelared.com/google-dorking-que-es">Google Dorking, ¿qué es?</a></li>
@@ -155,4 +157,4 @@
 <li><a href="https://whois.whoisxmlapi.com">WhoisXMLAPI</a></li>
 <li><a href="https://github.com/sherlock-project/sherlock">sherlock-project/sherlock</a></li>
 </ul>
-</body></html>
+

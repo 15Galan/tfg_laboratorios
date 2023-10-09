@@ -42,10 +42,10 @@ Esto tiene sentido para ficheros que necesitan permisos de administrador para ej
 
 # Laboratorio
 
-Este entorno contiene una vulnerabilidad de permisos débiles en un archivo muy importante: `/etc/shadow`.
+> **Credenciales**  
+> - `user:user`.
 
-- Credenciales: `user:user`.
-- Recursos: `/home/user/rockyou-top15k.txt`
+Este entorno contiene una vulnerabilidad de permisos débiles en un archivo muy importante: `/etc/shadow`, y una lista de contraseñas en `/home/user/rockyou-top15k.txt`.
 
 Antiguamente, las contraseñas se almacenaban en el fichero `/etc/passwd`, pero actualmente se almacenan en el fichero `/etc/shadow`, un fichero que solo puede ser leído por el usuario `root`.
 
@@ -136,7 +136,7 @@ El contenido de `/etc/shadow` tiene el siguiente formato:
 
 Sabiendo eso, se ha obtenido el hash de la contraseña del usuario `root`, por lo que se puede usar una herramienta como *hashcat* para intentar crackearla.
 
-No obstante, primero será encesario obtener el tipo de hash que se está usando, ya que *hashcat* necesita saberlo para poder crackearlo, y aunque hay varios métodos, como usar *hashid* o *john*, se puede usar la página web [Hashes.com](https://hashes.com/en/tools/hash_identifier) para identificar el tipo de hash.
+No obstante, primero será necesario obtener el tipo de hash que se está usando, ya que *hashcat* necesita saberlo para poder crackearlo, y aunque hay varios métodos, como usar *hashid* o *john*, se puede usar la página web [Hashes.com](https://hashes.com/en/tools/hash_identifier) para identificar el tipo de hash.
 
 ```shell
 hashid '$1$V3k7V9sY$8LnDZKFDxSJ8jqUE6Wtzc/'

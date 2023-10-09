@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y
 RUN apt install sudo bash vim nano ssh -y
 
 # Paquetes específicos de ciberseguridad
-RUN apt install hashcat -y
+RUN apt install hashid hashcat -y
 
 # Modificación del algoritmo de hashes
 COPY resources/common-password /etc/pam.d/common-password
