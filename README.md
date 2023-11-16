@@ -9,7 +9,7 @@
 
 Este repositorio contiene una página de WordPress correspondiente a la plataforma web del proyecto de TFG.
 
-> **Note**  
+> [!NOTE] 
 > El proyecto de TFG consta de 2 partes: una [plataforma web](https://github.com/15Galan/tfg_sitio), y estos laboratorios de pentesting; será necesario usar ambos repositorios para poder usar la plataforma correctamente.
 
 ## Información del repositorio
@@ -23,7 +23,7 @@ Este repositorio contiene una página de WordPress correspondiente a la platafor
 - Imágenes de Docker de los laboratorios en formato *Dockerfile*.
 - Un script para construir todas las imágenes de los laboratorios.
 
-> **Note**  
+> [!NOTE]
 > El contenido del repositorio está pensado para su uso en un servidor, pero puede usarse de forma local si el usuario tiene Docker instalado en su equipo.
 >
 > También puede acceder al contenido formativo usando los ficheros Markdown de los laboratorios.
@@ -62,7 +62,7 @@ Las imágenes resultantes tienen **el mismo nombre** que sus carpetas contenedor
 - Docker y Docker Compose deben estar instalados en el sistema.
 - Docker debe gestionar adecuadamente las credenciales del usuario de Docker Hub.
 
-> **Warning**  
+> [!WARNING]
 > Si existen fallos en las credenciales, los Dockerfile y los YAML no descargarán las imágenes base o en otras palabras, no harán `docker pull <imagen:versión>` de forma automática (aunque sí podrá hacerse de forma manual por el usuario).
 
 ### Máquina virtual de Kali Linux
@@ -104,10 +104,10 @@ Bringing machine 'default' up with 'virtualbox' provider...
     default: SSH auth method: private key
 ```
 
-> **Note**  
+> [!IMPORTANT]
 > Vagrant intentará conectarte usando SSH una vez la máquina virtual esté activa, pero fallará; lo seguirá intentando un tiempo, y finalmente el script terminará.
 >
-> Este funcionamiento es normal y no afecta al uso de la máquina virtual mediante VirtualBox, ni mediante SSH -pese a los mensajes de advertencia/error del script- usando el puerto 2222 mapeado en tu sistema (como indica el mensaje).
+> Este funcionamiento es normal, pese a los mensajes de advertencia/error del script; por tanto, no afecta al uso de la máquina virtual mediante VirtualBox, ni mediante SSH usando el puerto 2222 mapeado en tu sistema (como indica el mensaje).
 
 
 ### Laboratorios
