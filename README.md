@@ -5,6 +5,9 @@
     <br/>
 </div>
 
+> [!NOTE]
+> Esta implementación ha sido desarrollada en el contexto de un TFE dentro de la Universidad de Málaga por ANTONIO JAVIER GALÁN HERRERA y JOSÉ ANTONIO ONIEVA GONZÁLEZ.
+
 # TFG - Proyecto (laboratorios)
 
 Este repositorio contiene una página de WordPress correspondiente a la plataforma web del proyecto de TFG.
